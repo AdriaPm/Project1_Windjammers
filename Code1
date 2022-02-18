@@ -1,16 +1,11 @@
 #include <iostream>
 
-void print(int val1){
-    cout << val1 << endl;
-}
-
 int main(){
 
     int val1 = 1;
 
-    print(val1);
+      cout << val1 << endl;
 
-    return 0;
     return 3;
 
 }
