@@ -6,6 +6,10 @@ int main(){
 
     cout << val1 << endl;
 
+<<<<<<< Updated upstream
     return 8;
+=======
+    return 3;
+>>>>>>> Stashed changes
 
 }
