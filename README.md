@@ -1,4 +1,4 @@
-# Project Name
+# Windjammers
 
 TODO: Write a project description
 
