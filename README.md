@@ -4,8 +4,6 @@ TODO: Write a project description
 
 ## Installation
 
-Manual: https://windjammers.forumgaming.fr/t306-scan-notices-flyers-artsets-ngcd-aes-mvs-flying-power-disc-windjammersscan-notices-flyers-artsets-ngcd-aes-mvs-ps4-psvita-switch-flying-power-disc-windjammers
-
 TODO: Describe the installation process
 
 ## Usage
