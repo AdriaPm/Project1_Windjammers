@@ -4,8 +4,6 @@ TODO: Write a project description
 
 ## Installation
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y6pbwwpxGAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 Manual: https://windjammers.forumgaming.fr/t306-scan-notices-flyers-artsets-ngcd-aes-mvs-flying-power-disc-windjammersscan-notices-flyers-artsets-ngcd-aes-mvs-ps4-psvita-switch-flying-power-disc-windjammers
 
 TODO: Describe the installation process
