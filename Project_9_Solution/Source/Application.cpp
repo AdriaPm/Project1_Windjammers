@@ -7,7 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
-#include "SceneLevel1.h"
+#include "TurfLevel.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -27,7 +27,7 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio(true);
 
 	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[5] =	turflevel =	new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[6] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[7] =	particles =		new ModuleParticles(true);
 	modules[8] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled

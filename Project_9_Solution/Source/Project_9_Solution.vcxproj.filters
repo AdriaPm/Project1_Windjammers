@@ -97,7 +97,7 @@
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneLevel1.h">
+    <ClInclude Include="TurfLevel.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="SceneIntro.h">
@@ -171,7 +171,7 @@
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneLevel1.cpp">
+    <ClCompile Include="TurfLevel.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="SceneIntro.cpp">

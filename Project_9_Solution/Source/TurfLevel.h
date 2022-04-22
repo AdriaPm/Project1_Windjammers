@@ -1,19 +1,19 @@
-#ifndef __SCENE_LEVEL1_H__
-#define __SCENE_LEVEL1_H__
+#ifndef __TurfLevel_H__
+#define __TurfLevel_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class SceneLevel1 : public Module
+class TurfLevel : public Module
 {
 public:
 	//Constructor
-	SceneLevel1(bool startEnabled);
+	TurfLevel(bool startEnabled);
 
 	//Destructor
-	~SceneLevel1();
+	~TurfLevel();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background

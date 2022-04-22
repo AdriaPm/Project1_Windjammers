@@ -12,7 +12,7 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class SceneIntro;
-class SceneLevel1;
+class TurfLevel;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleEnemies;
@@ -53,7 +53,7 @@ public:
 	ModulePlayer* player = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
-	SceneLevel1* sceneLevel_1 = nullptr;
+	TurfLevel* turflevel = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
