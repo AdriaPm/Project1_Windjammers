@@ -14,20 +14,51 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	// idle animation
+	idleAnim.PushBack({ 227, 103, 24, 37 });
+	idleAnim.PushBack({ 251, 103, 24, 39 });
+	idleAnim.PushBack({ 275, 103, 24, 36 });
+	idleAnim.PushBack({ 299, 103, 24, 35 });
+	idleAnim.PushBack({ 323, 103, 24, 36 });
+	idleAnim.PushBack({ 347, 103, 23, 36 });
+	idleAnim.PushBack({ 370, 103, 23, 35 });
+	idleAnim.PushBack({ 393, 103, 23, 36 });
+	idleAnim.loop = true;
+	idleAnim.speed = 0.1f;
 
 	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
+	upAnim.PushBack({ 0, 191, 30, 50 });
+	upAnim.PushBack({ 30, 191, 30, 53 });
+	upAnim.PushBack({ 60, 191, 30, 40 });
+	upAnim.PushBack({ 90, 191, 30, 50 });
+	upAnim.PushBack({ 120, 191, 30, 53 });
+	upAnim.PushBack({ 150, 191, 30, 40 });
+	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
+	downAnim.PushBack({ 94, 148, 31, 34 });
+	downAnim.PushBack({ 125, 148, 30, 38 });
+	downAnim.PushBack({ 155, 148, 24, 43 });
+	downAnim.PushBack({ 179, 148, 29, 35 });
+	downAnim.PushBack({ 208, 148, 32, 38 });
+	downAnim.PushBack({ 240, 148, 29, 43 });
+	downAnim.loop = true;
 	downAnim.speed = 0.1f;
+
+	//Move right
+	
+	rightAnim.PushBack({ 310, 148, 29, 36 });
+	rightAnim.PushBack({ 269, 148, 41, 35 });
+	rightAnim.PushBack({ 454, 148, 45, 32 });
+	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.PushBack({ 339, 148, 46, 29 });
+	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.loop = true;
+	rightAnim.speed = 0.1f;
+
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -41,7 +72,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/ship.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/CHAR1_IDLE/SPRITESHEET/CHAR1JapaneseSpriteSheet.png");
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -67,17 +98,25 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
-	// Moving the player with the camera scroll
-	App->player->position.x += 1;
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
@@ -107,9 +146,10 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayFx(laserFx);
 	}
 
-	// If no up/down movement detected, set the current animation back to idle
+	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
