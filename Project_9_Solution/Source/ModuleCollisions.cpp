@@ -40,6 +40,25 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
+
+	matrix[Collider::Type::GOAL][Collider::Type::GOAL] = false;
+	matrix[Collider::Type::GOAL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::GOAL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::GOAL][Collider::Type::NET] = false;
+	
+	matrix[Collider::Type::NET][Collider::Type::NET] = false;
+	matrix[Collider::Type::NET][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::NET][Collider::Type::DISK] = false;
+	matrix[Collider::Type::NET][Collider::Type::WALL] = false;
+	matrix[Collider::Type::NET][Collider::Type::ENEMY] = true;
+
+	matrix[Collider::Type::DISK][Collider::Type::DISK] = false;
+	matrix[Collider::Type::DISK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::DISK][Collider::Type::NET] = false;
+	matrix[Collider::Type::DISK][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::DISK][Collider::Type::WALL] = true;
+
 }
 
 // Destructor
@@ -137,6 +156,15 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::ENEMY_SHOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+			case Collider::Type::GOAL: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+			case Collider::Type::NET: // light blue
+			App->render->DrawQuad(colliders[i]->rect, 100, 255, 255, alpha);
+			break;
+			case Collider::Type::DISK: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		}
 	}

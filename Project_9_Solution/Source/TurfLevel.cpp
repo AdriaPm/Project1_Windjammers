@@ -28,8 +28,17 @@ bool TurfLevel::Start()
 	bgTexture = App->textures->Load("Assets/Sprites/turfmap.png");
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
-	////Bottomside collider
-	//App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
+	///TURF MAP Colliders
+	//Upperside collider
+	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::WALL);
+	//Bottomside collider
+	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::WALL);
+	//Leftside goal
+	App->collisions->AddCollider({ 0, 17, 10, 200 }, Collider::Type::GOAL);
+	//Rightside goal
+	App->collisions->AddCollider({ 295, 17, 9, 200 }, Collider::Type::GOAL);
+	//Center net
+	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 
 	////First two columns colliders
 	//App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);

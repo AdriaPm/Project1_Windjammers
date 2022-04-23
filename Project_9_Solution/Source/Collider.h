@@ -17,6 +17,10 @@ struct Collider
 		ENEMY,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
+		GOAL,
+		NET,
+		DISK,
+
 
 		MAX
 	};
