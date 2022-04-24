@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "TurfLevel.h"
+#include "Char2.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -27,7 +28,7 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio(true);
 
 	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	turflevel =	new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[5] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[6] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[7] =	particles =		new ModuleParticles(true);
 	modules[8] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
@@ -36,6 +37,7 @@ Application::Application()
 	modules[10] =	fade =			new ModuleFadeToBlack(true);
 	modules[11] =	fonts =			new ModuleFonts(true);
 	modules[12] =	render =		new ModuleRender(true);
+	modules[13] = char2 = new Char2(false);
 }
 
 Application::~Application()

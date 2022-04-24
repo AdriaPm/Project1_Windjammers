@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "Char2.h"
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
@@ -66,6 +67,7 @@ bool TurfLevel::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
+	App->char2->Enable();
 	App->enemies->Enable();
 
 	return ret;
@@ -89,6 +91,7 @@ Update_Status TurfLevel::PostUpdate()
 bool TurfLevel::CleanUp()
 {
 	App->player->Disable();
+	App->char2->Disable();
 	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
