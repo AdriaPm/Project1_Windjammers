@@ -14,6 +14,7 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
+	///CHAR1: Japanese
 	// idle animation
 	idleAnim.PushBack({ 227, 103, 24, 37 });
 	idleAnim.PushBack({ 251, 103, 24, 39 });
@@ -47,20 +48,60 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	downAnim.speed = 0.1f;
 
 	//Move right
-	
-	rightAnim.PushBack({ 310, 148, 29, 36 });
 	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 454, 148, 45, 32 });
-	rightAnim.PushBack({ 426, 148, 28, 33 });
-	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.PushBack({ 310, 148, 29, 36 });
 	rightAnim.PushBack({ 339, 148, 46, 29 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 
-	
+	//Move left
+	leftAnim.PushBack({ 269, 404, 41, 35 });
+	leftAnim.PushBack({ 310, 404, 29, 36 });
+	leftAnim.PushBack({ 339, 404, 46, 29 });
+	leftAnim.PushBack({ 385, 404, 41, 36 });
+	leftAnim.PushBack({ 426, 404, 28, 33 });
+	leftAnim.PushBack({ 456, 404, 45, 32 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.1f;
 
+	//Victory
+	victAnim.PushBack({ 77, 0, 33, 40 });
+	victAnim.PushBack({ 110, 0, 34, 41 });
+	victAnim.PushBack({ 144, 0, 33, 40});
+	victAnim.PushBack({ 177, 0, 34, 41});
+	victAnim.loop = true;
+	victAnim.speed = 0.05f;
 
+	//Slide Left
+	SlideLAnim.PushBack({ 474, 359, 30, 33 });
+	SlideLAnim.PushBack({ 0, 404, 43, 31 });
+	SlideLAnim.PushBack({ 43, 404, 51, 24 });
+	SlideLAnim.loop = true;
+	SlideLAnim.speed = 0.1f;
+
+	//Slide Right
+	SlideRAnim.PushBack({ 474, 103, 30, 33 });
+	SlideRAnim.PushBack({ 0, 148, 43, 31 });
+	SlideRAnim.PushBack({ 43, 148, 51, 24 });
+	SlideRAnim.loop = true;
+	SlideRAnim.speed = 0.1f;
+
+	//Slide Up
+	SlideUAnim.PushBack({ 374, 191, 28, 33 });
+	SlideUAnim.PushBack({ 402, 191, 31, 24 });
+	SlideUAnim.PushBack({ 433, 191, 25, 33 });
+	SlideUAnim.loop = true;
+	SlideUAnim.speed = 0.1f;
+
+	//Slide Down
+	SlideDAnim.PushBack({ 213, 46, 32, 41 });
+	SlideDAnim.PushBack({ 245, 46, 32, 49 });
+	SlideDAnim.PushBack({ 277, 46, 25, 57 });
+	SlideDAnim.loop = true;
+	SlideDAnim.speed = 0.1f;
 	
 }
 
@@ -142,6 +183,47 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedslide;
+		if (currentAnimation != &SlideLAnim)
+		{
+			SlideLAnim.Reset();
+			currentAnimation = &SlideLAnim;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedslide;
+		if (currentAnimation != &SlideRAnim)
+		{
+			SlideRAnim.Reset();
+			currentAnimation = &SlideRAnim;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.y += speedslide;
+		if (currentAnimation != &SlideDAnim)
+		{
+			SlideDAnim.Reset();
+			currentAnimation = &SlideDAnim;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.y -= speedslide;
+		if (currentAnimation != &SlideUAnim)
+		{
+			SlideUAnim.Reset();
+			currentAnimation = &SlideUAnim;
+		}
+	}
+
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
@@ -152,7 +234,9 @@ Update_Status ModulePlayer::Update()
 	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
