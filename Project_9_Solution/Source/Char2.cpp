@@ -75,10 +75,23 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.loop = true;
 	SlideLAnim.speed = 0.1f;
 
-
 	//Slide Right
+	SlideRAnim.PushBack({ 1, 188, 31, 31 });
+	SlideRAnim.PushBack({ 32, 188, 31, 31 });
+	SlideRAnim.PushBack({ 63, 188, 29, 31 });
+	SlideRAnim.PushBack({ 92, 188, 57, 31 });
+	SlideRAnim.PushBack({ 149, 188, 32, 31 });
+	SlideRAnim.loop = true;
+	SlideRAnim.speed = 0.1f;
 
 	//Slide Down
+	SlideUAnim.PushBack({ 1, 238, 28, 50 });
+	SlideUAnim.PushBack({ 29, 238, 24, 50 });
+	SlideUAnim.PushBack({ 53, 238, 31, 50 });
+	SlideUAnim.PushBack({ 84, 238, 23, 50 });
+	SlideUAnim.PushBack({ 107, 238, 32, 31 });
+	SlideUAnim.loop = true;
+	SlideUAnim.speed = 0.1f;
 
 	//Slide Up
 
@@ -147,8 +160,25 @@ Update_Status Char2::Update()
 		position.x -= speedslide;
 		if (currentAnimation != &SlideLAnim)
 		{
-			rightAnim.Reset();
 			currentAnimation = &SlideLAnim;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedslide;
+		if (currentAnimation != &SlideRAnim)
+		{
+			currentAnimation = &SlideRAnim;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.y -= speedslide;
+		if (currentAnimation != &SlideUAnim)
+		{
+			currentAnimation = &SlideUAnim;
 		}
 	}
 
