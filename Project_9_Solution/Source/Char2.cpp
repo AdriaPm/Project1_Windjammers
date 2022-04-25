@@ -16,20 +16,23 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
 	idleAnim.PushBack({ 68, 324, 24, 34 });
-	/*idleAnim.PushBack({ 183, 1173, 91, 127 });
-	idleAnim.PushBack({ 273, 1167, 91, 121 });*/
+	idleAnim.PushBack({ 92, 324, 23, 36 });
+	idleAnim.PushBack({ 115, 324, 23, 35 });
+	idleAnim.PushBack({ 115, 324, 23, 35 });
+	idleAnim.PushBack({ 92, 324, 23, 36 });
+	idleAnim.PushBack({ 68, 324, 24, 34 });
+
+	
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
 	// move upwards
-	/*upAnim.PushBack({ 0, 191, 30, 50 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
+	upAnim.PushBack({ 32, 366, 30, 53 });
+	upAnim.PushBack({ 67, 367, 39, 39 });
 	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 120, 191, 30, 53 });
-	upAnim.PushBack({ 150, 191, 30, 40 });
+	
 	upAnim.loop = true;
-	upAnim.speed = 0.1f;*/
+	upAnim.speed = 0.1f;
 
 	// Move down
 	//downAnim.PushBack({ 94, 148, 31, 34 });
@@ -73,7 +76,7 @@ bool Char2::Start()
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	position.x = 60;
+	position.x = 80;
 	position.y = 135;
 
 	destroyed = false;
