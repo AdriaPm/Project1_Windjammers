@@ -80,28 +80,28 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 0, 404, 43, 31 });
 	SlideLAnim.PushBack({ 43, 404, 51, 24 });
 	SlideLAnim.loop = true;
-	SlideLAnim.speed = 0.1f;
+	SlideLAnim.speed = 0.01f;
 
 	//Slide Right
 	SlideRAnim.PushBack({ 474, 103, 30, 33 });
 	SlideRAnim.PushBack({ 0, 148, 43, 31 });
 	SlideRAnim.PushBack({ 43, 148, 51, 24 });
 	SlideRAnim.loop = true;
-	SlideRAnim.speed = 0.1f;
+	SlideRAnim.speed = 0.01f;
 
 	//Slide Up
 	SlideUAnim.PushBack({ 374, 191, 28, 33 });
 	SlideUAnim.PushBack({ 402, 191, 31, 24 });
 	SlideUAnim.PushBack({ 433, 191, 25, 33 });
 	SlideUAnim.loop = true;
-	SlideUAnim.speed = 0.1f;
+	SlideUAnim.speed = 0.01f;
 
 	//Slide Down
 	SlideDAnim.PushBack({ 213, 46, 32, 41 });
 	SlideDAnim.PushBack({ 245, 46, 32, 49 });
 	SlideDAnim.PushBack({ 277, 46, 25, 57 });
 	SlideDAnim.loop = true;
-	SlideDAnim.speed = 0.1f;
+	SlideDAnim.speed = 0.01f;
 	
 }
 
