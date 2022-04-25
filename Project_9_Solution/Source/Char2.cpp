@@ -142,6 +142,16 @@ Update_Status Char2::Update()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedslide;
+		if (currentAnimation != &SlideLAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &SlideLAnim;
+		}
+	}
+
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
 		position.y += speed;

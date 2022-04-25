@@ -38,6 +38,7 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
+	int speedslide = 0.75;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;
@@ -53,6 +54,11 @@ public:
 	Animation rightAnim;
 	Animation leftAnim; 
 	Animation victAnim;
+	Animation SlideLAnim;
+	Animation SlideRAnim;
+	Animation SlideUAnim;
+	Animation SlideDAnim;
+
 
 	// The player's collider
 	Collider* collider = nullptr;
