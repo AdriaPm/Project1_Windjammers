@@ -74,7 +74,7 @@ bool Char2::Start()
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	position.x = 60;
-	position.y = 130;
+	position.y = 135;
 
 	destroyed = false;
 

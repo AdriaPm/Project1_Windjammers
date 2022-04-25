@@ -53,6 +53,8 @@ public:
 
 	ModulePlayer* player = nullptr;
 
+	Char2* char2 = nullptr;
+
 	SceneIntro* sceneIntro = nullptr;
 	TurfLevel* turflevel = nullptr;
 
@@ -62,7 +64,7 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
-	Char2* char2 = nullptr;
+	
 
 	ModuleRender* render = nullptr;
 };
