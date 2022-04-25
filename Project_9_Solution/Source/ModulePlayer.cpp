@@ -59,6 +59,9 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	
+
+
+	
 }
 
 ModulePlayer::~ModulePlayer()

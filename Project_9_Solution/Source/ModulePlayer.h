@@ -52,6 +52,12 @@ public:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation victAnim;
+	Animation SlideLAnim;
+	Animation SlideRAnim;
+	Animation SlideUAnim;
+	Animation SlideDAnim;
+
 
 	// The player's collider
 	Collider* collider = nullptr;
