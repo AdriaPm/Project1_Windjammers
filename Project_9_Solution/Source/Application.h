@@ -3,11 +3,8 @@
 
 #include "Globals.h"
 
-<<<<<<< Updated upstream
-#define NUM_MODULES 15
-=======
 #define NUM_MODULES 16
->>>>>>> Stashed changes
+
 
 class Module;
 class ModuleWindow;
@@ -16,6 +13,7 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class SceneIntro;
+class TutorialScene;
 class TurfLevel;
 class ModuleParticles;
 class ModuleCollisions;
@@ -62,6 +60,7 @@ public:
 
 	SceneIntro* sceneIntro = nullptr;
 	TutorialScene* tutorialScene = nullptr;
+	ChooseMap* chooseMap = nullptr;
 	TurfLevel* turflevel = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
@@ -73,8 +72,6 @@ public:
 	
 
 	ModuleRender* render = nullptr;
-
-	ChooseMap* chooseMap = nullptr;
 };
 
 // Global var made extern for Application ---

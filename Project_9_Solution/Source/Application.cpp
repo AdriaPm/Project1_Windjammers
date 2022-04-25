@@ -30,19 +30,20 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio(true);
 
 	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	tutorialScene =	new TutorialScene(false);		//Gameplay scene starts disabled
-	modules[6] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[7] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[8] =	char2 =			new Char2(false);
-	modules[9] =	particles =		new ModuleParticles(true);
-	modules[10] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[5] =	tutorialScene =	new TutorialScene(false);
+	modules[6] =	chooseMap =		new ChooseMap(false);		
+	modules[7] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[8] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[9] =	char2 =			new Char2(false);
+	modules[10] =	particles =		new ModuleParticles(true);
+	modules[11] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[11] =	collisions =	new ModuleCollisions(true);
-	modules[12] =	fade =			new ModuleFadeToBlack(true);
-	modules[13] =	fonts =			new ModuleFonts(true);
-	modules[14] =	render =		new ModuleRender(true);
+	modules[12] =	collisions =	new ModuleCollisions(true);
+	modules[13] =	fade =			new ModuleFadeToBlack(true);
+	modules[14] =	fonts =			new ModuleFonts(true);
+	modules[15] =	render =		new ModuleRender(true);
 	
-	modules[14] =   chooseMap =		new ChooseMap(false);
+	
 }
 
 Application::~Application()
