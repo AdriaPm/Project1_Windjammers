@@ -15,9 +15,9 @@
 Char2::Char2(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
-	idleAnim.PushBack({ 93, 1170, 94, 124 });
-	idleAnim.PushBack({ 183, 1173, 91, 127 });
-	idleAnim.PushBack({ 273, 1167, 91, 121 });
+	idleAnim.PushBack({ 68, 324, 24, 34 });
+	/*idleAnim.PushBack({ 183, 1173, 91, 127 });
+	idleAnim.PushBack({ 273, 1167, 91, 121 });*/
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
