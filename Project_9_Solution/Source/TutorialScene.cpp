@@ -25,7 +25,8 @@ bool TutorialScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/TutorialBG.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
+	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/buttons.png");
+	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
