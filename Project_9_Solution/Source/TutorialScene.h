@@ -31,6 +31,7 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr; 
 	SDL_Texture* buttonsTexture = nullptr;
+	SDL_Texture* characterTexture = nullptr;
 
 	Animation* currentAnimation = nullptr;
 
@@ -40,7 +41,6 @@ public:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
-	Animation victAnim;
 	Animation SlideLAnim;
 	Animation SlideRAnim;
 	Animation SlideUAnim;
