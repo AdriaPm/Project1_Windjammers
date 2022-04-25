@@ -21,8 +21,6 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	idleAnim.PushBack({ 115, 324, 23, 35 });
 	idleAnim.PushBack({ 92, 324, 23, 36 });
 	idleAnim.PushBack({ 68, 324, 24, 34 });
-
-	
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
@@ -31,20 +29,16 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	upAnim.PushBack({ 67, 367, 29, 39 });
 	upAnim.PushBack({ 32, 367, 30, 36 });
 	upAnim.PushBack({ 1, 367, 31, 34 });
-	
-	
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	// Move down
-	//downAnim.PushBack({ 94, 148, 31, 34 });
-	//downAnim.PushBack({ 125, 148, 30, 38 });
-	//downAnim.PushBack({ 155, 148, 24, 43 });
-	//downAnim.PushBack({ 179, 148, 29, 35 });
-	//downAnim.PushBack({ 208, 148, 32, 38 });
-	//downAnim.PushBack({ 240, 148, 29, 43 });
-	//downAnim.loop = true;
-	//downAnim.speed = 0.1f;
+	downAnim.PushBack({ 138, 324, 26, 30 });
+	downAnim.PushBack({ 164, 324, 31, 30 });
+	downAnim.PushBack({ 195, 324, 31, 30 });
+	downAnim.PushBack({ 226, 324, 29, 30 });
+	downAnim.loop = true;
+	downAnim.speed = 0.1f;
 
 	////Move right
 	rightAnim.PushBack({ 1, 406, 28, 33 });
@@ -67,14 +61,26 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
+	//Victory
+	victAnim.PushBack({ 179, 14, 26, 39 });
+	victAnim.PushBack({ 209, 14, 30, 39 });
+	victAnim.loop = true;
+	victAnim.speed = 0.1f;
 
-	//rightAnim.PushBack({ 454, 148, 45, 32 });
-	//rightAnim.PushBack({ 426, 148, 28, 33 });
-	//rightAnim.PushBack({ 385, 148, 41, 36 });
-	//rightAnim.PushBack({ 339, 148, 46, 29 });
-	//rightAnim.PushBack({ 385, 148, 41, 36 });
-	
+	//Slide Left
+	SlideLAnim.PushBack({ 224, 239, 31, 31 });
+	SlideLAnim.PushBack({ 168, 239, 56, 31 });
+	SlideLAnim.PushBack({ 139, 239, 29, 31 });
+	SlideLAnim.PushBack({ 107, 239, 32, 31 });
+	SlideLAnim.loop = true;
+	SlideLAnim.speed = 0.1f;
 
+
+	//Slide Right
+
+	//Slide Down
+
+	//Slide Up
 
 }
 
@@ -166,7 +172,8 @@ Update_Status Char2::Update()
 	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
