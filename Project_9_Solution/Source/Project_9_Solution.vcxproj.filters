@@ -109,7 +109,11 @@
     <ClInclude Include="Char2.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="TutorialScene.h">
+=======
+    <ClInclude Include="ChooseMap.h">
+>>>>>>> Stashed changes
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
@@ -189,7 +193,11 @@
     <ClCompile Include="Char2.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="TutorialScene.cpp">
+=======
+    <ClCompile Include="ChooseMap.cpp">
+>>>>>>> Stashed changes
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

@@ -15,6 +15,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
+#include "ChooseMap.h"
 
 Application::Application()
 {
@@ -39,6 +40,7 @@ Application::Application()
 	modules[12] =	fonts =			new ModuleFonts(true);
 	modules[13] =	render =		new ModuleRender(true);
 	
+	modules[14] =   chooseMap =		new ChooseMap(false);
 }
 
 Application::~Application()
