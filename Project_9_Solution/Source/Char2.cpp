@@ -40,9 +40,9 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
-	////Move right
+
+	////Move Right
 	rightAnim.PushBack({ 1, 406, 28, 33 });
-	rightAnim.PushBack({ 29, 406, 29, 33 });
 	rightAnim.PushBack({ 58, 406, 27, 33 });
 	rightAnim.PushBack({ 85, 406, 21, 33 });
 	rightAnim.PushBack({ 106, 406, 25, 33 });
@@ -51,20 +51,55 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 
+
 	////Move Left
-	leftAnim.PushBack({211, 440, 26, 34});
-	leftAnim.PushBack({ 1, 440, 29, 34 });
-	leftAnim.PushBack({ 30, 440, 20, 34 });
 	leftAnim.PushBack({ 52, 440, 28, 34 });
 	leftAnim.PushBack({ 80, 440, 27, 34 });
 	leftAnim.PushBack({ 107, 440, 21, 34 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
+	////Move Up right
+	UpRightAnim.PushBack({ 233, 367, 22, 34 });
+	UpRightAnim.PushBack({ 29, 406, 29, 33 });
+	UpRightAnim.PushBack({ 106, 406, 25, 33 });
+	UpRightAnim.PushBack({ 131, 406, 30, 33 });
+	UpRightAnim.loop = true;
+	UpRightAnim.speed = 0.1f;
+
+	//Move Up Left
+	UpLeftAnim.PushBack({ 211, 440, 26, 34 });
+	UpLeftAnim.PushBack({ 1, 440, 29, 34 });
+	UpLeftAnim.PushBack({ 30, 440, 20, 34 });
+	UpLeftAnim.PushBack({ 211, 440, 26, 34 });
+	UpLeftAnim.PushBack({ 1, 440, 29, 34 });
+	UpLeftAnim.PushBack({ 30, 440, 20, 34 });
+	UpLeftAnim.loop = true;
+	UpLeftAnim.speed = 0.1f;
+	
+
+	//Move Down Left -- DONE
+	DownLeftAnim.PushBack({ 98, 474, 27, 31 });
+	DownLeftAnim.PushBack({ 78, 474, 20, 31 });
+	DownLeftAnim.PushBack({ 30, 440, 20, 34 });
+	DownLeftAnim.PushBack({ 52, 474, 26, 34 });
+	DownLeftAnim.loop = true;
+	DownLeftAnim.speed = 0.1f;
+
+	////Move Down right
+	DownRightAnim.PushBack({ 156, 440, 26, 33 });
+	DownRightAnim.PushBack({ 182, 440, 21, 33 });
+	DownRightAnim.PushBack({ 203, 440, 26, 33 });
+	DownRightAnim.PushBack({ 156, 440, 26, 33 });
+	DownRightAnim.PushBack({ 182, 440, 21, 33 });
+	DownRightAnim.PushBack({ 203, 440, 26, 33 });
+	DownRightAnim.loop = true;
+	DownRightAnim.speed = 0.1f;
+
 	//Victory
 	victAnim.PushBack({ 179, 14, 26, 39 });
 	victAnim.PushBack({ 209, 14, 30, 39 });
-	victAnim.loop = true;
+	victAnim.loop = false;
 	victAnim.speed = 0.1f;
 
 	//Slide Left
@@ -72,7 +107,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 168, 239, 56, 31 });
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
-	SlideLAnim.loop = true;
+	SlideLAnim.loop = false;
 	SlideLAnim.speed = 0.1f;
 
 	//Slide Right
@@ -81,7 +116,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideRAnim.PushBack({ 63, 188, 29, 31 });
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
 	SlideRAnim.PushBack({ 149, 188, 32, 31 });
-	SlideRAnim.loop = true;
+	SlideRAnim.loop = false;
 	SlideRAnim.speed = 0.1f;
 
 	//Slide Up
@@ -90,11 +125,54 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUAnim.PushBack({ 53, 238, 31, 50 });
 	SlideUAnim.PushBack({ 84, 238, 23, 50 });
 	SlideUAnim.PushBack({ 107, 238, 32, 31 });
-	SlideUAnim.loop = true;
+	SlideUAnim.loop = false;
 	SlideUAnim.speed = 0.1f;
 
-	//Slide Down
 
+	//Slide Down
+	SlideDAnim.PushBack({ 29, 239, 24, 49 });
+	SlideDAnim.PushBack({ 1, 239, 28, 49 });
+	SlideDAnim.PushBack({ 84, 239, 23, 49 });
+	SlideDAnim.PushBack({ 53, 239, 31, 49 });
+	SlideDAnim.loop = false;
+	SlideDAnim.speed = 0.1f;
+
+
+	//Slide Up Right
+	SlideUpRightAnim.PushBack({ 68, 140, 39, 48 });
+	SlideUpRightAnim.PushBack({ 38, 140, 30, 48 });
+	SlideUpRightAnim.PushBack({ 1, 140, 37, 48 });
+	SlideUpRightAnim.PushBack({ 213, 92, 26, 42 });
+	SlideUpRightAnim.loop = false;
+	SlideUpRightAnim.speed = 0.1f;
+
+
+	//Slide Up Left
+	SlideUpLeftAnim.PushBack({ 31, 91, 40, 59 });
+	SlideUpLeftAnim.PushBack({ 1, 91, 30, 59 });
+	SlideUpLeftAnim.PushBack({ 219, 53, 37, 35 });
+	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
+	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
+	SlideUpLeftAnim.loop = false;
+	SlideUpLeftAnim.speed = 0.1f;
+
+
+	//Slide Down Left
+	SlideDownLeftAnim.PushBack({ 168, 92, 45, 42});
+	SlideDownLeftAnim.PushBack({ 137,  92, 31, 42 });
+	SlideDownLeftAnim.PushBack({ 102, 92, 35, 42 });
+	SlideDownLeftAnim.PushBack({ 71, 92, 31, 42 });
+	SlideDownLeftAnim.loop = false;
+	SlideDownLeftAnim.speed = 0.1f;
+
+
+	//Slide Down Right 
+	SlideDownRightAnim.PushBack({ 169, 140, 45, 42 });
+	SlideDownRightAnim.PushBack({ 138, 140, 31, 42 });
+	SlideDownRightAnim.PushBack({ 107, 140, 31, 42 });
+	SlideDownRightAnim.PushBack({ 215, 140, 31, 42 });
+	SlideDownRightAnim.loop = false;
+	SlideDownRightAnim.speed = 0.1f;
 }
 
 Char2::~Char2()
@@ -135,6 +213,7 @@ bool Char2::Start()
 Update_Status Char2::Update()
 {
 
+	//Left Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
@@ -145,6 +224,7 @@ Update_Status Char2::Update()
 		}
 	}
 
+	//Right Anim
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
@@ -155,33 +235,7 @@ Update_Status Char2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
-	{
-		position.x -= speedslide;
-		if (currentAnimation != &SlideLAnim)
-		{
-			currentAnimation = &SlideLAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
-	{
-		position.x += speedslide;
-		if (currentAnimation != &SlideRAnim)
-		{
-			currentAnimation = &SlideRAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
-	{
-		position.y -= speedslide;
-		if (currentAnimation != &SlideUAnim)
-		{
-			currentAnimation = &SlideUAnim;
-		}
-	}
-
+	//Down Anim
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
 		position.y += speed;
@@ -192,6 +246,7 @@ Update_Status Char2::Update()
 		}
 	}
 
+	//Up Anim
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speed;
@@ -202,6 +257,152 @@ Update_Status Char2::Update()
 		}
 	}
 
+	//Up Left Anim
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedcross;
+		position.y -= speedcross;
+
+		if (currentAnimation != &UpLeftAnim)
+		{
+			currentAnimation = &UpLeftAnim;
+		}
+	}
+	
+	//Up Right Anim
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedcross;
+		position.y -= speedcross;
+
+		if (currentAnimation != &UpRightAnim)
+		{
+			currentAnimation = &UpRightAnim;
+		}
+	}
+	
+
+	// Down Left Anim
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedcross;
+		position.y += speedcross;
+
+		if (currentAnimation != &DownLeftAnim)
+		{
+			currentAnimation = &DownLeftAnim;
+		}
+	}
+
+	// Down Right Anim
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedcross;
+		position.y += speedcross;
+
+		if (currentAnimation != &DownRightAnim)
+		{
+			currentAnimation = &DownRightAnim;
+		}
+	}
+
+
+	//Right Slide Anim
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedslide;
+		if (currentAnimation != &SlideRAnim)
+		{
+			currentAnimation = &SlideRAnim;
+		}
+	}
+
+	//Up Slide Anim
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.y -= speedslide;
+		if (currentAnimation != &SlideUAnim)
+		{
+			currentAnimation = &SlideUAnim;
+		}
+	}
+
+	//Left Slide Anim
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedslide;
+		if (currentAnimation != &SlideLAnim)
+		{
+			currentAnimation = &SlideLAnim;
+		}
+	}
+
+	//Down Slide Anim
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.y += speedslide;
+
+		if (currentAnimation != &SlideDAnim)
+		{
+			currentAnimation = &SlideDAnim;
+		}
+	}
+
+	//Up Left Slide Anim
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT 
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{   
+		position.x -= speedslide;
+		position.y -= speedslide;
+
+		if (currentAnimation != &SlideUpLeftAnim)
+		{
+			currentAnimation = &SlideUpLeftAnim;
+		}
+	}
+
+	//Up Right Slide Anim
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedslide;
+		position.y -= speedslide;
+
+		if (currentAnimation != &SlideUpRightAnim)
+		{
+			currentAnimation = &SlideUpRightAnim;
+		}
+	}
+
+	// Down Left Slide Anim
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedslide;
+		position.y += speedslide;
+
+		if (currentAnimation != &SlideDownLeftAnim)
+		{
+			currentAnimation = &SlideDownLeftAnim;
+		}
+	}
+
+
+	// Down Right Slide Anim
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedslide;
+		position.y += speedslide;
+
+		if (currentAnimation != &SlideDownRightAnim)
+		{
+			currentAnimation = &SlideDownRightAnim;
+		}
+	}
+
+	
+	//Shoot
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
