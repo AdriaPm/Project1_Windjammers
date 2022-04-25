@@ -54,6 +54,7 @@ public:
 	Animation rightAnim;
 	Animation leftAnim;
 	Animation victAnim;
+	Animation loseAnim;
 	Animation SlideLAnim;
 	Animation SlideRAnim;
 	Animation SlideUAnim;

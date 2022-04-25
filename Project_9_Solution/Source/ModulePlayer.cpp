@@ -75,6 +75,13 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
 
+	//Lose
+	loseAnim.PushBack({ 44, 103, 22, 40 });
+	loseAnim.PushBack({ 66, 103, 24, 39 });
+	loseAnim.PushBack({ 90, 103, 24, 39 });
+	loseAnim.PushBack({ 114, 103, 23, 40 });
+	loseAnim.PushBack({ 137, 103, 22, 40 });
+
 	//Slide Left
 	SlideLAnim.PushBack({ 474, 359, 30, 33 });
 	SlideLAnim.PushBack({ 0, 404, 43, 31 });
