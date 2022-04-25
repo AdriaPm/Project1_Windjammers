@@ -27,9 +27,10 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	idleAnim.speed = 0.1f;
 
 	// move upwards
-	upAnim.PushBack({ 32, 366, 30, 53 });
-	upAnim.PushBack({ 67, 367, 39, 39 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
+	upAnim.PushBack({ 1, 367, 31, 34 });
+	upAnim.PushBack({ 32, 367, 30, 36 });
+	upAnim.PushBack({ 67, 367, 29, 39 });
+	upAnim.PushBack({ 96, 367, 32, 34 });
 	
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
