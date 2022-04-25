@@ -47,16 +47,33 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	//downAnim.speed = 0.1f;
 
 	////Move right
+	rightAnim.PushBack({ 1, 406, 28, 33 });
+	rightAnim.PushBack({ 29, 406, 29, 33 });
+	rightAnim.PushBack({ 58, 406, 27, 33 });
+	rightAnim.PushBack({ 85, 406, 21, 33 });
+	rightAnim.PushBack({ 106, 406, 25, 33 });
+	rightAnim.PushBack({ 131, 406, 30, 33 });
+	rightAnim.PushBack({ 161, 406, 21, 33 });
+	rightAnim.loop = true;
+	rightAnim.speed = 0.1f;
 
-	//rightAnim.PushBack({ 310, 148, 29, 36 });
-	//rightAnim.PushBack({ 269, 148, 41, 35 });
+	////Move Left
+	leftAnim.PushBack({211, 440, 26, 34});
+	leftAnim.PushBack({ 1, 440, 29, 34 });
+	leftAnim.PushBack({ 30, 440, 20, 34 });
+	leftAnim.PushBack({ 52, 440, 28, 34 });
+	leftAnim.PushBack({ 80, 440, 27, 34 });
+	leftAnim.PushBack({ 107, 440, 21, 34 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.1f;
+
+
 	//rightAnim.PushBack({ 454, 148, 45, 32 });
 	//rightAnim.PushBack({ 426, 148, 28, 33 });
 	//rightAnim.PushBack({ 385, 148, 41, 36 });
 	//rightAnim.PushBack({ 339, 148, 46, 29 });
 	//rightAnim.PushBack({ 385, 148, 41, 36 });
-	//rightAnim.loop = true;
-	//rightAnim.speed = 0.1f;
+	
 
 
 }
