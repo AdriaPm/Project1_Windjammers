@@ -3,7 +3,11 @@
 
 #include "Globals.h"
 
+<<<<<<< Updated upstream
 #define NUM_MODULES 15
+=======
+#define NUM_MODULES 16
+>>>>>>> Stashed changes
 
 class Module;
 class ModuleWindow;
@@ -57,6 +61,7 @@ public:
 	Char2* char2 = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
+	TutorialScene* tutorialScene = nullptr;
 	TurfLevel* turflevel = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
