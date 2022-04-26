@@ -91,7 +91,7 @@ Update_Status TutorialScene::Update()
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 90);
+		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 40);
 	}
 
 	currentAnimation->Update();

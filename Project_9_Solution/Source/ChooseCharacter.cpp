@@ -56,7 +56,7 @@ Update_Status ChooseCharacter::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{	
-			App->fade->FadeToBlack(this, (Module*)App->chooseMap, 90);
+			App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
