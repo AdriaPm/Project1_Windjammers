@@ -107,7 +107,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 168, 239, 56, 31 });
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
-	SlideLAnim.loop = false;
+	SlideLAnim.loop = true;
 	SlideLAnim.speed = 0.1f;
 
 	//Slide Right
@@ -116,7 +116,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideRAnim.PushBack({ 63, 188, 29, 31 });
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
 	SlideRAnim.PushBack({ 149, 188, 32, 31 });
-	SlideRAnim.loop = false;
+	SlideRAnim.loop = true;
 	SlideRAnim.speed = 0.1f;
 
 	//Slide Up
@@ -125,7 +125,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUAnim.PushBack({ 53, 238, 31, 50 });
 	SlideUAnim.PushBack({ 84, 238, 23, 50 });
 	SlideUAnim.PushBack({ 107, 238, 32, 31 });
-	SlideUAnim.loop = false;
+	SlideUAnim.loop = true;
 	SlideUAnim.speed = 0.1f;
 
 
@@ -134,7 +134,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDAnim.PushBack({ 1, 239, 28, 49 });
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
-	SlideDAnim.loop = false;
+	SlideDAnim.loop = true;
 	SlideDAnim.speed = 0.1f;
 
 
@@ -143,7 +143,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUpRightAnim.PushBack({ 38, 140, 30, 48 });
 	SlideUpRightAnim.PushBack({ 1, 140, 37, 48 });
 	SlideUpRightAnim.PushBack({ 213, 92, 26, 42 });
-	SlideUpRightAnim.loop = false;
+	SlideUpRightAnim.loop = true;
 	SlideUpRightAnim.speed = 0.1f;
 
 
@@ -153,7 +153,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUpLeftAnim.PushBack({ 219, 53, 37, 35 });
 	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
 	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
-	SlideUpLeftAnim.loop = false;
+	SlideUpLeftAnim.loop = true;
 	SlideUpLeftAnim.speed = 0.1f;
 
 
@@ -162,7 +162,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDownLeftAnim.PushBack({ 137,  92, 31, 42 });
 	SlideDownLeftAnim.PushBack({ 102, 92, 35, 42 });
 	SlideDownLeftAnim.PushBack({ 71, 92, 31, 42 });
-	SlideDownLeftAnim.loop = false;
+	SlideDownLeftAnim.loop = true;
 	SlideDownLeftAnim.speed = 0.1f;
 
 
@@ -171,7 +171,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.PushBack({ 138, 140, 31, 42 });
 	SlideDownRightAnim.PushBack({ 107, 140, 31, 42 });
 	SlideDownRightAnim.PushBack({ 215, 140, 31, 42 });
-	SlideDownRightAnim.loop = false;
+	SlideDownRightAnim.loop = true;
 	SlideDownRightAnim.speed = 0.1f;
 }
 
