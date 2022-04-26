@@ -11,6 +11,7 @@
 #include "MainScreen.h"
 #include "TutorialScene.h"
 #include "TurfLevel.h"
+#include "ClayModule.h"
 #include "Char2.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
@@ -40,15 +41,16 @@ Application::Application()
 	modules[8] = chooseCharacter =	new ChooseCharacter(false);
 	modules[9] =	chooseMap =		new ChooseMap(false);		
 	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[12] =	char2 =			new Char2(false);
-	modules[13] =	particles =		new ModuleParticles(true);
-	modules[14] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[11] =	clay =			new ClayModule(false);
+	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[13] =	char2 =			new Char2(false);
+	modules[14] =	particles =		new ModuleParticles(true);
+	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[15] =	collisions =	new ModuleCollisions(true);
-	modules[16] =	fade =			new ModuleFadeToBlack(true);
-	modules[17] =	fonts =			new ModuleFonts(true);
-	modules[18] =	render =		new ModuleRender(true);
+	modules[16] =	collisions =	new ModuleCollisions(true);
+	modules[17] =	fade =			new ModuleFadeToBlack(true);
+	modules[18] =	fonts =			new ModuleFonts(true);
+	modules[19] =	render =		new ModuleRender(true);
 
 	
 	
