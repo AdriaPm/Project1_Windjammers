@@ -17,6 +17,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "ChooseMap.h"
+#include "ChooseCharacter.h"
 
 Application::Application()
 {
@@ -24,24 +25,25 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 
-	modules[0] =	window =		new ModuleWindow(true);
-	modules[1] =	input =			new ModuleInput(true);
-	modules[2] =	textures =		new ModuleTextures(true);
-	modules[3] =	audio =			new ModuleAudio(true);
+	modules[0] =	window =			new ModuleWindow(true);
+	modules[1] =	input =				new ModuleInput(true);
+	modules[2] =	textures =			new ModuleTextures(true);
+	modules[3] =	audio =				new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	tutorialScene =	new TutorialScene(false);
-	modules[6] =	chooseMap =		new ChooseMap(false);		
-	modules[7] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[8] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[9] =	char2 =			new Char2(false);
-	modules[10] =	particles =		new ModuleParticles(true);
-	modules[11] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[4] =	sceneIntro =		new SceneIntro(true);
+	modules[5] =	tutorialScene =		new TutorialScene(false);
+	modules[6] =	chooseCharacter =	new ChooseCharacter(false);
+	modules[7] =	chooseMap =			new ChooseMap(false);		
+	modules[8] =	turflevel =			new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[9] =	player =			new ModulePlayer(false);	//Player starts disabled
+	modules[10] =	char2 =				new Char2(false);
+	modules[11] =	particles =			new ModuleParticles(true);
+	modules[12] =	enemies =			new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[12] =	collisions =	new ModuleCollisions(true);
-	modules[13] =	fade =			new ModuleFadeToBlack(true);
-	modules[14] =	fonts =			new ModuleFonts(true);
-	modules[15] =	render =		new ModuleRender(true);
+	modules[13] =	collisions =		new ModuleCollisions(true);
+	modules[14] =	fade =				new ModuleFadeToBlack(true);
+	modules[15] =	fonts =				new ModuleFonts(true);
+	modules[16] =	render =			new ModuleRender(true);
 	
 	
 }

@@ -8,7 +8,7 @@
 
 struct SDL_Texture;
 
-enum class Maps
+enum MapType
 {
 	Turf,
 	Beach,
@@ -30,7 +30,9 @@ public:
 
 public:
 	SDL_Texture* chooseMapTexture = nullptr;
+	SDL_Texture* selectMap = nullptr;
 
+	Animation remark;
 };
 
 

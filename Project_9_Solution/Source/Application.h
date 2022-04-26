@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 16
+#define NUM_MODULES 17
 
 
 class Module;
@@ -23,6 +23,7 @@ class ModuleFonts;
 class ModuleRender;
 class Char2;
 class ChooseMap;
+class ChooseCharacter;
 
 class Application
 {
@@ -60,6 +61,7 @@ public:
 
 	SceneIntro* sceneIntro = nullptr;
 	TutorialScene* tutorialScene = nullptr;
+	ChooseCharacter* chooseCharacter = nullptr;
 	ChooseMap* chooseMap = nullptr;
 	TurfLevel* turflevel = nullptr;
 
