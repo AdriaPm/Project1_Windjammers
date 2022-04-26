@@ -3,11 +3,9 @@
 
 #include "Globals.h"
 
-<<<<<<< Updated upstream
-#define NUM_MODULES 17
-=======
-#define NUM_MODULES 18
->>>>>>> Stashed changes
+
+#define NUM_MODULES 19
+
 
 
 class Module;
