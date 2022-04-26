@@ -24,7 +24,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/startScreen.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/NeoGeoScreen.jpg");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
