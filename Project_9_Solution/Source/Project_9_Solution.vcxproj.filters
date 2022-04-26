@@ -29,10 +29,13 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClCompile Include="ChooseCharacter.cpp" />
 =======
     <ClCompile Include="DataEast.cpp" />
     <ClCompile Include="MainScreen.cpp" />
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +69,13 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClInclude Include="ChooseCharacter.h" />
 =======
     <ClInclude Include="DataEast.h" />
     <ClInclude Include="MainScreen.h" />
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </ItemGroup>
 </Project>

@@ -16,6 +16,13 @@ enum class Update_Status
 	UPDATE_ERROR
 };
 
+enum class Player_State {
+	PLAYER_IDLE,
+	PLAYER_MOVE,
+	PLAYER_DIVE,
+	PLAYER_THROW
+};
+
 // Useful typedefs ----------------
 typedef unsigned int uint;
 
