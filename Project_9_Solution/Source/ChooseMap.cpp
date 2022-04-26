@@ -40,6 +40,12 @@ bool ChooseMap::Start()
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
+	choseMapAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/ChangeOption.wav");
+	selectMapAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/Select.wav");
+
+	App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/ChangeOption.wav");
+	
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -59,6 +65,7 @@ Update_Status ChooseMap::Update()
 			yMove = 79;
 			x1 = -200;
 			x2 = 24;
+			App->audio->PlayFx(choseMapAudio);
 		}
 		else if (yMove == 79)
 		{
@@ -66,6 +73,7 @@ Update_Status ChooseMap::Update()
 			yMove = 104;
 			x2 = -200;
 			x3 = 24;
+			App->audio->PlayFx(choseMapAudio);
 		}
 		
 	}
@@ -77,6 +85,7 @@ Update_Status ChooseMap::Update()
 			yMove = 55;
 			x2 = -200;
 			x1 = 24;
+			App->audio->PlayFx(choseMapAudio);
 		}
 		else if (yMove == 104)
 		{
@@ -84,6 +93,7 @@ Update_Status ChooseMap::Update()
 			yMove = 79;
 			x3 = -200;
 			x2 = 24;
+			App->audio->PlayFx(choseMapAudio);
 		}
 	}
 
@@ -92,14 +102,17 @@ Update_Status ChooseMap::Update()
 		if (yMove == 55)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->turflevel, 40);
+			App->audio->PlayFx(selectMapAudio);
 		}
 		else if (yMove == 79)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->turflevel, 90);
+			App->audio->PlayFx(selectMapAudio);
 		}
 		else if (yMove == 104)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->clay, 90);
+			App->audio->PlayFx(selectMapAudio);
 		}
 	}
 

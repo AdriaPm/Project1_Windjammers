@@ -342,7 +342,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
 
 		*/
-
 		
 		if (position.x <= 10) {
 			position.x = 10;

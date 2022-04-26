@@ -37,6 +37,9 @@ public:
 	//Animation remark;
 	SDL_Rect remark;
 
+	uint choseMapAudio = 0;
+	uint selectMapAudio = 0;
+
 private:
 	int yMove, x1, x2, x3;
 
