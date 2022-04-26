@@ -29,6 +29,9 @@ public:
 public:
 	SDL_Texture* chooseCharacterTexture = nullptr;
 	SDL_Texture* selectCharacter = nullptr;
+
+private:
+	int yMove, xMove;
 };
 
 #endif

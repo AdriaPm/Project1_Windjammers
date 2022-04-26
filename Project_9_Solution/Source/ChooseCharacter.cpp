@@ -27,7 +27,8 @@ bool ChooseCharacter::Start()
 
 	chooseCharacterTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/ChooseCharacter.png");
 	selectCharacter = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
+	
+	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

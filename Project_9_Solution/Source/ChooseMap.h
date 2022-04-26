@@ -1,8 +1,6 @@
 #ifndef __ChooseMap_H__
 #define __ChooseMap_H__
 
-#define NumMaps 3
-
 #include "Module.h"
 #include "Animation.h"
 
@@ -31,8 +29,17 @@ public:
 public:
 	SDL_Texture* chooseMapTexture = nullptr;
 	SDL_Texture* selectMap = nullptr;
+	SDL_Texture* mapNames = nullptr;
+	SDL_Texture* turfImg = nullptr;
+	SDL_Texture* beachImg = nullptr;
+	SDL_Texture* clayImg = nullptr;
 
+	//Animation remark;
 	SDL_Rect remark;
+
+private:
+	int yMove, x1, x2, x3;
+
 };
 
 
