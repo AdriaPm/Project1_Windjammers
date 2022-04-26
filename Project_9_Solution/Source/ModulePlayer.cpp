@@ -338,9 +338,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(explosionFx);*/
-		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
+		
+		//App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
 
-		destroyed = true;
+		
+		
+
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
