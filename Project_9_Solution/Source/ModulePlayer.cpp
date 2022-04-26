@@ -343,6 +343,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		*/
 
+		
+		if (position.x <= 10) {
+			position.x = 10;
+		}
+
+		if (position.x  >= 295-25) {
+			position.x = 295-25;
+		}
+
+		if (position.y <= 40) {
+			position.y = 40;
+		}
+
+		if (position.y >= 199-40) {
+			position.y = 199-40;
+		}
+		
+		/*
+		if (position.x > 150-25) {
+			position.x = 150 - 25;
+		}
+		if (position.x < 154) {
+			position.x = 154;
+		}
+		*/
+		
 
 	}
 
