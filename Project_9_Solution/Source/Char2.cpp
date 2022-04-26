@@ -4,7 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModuleParticles.h"
+#include "ModuleDisk.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
@@ -187,8 +187,8 @@ bool Char2::Start()
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALL.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
+	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
 
 	position.x = 80;
 	position.y = 135;
@@ -427,13 +427,12 @@ Update_Status Char2::Update()
 	}
 
 	
-	////Shoot
-	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	//{
-	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-	//	newParticle->collider->AddListener(this);
-	//	App->audio->PlayFx(laserFx);
-	//}
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	{
+		Particle* newParticle = App->particles->AddParticle(App->particles->thrown, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		newParticle->collider->AddListener(this);
+		/*App->audio->PlayFx(laserFx);*/
+	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
@@ -475,16 +474,15 @@ void Char2::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		//App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		//App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		//App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		//App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		//App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
-		App->audio->PlayFx(explosionFx);
-		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
+		/*App->audio->PlayFx(explosionFx);*/
+		/*App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);*/
 
-		destroyed = true;
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)

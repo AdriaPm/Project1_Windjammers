@@ -1,4 +1,4 @@
-#include "ModuleParticles.h"
+#include "ModuleDisk.h"
 
 #include "Application.h"
 
@@ -22,23 +22,25 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
+	/*arc.anim.PushBack({274, 296, 33, 30});
+	arc.anim.PushBack({313, 296, 33, 30});
+	arc.anim.PushBack({346, 296, 33, 30});
+	arc.anim.PushBack({382, 296, 33, 30});
 	explosion.anim.PushBack({419, 296, 33, 30});
 	explosion.anim.PushBack({457, 296, 33, 30});
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.3f;*/
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	thrown.anim.PushBack({ 117, 48, 16, 16 });
+	thrown.anim.PushBack({ 149, 48, 16, 16 });
+	thrown.anim.PushBack({ 181, 48, 16, 16 });
+	thrown.anim.PushBack({ 213, 48, 16, 16 });
+	thrown.speed.x = 5;
+	thrown.lifetime = 180;
+	thrown.anim.speed = 0.2f;
 
 	return true;
 }

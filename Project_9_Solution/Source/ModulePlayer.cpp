@@ -4,7 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModuleParticles.h"
+#include "ModuleDisk.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
@@ -126,8 +126,8 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteSheedCHAR1.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	//laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
+	//explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	position.x = 60;
 	position.y = 130;
@@ -286,11 +286,11 @@ Update_Status ModulePlayer::Update()
 	}
 
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		Particle* newParticle = App->particles->AddParticle(App->particles->thrown, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		newParticle->collider->AddListener(this);
-		App->audio->PlayFx(laserFx);
+		/*App->audio->PlayFx(laserFx);*/
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle

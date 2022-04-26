@@ -3,19 +3,22 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Char2.cpp" />
+    <ClCompile Include="ChooseCharacter.cpp" />
     <ClCompile Include="ChooseMap.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="DataEast.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BrownShip.cpp" />
     <ClCompile Include="Enemy_Mech.cpp" />
     <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
-    <ClCompile Include="ModuleParticles.cpp" />
+    <ClCompile Include="ModuleDisk.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
@@ -28,32 +31,26 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <ClCompile Include="ChooseCharacter.cpp" />
-=======
-    <ClCompile Include="DataEast.cpp" />
-    <ClCompile Include="MainScreen.cpp" />
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Char2.h" />
+    <ClInclude Include="ChooseCharacter.h" />
     <ClInclude Include="ChooseMap.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="DataEast.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BrownShip.h" />
     <ClInclude Include="Enemy_Mech.h" />
     <ClInclude Include="Enemy_RedBird.h" />
+    <ClInclude Include="MainScreen.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
-    <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="ModuleDisk.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -68,14 +65,5 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <ClInclude Include="ChooseCharacter.h" />
-=======
-    <ClInclude Include="DataEast.h" />
-    <ClInclude Include="MainScreen.h" />
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   </ItemGroup>
 </Project>

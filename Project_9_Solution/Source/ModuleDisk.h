@@ -54,10 +54,12 @@ public:
 
 public:
 	//Template particle for an explosion
-	Particle explosion;
+	Particle thrown;
 
 	//Template particle for a laser
-	Particle laser;
+	Particle arc;
+
+	Particle still;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
