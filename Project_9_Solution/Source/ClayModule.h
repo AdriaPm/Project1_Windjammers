@@ -37,7 +37,7 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 
 	// Animation for the public
-	Animation background2;
+	Animation background;
 };
 
 #endif

@@ -34,7 +34,7 @@ bool ClayModule::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITEAS/ClaySpriteSheet.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClaySpriteSheet.png");
 
 	App->audio->PlayMusic("Assets/Music/ClayCourt.ogg", 1.0f);
 
@@ -84,7 +84,7 @@ bool ClayModule::Start()
 
 Update_Status ClayModule::Update()
 {
-	background2.Update();
+	background.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -94,7 +94,7 @@ Update_Status ClayModule::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	// Animation of the public
-	App->render->Blit(bgTexture, 0, 0, &(background2.GetCurrentFrame()), 0.5f);
+	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 
 
 	return Update_Status::UPDATE_CONTINUE;
