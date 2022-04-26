@@ -171,6 +171,17 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.PushBack({ 215, 140, 31, 42 });
 	SlideDownRightAnim.loop = true;
 	SlideDownRightAnim.speed = 0.1f;
+
+	//Throw 
+	Throw.PushBack({ 69, 288, 23, 35 });
+	Throw.PushBack({ 92, 288, 24, 35 });
+	Throw.PushBack({ 116, 288, 30, 35 });
+	Throw.PushBack({ 146, 288, 28, 35 });
+	Throw.PushBack({ 174, 288, 30, 35 });
+	Throw.PushBack({ 204, 288, 26, 35 });
+	Throw.PushBack({ 230, 288, 22, 35 });
+	Throw.loop = true;
+	Throw.speed = 0.1f;
 }
 
 Char2::~Char2()
@@ -424,6 +435,17 @@ Update_Status Char2::Update()
 		}
 
 		
+	}
+
+	//Normal Throw Animation
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN) {
+
+		Player_State::PLAYER_THROW;
+		if (currentAnimation != &Throw)
+		{
+			Throw.Reset();
+			currentAnimation = &Throw;
+		}
 	}
 
 	

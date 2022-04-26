@@ -12,13 +12,12 @@
 ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
 {
 
-	background2.PushBack({ 0, 0, 304, 224 });
-	background2.PushBack({ 304, 0, 304, 224 });
-	background2.PushBack({ 608, 0, 304, 224 });
-	background2.PushBack({ 912, 0, 304, 224 });
-	background2.speed = 0.05f;
-	background2.loop = true;
-
+	background.PushBack({ 0, 0, 304, 224 });
+	background.PushBack({ 304, 0, 304, 224 });
+	background.PushBack({ 608, 0, 304, 224 });
+	background.PushBack({ 912, 0, 304, 224 });
+	background.speed = 0.05f;
+	background.loop = true;
 
 }
 
