@@ -9,7 +9,7 @@
 
 ChooseMap::ChooseMap(bool startEnabled) : Module(startEnabled)
 {
-
+	remark = {19, 33, 112, 14};
 }
 
 ChooseMap::~ChooseMap()
@@ -31,6 +31,8 @@ bool ChooseMap::Start()
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
+
+	App->chooseMap->Enable();
 
 	return ret;
 }
@@ -84,8 +86,18 @@ Update_Status ChooseMap::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(chooseMapTexture, 0, 0, NULL);
-	App->render->Blit(selectMap, 0, 0, NULL);
-
-
+	if (MapType::Turf)
+	{
+		App->render->Blit(selectMap, 168, 61, &remark);
+	}
+	else if (MapType::Beach)
+	{
+		App->render->Blit(selectMap, 168, 85, &remark);
+	}
+	else if (MapType::Clay)
+	{
+		App->render->Blit(selectMap, 167, 110, &remark);
+	}
+	
 	return Update_Status::UPDATE_CONTINUE;
 }

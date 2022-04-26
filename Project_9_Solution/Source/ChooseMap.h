@@ -32,7 +32,7 @@ public:
 	SDL_Texture* chooseMapTexture = nullptr;
 	SDL_Texture* selectMap = nullptr;
 
-	Animation remark;
+	SDL_Rect remark;
 };
 
 
