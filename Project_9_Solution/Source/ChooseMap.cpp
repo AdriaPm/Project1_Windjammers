@@ -66,7 +66,7 @@ Update_Status ChooseMap::Update()
 	{
 		if (MapType::Turf)
 		{
-			App->fade->FadeToBlack(this, (Module*)App->turflevel, 90);
+			App->fade->FadeToBlack(this, (Module*)App->turflevel, 40);
 		}
 		if (MapType::Beach)
 		{

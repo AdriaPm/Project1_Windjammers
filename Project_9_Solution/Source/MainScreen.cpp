@@ -24,7 +24,7 @@ bool MainScreen::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Game/Assets/Spriteswind/Sprites/UI/Dont use/MainTitleScreen.png");
+	bgTexture = App->textures->Load("Game/Assets/Spriteswind/Sprites/UI/Dont_use/MainTitleScreen.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
