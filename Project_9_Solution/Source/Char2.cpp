@@ -106,7 +106,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
 	SlideLAnim.loop = false;
-	SlideLAnim.speed = 4.0f;
+	SlideLAnim.speed = 0.1f;
 
 	//Slide Right
 	SlideRAnim.PushBack({ 1, 188, 31, 31 });
@@ -114,7 +114,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideRAnim.PushBack({ 63, 188, 29, 31 });
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
 	SlideRAnim.PushBack({ 149, 188, 32, 31 });
-	SlideRAnim.loop = true;
+	SlideRAnim.loop = false;
 	SlideRAnim.speed = 0.1f;
 
 	//Slide Up
@@ -123,7 +123,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUAnim.PushBack({ 53, 238, 31, 50 });
 	SlideUAnim.PushBack({ 84, 238, 23, 50 });
 	SlideUAnim.PushBack({ 107, 238, 32, 31 });
-	SlideUAnim.loop = true;
+	SlideUAnim.loop = false;
 	SlideUAnim.speed = 0.1f;
 
 
@@ -132,7 +132,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDAnim.PushBack({ 1, 239, 28, 49 });
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
-	SlideDAnim.loop = true;
+	SlideDAnim.loop = false;
 	SlideDAnim.speed = 0.1f;
 
 
@@ -141,7 +141,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUpRightAnim.PushBack({ 38, 140, 30, 48 });
 	SlideUpRightAnim.PushBack({ 1, 140, 37, 48 });
 	SlideUpRightAnim.PushBack({ 213, 92, 26, 42 });
-	SlideUpRightAnim.loop = true;
+	SlideUpRightAnim.loop = false;
 	SlideUpRightAnim.speed = 0.1f;
 
 
@@ -151,7 +151,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideUpLeftAnim.PushBack({ 219, 53, 37, 35 });
 	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
 	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
-	SlideUpLeftAnim.loop = true;
+	SlideUpLeftAnim.loop = false;
 	SlideUpLeftAnim.speed = 0.1f;
 
 
@@ -160,7 +160,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDownLeftAnim.PushBack({ 137,  92, 31, 42 });
 	SlideDownLeftAnim.PushBack({ 102, 92, 35, 42 });
 	SlideDownLeftAnim.PushBack({ 71, 92, 31, 42 });
-	SlideDownLeftAnim.loop = true;
+	SlideDownLeftAnim.loop = false;
 	SlideDownLeftAnim.speed = 0.1f;
 
 
@@ -169,7 +169,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.PushBack({ 138, 140, 31, 42 });
 	SlideDownRightAnim.PushBack({ 107, 140, 31, 42 });
 	SlideDownRightAnim.PushBack({ 215, 140, 31, 42 });
-	SlideDownRightAnim.loop = true;
+	SlideDownRightAnim.loop = false;
 	SlideDownRightAnim.speed = 0.1f;
 
 	//Throw 
@@ -355,7 +355,7 @@ Update_Status Char2::Update()
 	}
 
 	//Up Slide Anim
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
 		position.y -= speedslide;
 		if (currentAnimation != &SlideUAnim)
@@ -424,7 +424,7 @@ Update_Status Char2::Update()
 
 	// Down Left Slide Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
 		position.x -= speedslide;
 		position.y += speedslide;
@@ -439,8 +439,8 @@ Update_Status Char2::Update()
 
 
 	// Down Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
 		position.x += speedslide;
 		position.y += speedslide;
@@ -479,7 +479,8 @@ Update_Status Char2::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 		Player_State::PLAYER_IDLE;
 	}
