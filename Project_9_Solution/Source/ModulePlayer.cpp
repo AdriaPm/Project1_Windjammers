@@ -149,7 +149,7 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
-
+	//Left anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
@@ -160,6 +160,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Right anim
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
@@ -169,7 +170,8 @@ Update_Status ModulePlayer::Update()
 			currentAnimation = &rightAnim;
 		}
 	}
-
+	
+	//Down anim
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
 		position.y += speed;
@@ -180,6 +182,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Up anim
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speed;
@@ -190,6 +193,55 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Up Left Anim
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedcross;
+		position.y -= speedcross;
+
+		if (currentAnimation != &leftAnim)
+		{
+			currentAnimation = &leftAnim;
+		}
+	}
+
+	//Up Right Anim
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedcross;
+		position.y -= speedcross;
+
+		if (currentAnimation != &rightAnim)
+		{
+			currentAnimation = &rightAnim;
+		}
+	}
+
+	// Down Left Anim
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	{
+		position.x -= speedcross;
+		position.y += speedcross;
+
+		if (currentAnimation != &leftAnim)
+		{
+			currentAnimation = &leftAnim;
+		}
+	}
+
+	// Down Right Anim
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	{
+		position.x += speedcross;
+		position.y += speedcross;
+
+		if (currentAnimation != &rightAnim)
+		{
+			currentAnimation = &rightAnim;
+		}
+	}
+
+	//Left Slide
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedslide;
@@ -200,6 +252,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Right Slide
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
@@ -210,6 +263,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Down Slide
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.y += speedslide;
@@ -220,6 +274,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	//Up Slide
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speedslide;
