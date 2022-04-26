@@ -1,4 +1,4 @@
-#include "SceneIntro.h"
+#include "MainScreen.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -7,24 +7,24 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
-SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
+MainScreen::MainScreen(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-SceneIntro::~SceneIntro()
+MainScreen::~MainScreen()
 {
 
 }
 
 // Load assets
-bool SceneIntro::Start()
+bool MainScreen::Start()
 {
 	LOG("Loading background assets");
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");
+	bgTexture = App->textures->Load("Assets/Sprites/MainTitleScreen.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
@@ -33,18 +33,18 @@ bool SceneIntro::Start()
 	return ret;
 }
 
-Update_Status SceneIntro::Update()
+Update_Status MainScreen::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->dataEast, 90);
+		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 90);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
-Update_Status SceneIntro::PostUpdate()
+Update_Status MainScreen::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);

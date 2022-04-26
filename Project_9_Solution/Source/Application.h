@@ -3,7 +3,11 @@
 
 #include "Globals.h"
 
+<<<<<<< Updated upstream
 #define NUM_MODULES 17
+=======
+#define NUM_MODULES 18
+>>>>>>> Stashed changes
 
 
 class Module;
@@ -13,6 +17,8 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class SceneIntro;
+class DataEast;
+class MainScreen;
 class TutorialScene;
 class TurfLevel;
 class ModuleParticles;
@@ -60,6 +66,8 @@ public:
 	Char2* char2 = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
+	DataEast* dataEast = nullptr;
+	MainScreen* mainScreen = nullptr;
 	TutorialScene* tutorialScene = nullptr;
 	ChooseCharacter* chooseCharacter = nullptr;
 	ChooseMap* chooseMap = nullptr;

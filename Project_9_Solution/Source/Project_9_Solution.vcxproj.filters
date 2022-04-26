@@ -28,7 +28,12 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="ChooseCharacter.cpp" />
+=======
+    <ClCompile Include="DataEast.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -60,6 +65,11 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="ChooseCharacter.h" />
+=======
+    <ClInclude Include="DataEast.h" />
+    <ClInclude Include="MainScreen.h" />
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>
