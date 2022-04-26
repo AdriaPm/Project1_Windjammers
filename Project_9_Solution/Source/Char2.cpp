@@ -180,7 +180,7 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 204, 288, 26, 35 });
 	Throw.PushBack({ 230, 288, 22, 35 });
-	Throw.loop = true;
+	Throw.loop = false;
 	Throw.speed = 0.1f;
 
 	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
@@ -456,14 +456,14 @@ Update_Status Char2::Update()
 	}
 
 	//Normal Throw Animation
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT ) {
-
-		Player_State::PLAYER_THROW;
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN) {
 		if (currentAnimation != &Throw)
 		{
 			Throw.Reset();
 			currentAnimation = &Throw;
 		}
+		Player_State::PLAYER_THROW;
+
 	}
 
 	
@@ -478,7 +478,8 @@ Update_Status Char2::Update()
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 		Player_State::PLAYER_IDLE;
 	}

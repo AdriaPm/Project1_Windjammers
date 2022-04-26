@@ -68,6 +68,8 @@ public:
 	Animation SlideDownRightAnim;
 	Animation SlideDownLeftAnim;
 	Animation Throw;
+	Animation ScoredOn;
+	Animation Scored;
 
 
 
