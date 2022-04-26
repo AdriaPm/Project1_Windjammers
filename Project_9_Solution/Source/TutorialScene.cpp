@@ -71,7 +71,7 @@ bool TutorialScene::Start()
 	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/buttons.png");
 
 	characterTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/CHAR1_IDLE/SPRITESHEET/CHAR1JapaneseSpriteSheet.png");
-	currentAnimation = &upAnim;
+	currentAnimation = &idleAnim;
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
@@ -84,7 +84,10 @@ bool TutorialScene::Start()
 Update_Status TutorialScene::Update()
 {
 	App->render->camera.x += 2;
-	if (App->render->camera.x >= SCREEN_WIDTH*2) App->render->camera.x = 0;
+	if (App->render->camera.x >= SCREEN_WIDTH*3) App->render->camera.x = 0;
+
+	currentAnimation = &rightAnim;
+	
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
@@ -103,8 +106,8 @@ Update_Status TutorialScene::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(bgTexture, SCREEN_WIDTH, 0, NULL);
-	App->render->Blit(buttonsTexture, 50, 150, NULL);
-	App->render->Blit(characterTexture, 0, 0, &rect);
+	App->render->Blit(buttonsTexture, 50, 150, NULL, false);
+	App->render->Blit(characterTexture, 0, 0, &rect, false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
