@@ -102,11 +102,13 @@ Update_Status TutorialScene::Update()
 	App->render->camera.x += 2;
 	if (App->render->camera.x >= SCREEN_WIDTH*3) App->render->camera.x = 0;
 
-	if (currentAnimation->HasFinished() && currentAnimationButtons->HasFinished()) 
+	/*if (currentAnimation->HasFinished() && currentAnimationButtons->HasFinished()) 
 	{
 		currentAnimation = &rightAnim;
 		currentAnimationButtons = &rightAnim;
-	}
+	}*/
+	currentAnimation = &rightAnim;
+	currentAnimationButtons = &rightAnim;
 	
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
