@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
-#include "ModuleDisk.h"
+#include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 

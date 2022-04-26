@@ -4,7 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModuleDisk.h"
+#include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
@@ -286,9 +286,9 @@ Update_Status ModulePlayer::Update()
 	}
 
 
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->thrown, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		Particle* newParticle = App->particles->AddParticle(App->particles->explosion, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		newParticle->collider->AddListener(this);
 		/*App->audio->PlayFx(laserFx);*/
 	}
@@ -331,18 +331,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		/*App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
+<<<<<<< Updated upstream
 		App->audio->PlayFx(explosionFx);*/
 		
 		//App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
 
 		
 		
+=======
+		App->audio->PlayFx(explosionFx);
+		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
+>>>>>>> Stashed changes
 
 	}
 

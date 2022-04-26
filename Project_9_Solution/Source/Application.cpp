@@ -12,7 +12,7 @@
 #include "TutorialScene.h"
 #include "TurfLevel.h"
 #include "Char2.h"
-#include "ModuleDisk.h"
+#include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
