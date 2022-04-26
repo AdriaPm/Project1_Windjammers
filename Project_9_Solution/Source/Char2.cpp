@@ -68,10 +68,8 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	UpRightAnim.speed = 0.1f;
 
 	//Move Up Left
-	UpLeftAnim.PushBack({ 211, 440, 26, 34 });
 	UpLeftAnim.PushBack({ 1, 440, 29, 34 });
 	UpLeftAnim.PushBack({ 30, 440, 20, 34 });
-	UpLeftAnim.PushBack({ 211, 440, 26, 34 });
 	UpLeftAnim.PushBack({ 1, 440, 29, 34 });
 	UpLeftAnim.PushBack({ 30, 440, 20, 34 });
 	UpLeftAnim.loop = true;
@@ -107,8 +105,8 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 168, 239, 56, 31 });
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
-	SlideLAnim.loop = true;
-	SlideLAnim.speed = 0.1f;
+	SlideLAnim.loop = false;
+	SlideLAnim.speed = 4.0f;
 
 	//Slide Right
 	SlideRAnim.PushBack({ 1, 188, 31, 31 });
@@ -212,7 +210,6 @@ bool Char2::Start()
 
 Update_Status Char2::Update()
 {
-
 	//Left Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
@@ -222,6 +219,7 @@ Update_Status Char2::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 	//Right Anim
@@ -233,6 +231,7 @@ Update_Status Char2::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 	//Down Anim
@@ -244,6 +243,7 @@ Update_Status Char2::Update()
 			downAnim.Reset();
 			currentAnimation = &downAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 	//Up Anim
@@ -255,6 +255,7 @@ Update_Status Char2::Update()
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 	//Up Left Anim
@@ -262,11 +263,13 @@ Update_Status Char2::Update()
 	{
 		position.x -= speedcross;
 		position.y -= speedcross;
+		Player_State::PLAYER_MOVE;
 
 		if (currentAnimation != &UpLeftAnim)
 		{
 			currentAnimation = &UpLeftAnim;
 		}
+		
 	}
 	
 	//Up Right Anim
@@ -277,8 +280,10 @@ Update_Status Char2::Update()
 
 		if (currentAnimation != &UpRightAnim)
 		{
+		
 			currentAnimation = &UpRightAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 	
 
@@ -292,6 +297,7 @@ Update_Status Char2::Update()
 		{
 			currentAnimation = &DownLeftAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 	// Down Right Anim
@@ -304,6 +310,7 @@ Update_Status Char2::Update()
 		{
 			currentAnimation = &DownRightAnim;
 		}
+		Player_State::PLAYER_MOVE;
 	}
 
 
@@ -315,6 +322,7 @@ Update_Status Char2::Update()
 		{
 			currentAnimation = &SlideRAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 	//Up Slide Anim
@@ -323,18 +331,23 @@ Update_Status Char2::Update()
 		position.y -= speedslide;
 		if (currentAnimation != &SlideUAnim)
 		{
+			SlideUAnim.Reset();
 			currentAnimation = &SlideUAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 	//Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
+		Player_State::PLAYER_DIVE;
 		position.x -= speedslide;
+
 		if (currentAnimation != &SlideLAnim)
 		{
 			currentAnimation = &SlideLAnim;
 		}
+		
 	}
 
 	//Down Slide Anim
@@ -344,8 +357,10 @@ Update_Status Char2::Update()
 
 		if (currentAnimation != &SlideDAnim)
 		{
+			SlideDAnim.Reset();
 			currentAnimation = &SlideDAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 	//Up Left Slide Anim
@@ -357,8 +372,10 @@ Update_Status Char2::Update()
 
 		if (currentAnimation != &SlideUpLeftAnim)
 		{
+			SlideUpLeftAnim.Reset();
 			currentAnimation = &SlideUpLeftAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 	//Up Right Slide Anim
@@ -370,8 +387,10 @@ Update_Status Char2::Update()
 
 		if (currentAnimation != &SlideUpRightAnim)
 		{
+			SlideUpRightAnim.Reset();
 			currentAnimation = &SlideUpRightAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 	// Down Left Slide Anim
@@ -383,8 +402,10 @@ Update_Status Char2::Update()
 
 		if (currentAnimation != &SlideDownLeftAnim)
 		{
+			SlideDownLeftAnim.Reset();
 			currentAnimation = &SlideDownLeftAnim;
 		}
+		Player_State::PLAYER_DIVE;
 	}
 
 
@@ -394,28 +415,35 @@ Update_Status Char2::Update()
 	{
 		position.x += speedslide;
 		position.y += speedslide;
+		Player_State::PLAYER_DIVE;
 
 		if (currentAnimation != &SlideDownRightAnim)
 		{
+			SlideDownRightAnim.Reset();
 			currentAnimation = &SlideDownRightAnim;
 		}
+
+		
 	}
 
 	
-	//Shoot
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-		newParticle->collider->AddListener(this);
-		App->audio->PlayFx(laserFx);
-	}
+	////Shoot
+	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	//{
+	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+	//	newParticle->collider->AddListener(this);
+	//	App->audio->PlayFx(laserFx);
+	//}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE) {
 		currentAnimation = &idleAnim;
+		Player_State::PLAYER_IDLE;
+	}
+		
 
 	collider->SetPos(position.x, position.y);
 
