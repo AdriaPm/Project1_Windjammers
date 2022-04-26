@@ -26,7 +26,11 @@ bool TurfLevel::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/turfmap.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/BACKGROUND_ANIMATION/sprite_public1_lawnMap.png");
+	bgTexture2 = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/BACKGROUND_ANIMATION/sprite_public2_lawnMap.png");
+	bgTexture3= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/BACKGROUND_ANIMATION/sprite_public3_lawnMap.png");
+	bgTexture4= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/BACKGROUND_ANIMATION/sprite_public4_lawnMap.png");
+
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
 	///TURF MAP Colliders
@@ -84,6 +88,9 @@ Update_Status TurfLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(bgTexture2, 0, 0, NULL);
+	App->render->Blit(bgTexture3, 0, 0, NULL);
+	App->render->Blit(bgTexture4, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
