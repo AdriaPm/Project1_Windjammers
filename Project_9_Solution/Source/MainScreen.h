@@ -1,5 +1,5 @@
-#ifndef __DATAEAST_H__
-#define __DATAEAST_H__
+#ifndef __MAINSCREEN_H__
+#define __MAINSCREEN_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -33,4 +33,3 @@ public:
 };
 
 #endif
-
