@@ -7,6 +7,8 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
+#include "DataEast.h"
+#include "MainScreen.h"
 #include "TutorialScene.h"
 #include "TurfLevel.h"
 #include "Char2.h"
@@ -25,25 +27,29 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 
-	modules[0] =	window =			new ModuleWindow(true);
-	modules[1] =	input =				new ModuleInput(true);
-	modules[2] =	textures =			new ModuleTextures(true);
-	modules[3] =	audio =				new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =		new SceneIntro(true);
-	modules[5] =	tutorialScene =		new TutorialScene(false);
-	modules[6] =	chooseCharacter =	new ChooseCharacter(false);
-	modules[7] =	chooseMap =			new ChooseMap(false);		
-	modules[8] =	turflevel =			new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[9] =	player =			new ModulePlayer(false);	//Player starts disabled
-	modules[10] =	char2 =				new Char2(false);
-	modules[11] =	particles =			new ModuleParticles(true);
-	modules[12] =	enemies =			new ModuleEnemies(false);	//Enemies start disabled
+	modules[0] =	window =		new ModuleWindow(true);
+	modules[1] =	input =			new ModuleInput(true);
+	modules[2] =	textures =		new ModuleTextures(true);
+	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[13] =	collisions =		new ModuleCollisions(true);
-	modules[14] =	fade =				new ModuleFadeToBlack(true);
-	modules[15] =	fonts =				new ModuleFonts(true);
-	modules[16] =	render =			new ModuleRender(true);
+	modules[4] =	sceneIntro =	new SceneIntro(true);
+	modules[5] =	dataEast =		new DataEast(false);
+	modules[6] =	mainScreen =	new MainScreen(false);
+	modules[7] =	tutorialScene =	new TutorialScene(false);
+	modules[8] = chooseCharacter =	new ChooseCharacter(false);
+	modules[9] =	chooseMap =		new ChooseMap(false);		
+	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[12] =	char2 =			new Char2(false);
+	modules[13] =	particles =		new ModuleParticles(true);
+	modules[14] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+
+	modules[15] =	collisions =	new ModuleCollisions(true);
+	modules[16] =	fade =			new ModuleFadeToBlack(true);
+	modules[17] =	fonts =			new ModuleFonts(true);
+	modules[18] =	render =		new ModuleRender(true);
+
 	
 	
 }

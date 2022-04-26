@@ -12,6 +12,14 @@
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
 
+	background.PushBack({ 0, 0, 330, 244 });
+	background.PushBack({ 330, 0, 330, 244 });
+	background.PushBack({ 660, 0, 330, 244 });
+	background.PushBack({ 990, 0, 330, 244 });
+	background.speed = 0.05f;
+	background.loop = true;
+
+
 }
 
 TurfLevel::~TurfLevel()
@@ -26,7 +34,8 @@ bool TurfLevel::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/turfmap.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
+	
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
 	///TURF MAP Colliders
@@ -75,6 +84,7 @@ bool TurfLevel::Start()
 
 Update_Status TurfLevel::Update()
 {
+	background.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -83,7 +93,9 @@ Update_Status TurfLevel::Update()
 Update_Status TurfLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	// Animation of the public
+	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }

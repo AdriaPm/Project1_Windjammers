@@ -1,19 +1,19 @@
-#ifndef __TurfLevel_H__
-#define __TurfLevel_H__
+#ifndef __MAINSCREEN_H__
+#define __MAINSCREEN_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class TurfLevel : public Module
+class MainScreen : public Module
 {
 public:
 	//Constructor
-	TurfLevel(bool startEnabled);
+	MainScreen(bool startEnabled);
 
 	//Destructor
-	~TurfLevel();
+	~MainScreen();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -27,16 +27,9 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 
-	// Disables the player and the enemies
-	bool CleanUp();
-
 public:
-	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	
-	// Animation for the public
-	Animation background;
 };
 
 #endif
