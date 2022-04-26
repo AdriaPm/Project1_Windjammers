@@ -10,6 +10,8 @@
 
 TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 {
+
+	//Character Animations
 	// idle animation
 	idleAnim.PushBack({ 227, 103, 24, 37 });
 	idleAnim.PushBack({ 251, 103, 24, 39 });
@@ -53,6 +55,19 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	rightAnim.PushBack({ 385, 148, 41, 36 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
+
+	//Joystick and Buttons Animations
+	ButtonsidleAnim.PushBack({ 0, 0, 0, 0});
+	ButtonsrightAnim.PushBack({ 172, 0, 0, 0});
+	/*ButtonsupAnim.PushBack({ 172, 65, 172, 65});
+	ButtonsdownAnim.PushBack({ ,,, });
+	ButtonsrightAnim.PushBack({ ,,, });
+	ButtonsleftAnim.PushBack({ ,,, });
+	ButtonsSlideLAnim.PushBack({ ,,, });
+	ButtonsSlideRAnim.PushBack({ ,,, });
+	ButtonsSlideUAnim.PushBack({ ,,, });
+	ButtonsSlideDAnim.PushBack({ ,,, });*/
+
 }
 
 TutorialScene::~TutorialScene()
@@ -68,7 +83,8 @@ bool TutorialScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/TutorialBG.png");
-	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/buttons.png");
+	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/JoystickAndButtons.png");
+	currentAnimationButtons = &ButtonsidleAnim;
 
 	characterTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/CHAR1_IDLE/SPRITESHEET/CHAR1JapaneseSpriteSheet.png");
 	currentAnimation = &idleAnim;
@@ -86,7 +102,11 @@ Update_Status TutorialScene::Update()
 	App->render->camera.x += 2;
 	if (App->render->camera.x >= SCREEN_WIDTH*3) App->render->camera.x = 0;
 
-	currentAnimation = &rightAnim;
+	if (currentAnimation->HasFinished() && currentAnimationButtons->HasFinished()) 
+	{
+		currentAnimation = &rightAnim;
+		currentAnimationButtons = &rightAnim;
+	}
 	
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
@@ -95,6 +115,7 @@ Update_Status TutorialScene::Update()
 	}
 
 	currentAnimation->Update();
+	currentAnimationButtons->Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }

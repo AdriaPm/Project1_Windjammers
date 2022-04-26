@@ -35,7 +35,7 @@ public:
 
 	Animation* currentAnimation = nullptr;
 
-	// A set of animations
+	// Character set of animations
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
@@ -45,6 +45,19 @@ public:
 	Animation SlideRAnim;
 	Animation SlideUAnim;
 	Animation SlideDAnim;
+	
+
+	Animation* currentAnimationButtons = nullptr;
+	// Buttons set of animations
+	Animation ButtonsidleAnim;
+	Animation ButtonsupAnim;
+	Animation ButtonsdownAnim;
+	Animation ButtonsrightAnim;
+	Animation ButtonsleftAnim;
+	Animation ButtonsSlideLAnim;
+	Animation ButtonsSlideRAnim;
+	Animation ButtonsSlideUAnim;
+	Animation ButtonsSlideDAnim;
 };
 
 #endif
