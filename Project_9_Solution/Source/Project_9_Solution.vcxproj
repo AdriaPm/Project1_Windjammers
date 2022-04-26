@@ -79,6 +79,7 @@
     <ClInclude Include="Char2.h" />
     <ClInclude Include="ChooseCharacter.h" />
     <ClInclude Include="ChooseMap.h" />
+    <ClInclude Include="ClayModule.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="DataEast.h" />
     <ClInclude Include="Enemy.h" />
@@ -112,6 +113,7 @@
     <ClCompile Include="Char2.cpp" />
     <ClCompile Include="ChooseCharacter.cpp" />
     <ClCompile Include="ChooseMap.cpp" />
+    <ClCompile Include="ClayModule.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DataEast.cpp" />
     <ClCompile Include="Enemy.cpp" />

@@ -50,7 +50,8 @@ bool ChooseMap::Start()
 
 Update_Status ChooseMap::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN)
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
 	{
 		if (yMove == 55)
 		{
@@ -68,7 +69,7 @@ Update_Status ChooseMap::Update()
 		}
 		
 	}
-	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
 	{
 		if (yMove == 79)
 		{
@@ -88,17 +89,17 @@ Update_Status ChooseMap::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		if (MapType::Turf)
+		if (yMove == 55)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->turflevel, 40);
 		}
-		else if (MapType::Beach)
+		else if (yMove == 79)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->turflevel, 90);
 		}
-		else if (MapType::Clay)
+		else if (yMove == 104)
 		{
-			App->fade->FadeToBlack(this, (Module*)App->turflevel, 90);
+			App->fade->FadeToBlack(this, (Module*)App->clay, 90);
 		}
 	}
 
