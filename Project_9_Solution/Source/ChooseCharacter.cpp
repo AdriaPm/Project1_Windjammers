@@ -25,7 +25,7 @@ bool ChooseCharacter::Start()
 
 	//CharacterType::Turf;
 
-	chooseCharacterTexture = App->textures->Load("Assets/Sprites/ChooseMap.png");
+	chooseCharacterTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/ChooseCharacter.png");
 	selectCharacter = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 

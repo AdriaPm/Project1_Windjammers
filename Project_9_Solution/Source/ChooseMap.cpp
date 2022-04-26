@@ -25,7 +25,7 @@ bool ChooseMap::Start()
 
 	MapType::Turf;
 
-	chooseMapTexture = App->textures->Load("Assets/Sprites/ChooseMap.png");
+	chooseMapTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/ChooseMap.png");
 	selectMap = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
