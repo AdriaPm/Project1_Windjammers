@@ -182,6 +182,24 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 230, 288, 22, 35 });
 	Throw.loop = true;
 	Throw.speed = 0.1f;
+
+	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
+
+	//GET UNDERNEATH ANIMATION FOR WHEN DISK IS FALLING, 2 FRAMES ------------------
+
+	//WON THE SET ARMS CROSSED -----------------
+
+	//Got Scored On
+	ScoredOn.PushBack({ 119, 14, 34 ,29 });
+
+	//Scored
+	Scored.PushBack({ 153, 14, 26, 29 });
+
+	//Victory 
+	victAnim.PushBack({ 179, 14, 29, 29 });
+	victAnim.PushBack({ 208, 14, 31, 29 });
+
+
 }
 
 Char2::~Char2()
@@ -438,7 +456,7 @@ Update_Status Char2::Update()
 	}
 
 	//Normal Throw Animation
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT ) {
 
 		Player_State::PLAYER_THROW;
 		if (currentAnimation != &Throw)
@@ -505,6 +523,21 @@ void Char2::OnCollision(Collider* c1, Collider* c2)
 		/*App->audio->PlayFx(explosionFx);*/
 		/*App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);*/
 
+		if (position.x <= 10) {
+			position.x = 10;
+		}
+
+		if (position.x >= 295 - 25) {
+			position.x = 295 - 25;
+		}
+
+		if (position.y <= 40) {
+			position.y = 40;
+		}
+
+		if (position.y >= 199 - 40) {
+			position.y = 199 - 40;
+		}
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
