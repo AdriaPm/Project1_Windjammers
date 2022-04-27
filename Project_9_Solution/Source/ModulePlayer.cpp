@@ -345,6 +345,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		*/
 		
+		/*
 		if (position.x <= 10) {
 			position.x = 10;
 		}
@@ -360,6 +361,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (position.y >= 199-40) {
 			position.y = 199-40;
 		}
+		*/
 		
 		/*
 		if (position.x > 150-25) {
@@ -373,9 +375,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 	
+	//Collider player-upper wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL) {
+		position.y = 40;
+	}
+
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::GOAL){
+		position.x = 10;
+	}
 	//Collider player-net
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
-		position.x = 150 - 25;
+		position.x = 150 - 24;
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
