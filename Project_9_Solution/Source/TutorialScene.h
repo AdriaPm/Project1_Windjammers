@@ -54,6 +54,9 @@ public:
 	Animation ButtonsdownAnim;
 	Animation ButtonsrightAnim;
 	Animation ButtonsleftAnim;
+	Animation ButtonsUpRightAnim;
+	Animation ButtonsDownLeftAnim;
+	Animation ButtonsUpLeftAnim;
 	Animation ButtonsSlideLAnim;
 	Animation ButtonsSlideRAnim;
 	Animation ButtonsSlideUAnim;

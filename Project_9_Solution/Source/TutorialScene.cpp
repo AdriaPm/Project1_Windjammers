@@ -57,12 +57,22 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	//Joystick and Buttons Animations
-	ButtonsidleAnim.PushBack({ 0, 0, 0, 0});
-	ButtonsrightAnim.PushBack({ 172, 0, 0, 0});
-	/*ButtonsupAnim.PushBack({ 172, 65, 172, 65});
-	ButtonsdownAnim.PushBack({ ,,, });
-	ButtonsrightAnim.PushBack({ ,,, });
-	ButtonsleftAnim.PushBack({ ,,, });
+	ButtonsidleAnim.PushBack({ 0, 0, 172, 65});
+	ButtonsidleAnim.speed = 0.1f;
+	ButtonsrightAnim.PushBack({ 172, 0, 172, 65});
+	ButtonsrightAnim.speed = 0.1f;
+	ButtonsleftAnim.PushBack({ 342, 0, 191, 65 });
+	ButtonsleftAnim.speed = 0.1f;
+	ButtonsupAnim.PushBack({ 531, 0, 172, 65 });
+	ButtonsupAnim.speed = 0.1f;
+	ButtonsdownAnim.PushBack({ 703, 0, 172, 65 });
+	ButtonsdownAnim.speed = 0.1f;
+	ButtonsUpRightAnim.PushBack({ 874, 0, 172, 65 });
+	ButtonsUpRightAnim.speed = 0.1f;
+	ButtonsDownLeftAnim.PushBack({ 0, 76, 182, 65 });
+	ButtonsDownLeftAnim.speed = 0.1f;
+	/*
+	
 	ButtonsSlideLAnim.PushBack({ ,,, });
 	ButtonsSlideRAnim.PushBack({ ,,, });
 	ButtonsSlideUAnim.PushBack({ ,,, });
