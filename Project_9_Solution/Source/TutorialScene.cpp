@@ -259,4 +259,10 @@ void TutorialScene::SceneAnimations()
 		currentAnimation = &upRightAnim;
 		currentAButtons = &ButtonsUpRightAnim;
 	}
+	
+	if (currentAnimation->GetLoopCount() >= 10 && currentAButtons->GetLoopCount() >= 10)
+	{
+		currentAnimation = &downLeftAnim;
+		currentAButtons = &ButtonsDownLeftAnim;
+	}
 }
