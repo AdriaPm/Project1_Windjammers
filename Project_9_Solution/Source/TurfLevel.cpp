@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
 
@@ -78,6 +79,7 @@ bool TurfLevel::Start()
 
 	App->LeftJapanesePlayer->Enable();
 	App->leftgermanyplayer->Enable();
+	App->RightJapanesePlayer->Enable();
 	App->enemies->Enable();
 	App->rightgermanyplayer->Enable();
 
@@ -107,6 +109,7 @@ bool TurfLevel::CleanUp()
 	App->LeftJapanesePlayer->Disable();
 	App->leftgermanyplayer->Disable();
 	App->enemies->Disable();
+	App->RightJapanesePlayer->Disable();
 	App->rightgermanyplayer->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)

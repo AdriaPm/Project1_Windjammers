@@ -129,7 +129,7 @@ bool Right_Japanese_Player::Start()
 	//laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	//explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	position.x = 60;
+	position.x = 160;
 	position.y = 130;
 
 	destroyed = false;
@@ -150,7 +150,7 @@ bool Right_Japanese_Player::Start()
 Update_Status Right_Japanese_Player::Update()
 {
 	//Left anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
 		if (currentAnimation != &leftAnim)
@@ -161,7 +161,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Right anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim)
@@ -172,7 +172,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Down anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -183,7 +183,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Up anim
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -194,7 +194,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Up Left Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
 		position.y -= speedcross;
@@ -206,7 +206,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Up Right Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
 		position.y -= speedcross;
@@ -218,7 +218,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	// Down Left Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
 		position.y += speedcross;
@@ -230,7 +230,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	// Down Right Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
 		position.y += speedcross;
@@ -242,7 +242,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Left Slide
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedslide;
 		if (currentAnimation != &SlideLAnim)
@@ -253,7 +253,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Right Slide
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
@@ -264,7 +264,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Down Slide
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.y += speedslide;
 		if (currentAnimation != &SlideDAnim)
@@ -275,7 +275,7 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	//Up Slide
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speedslide;
 		if (currentAnimation != &SlideUAnim)
@@ -294,11 +294,11 @@ Update_Status Right_Japanese_Player::Update()
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
@@ -372,7 +372,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 	//Collider player-net
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
-		position.x = 150 - 24;
+		position.x = 150 + 4;
 	}
 
 

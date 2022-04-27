@@ -7,7 +7,9 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 
 ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
@@ -77,7 +79,9 @@ bool ClayModule::Start()
 
 
 	App->LeftJapanesePlayer->Enable();
+	App->RightJapanesePlayer->Enable();
 	App->leftgermanyplayer->Enable();
+	App->rightgermanyplayer->Enable();
 	App->enemies->Enable();
 
 	return ret;
@@ -104,7 +108,9 @@ Update_Status ClayModule::PostUpdate()
 bool ClayModule::CleanUp()
 {
 	App->LeftJapanesePlayer->Disable();
+	App->RightJapanesePlayer->Disable();
 	App->leftgermanyplayer->Disable();
+	App->rightgermanyplayer->Disable();
 	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
