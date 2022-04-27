@@ -16,6 +16,19 @@ enum class Update_Status
 	UPDATE_ERROR
 };
 
+enum class Player_Chosen_Right {
+	Japanese,
+	German,
+	Spanish
+};
+
+enum class Player_Chosen_Left {
+	Japanese,
+	German,
+	Spanish
+};
+
+
 enum class Player_State {
 	PLAYER_IDLE,
 	PLAYER_MOVE,

@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 21
+#define NUM_MODULES 22
 
 
 
@@ -30,6 +30,7 @@ class LeftGermanPlayer;
 class RightGermanPlayer;
 class ChooseMap;
 class ChooseCharacter;
+class Right_Japanese_Player;
 
 
 class Application
@@ -76,7 +77,7 @@ public:
 	ClayModule* clay = nullptr;
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
-
+	Right_Japanese_Player* RightJapanesePlayer = nullptr;
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;

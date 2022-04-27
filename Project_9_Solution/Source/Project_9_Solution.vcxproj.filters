@@ -33,6 +33,7 @@
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="ClayModule.cpp" />
     <ClCompile Include="RightGermanPlayer.cpp" />
+    <ClCompile Include="Right_Japanese_Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -69,5 +70,6 @@
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="ClayModule.h" />
     <ClInclude Include="RightGermanPlayer.h" />
+    <ClInclude Include="Right_Japanese_Player.h" />
   </ItemGroup>
 </Project>

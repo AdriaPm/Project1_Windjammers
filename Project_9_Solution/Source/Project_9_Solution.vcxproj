@@ -94,6 +94,7 @@
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="RightGermanPlayer.h" />
+    <ClInclude Include="Right_Japanese_Player.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -130,6 +131,7 @@
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="RightGermanPlayer.cpp" />
+    <ClCompile Include="Right_Japanese_Player.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />

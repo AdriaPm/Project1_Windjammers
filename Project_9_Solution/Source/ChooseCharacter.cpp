@@ -105,10 +105,56 @@ Update_Status ChooseCharacter::Update()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{	
-			App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+	{
+		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
 	}
 
+
+	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	{
+		inccheck1();
+		if (xMove1 == 9 && yMove1 == 72) {
+				Player_Chosen_Left::Japanese;
+		}
+
+		if (xMove1 == 9 && yMove1 == 128) {
+			Player_Chosen_Left::Spanish;
+		}
+
+		if (xMove1 == 153 && yMove1 == 72) {
+			Player_Chosen_Left::German;
+		}
+		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
+	{
+		if (xMove2 == 39 && yMove2 == 72) {
+			Player_Chosen_Right::Japanese;
+		}
+
+		if (xMove2 == 39 && yMove2 == 128) {
+			Player_Chosen_Right::Spanish;
+		}
+
+		if (xMove2 == 183 && yMove2 == 72) {
+			Player_Chosen_Right::German;
+		}
+		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+	}
+	
+	/*if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
+		inccheck1();
+	}
+	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN) {
+		inccheck2();
+	}*/
+
+
+	/*if (returncheck() == 1 && returncheck2() == 1) {
+		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+		
+	}*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }

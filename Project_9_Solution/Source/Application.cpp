@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
 #include "SceneIntro.h"
 #include "DataEast.h"
 #include "MainScreen.h"
@@ -30,28 +31,29 @@ Application::Application()
 	// Render should always be last, as our last action should be updating the screen
 
 
-	modules[0] =	window =		new ModuleWindow(true);
-	modules[1] =	input =			new ModuleInput(true);
-	modules[2] =	textures =		new ModuleTextures(true);
-	modules[3] =	audio =			new ModuleAudio(true);
+	modules[0] = window = new ModuleWindow(true);
+	modules[1] = input = new ModuleInput(true);
+	modules[2] = textures = new ModuleTextures(true);
+	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	dataEast =		new DataEast(false);
-	modules[6] =	mainScreen =	new MainScreen(false);
-	modules[7] =	tutorialScene =	new TutorialScene(false);
-	modules[8] = chooseCharacter =	new ChooseCharacter(false);
-	modules[9] =	chooseMap =		new ChooseMap(false);		
-	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[11] =	clay =			new ClayModule(false);
-	modules[12] =LeftJapanesePlayer=new Left_Japanese_Player(false);	//Player starts disabled
-	modules[13] = leftgermanyplayer=new LeftGermanPlayer(false);
-	modules[14] =rightgermanyplayer=new RightGermanPlayer(false);
-	modules[15] =	particles =		new ModuleParticles(true);
-	modules[16] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-	modules[17] =	collisions =	new ModuleCollisions(true);
-	modules[18] =	fade =			new ModuleFadeToBlack(true);
-	modules[19] =	fonts =			new ModuleFonts(true);
-	modules[20] =	render =		new ModuleRender(true);
+	modules[4] = sceneIntro = new SceneIntro(true);
+	modules[5] = dataEast = new DataEast(false);
+	modules[6] = mainScreen = new MainScreen(false);
+	modules[7] = tutorialScene = new TutorialScene(false);
+	modules[8] = chooseCharacter = new ChooseCharacter(false);
+	modules[9] = chooseMap = new ChooseMap(false);
+	modules[10] = turflevel = new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[11] = clay = new ClayModule(false);
+	modules[12] = LeftJapanesePlayer = new Left_Japanese_Player(false);	//Player starts disabled
+	modules[13] = leftgermanyplayer = new LeftGermanPlayer(false);
+	modules[14] = rightgermanyplayer = new RightGermanPlayer(false);
+	modules[15] = RightJapanesePlayer = new Right_Japanese_Player(false);
+	modules[16] =	particles =		new ModuleParticles(true);
+	modules[17] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[18] =	collisions =	new ModuleCollisions(true);
+	modules[19] =	fade =			new ModuleFadeToBlack(true);
+	modules[20] =	fonts =			new ModuleFonts(true);
+	modules[21] =	render =		new ModuleRender(true);
 
 	
 	
