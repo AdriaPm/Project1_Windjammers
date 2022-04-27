@@ -42,25 +42,10 @@ Application::Application()
 	modules[9] =	chooseMap =		new ChooseMap(false);		
 	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[11] =	clay =			new ClayModule(false);
-<<<<<<< Updated upstream
-	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
-<<<<<<< Updated upstream
-	modules[13] = LeftGermanPlayer =new Left_German_Player(false);
-=======
-<<<<<<< HEAD
-	modules[12] =	LeftJapanesePlayer =		new Left_Japanese_Player(false);	//Player starts disabled
-	modules[13] =	char2 =			new Char2(false);
-=======
-	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[13] = LeftGermanPlayer =new Left_German_Player(false);
->>>>>>> c03a7d87e916d82da09814ce5fcdd0a24ded28b9
->>>>>>> Stashed changes
-=======
+	modules[12] =LeftJapanesePlayer=new Left_Japanese_Player(false);	//Player starts disabled
 	modules[13] = leftgermanyplayer = new LeftGermanPlayer(false);
->>>>>>> Stashed changes
 	modules[14] =	particles =		new ModuleParticles(true);
 	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-
 	modules[16] =	collisions =	new ModuleCollisions(true);
 	modules[17] =	fade =			new ModuleFadeToBlack(true);
 	modules[18] =	fonts =			new ModuleFonts(true);

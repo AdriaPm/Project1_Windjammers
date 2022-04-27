@@ -6,13 +6,8 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
-<<<<<<< Updated upstream
 #include "Left_Japanese_Player.h"
-#include "Char2.h"
-=======
-#include "ModulePlayer.h"
 #include "LeftGermanPlayer.h"
->>>>>>> Stashed changes
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
@@ -80,13 +75,8 @@ bool TurfLevel::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-<<<<<<< Updated upstream
 	App->LeftJapanesePlayer->Enable();
-	App->char2->Enable();
-=======
-	App->player->Enable();
 	App->leftgermanyplayer->Enable();
->>>>>>> Stashed changes
 	App->enemies->Enable();
 
 	return ret;
@@ -112,13 +102,8 @@ Update_Status TurfLevel::PostUpdate()
 
 bool TurfLevel::CleanUp()
 {
-<<<<<<< Updated upstream
 	App->LeftJapanesePlayer->Disable();
-	App->char2->Disable();
-=======
-	App->player->Disable();
 	App->leftgermanyplayer->Disable();
->>>>>>> Stashed changes
 	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
