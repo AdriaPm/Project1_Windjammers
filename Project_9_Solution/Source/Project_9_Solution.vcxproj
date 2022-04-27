@@ -93,11 +93,7 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
-<<<<<<< Updated upstream
     <ClInclude Include="RightGermanPlayer.h" />
-=======
-    <ClInclude Include="Right_Japanese_Player.h" />
->>>>>>> Stashed changes
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -133,11 +129,7 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
-<<<<<<< Updated upstream
     <ClCompile Include="RightGermanPlayer.cpp" />
-=======
-    <ClCompile Include="Right_Japanese_Player.cpp" />
->>>>>>> Stashed changes
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
