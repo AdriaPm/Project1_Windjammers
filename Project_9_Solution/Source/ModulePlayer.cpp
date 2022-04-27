@@ -329,6 +329,8 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
+
 	if (c1 == collider && destroyed == false)
 	{
 		/*
@@ -343,32 +345,34 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		*/
 		
-		if (position.x <= 10) {
-			position.x = 10;
-		}
-
-		if (position.x  >= 295-25) {
-			position.x = 295-25;
-		}
-
-		if (position.y <= 40) {
-			position.y = 40;
-		}
-
-		if (position.y >= 199-40) {
-			position.y = 199-40;
-		}
-		
-		/*
-		if (position.x > 150-25) {
-			position.x = 150 - 25;
-		}
-		if (position.x < 154) {
-			position.x = 154;
-		}
-		*/
 		
 
+	}
+	
+	/// PLAYER COLLIDERS WITH THE MAP
+	//Collider player-upper wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
+		position.y = 40;
+	}
+	
+	//Collider player-lower wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
+		position.y = 199-40;
+	}
+
+	//Collider player-left goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_GOAL){
+		position.x = 10;
+	}
+
+	//Collider player-right goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_GOAL) {
+		position.x = 295-25;
+	}
+
+	//Collider player-net
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
+		position.x = 150 - 24;
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)

@@ -1,6 +1,8 @@
 #ifndef __TUTORIAL_SCENE_H__
 #define __TUTORIAL_SCENE_H__
 
+#define MAX_ANIMATIONS 15
+
 #include "Module.h"
 #include "Animation.h"
 
@@ -45,19 +47,25 @@ public:
 	Animation SlideRAnim;
 	Animation SlideUAnim;
 	Animation SlideDAnim;
-	
 
-	Animation* currentAnimationButtons = nullptr;
+	int currentAnim = 0;
+	Animation* AnimationButtons[MAX_ANIMATIONS];
+	Animation* currentAButtons = nullptr;
+
 	// Buttons set of animations
 	Animation ButtonsidleAnim;
 	Animation ButtonsupAnim;
 	Animation ButtonsdownAnim;
 	Animation ButtonsrightAnim;
 	Animation ButtonsleftAnim;
+	Animation ButtonsUpRightAnim;
+	Animation ButtonsDownLeftAnim;
+	Animation ButtonsUpLeftAnim;
 	Animation ButtonsSlideLAnim;
 	Animation ButtonsSlideRAnim;
 	Animation ButtonsSlideUAnim;
 	Animation ButtonsSlideDAnim;
+
 };
 
 #endif
