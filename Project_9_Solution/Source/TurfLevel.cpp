@@ -6,8 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
-#include "ModulePlayer.h"
-#include "Char2.h"
+#include "Left_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
@@ -75,9 +76,10 @@ bool TurfLevel::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->player->Enable();
-	App->char2->Enable();
+	App->LeftJapanesePlayer->Enable();
+	App->leftgermanyplayer->Enable();
 	App->enemies->Enable();
+	App->rightgermanyplayer->Enable();
 
 	return ret;
 }
@@ -102,9 +104,10 @@ Update_Status TurfLevel::PostUpdate()
 
 bool TurfLevel::CleanUp()
 {
-	App->player->Disable();
-	App->char2->Disable();
+	App->LeftJapanesePlayer->Disable();
+	App->leftgermanyplayer->Disable();
 	App->enemies->Disable();
+	App->rightgermanyplayer->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 

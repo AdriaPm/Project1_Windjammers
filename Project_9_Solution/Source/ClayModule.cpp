@@ -6,8 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
-#include "ModulePlayer.h"
-#include "Char2.h"
+#include "Left_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+
 
 ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
 {
@@ -33,7 +34,7 @@ bool ClayModule::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClaySpriteSheet.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClayMap_spritesheet.png");
 
 	App->audio->PlayMusic("Assets/Music/ClayCourt.ogg", 1.0f);
 
@@ -74,8 +75,9 @@ bool ClayModule::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->player->Enable();
-	App->char2->Enable();
+
+	App->LeftJapanesePlayer->Enable();
+	App->leftgermanyplayer->Enable();
 	App->enemies->Enable();
 
 	return ret;
@@ -101,8 +103,8 @@ Update_Status ClayModule::PostUpdate()
 
 bool ClayModule::CleanUp()
 {
-	App->player->Disable();
-	App->char2->Disable();
+	App->LeftJapanesePlayer->Disable();
+	App->leftgermanyplayer->Disable();
 	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)

@@ -5,14 +5,15 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModulePlayer.h"
+#include "Left_Japanese_Player.h"
 #include "SceneIntro.h"
 #include "DataEast.h"
 #include "MainScreen.h"
 #include "TutorialScene.h"
 #include "TurfLevel.h"
 #include "ClayModule.h"
-#include "Char2.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -42,15 +43,15 @@ Application::Application()
 	modules[9] =	chooseMap =		new ChooseMap(false);		
 	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[11] =	clay =			new ClayModule(false);
-	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[13] =	char2 =			new Char2(false);
-	modules[14] =	particles =		new ModuleParticles(true);
-	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-
-	modules[16] =	collisions =	new ModuleCollisions(true);
-	modules[17] =	fade =			new ModuleFadeToBlack(true);
-	modules[18] =	fonts =			new ModuleFonts(true);
-	modules[19] =	render =		new ModuleRender(true);
+	modules[12] =LeftJapanesePlayer=new Left_Japanese_Player(false);	//Player starts disabled
+	modules[13] = leftgermanyplayer=new LeftGermanPlayer(false);
+	modules[14] =rightgermanyplayer=new RightGermanPlayer(false);
+	modules[15] =	particles =		new ModuleParticles(true);
+	modules[16] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[17] =	collisions =	new ModuleCollisions(true);
+	modules[18] =	fade =			new ModuleFadeToBlack(true);
+	modules[19] =	fonts =			new ModuleFonts(true);
+	modules[20] =	render =		new ModuleRender(true);
 
 	
 	

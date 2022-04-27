@@ -1,4 +1,4 @@
-#include "ModulePlayer.h"
+#include "Left_Japanese_Player.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
+Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnabled)
 {
 	///CHAR1: Japanese
 	// idle animation
@@ -112,12 +112,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	
 }
 
-ModulePlayer::~ModulePlayer()
+Left_Japanese_Player::~Left_Japanese_Player()
 {
 
 }
 
-bool ModulePlayer::Start()
+bool Left_Japanese_Player::Start()
 {
 	LOG("Loading player textures");
 
@@ -147,7 +147,7 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
-Update_Status ModulePlayer::Update()
+Update_Status Left_Japanese_Player::Update()
 {
 	//Left anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -308,7 +308,7 @@ Update_Status ModulePlayer::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status ModulePlayer::PostUpdate()
+Update_Status Left_Japanese_Player::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -327,7 +327,7 @@ Update_Status ModulePlayer::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 {
 	
 
@@ -374,6 +374,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
 		position.x = 150 - 24;
 	}
+
+
+
+
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{

@@ -34,7 +34,6 @@ public:
 	SDL_Texture* beachImg = nullptr;
 	SDL_Texture* clayImg = nullptr;
 
-	//Animation remark;
 	SDL_Rect remark;
 
 	uint choseMapAudio = 0;

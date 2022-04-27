@@ -9,8 +9,6 @@
 
 ChooseMap::ChooseMap(bool startEnabled) : Module(startEnabled)
 {
-	//remark.PushBack({19, 33, 112, 14});
-	//remark.speed = 0.1f;
 	remark = { 15, 27, 120, 24 };
 }
 

@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Char2.cpp" />
+    <ClCompile Include="LeftGermanPlayer.cpp" />
     <ClCompile Include="ChooseCharacter.cpp" />
     <ClCompile Include="ChooseMap.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -22,7 +22,7 @@
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="Left_Japanese_Player.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
@@ -32,11 +32,12 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="ClayModule.cpp" />
+    <ClCompile Include="RightGermanPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Char2.h" />
+    <ClInclude Include="LeftGermanPlayer.h" />
     <ClInclude Include="ChooseCharacter.h" />
     <ClInclude Include="ChooseMap.h" />
     <ClInclude Include="Collider.h" />
@@ -55,7 +56,7 @@
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="Left_Japanese_Player.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
@@ -67,5 +68,6 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="ClayModule.h" />
+    <ClInclude Include="RightGermanPlayer.h" />
   </ItemGroup>
 </Project>

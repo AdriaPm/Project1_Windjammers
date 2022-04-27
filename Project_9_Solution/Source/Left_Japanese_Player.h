@@ -8,14 +8,14 @@
 struct SDL_Texture;
 struct Collider;
 
-class ModulePlayer : public Module
+class Left_Japanese_Player : public Module
 {
 public:
 	// Constructor
-	ModulePlayer(bool startEnabled);
+	Left_Japanese_Player(bool startEnabled);
 
 	// Destructor
-	~ModulePlayer();
+	~Left_Japanese_Player();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player

@@ -76,7 +76,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Char2.h" />
+    <ClInclude Include="LeftGermanPlayer.h" />
     <ClInclude Include="ChooseCharacter.h" />
     <ClInclude Include="ChooseMap.h" />
     <ClInclude Include="ClayModule.h" />
@@ -93,10 +93,11 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="RightGermanPlayer.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="Left_Japanese_Player.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
@@ -110,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Char2.cpp" />
+    <ClCompile Include="LeftGermanPlayer.cpp" />
     <ClCompile Include="ChooseCharacter.cpp" />
     <ClCompile Include="ChooseMap.cpp" />
     <ClCompile Include="ClayModule.cpp" />
@@ -128,10 +129,11 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
+    <ClCompile Include="RightGermanPlayer.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="Left_Japanese_Player.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />

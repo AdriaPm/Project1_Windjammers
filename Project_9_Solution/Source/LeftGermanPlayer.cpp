@@ -1,4 +1,4 @@
-#include "Char2.h"
+#include "LeftGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-Char2::Char2(bool startEnabled) : Module(startEnabled)
+LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
 	idleAnim.PushBack({ 68, 324, 24, 34 });
@@ -202,12 +202,12 @@ Char2::Char2(bool startEnabled) : Module(startEnabled)
 
 }
 
-Char2::~Char2()
+LeftGermanPlayer::~LeftGermanPlayer()
 {
 
 }
 
-bool Char2::Start()
+bool LeftGermanPlayer::Start()
 {
 	LOG("Loading player textures");
 
@@ -237,7 +237,7 @@ bool Char2::Start()
 	return ret;
 }
 
-Update_Status Char2::Update()
+Update_Status LeftGermanPlayer::Update()
 {
 	//Left Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -493,7 +493,7 @@ Update_Status Char2::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Char2::PostUpdate()
+Update_Status LeftGermanPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -512,7 +512,7 @@ Update_Status Char2::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void Char2::OnCollision(Collider* c1, Collider* c2)
+void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
@@ -542,8 +542,36 @@ void Char2::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
+	/// PLAYER COLLIDERS WITH THE MAP
+	//Collider player-upper wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
+		position.y = 40;
+	}
+
+	//Collider player-lower wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
+		position.y = 199 - 40;
+	}
+
+	//Collider player-left goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_GOAL) {
+		position.x = 10;
+	}
+
+	//Collider player-right goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_GOAL) {
+		position.x = 295 - 25;
+	}
+
+	//Collider player-net
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
+		position.x = 150 - 24;
+	}
+
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
 		score += 23;
 	}
+
+
 }

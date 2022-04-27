@@ -1,5 +1,5 @@
-#ifndef __CHAR2_H__
-#define __CHAR2_H__
+#ifndef __LeftGermanPlayer_H__
+#define __LeftGermanPlayer_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -8,14 +8,14 @@
 struct SDL_Texture;
 struct Collider;
 
-class Char2 : public Module
+class LeftGermanPlayer : public Module
 {
 public:
 	// Constructor
-	Char2(bool startEnabled);
+	LeftGermanPlayer(bool startEnabled);
 
 	// Destructor
-	~Char2();
+	~LeftGermanPlayer();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player
@@ -91,4 +91,4 @@ public:
 
 };
 
-#endif //!__CHAR2_H__ once
+#endif //!__LeftGermanPlayer_H__ once
