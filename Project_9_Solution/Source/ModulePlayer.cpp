@@ -329,6 +329,8 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
+
 	if (c1 == collider && destroyed == false)
 	{
 		/*
@@ -369,6 +371,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		*/
 		
 
+	}
+	
+	//Collider player-net
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
+		position.x = 150 - 25;
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
