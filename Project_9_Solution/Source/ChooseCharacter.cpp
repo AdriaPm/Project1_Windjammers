@@ -123,7 +123,6 @@ Update_Status ChooseCharacter::Update()
 		if (xMove1 == 153 && yMove1 == 72) {
 			App->choice1 = Player_Chosen_Left::German;
 		}
-		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
@@ -139,7 +138,11 @@ Update_Status ChooseCharacter::Update()
 		if (xMove2 == 183 && yMove2 == 72) {
 			App->choice2 = Player_Chosen_Right::German;
 		}
-		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+	}
+
+	if ((App->choice1 == Player_Chosen_Left::German) || (App->choice1 == Player_Chosen_Left::Japanese) || (App->choice1 == Player_Chosen_Left::Spanish) &&
+		(App->choice2 == Player_Chosen_Right::German) || (App->choice2 == Player_Chosen_Right::Japanese) || (App->choice2 == Player_Chosen_Right::Spanish)) {
+		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 90);
 	}
 	
 	/*if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
