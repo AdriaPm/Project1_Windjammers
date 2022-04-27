@@ -67,11 +67,67 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
+	//Slide Left
+	SlideLAnim.PushBack({ 474, 359, 30, 33 });
+	SlideLAnim.PushBack({ 0, 404, 43, 31 });
+	SlideLAnim.PushBack({ 43, 404, 51, 24 });
+	SlideLAnim.loop = false;
+	SlideLAnim.speed = 0.01f;
+
+	//Slide Right
+	SlideRAnim.PushBack({ 474, 103, 30, 33 });
+	SlideRAnim.PushBack({ 0, 148, 43, 31 });
+	SlideRAnim.PushBack({ 43, 148, 51, 24 });
+	SlideRAnim.loop = false;
+	SlideRAnim.speed = 0.01f;
+
+	//Slide Up
+	SlideUAnim.PushBack({ 374, 191, 28, 33 });
+	SlideUAnim.PushBack({ 402, 191, 31, 24 });
+	SlideUAnim.PushBack({ 433, 191, 25, 33 });
+	SlideUAnim.loop = false;
+	SlideUAnim.speed = 0.01f;
+
+	//Slide Down
+	SlideDAnim.PushBack({ 213, 46, 32, 41 });
+	SlideDAnim.PushBack({ 245, 46, 32, 49 });
+	SlideDAnim.PushBack({ 277, 46, 25, 57 });
+	SlideDAnim.loop = false;
+	SlideDAnim.speed = 0.01f;
+	
+	//Slide Up Right
+	SlideUpRightAnim.PushBack({ 270, 191, 27, 37 });
+	SlideUpRightAnim.PushBack({ 297, 191, 32, 30 });
+	SlideUpRightAnim.PushBack({ 329, 191, 45, 41 });
+	SlideUpRightAnim.loop = false;
+	SlideUpRightAnim.speed = 0.1f;
+
+	//Slide Up Left
+	SlideUpLeftAnim.PushBack({ 270, 447, 27, 27 });
+	SlideUpLeftAnim.PushBack({ 297, 447, 32, 30 });
+	SlideUpLeftAnim.PushBack({ 329, 447, 45, 41 });
+	SlideUpLeftAnim.loop = false;
+	SlideUpLeftAnim.speed = 0.1f;
+
+	//Slide Down Right
+	SlideDownRightAnim.PushBack({ 107, 46, 33, 35 });
+	SlideDownRightAnim.PushBack({ 140, 46, 37, 40 });
+	SlideDownRightAnim.PushBack({ 177, 46, 36, 48 });
+	SlideDownRightAnim.loop = false;
+	SlideDownRightAnim.speed = 0.1f;
+
+	//Slide Down Left
+	SlideDownLeftAnim.PushBack({ 107, 302, 33, 35 });
+	SlideDownLeftAnim.PushBack({ 140, 302, 37, 40 });
+	SlideDownLeftAnim.PushBack({ 177, 302, 36, 48 });
+	SlideDownLeftAnim.loop = false;
+	SlideDownLeftAnim.speed = 0.1f;
+
 	//Victory
 	victAnim.PushBack({ 77, 0, 33, 40 });
 	victAnim.PushBack({ 110, 0, 34, 41 });
-	victAnim.PushBack({ 144, 0, 33, 40});
-	victAnim.PushBack({ 177, 0, 34, 41});
+	victAnim.PushBack({ 144, 0, 33, 40 });
+	victAnim.PushBack({ 177, 0, 34, 41 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
 
@@ -81,35 +137,35 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	loseAnim.PushBack({ 90, 103, 24, 39 });
 	loseAnim.PushBack({ 114, 103, 23, 40 });
 	loseAnim.PushBack({ 137, 103, 22, 40 });
+	loseAnim.loop = true;
+	loseAnim.speed = 0.05f;
 
-	//Slide Left
-	SlideLAnim.PushBack({ 474, 359, 30, 33 });
-	SlideLAnim.PushBack({ 0, 404, 43, 31 });
-	SlideLAnim.PushBack({ 43, 404, 51, 24 });
-	SlideLAnim.loop = true;
-	SlideLAnim.speed = 0.01f;
+	//Got scored on
+	ScoredOn.PushBack({ 159, 359, 22, 36 });
 
-	//Slide Right
-	SlideRAnim.PushBack({ 474, 103, 30, 33 });
-	SlideRAnim.PushBack({ 0, 148, 43, 31 });
-	SlideRAnim.PushBack({ 43, 148, 51, 24 });
-	SlideRAnim.loop = true;
-	SlideRAnim.speed = 0.01f;
+	//Scored
+	Scored.PushBack({ 21, 103, 23, 37 });
 
-	//Slide Up
-	SlideUAnim.PushBack({ 374, 191, 28, 33 });
-	SlideUAnim.PushBack({ 402, 191, 31, 24 });
-	SlideUAnim.PushBack({ 433, 191, 25, 33 });
-	SlideUAnim.loop = true;
-	SlideUAnim.speed = 0.01f;
+	//Throw---TODO: Put the disk in the trowing animation.
+	/*
+	Throw.PushBack({ , , , });
+	Throw.PushBack({ , , , });
+	Throw.PushBack({ , , , });
+	*/
 
-	//Slide Down
-	SlideDAnim.PushBack({ 213, 46, 32, 41 });
-	SlideDAnim.PushBack({ 245, 46, 32, 49 });
-	SlideDAnim.PushBack({ 277, 46, 25, 57 });
-	SlideDAnim.loop = true;
-	SlideDAnim.speed = 0.01f;
-	
+	//Disk Holding TURF MAP
+
+	//Disk Holding CLAY MAP
+
+	//Disk Holding BEACH MAP
+	diskHoldBEACH.PushBack({ 0, 500, 51, 52 });
+	diskHoldBEACH.PushBack({ 52, 503, 50, 49 });
+	diskHoldBEACH.PushBack({ 104, 505, 50, 47 });
+	diskHoldBEACH.PushBack({ 155, 502, 51, 50 });
+	diskHoldBEACH.PushBack({ 207, 500, 51, 52 });
+	diskHoldBEACH.loop = true;
+	diskHoldBEACH.speed = 0.1f;
+
 }
 
 Left_Japanese_Player::~Left_Japanese_Player()
@@ -123,7 +179,7 @@ bool Left_Japanese_Player::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteSheedCHAR1.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteALL.png");
 	currentAnimation = &idleAnim;
 
 	//laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");

@@ -69,6 +69,7 @@ public:
 	Animation SlideDownRightAnim;
 	Animation SlideDownLeftAnim;
 
+
 	// The player's collider
 	Collider* collider = nullptr;
 

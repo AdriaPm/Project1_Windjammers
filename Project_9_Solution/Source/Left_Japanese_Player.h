@@ -68,6 +68,10 @@ public:
 	Animation SlideUpRightAnim;
 	Animation SlideDownRightAnim;
 	Animation SlideDownLeftAnim;
+	Animation Throw;
+	Animation ScoredOn;
+	Animation Scored;
+	Animation diskHoldBEACH;
 
 	// The player's collider
 	Collider* collider = nullptr;
