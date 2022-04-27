@@ -54,9 +54,9 @@ public:
 		return loopCount;
 	}
 	
-	void ResetLoopCount() 
+	int GetCurrentFrameCount() const
 	{
-		loopCount = 0;
+		return currentFrame;
 	}
 
 	const SDL_Rect& GetCurrentFrame() const

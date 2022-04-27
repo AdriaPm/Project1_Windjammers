@@ -175,7 +175,7 @@ Update_Status TutorialScene::Update()
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 40);
+		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 90);
 	}
 
 	currentAnimation->Update();
@@ -258,5 +258,23 @@ void TutorialScene::SceneAnimations()
 	{
 		currentAnimation = &upRightAnim;
 		currentAButtons = &ButtonsUpRightAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 10 && currentAButtons->GetLoopCount() >= 10)
+	{
+		currentAnimation = &downLeftAnim;
+		currentAButtons = &ButtonsDownLeftAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 12 && currentAButtons->GetLoopCount() >= 12)
+	{
+		currentAnimation = &upRightAnim;
+		currentAButtons = &ButtonsUpRightAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 12.9 && currentAButtons->GetLoopCount() >= 12.9)
+	{
+		currentAnimation = &idleAnim;
+		currentAButtons = &ButtonsidleAnim;
 	}
 }
