@@ -1,7 +1,7 @@
 #ifndef __TUTORIAL_SCENE_H__
 #define __TUTORIAL_SCENE_H__
 
-#define MAX_ANIMATIONS 15
+//#define MAX_ANIMATIONS 15
 
 #include "Module.h"
 #include "Animation.h"
@@ -29,6 +29,8 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 
+	void SceneAnimations();
+
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr; 
@@ -43,13 +45,17 @@ public:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation upRightAnim;
+	Animation downLeftAnim;
+	Animation upLeftAnim;
+	Animation downRightAnim;
 	Animation SlideLAnim;
 	Animation SlideRAnim;
 	Animation SlideUAnim;
 	Animation SlideDAnim;
 
-	int currentAnim = 0;
-	Animation* AnimationButtons[MAX_ANIMATIONS];
+	int currentAnimCount = 0;
+	//Animation* AnimationButtons[MAX_ANIMATIONS];
 	Animation* currentAButtons = nullptr;
 
 	// Buttons set of animations
@@ -61,6 +67,7 @@ public:
 	Animation ButtonsUpRightAnim;
 	Animation ButtonsDownLeftAnim;
 	Animation ButtonsUpLeftAnim;
+	Animation ButtonsDownRightAnim;
 	Animation ButtonsSlideLAnim;
 	Animation ButtonsSlideRAnim;
 	Animation ButtonsSlideUAnim;
