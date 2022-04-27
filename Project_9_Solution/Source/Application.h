@@ -13,7 +13,7 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
-class ModulePlayer;
+class Left_Japanese_Player;
 class SceneIntro;
 class DataEast;
 class MainScreen;
@@ -61,7 +61,7 @@ public:
 	ModuleTextures* textures = nullptr;
 	ModuleAudio* audio = nullptr;
 
-	ModulePlayer* player = nullptr;
+	Left_Japanese_Player* LeftJapanesePlayer = nullptr;
 
 	Left_German_Player* LeftGermanPlayer = nullptr;
 

@@ -22,7 +22,7 @@
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="TurfLevel.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="Left_Japanese_Player.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
@@ -55,7 +55,7 @@
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="TurfLevel.h" />
     <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="Left_Japanese_Player.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />

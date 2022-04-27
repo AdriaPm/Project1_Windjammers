@@ -6,7 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
-#include "ModulePlayer.h"
+#include "Left_Japanese_Player.h"
 #include "Char2.h"
 
 ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
@@ -74,7 +74,7 @@ bool ClayModule::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->player->Enable();
+	App->LeftJapanesePlayer->Enable();
 	App->char2->Enable();
 	App->enemies->Enable();
 
@@ -101,7 +101,7 @@ Update_Status ClayModule::PostUpdate()
 
 bool ClayModule::CleanUp()
 {
-	App->player->Disable();
+	App->LeftJapanesePlayer->Disable();
 	App->char2->Disable();
 	App->enemies->Disable();
 
