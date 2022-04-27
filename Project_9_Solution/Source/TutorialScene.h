@@ -75,4 +75,11 @@ public:
 
 };
 
+enum class ButtonsAnims {
+	Idle, Up, Down, Right, Left,
+	UpRight, DownLeft, UpLeft, DownRight,
+	SlideLeft, SlideRight, SlideUp, SlideDown
+
+};
+
 #endif
