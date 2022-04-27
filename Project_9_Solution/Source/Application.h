@@ -26,7 +26,7 @@ class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
-class Char2;
+class LeftGermanPlayer;
 class ChooseMap;
 class ChooseCharacter;
 
@@ -63,7 +63,7 @@ public:
 
 	Left_Japanese_Player* LeftJapanesePlayer = nullptr;
 
-	Left_German_Player* LeftGermanPlayer = nullptr;
+	LeftGermanPlayer* leftgermanyplayer = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
 	DataEast* dataEast = nullptr;

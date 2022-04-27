@@ -1,4 +1,4 @@
-#include "Left_German_Player.h"
+#include "LeftGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-Left_German_Player::Left_German_Player(bool startEnabled) : Module(startEnabled)
+LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
 	idleAnim.PushBack({ 68, 324, 24, 34 });
@@ -207,7 +207,7 @@ Left_German_Player::~Left_German_Player()
 
 }
 
-bool Left_German_Player::Start()
+bool LeftGermanPlayer::Start()
 {
 	LOG("Loading player textures");
 
@@ -237,7 +237,7 @@ bool Left_German_Player::Start()
 	return ret;
 }
 
-Update_Status Left_German_Player::Update()
+Update_Status LeftGermanPlayer::Update()
 {
 	//Left Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -493,7 +493,7 @@ Update_Status Left_German_Player::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Left_German_Player::PostUpdate()
+Update_Status LeftGermanPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -512,7 +512,7 @@ Update_Status Left_German_Player::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void Left_German_Player::OnCollision(Collider* c1, Collider* c2)
+void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{

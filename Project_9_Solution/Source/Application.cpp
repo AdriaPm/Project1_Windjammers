@@ -12,7 +12,7 @@
 #include "TutorialScene.h"
 #include "TurfLevel.h"
 #include "ClayModule.h"
-#include "Left_German_Player.h"
+#include "LeftGermanPlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -44,6 +44,7 @@ Application::Application()
 	modules[11] =	clay =			new ClayModule(false);
 <<<<<<< Updated upstream
 	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
+<<<<<<< Updated upstream
 	modules[13] = LeftGermanPlayer =new Left_German_Player(false);
 =======
 <<<<<<< HEAD
@@ -53,6 +54,9 @@ Application::Application()
 	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[13] = LeftGermanPlayer =new Left_German_Player(false);
 >>>>>>> c03a7d87e916d82da09814ce5fcdd0a24ded28b9
+>>>>>>> Stashed changes
+=======
+	modules[13] = leftgermanyplayer = new LeftGermanPlayer(false);
 >>>>>>> Stashed changes
 	modules[14] =	particles =		new ModuleParticles(true);
 	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
