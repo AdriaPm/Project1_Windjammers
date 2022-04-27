@@ -46,27 +46,8 @@ public:
 	Animation p1;
 	Animation p2;
 
-	void inccheck1() {
-		firstcheck++;
-	}
-
-	void inccheck2() {
-		secondcheck++;
-	}
-
-	int returncheck() {
-		return firstcheck;
-	}
-
-	int returncheck2() {
-		return secondcheck;
-	}
-
-
 
 private:
-	int firstcheck = 0;
-	int secondcheck = 0;
 	int yMove1, xMove1, yMove2, xMove2;
 };
 

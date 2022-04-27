@@ -77,9 +77,35 @@ bool TurfLevel::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->LeftJapanesePlayer->Enable();
+	switch (App->choice1)
+	{
+	case Player_Chosen_Left::German:
+		App->leftgermanyplayer->Enable();
+		break;
+	case Player_Chosen_Left::Spanish:
+	/*	App->leftgermanyplayer->Enable();*/
+		break;
+	case Player_Chosen_Left::Japanese:
+		App->LeftJapanesePlayer->Enable();
+		break;
+	}
+
+	switch (App->choice2)
+	{
+	case Player_Chosen_Right::German:
+		App->rightgermanyplayer->Enable();
+		break;
+	case Player_Chosen_Right::Spanish:
+		/*	App->leftgermanyplayer->Enable();*/
+		break;
+	case Player_Chosen_Right::Japanese:
+		App->RightJapanesePlayer->Enable();
+		break;
+	}
+	
 	App->leftgermanyplayer->Enable();
-	App->RightJapanesePlayer->Enable();
+	App->LeftJapanesePlayer->Enable();
+	App->rightgermanyplayer->Enable();
 	App->enemies->Enable();
 	App->rightgermanyplayer->Enable();
 
