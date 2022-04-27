@@ -28,7 +28,6 @@ enum class Player_Chosen_Left {
 	Spanish
 };
 
-
 enum class Player_State {
 	PLAYER_IDLE,
 	PLAYER_MOVE,

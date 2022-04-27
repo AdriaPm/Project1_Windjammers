@@ -57,6 +57,9 @@ public:
 	// An array to store all modules
 	Module* modules[NUM_MODULES];
 
+	Player_Chosen_Left choice1;
+	Player_Chosen_Right choice2;
+
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
