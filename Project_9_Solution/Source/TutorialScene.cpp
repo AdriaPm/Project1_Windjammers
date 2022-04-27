@@ -57,30 +57,37 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	//Joystick and Buttons Animations
-	ButtonsidleAnim.PushBack({ 0, 0, 172, 65});
+	AnimationButtons[0] = &ButtonsidleAnim;
+	ButtonsidleAnim.PushBack({ 0, 0, 172, 65 });
 	ButtonsidleAnim.speed = 0.1f;
 	ButtonsidleAnim.loop = true;
 
+	AnimationButtons[1] = &ButtonsrightAnim;
 	ButtonsrightAnim.PushBack({ 172, 0, 172, 65});
 	ButtonsrightAnim.speed = 0.1f;
 	ButtonsrightAnim.loop = true;
 
+	AnimationButtons[2] = &ButtonsleftAnim;
 	ButtonsleftAnim.PushBack({ 342, 0, 191, 65 });
 	ButtonsleftAnim.speed = 0.1f;
 	ButtonsleftAnim.loop = true;
 
+	AnimationButtons[3] = &ButtonsupAnim;
 	ButtonsupAnim.PushBack({ 531, 0, 172, 65 });
 	ButtonsupAnim.speed = 0.1f;
 	ButtonsupAnim.loop = true;
 
+	AnimationButtons[4] = &ButtonsdownAnim;
 	ButtonsdownAnim.PushBack({ 703, 0, 172, 65 });
 	ButtonsdownAnim.speed = 0.1f;
 	ButtonsdownAnim.loop = true;
 
+	AnimationButtons[5] = &ButtonsUpRightAnim;
 	ButtonsUpRightAnim.PushBack({ 874, 0, 172, 65 });
 	ButtonsUpRightAnim.speed = 0.1f;
 	ButtonsUpRightAnim.loop = true;
 
+	AnimationButtons[6] = &ButtonsDownLeftAnim;
 	ButtonsDownLeftAnim.PushBack({ 0, 76, 182, 65 });
 	ButtonsDownLeftAnim.speed = 0.1f;
 	ButtonsDownLeftAnim.loop = true;
@@ -107,7 +114,7 @@ bool TutorialScene::Start()
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/TutorialBG.png");
 	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/JoystickAndButtons.png");
-	currentAnimationButtons = &ButtonsidleAnim;
+	currentAButtons = AnimationButtons[0];
 
 	characterTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/CHAR1_IDLE/SPRITESHEET/CHAR1JapaneseSpriteSheet.png");
 	currentAnimation = &idleAnim;
@@ -127,11 +134,15 @@ Update_Status TutorialScene::Update()
 
 	for (size_t i = 0; i < 7; i++)
 	{
-		if (currentAnimation->GetLoopCount() >= 5 && currentAnimationButtons->GetLoopCount() >= 5)
+		for (size_t j = 0; j < 5; j++)
 		{
-			currentAnimation = &rightAnim;
-			currentAnimationButtons = &ButtonsrightAnim;
+			if (currentAnimation->GetLoopCount() >= 5 && currentAButtons->GetLoopCount() >= 5)
+			{
+				currentAnimation = &rightAnim;
+				currentAButtons = AnimationButtons[i];
+			}
 		}
+		
 	}
 	
 	/*currentAnimation = &rightAnim;
@@ -144,8 +155,7 @@ Update_Status TutorialScene::Update()
 	}
 
 	currentAnimation->Update();
-	currentAnimationButtons->Update();
-
+	AnimationButtons[currentAnim]->Update();
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -153,7 +163,9 @@ Update_Status TutorialScene::Update()
 Update_Status TutorialScene::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	SDL_Rect rect2 = currentAnimationButtons->GetCurrentFrame();
+	
+	SDL_Rect rect2 = AnimationButtons[currentAnim]->GetCurrentFrame();
+	currentAnim++;
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(bgTexture, SCREEN_WIDTH, 0, NULL);

@@ -47,9 +47,11 @@ public:
 	Animation SlideRAnim;
 	Animation SlideUAnim;
 	Animation SlideDAnim;
-	
 
-	Animation* currentAnimationButtons = nullptr;
+	int currentAnim = 0;
+	Animation* AnimationButtons[MAX_ANIMATIONS];
+	Animation* currentAButtons = nullptr;
+
 	// Buttons set of animations
 	Animation ButtonsidleAnim;
 	Animation ButtonsupAnim;
@@ -63,6 +65,7 @@ public:
 	Animation ButtonsSlideRAnim;
 	Animation ButtonsSlideUAnim;
 	Animation ButtonsSlideDAnim;
+
 };
 
 #endif
