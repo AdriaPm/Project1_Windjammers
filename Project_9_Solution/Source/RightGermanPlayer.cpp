@@ -1,4 +1,4 @@
-#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -12,15 +12,15 @@
 
 #include <stdio.h>
 
-LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
+RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
-	idleAnim.PushBack({ 68, 324, 24, 34 });
-	idleAnim.PushBack({ 92, 324, 23, 36 });
-	idleAnim.PushBack({ 115, 324, 23, 35 });
-	idleAnim.PushBack({ 115, 324, 23, 35 });
-	idleAnim.PushBack({ 92, 324, 23, 36 });
-	idleAnim.PushBack({ 68, 324, 24, 34 });
+	idleAnim.PushBack({ 47, 324, 24, 34 });
+	idleAnim.PushBack({ 24, 324, 23, 36 });
+	idleAnim.PushBack({ 1, 324, 23, 35 });
+	idleAnim.PushBack({ 1, 324, 23, 35 });
+	idleAnim.PushBack({ 24, 324, 23, 36 });
+	idleAnim.PushBack({ 47, 324, 24, 34 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
@@ -74,7 +74,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	UpLeftAnim.PushBack({ 30, 440, 20, 34 });
 	UpLeftAnim.loop = true;
 	UpLeftAnim.speed = 0.1f;
-	
+
 
 	//Move Down Left -- DONE
 	DownLeftAnim.PushBack({ 98, 474, 27, 31 });
@@ -156,7 +156,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 
 
 	//Slide Down Left
-	SlideDownLeftAnim.PushBack({ 168, 92, 45, 42});
+	SlideDownLeftAnim.PushBack({ 168, 92, 45, 42 });
 	SlideDownLeftAnim.PushBack({ 137,  92, 31, 42 });
 	SlideDownLeftAnim.PushBack({ 102, 92, 35, 42 });
 	SlideDownLeftAnim.PushBack({ 71, 92, 31, 42 });
@@ -173,13 +173,16 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.speed = 0.1f;
 
 	//Throw 
-	Throw.PushBack({ 69, 288, 23, 35 });
-	Throw.PushBack({ 92, 288, 24, 35 });
-	Throw.PushBack({ 116, 288, 30, 35 });
-	Throw.PushBack({ 146, 288, 28, 35 });
-	Throw.PushBack({ 174, 288, 30, 35 });
-	Throw.PushBack({ 204, 288, 26, 35 });
-	Throw.PushBack({ 230, 288, 22, 35 });
+	Throw.PushBack({ 161, 288, 23, 35 });
+	Throw.PushBack({ 137, 288, 24, 35 });
+	Throw.PushBack({ 107, 288, 30, 35 });
+	Throw.PushBack({ 79, 288, 28, 35 });
+	Throw.PushBack({ 49, 288, 30, 35 });
+	Throw.PushBack({ 23, 288, 26, 35 });
+	Throw.PushBack({ 1, 288, 22, 35 });
+	Throw.PushBack({ 116, 324, 22, 35 });
+
+
 	Throw.loop = false;
 	Throw.speed = 0.1f;
 
@@ -202,24 +205,24 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 
 }
 
-LeftGermanPlayer::~LeftGermanPlayer()
+RightGermanPlayer::~RightGermanPlayer()
 {
 
 }
 
-bool LeftGermanPlayer::Start()
+bool RightGermanPlayer::Start()
 {
 	LOG("Loading player textures");
 
 	bool ret = true;
 
-	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALL.png");
+	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHT.png");
 	currentAnimation = &idleAnim;
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
 
-	position.x = 80;
+	position.x = 222;
 	position.y = 135;
 
 	destroyed = false;
@@ -237,10 +240,10 @@ bool LeftGermanPlayer::Start()
 	return ret;
 }
 
-Update_Status LeftGermanPlayer::Update()
+Update_Status RightGermanPlayer::Update()
 {
 	//Left Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
 		if (currentAnimation != &leftAnim)
@@ -252,7 +255,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Right Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim)
@@ -264,7 +267,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Down Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -276,7 +279,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Anim
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -288,7 +291,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Left Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
 		position.y -= speedcross;
@@ -298,26 +301,26 @@ Update_Status LeftGermanPlayer::Update()
 		{
 			currentAnimation = &UpLeftAnim;
 		}
-		
+
 	}
-	
+
 	//Up Right Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
 		position.y -= speedcross;
 
 		if (currentAnimation != &UpRightAnim)
 		{
-		
+
 			currentAnimation = &UpRightAnim;
 		}
 		Player_State::PLAYER_MOVE;
 	}
-	
+
 
 	// Down Left Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
 		position.y += speedcross;
@@ -330,7 +333,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	// Down Right Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
 		position.y += speedcross;
@@ -344,7 +347,7 @@ Update_Status LeftGermanPlayer::Update()
 
 
 	//Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
@@ -355,7 +358,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Slide Anim
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
 	{
 		position.y -= speedslide;
 		if (currentAnimation != &SlideUAnim)
@@ -367,7 +370,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
 	{
 		Player_State::PLAYER_DIVE;
 		position.x -= speedslide;
@@ -376,11 +379,11 @@ Update_Status LeftGermanPlayer::Update()
 		{
 			currentAnimation = &SlideLAnim;
 		}
-		
+
 	}
 
 	//Down Slide Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.y += speedslide;
 
@@ -393,9 +396,9 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT 
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
-	{   
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+	{
 		position.x -= speedslide;
 		position.y -= speedslide;
 
@@ -408,8 +411,8 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		position.y -= speedslide;
@@ -423,8 +426,8 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	// Down Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
 	{
 		position.x -= speedslide;
 		position.y += speedslide;
@@ -439,8 +442,8 @@ Update_Status LeftGermanPlayer::Update()
 
 
 	// Down Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
 	{
 		position.x += speedslide;
 		position.y += speedslide;
@@ -452,11 +455,11 @@ Update_Status LeftGermanPlayer::Update()
 			currentAnimation = &SlideDownRightAnim;
 		}
 
-		
+
 	}
 
 	//Normal Throw Animation
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) {
 		if (currentAnimation != &Throw)
 		{
 			Throw.Reset();
@@ -466,7 +469,7 @@ Update_Status LeftGermanPlayer::Update()
 
 	}
 
-	
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
@@ -475,16 +478,16 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE) {
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 		Player_State::PLAYER_IDLE;
 	}
-		
+
 
 	collider->SetPos(position.x, position.y);
 
@@ -493,7 +496,7 @@ Update_Status LeftGermanPlayer::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status LeftGermanPlayer::PostUpdate()
+Update_Status RightGermanPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -512,7 +515,7 @@ Update_Status LeftGermanPlayer::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
+void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
@@ -565,12 +568,17 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//Collider player-net
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
-		position.x = 150 - 24;
+		position.x = 150 + 4;
 	}
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
 		score += 23;
+	}
+
+	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::DISK)
+	{
+		/*Catch.Animation*/
 	}
 
 

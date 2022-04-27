@@ -32,6 +32,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="ClayModule.cpp" />
+    <ClCompile Include="RightGermanPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -67,5 +68,6 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="ClayModule.h" />
+    <ClInclude Include="RightGermanPlayer.h" />
   </ItemGroup>
 </Project>
