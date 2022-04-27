@@ -49,6 +49,11 @@ public:
 		}
 	}
 
+	int GetLoopCount() const 
+	{
+		return loopCount;
+	}
+
 	const SDL_Rect& GetCurrentFrame() const
 	{
 		int actualFrame = currentFrame;

@@ -59,18 +59,31 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	//Joystick and Buttons Animations
 	ButtonsidleAnim.PushBack({ 0, 0, 172, 65});
 	ButtonsidleAnim.speed = 0.1f;
+	ButtonsidleAnim.loop = true;
+
 	ButtonsrightAnim.PushBack({ 172, 0, 172, 65});
 	ButtonsrightAnim.speed = 0.1f;
+	ButtonsrightAnim.loop = true;
+
 	ButtonsleftAnim.PushBack({ 342, 0, 191, 65 });
 	ButtonsleftAnim.speed = 0.1f;
+	ButtonsleftAnim.loop = true;
+
 	ButtonsupAnim.PushBack({ 531, 0, 172, 65 });
 	ButtonsupAnim.speed = 0.1f;
+	ButtonsupAnim.loop = true;
+
 	ButtonsdownAnim.PushBack({ 703, 0, 172, 65 });
 	ButtonsdownAnim.speed = 0.1f;
+	ButtonsdownAnim.loop = true;
+
 	ButtonsUpRightAnim.PushBack({ 874, 0, 172, 65 });
 	ButtonsUpRightAnim.speed = 0.1f;
+	ButtonsUpRightAnim.loop = true;
+
 	ButtonsDownLeftAnim.PushBack({ 0, 76, 182, 65 });
 	ButtonsDownLeftAnim.speed = 0.1f;
+	ButtonsDownLeftAnim.loop = true;
 	/*
 	
 	ButtonsSlideLAnim.PushBack({ ,,, });
@@ -112,13 +125,17 @@ Update_Status TutorialScene::Update()
 	App->render->camera.x += 2;
 	if (App->render->camera.x >= SCREEN_WIDTH*3) App->render->camera.x = 0;
 
-	/*if (currentAnimation->HasFinished() && currentAnimationButtons->HasFinished()) 
+	for (size_t i = 0; i < 7; i++)
 	{
-		currentAnimation = &rightAnim;
-		currentAnimationButtons = &rightAnim;
-	}*/
-	currentAnimation = &rightAnim;
-	currentAnimationButtons = &rightAnim;
+		if (currentAnimation->GetLoopCount() >= 5 && currentAnimationButtons->GetLoopCount() >= 5)
+		{
+			currentAnimation = &rightAnim;
+			currentAnimationButtons = &ButtonsrightAnim;
+		}
+	}
+	
+	/*currentAnimation = &rightAnim;
+	currentAnimationButtons = &ButtonsrightAnim;*/
 	
 	//ChangeScene
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
@@ -136,10 +153,11 @@ Update_Status TutorialScene::Update()
 Update_Status TutorialScene::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	SDL_Rect rect2 = currentAnimationButtons->GetCurrentFrame();
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(bgTexture, SCREEN_WIDTH, 0, NULL);
-	App->render->Blit(buttonsTexture, 50, 150, NULL, false);
+	App->render->Blit(buttonsTexture, 50, 150, &rect2, false);
 	App->render->Blit(characterTexture, 0, 0, &rect, false);
 
 	return Update_Status::UPDATE_CONTINUE;
