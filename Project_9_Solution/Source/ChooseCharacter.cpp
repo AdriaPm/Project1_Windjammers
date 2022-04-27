@@ -140,8 +140,8 @@ Update_Status ChooseCharacter::Update()
 		}
 	}
 
-	if ((App->choice1 == Player_Chosen_Left::German) || (App->choice1 == Player_Chosen_Left::Japanese) || (App->choice1 == Player_Chosen_Left::Spanish) &&
-		(App->choice2 == Player_Chosen_Right::German) || (App->choice2 == Player_Chosen_Right::Japanese) || (App->choice2 == Player_Chosen_Right::Spanish)) {
+	if (((App->choice1 == Player_Chosen_Left::German) || (App->choice1 == Player_Chosen_Left::Japanese) || (App->choice1 == Player_Chosen_Left::Spanish)) &&
+		((App->choice2 == Player_Chosen_Right::German) || (App->choice2 == Player_Chosen_Right::Japanese) || (App->choice2 == Player_Chosen_Right::Spanish))) {
 		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 90);
 	}
 	
