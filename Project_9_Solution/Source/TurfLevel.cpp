@@ -40,13 +40,13 @@ bool TurfLevel::Start()
 
 	///TURF MAP Colliders
 	//Upperside collider
-	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::UPPER_WALL);
 	//Bottomside collider
-	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::LOWER_WALL);
 	//Leftside goal
-	App->collisions->AddCollider({ 0, 17, 10, 200 }, Collider::Type::GOAL);
+	App->collisions->AddCollider({ 0, 17, 10, 200 }, Collider::Type::LEFT_GOAL);
 	//Rightside goal
-	App->collisions->AddCollider({ 295, 17, 9, 200 }, Collider::Type::GOAL);
+	App->collisions->AddCollider({ 295, 17, 9, 200 }, Collider::Type::RIGHT_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 
