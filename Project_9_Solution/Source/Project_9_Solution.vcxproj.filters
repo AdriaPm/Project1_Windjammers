@@ -32,7 +32,11 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="ClayModule.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="RightGermanPlayer.cpp" />
+=======
+    <ClCompile Include="Right_Japanese_Player.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -68,6 +72,10 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="ClayModule.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="RightGermanPlayer.h" />
+=======
+    <ClInclude Include="Right_Japanese_Player.h" />
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

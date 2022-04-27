@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
 #include "SceneIntro.h"
 #include "DataEast.h"
 #include "MainScreen.h"
@@ -44,8 +45,13 @@ Application::Application()
 	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[11] =	clay =			new ClayModule(false);
 	modules[12] =LeftJapanesePlayer=new Left_Japanese_Player(false);	//Player starts disabled
+<<<<<<< Updated upstream
 	modules[13] = leftgermanyplayer=new LeftGermanPlayer(false);
 	modules[14] =rightgermanyplayer=new RightGermanPlayer(false);
+=======
+	modules[13] = RightJapanesePlayer = new Right_Japanese_Player(false);
+	modules[14] = leftgermanyplayer = new LeftGermanPlayer(false);
+>>>>>>> Stashed changes
 	modules[15] =	particles =		new ModuleParticles(true);
 	modules[16] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 	modules[17] =	collisions =	new ModuleCollisions(true);
