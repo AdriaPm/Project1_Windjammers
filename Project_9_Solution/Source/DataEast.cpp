@@ -9,7 +9,15 @@
 
 DataEast::DataEast(bool startEnabled) : Module(startEnabled)
 {
-
+	DElogo.PushBack({ 227, 103, 24, 37 });
+	DElogo.PushBack({ 251, 103, 24, 39 });
+	DElogo.PushBack({ 275, 103, 24, 36 });
+	DElogo.PushBack({ 299, 103, 24, 35 });
+	DElogo.PushBack({ 323, 103, 24, 36 });
+	DElogo.PushBack({ 347, 103, 23, 36 });
+	DElogo.PushBack({ 370, 103, 23, 35 });
+	DElogo.PushBack({ 393, 103, 23, 36 });
+	DElogo.speed = 0.1f;
 }
 
 DataEast::~DataEast()

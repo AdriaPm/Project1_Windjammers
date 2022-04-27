@@ -82,32 +82,37 @@ bool TurfLevel::Start()
 	case Player_Chosen_Left::German:
 		App->leftgermanyplayer->Enable();
 		break;
-	case Player_Chosen_Left::Spanish:
-	/*	App->leftgermanyplayer->Enable();*/
-		break;
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
 	}
+	//case Player_Chosen_Left::Spanish:
+	///*	App->leftgermanyplayer->Enable();*/
+	//	break;
+	//
 
 	switch (App->choice2)
 	{
 	case Player_Chosen_Right::German:
 		App->rightgermanyplayer->Enable();
 		break;
-	case Player_Chosen_Right::Spanish:
-		/*	App->leftgermanyplayer->Enable();*/
-		break;
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
 	}
-	
-	App->leftgermanyplayer->Enable();
-	App->LeftJapanesePlayer->Enable();
-	App->rightgermanyplayer->Enable();
+
 	App->enemies->Enable();
-	App->rightgermanyplayer->Enable();
+
+	//case Player_Chosen_Right::Spanish:
+	//	/*	App->leftgermanyplayer->Enable();*/
+	//	break;
+
+	
+	//App->leftgermanyplayer->Enable();
+	//App->LeftJapanesePlayer->Enable();
+	//App->rightgermanyplayer->Enable();
+	//
+	//App->rightgermanyplayer->Enable();
 
 	return ret;
 }
