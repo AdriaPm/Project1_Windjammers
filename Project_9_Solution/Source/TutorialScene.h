@@ -57,7 +57,6 @@ public:
 	int currentAnimCount = 0;
 	//Animation* AnimationButtons[MAX_ANIMATIONS];
 	Animation* currentAButtons = nullptr;
-
 	// Buttons set of animations
 	Animation ButtonsidleAnim;
 	Animation ButtonsupAnim;
