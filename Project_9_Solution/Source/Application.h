@@ -63,7 +63,7 @@ public:
 
 	ModulePlayer* player = nullptr;
 
-	Char2* char2 = nullptr;
+	Left_German_Player* LeftGermanPlayer = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
 	DataEast* dataEast = nullptr;

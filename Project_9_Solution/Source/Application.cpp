@@ -12,7 +12,7 @@
 #include "TutorialScene.h"
 #include "TurfLevel.h"
 #include "ClayModule.h"
-#include "Char2.h"
+#include "Left_German_Player.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -43,7 +43,7 @@ Application::Application()
 	modules[10] =	turflevel =		new TurfLevel(false);		//Gameplay scene starts disabled
 	modules[11] =	clay =			new ClayModule(false);
 	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[13] =	char2 =			new Char2(false);
+	modules[13] = LeftGermanPlayer =new Left_German_Player(false);
 	modules[14] =	particles =		new ModuleParticles(true);
 	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
