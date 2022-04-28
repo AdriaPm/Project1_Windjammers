@@ -46,6 +46,9 @@ public:
 	Animation p1;
 	Animation p2;
 
+	uint chooseJapAudio = 0;
+	uint chooseGerAudio = 0;
+	uint chooseSpaAudio = 0;
 
 private:
 	int yMove1, xMove1, yMove2, xMove2;
