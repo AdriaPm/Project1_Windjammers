@@ -229,7 +229,7 @@ bool RightGermanPlayer::Start()
 	collider = App->collisions->AddCollider({ position.x, position.y, 25, 40 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789" };
-	scoreGerFontRight = App->fonts->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png", lookupTable, 1);
+	scoreGerFontRight = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
 
 	return ret;
 }
@@ -507,9 +507,7 @@ Update_Status RightGermanPlayer::PostUpdate()
 	sprintf_s(scoreGerTextRight, 10, "%7d", scoreGerRight);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreGerFontRight, scoreGerTextRight);
-
-	App->fonts->BlitText(150, 248, scoreGerFontRight, "this is just a font test");
+	App->fonts->BlitText(204, 8, scoreGerFontRight, scoreGerTextRight);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

@@ -42,10 +42,11 @@ public:
 	SDL_Rect loseR;
 	SDL_Rect time;
 
-	
-	
-	// Animation for the public
 	Animation background;
+
+	uint counter = 000;
+	int counterFont = -1;
+	char counterText[10] = { "\0" };
 };
 
 #endif

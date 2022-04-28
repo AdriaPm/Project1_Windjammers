@@ -12,6 +12,9 @@
 #include "RightGermanPlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
+
+#include <stdio.h>
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
@@ -44,7 +47,9 @@ bool TurfLevel::Start()
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
-	
+
+	char lookupTable[] = { "0123456789" };
+	counter = App->fonts->Load("Assets/Fonts/.png", lookupTable, 1);
 
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
@@ -141,7 +146,7 @@ Update_Status TurfLevel::Update()
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 90);
+		App->fade->FadeToBlack(this, (Module*)App->dataEast, 90);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -154,6 +159,10 @@ Update_Status TurfLevel::PostUpdate()
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 	App->render->Blit(uiSprites, 144, 13, &time);
+
+	//sprintf_s(counterText, 2, "%d", counter);
+
+	//App->fonts->BlitText(145, 21, counterFont, counterText);
 	
 	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL())
 	{
