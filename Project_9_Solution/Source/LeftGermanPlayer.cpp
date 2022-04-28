@@ -218,6 +218,7 @@ bool LeftGermanPlayer::Start()
 
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROW.png");
 	currentAnimation = &idleAnim;
+	App->P1Status = Player_State_Left::PLAYER_IDLE;
 
 	ShotFx = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_3.wav");
 
@@ -253,7 +254,7 @@ Update_Status LeftGermanPlayer::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
-		Player_State::PLAYER_MOVE;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 	}
 
 	//Right Anim
@@ -265,7 +266,7 @@ Update_Status LeftGermanPlayer::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
-		Player_State::PLAYER_MOVE;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 	}
 
 	//Down Anim
@@ -277,7 +278,7 @@ Update_Status LeftGermanPlayer::Update()
 			downAnim.Reset();
 			currentAnimation = &downAnim;
 		}
-		Player_State::PLAYER_MOVE;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 	}
 
 	//Up Anim
@@ -289,7 +290,7 @@ Update_Status LeftGermanPlayer::Update()
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
-		Player_State::PLAYER_MOVE;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 	}
 
 	//Up Left Anim
@@ -297,7 +298,7 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		position.x -= speedcross;
 		position.y -= speedcross;
-		Player_State::PLAYER_MOVE;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 
 		if (currentAnimation != &UpLeftAnim)
 		{
@@ -311,13 +312,12 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		position.x += speedcross;
 		position.y -= speedcross;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 
 		if (currentAnimation != &UpRightAnim)
 		{
-		
 			currentAnimation = &UpRightAnim;
 		}
-		Player_State::PLAYER_MOVE;
 	}
 	
 
@@ -326,12 +326,12 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		position.x -= speedcross;
 		position.y += speedcross;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 
 		if (currentAnimation != &DownLeftAnim)
 		{
 			currentAnimation = &DownLeftAnim;
 		}
-		Player_State::PLAYER_MOVE;
 	}
 
 	// Down Right Anim
@@ -339,12 +339,12 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		position.x += speedcross;
 		position.y += speedcross;
+		App->P1Status = Player_State_Left::PLAYER_MOVE;
 
 		if (currentAnimation != &DownRightAnim)
 		{
 			currentAnimation = &DownRightAnim;
 		}
-		Player_State::PLAYER_MOVE;
 	}
 
 
@@ -357,7 +357,7 @@ Update_Status LeftGermanPlayer::Update()
 			SlideRAnim.Reset();
 			currentAnimation = &SlideRAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 	//Up Slide Anim
@@ -369,13 +369,13 @@ Update_Status LeftGermanPlayer::Update()
 			SlideUAnim.Reset();
 			currentAnimation = &SlideUAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 	//Left Slide Anim
 	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 		position.x -= speedslide;
 
 		if (currentAnimation != &SlideLAnim)
@@ -396,7 +396,7 @@ Update_Status LeftGermanPlayer::Update()
 			SlideDAnim.Reset();
 			currentAnimation = &SlideDAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 	//Up Left Slide Anim
@@ -411,7 +411,7 @@ Update_Status LeftGermanPlayer::Update()
 			SlideUpLeftAnim.Reset();
 			currentAnimation = &SlideUpLeftAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 	//Up Right Slide Anim
@@ -426,7 +426,7 @@ Update_Status LeftGermanPlayer::Update()
 			SlideUpRightAnim.Reset();
 			currentAnimation = &SlideUpRightAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 	// Down Left Slide Anim
@@ -441,7 +441,7 @@ Update_Status LeftGermanPlayer::Update()
 			SlideDownLeftAnim.Reset();
 			currentAnimation = &SlideDownLeftAnim;
 		}
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 	}
 
 
@@ -451,7 +451,7 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		position.x += speedslide;
 		position.y += speedslide;
-		Player_State::PLAYER_DIVE;
+		App->P1Status = Player_State_Left::PLAYER_DIVE;
 
 		if (currentAnimation != &SlideDownRightAnim)
 		{
@@ -469,7 +469,7 @@ Update_Status LeftGermanPlayer::Update()
 			Throw.Reset();
 			currentAnimation = &Throw;
 		}
-		Player_State::PLAYER_THROW;
+		App->P1Status = Player_State_Left::PLAYER_THROW;
 
 	}
 
@@ -479,17 +479,26 @@ Update_Status LeftGermanPlayer::Update()
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(ShotFx); 
+		App->P1Status = Player_State_Left::PLAYER_THROW;
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+	if (/*App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE*/
+		App->P1Status != Player_State_Left::PLAYER_HOLD
+		&& App->P1Status != Player_State_Left::PLAYER_MOVE
+		&& App->P1Status != Player_State_Left::PLAYER_THROW
+		&& App->P1Status != Player_State_Left::PLAYER_DIVE){
 		currentAnimation = &idleAnim;
-		Player_State::PLAYER_IDLE;
+		App->P1Status = Player_State_Left::PLAYER_IDLE;
+	}
+
+	if (App->P1Status == Player_State_Left::PLAYER_HOLD) {
+		currentAnimation = &HoldingAnim;
 	}
 		
 
@@ -582,7 +591,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
-		currentAnimation = &HoldingAnim;
+		App->P1Status = Player_State_Left::PLAYER_HOLD;
 	}
 
 }

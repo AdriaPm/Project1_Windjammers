@@ -33,11 +33,20 @@ enum class Player_Locked {
 	Locked2
 };
 
-enum class Player_State {
+enum class Player_State_Left {
 	PLAYER_IDLE,
 	PLAYER_MOVE,
 	PLAYER_DIVE,
-	PLAYER_THROW
+	PLAYER_THROW,
+	PLAYER_HOLD
+};
+
+enum class Player_State_Right {
+	PLAYER_IDLE,
+	PLAYER_MOVE,
+	PLAYER_DIVE,
+	PLAYER_THROW,
+	PLAYER_HOLD
 };
 
 // Useful typedefs ----------------

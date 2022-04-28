@@ -64,7 +64,9 @@ public:
 	Player_Locked LockedinP1;
 	Player_Locked LockedinP2;
 
-	Player_State PlayerMoveChecker;
+	Player_State_Left P1Status;
+	Player_State_Right P2Status;
+
 
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;
