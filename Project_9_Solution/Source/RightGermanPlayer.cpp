@@ -101,19 +101,18 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.speed = 0.1f;
 
 	//Slide Left
-	SlideLAnim.PushBack({ 224, 239, 31, 31 });
 	SlideLAnim.PushBack({ 168, 239, 56, 31 });
+	SlideLAnim.PushBack({ 224, 239, 31, 31 });
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
 	SlideLAnim.loop = false;
 	SlideLAnim.speed = 0.1f;
 
 	//Slide Right
-	SlideRAnim.PushBack({ 1, 188, 31, 31 });
-	SlideRAnim.PushBack({ 32, 188, 31, 31 });
-	SlideRAnim.PushBack({ 63, 188, 29, 31 });
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
-	SlideRAnim.PushBack({ 149, 188, 32, 31 });
+	SlideRAnim.PushBack({ 63, 188, 29, 31 });
+	SlideRAnim.PushBack({ 32, 188, 31, 31 });
+	SlideRAnim.PushBack({ 1, 188, 31, 31 });
 	SlideRAnim.loop = false;
 	SlideRAnim.speed = 0.1f;
 
@@ -145,8 +144,8 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 
 
 	//Slide Up Left
-	SlideUpLeftAnim.PushBack({ 31, 91, 40, 59 });
-	SlideUpLeftAnim.PushBack({ 1, 91, 30, 59 });
+	SlideUpLeftAnim.PushBack({ 31, 91, 40, 49 });
+	SlideUpLeftAnim.PushBack({ 1, 91, 30, 49 });
 	SlideUpLeftAnim.PushBack({ 219, 53, 37, 35 });
 	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
 	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
