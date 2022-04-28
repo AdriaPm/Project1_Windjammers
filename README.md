@@ -36,7 +36,7 @@ Debug/God Mode: F1
 
 ## Members of I Was Hiding;
 
-1. Adrià Pons Mensa		[AdriàPm](https://github.com/AdriaPm)
+1. Adrià Pons Mensa             [AdriàPm](https://github.com/AdriaPm)
 2. Arnau Jiménez Gallego	[Historn](https://github.com/Historn)
 3. Jan Neto Llorens		[JanNetoLlorens](https://github.com/JanNetoLlorens)
 4. Joel Chaves Moreno		[JoeyCM](https://github.com/JoeyCM)
