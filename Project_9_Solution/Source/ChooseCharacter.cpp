@@ -104,10 +104,10 @@ Update_Status ChooseCharacter::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
-	}
+	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	//{
+	//	App->fade->FadeToBlack(this, (Module*)App->chooseMap, 40);
+	//}
 
 
 	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
