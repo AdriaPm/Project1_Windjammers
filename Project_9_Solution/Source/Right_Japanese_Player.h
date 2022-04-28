@@ -87,7 +87,8 @@ public:
 	// Sound effects indices
 	uint slidingSFX = 0;
 
-
+	//God Mode
+	bool godMode = false;
 
 	// Font score index
 	uint scoreJapRight = 000;

@@ -281,16 +281,32 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		position.x = 150 - 24;
 	}
 
-	//Score points
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
-	{
-		scoreJapLeft += 300;
+	
+	///Score points
+	if (App->input->keys[SDL_SCANCODE_F1] == Key_State::KEY_DOWN) {
+		godMode = !godMode;
 	}
 
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
-	{
-		scoreJapLeft += 500;
+	if (godMode == false) {
+
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
+		{
+			scoreJapLeft += 300;
+		}
+
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+		{
+			scoreJapLeft += 500;
+		}
 	}
+	else if (godMode == true) {
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
+			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+		{
+			scoreJapLeft += 0;
+		}
+	}
+	
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{

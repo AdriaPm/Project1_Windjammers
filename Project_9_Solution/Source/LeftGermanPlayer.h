@@ -85,6 +85,9 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
+	//God Mode
+	bool godMode = false;
+
 	// Sound effects indices
 	uint ShotFx = 0;
 	uint laserFx = 0;

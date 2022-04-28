@@ -94,6 +94,9 @@ public:
 
 	//Detect if has disc
 	bool hasDisc = true;
+
+	//God Mode
+	bool godMode = false;
 };
 
 #endif //!__MODULE_PLAYER_H__
