@@ -272,7 +272,7 @@ void TutorialScene::SceneAnimations()
 		currentAButtons = &ButtonsUpRightAnim;
 	}
 	
-	if (currentAnimation->GetLoopCount() >= 12.9 && currentAButtons->GetLoopCount() >= 12.9)
+	if (currentAnimation->GetLoopCount() >= 12 && currentAButtons->GetLoopCount() >= 12)
 	{
 		currentAnimation = &idleAnim;
 		currentAButtons = &ButtonsidleAnim;
