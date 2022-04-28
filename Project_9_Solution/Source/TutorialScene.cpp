@@ -154,7 +154,7 @@ bool TutorialScene::Start()
 	buttonsTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/JoystickAndButtons.png");
 	currentAButtons = &ButtonsidleAnim;
 
-	characterTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/CHAR1_IDLE/SPRITESHEET/CHAR1JapaneseSpriteSheet.png");
+	characterTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteALL.png");
 	currentAnimation = &idleAnim;
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);

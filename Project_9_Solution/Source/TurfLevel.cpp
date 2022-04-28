@@ -137,12 +137,31 @@ Update_Status TurfLevel::PostUpdate()
 
 bool TurfLevel::CleanUp()
 {
-	App->LeftJapanesePlayer->Disable();
-	App->leftgermanyplayer->Disable();
-	App->enemies->Disable();
-	App->RightJapanesePlayer->Disable();
-	App->rightgermanyplayer->Disable();
+	switch (App->choice1)
+	{
+	case Player_Chosen_Left::German:
+		App->leftgermanyplayer->Disable();
+		break;
+	case Player_Chosen_Left::Japanese:
+		App->LeftJapanesePlayer->Disable();
+		break;
+	}
+	//case Player_Chosen_Left::Spanish:
+	///*	App->leftgermanyplayer->Enable();*/
+	//	break;
+	//
 
+	switch (App->choice2)
+	{
+	case Player_Chosen_Right::German:
+		App->rightgermanyplayer->Disable();
+		break;
+	case Player_Chosen_Right::Japanese:
+		App->RightJapanesePlayer->Disable();
+		break;
+	}
+
+	App->enemies->Disable();
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
