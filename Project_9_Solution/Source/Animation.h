@@ -54,10 +54,10 @@ public:
 		return loopCount;
 	}
 	
-	/*int GetCurrentFrameCount() const
+	float GetCurrentFrameCount() const
 	{
 		return currentFrame;
-	}*/
+	}
 
 	const SDL_Rect& GetCurrentFrame() const
 	{
