@@ -221,6 +221,8 @@ bool RightGermanPlayer::Start()
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
 
+	ShotFx = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_3.wav");
+
 	position.x = 222;
 	position.y = 135;
 
@@ -469,11 +471,11 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 
-	if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x - 20, position.y, Collider::Type::DISK);
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
-		/*App->audio->PlayFx(laserFx);*/
+		App->audio->PlayFx(ShotFx);
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
