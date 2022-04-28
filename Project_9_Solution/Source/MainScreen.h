@@ -30,6 +30,8 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* Lettersp = nullptr;
+	SDL_Texture* Logow = nullptr;
 	Animation Letters;
 	Animation Logo;
 };

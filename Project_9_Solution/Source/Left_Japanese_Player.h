@@ -85,6 +85,7 @@ public:
 
 	// Sound effects indices
 	uint slidingSFX = 0;
+	uint discThrowSFX = 0;
 
 	// Font score index
 	uint scoreJapLeft = 000;
