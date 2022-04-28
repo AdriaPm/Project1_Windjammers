@@ -198,15 +198,122 @@ bool Left_Japanese_Player::Start()
 	//scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 24);
+	char lookupTable[] = { "0123456789" };
+	scoreFont = App->fonts->Load("Assets/Fonts/BasicText.png", lookupTable, 1);
 
 	return ret;
 }
 
 Update_Status Left_Japanese_Player::Update()
 {
-	if (hasDisc == false) 
+	Movement();
+	
+	collider->SetPos(position.x, position.y);
+
+	currentAnimation->Update();
+
+	
+	if(App->input->keys[SDL_SCANCODE_L] == Key_State::KEY_DOWN)
+	{
+		score += 500;
+	}
+	else if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN)
+	{
+		score += 300;
+	}
+	
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
+Update_Status Left_Japanese_Player::PostUpdate()
+{
+	if (!destroyed)
+	{
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(texture, position.x, position.y, &rect);
+	}
+
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%7d", score);
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(66, 8, scoreFont, scoreText);
+
+	//App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
+void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
+{
+	
+
+	if (c1 == collider && destroyed == false)
+	{
+		/*
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+
+		App->audio->PlayFx(explosionFx);
+		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
+
+		*/
+		
+		
+
+	}
+	
+	/// PLAYER COLLIDERS WITH THE MAP
+	//Collider player-upper wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
+		position.y = 40;
+	}
+	
+	//Collider player-lower wall
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
+		position.y = 199-40;
+	}
+
+	//Collider player-left goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL){
+		position.x = 10;
+	}
+
+	//Collider player-right goal
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
+		position.x = 295-25;
+	}
+
+	//Collider player-net
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
+		position.x = 150 - 24;
+	}
+
+
+	//Score points
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
+	{
+		score += 3;
+
+		//TODO: Add the winning condition
+
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+	{
+		score += 5;
+
+		//TODO: Add the winning condition
+	}
+}
+
+void Left_Japanese_Player::Movement() 
+{
+	if (hasDisc == false)
 	{
 		//Left anim
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -400,47 +507,42 @@ Update_Status Left_Japanese_Player::Update()
 			App->audio->PlayFx(slidingSFX);
 		}
 	}
-	else if(hasDisc == true)
+	else if (hasDisc == true)
 	{
-	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
-		App->particles->disk.speed.x = 5;
-		newParticle->collider->AddListener(this);
-		//hasDisc = false;
-		/*App->audio->PlayFx(laserFx);*/
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+		{
+			App->particles->disk.speed.x = 5;
+			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			//hasDisc = false;
+			/*App->audio->PlayFx(laserFx);*/
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+			App->particles->disk.speed.x = 2.5f;
+			App->particles->disk.speed.y = -5.5f;
+			App->particles->disk.position.x += App->particles->disk.speed.x;
+			App->particles->disk.position.y += App->particles->disk.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			//hasDisc = false;
+			/*App->audio->PlayFx(laserFx);*/
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+			App->particles->disk.speed.x = 2.5f;
+			App->particles->disk.speed.y = 5.5f;
+			App->particles->disk.position.x += App->particles->disk.speed.x;
+			App->particles->disk.position.y += App->particles->disk.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			//hasDisc = false;
+			/*App->audio->PlayFx(laserFx);*/
+		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
-
-		App->particles->disk.speed.x = 2.5f;
-		App->particles->disk.speed.y = -2.5f;
-		App->particles->disk.position.x += App->particles->disk.speed.x;
-		App->particles->disk.position.y += App->particles->disk.speed.y;
-		//newParticle->speed.x = 2.5f;
-		//newParticle->speed.y = -2.5f;
-		newParticle->collider->AddListener(this);
-		//hasDisc = false;
-		/*App->audio->PlayFx(laserFx);*/
-	}
-
-	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
-		App->particles->disk.speed.x = 2.5f;
-		App->particles->disk.speed.y = 2.5f;
-		App->particles->disk.position.x += App->particles->disk.speed.x;
-		App->particles->disk.position.y += App->particles->disk.speed.y;
-		/*newParticle->speed.x = 2.5f;
-		newParticle->speed.y = 2.5f;*/
-		newParticle->collider->AddListener(this);
-		//hasDisc = false;
-		/*App->audio->PlayFx(laserFx);*/
-	}
-	}
-	
 	// If no up/down left/right movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
@@ -448,95 +550,4 @@ Update_Status Left_Japanese_Player::Update()
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
-
-	collider->SetPos(position.x, position.y);
-
-	currentAnimation->Update();
-
-	return Update_Status::UPDATE_CONTINUE;
-}
-
-Update_Status Left_Japanese_Player::PostUpdate()
-{
-	if (!destroyed)
-	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(texture, position.x, position.y, &rect);
-	}
-
-	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
-
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
-
-	return Update_Status::UPDATE_CONTINUE;
-}
-
-void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
-{
-	
-
-	if (c1 == collider && destroyed == false)
-	{
-		/*
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		App->audio->PlayFx(explosionFx);
-		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
-
-		*/
-		
-		
-
-	}
-	
-	/// PLAYER COLLIDERS WITH THE MAP
-	//Collider player-upper wall
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
-		position.y = 40;
-	}
-	
-	//Collider player-lower wall
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
-		position.y = 199-40;
-	}
-
-	//Collider player-left goal
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL){
-		position.x = 10;
-	}
-
-	//Collider player-right goal
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
-		position.x = 295-25;
-	}
-
-	//Collider player-net
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
-		position.x = 150 - 24;
-	}
-
-
-	//Score points
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
-	{
-		score += 3;
-
-		//TODO: Add the winning condition
-
-	}
-
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
-	{
-		score += 5;
-
-		//TODO: Add the winning condition
-	}
 }
