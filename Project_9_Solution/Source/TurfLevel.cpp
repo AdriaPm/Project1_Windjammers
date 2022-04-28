@@ -27,7 +27,7 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	winL = {324, 86, 112, 32};
 	loseR = {393, 27, 99, 27};
 	loseL = {0, 54, 100, 27};
-
+	time = {175, 11, 15, 5 };
 }
 
 TurfLevel::~TurfLevel()
@@ -43,7 +43,7 @@ bool TurfLevel::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
-	winLoseText = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/UISpriteSheetFinal.png");
+	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 	
 
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
@@ -141,7 +141,7 @@ Update_Status TurfLevel::Update()
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 90);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -153,27 +153,28 @@ Update_Status TurfLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
+	App->render->Blit(uiSprites, 144, 13, &time);
 	
 	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL())
 	{
-		App->render->Blit(winLoseText, 30, 54, &winR);
-		App->render->Blit(winLoseText, 175, 54, &loseL);
+		App->render->Blit(uiSprites, 30, 54, &winR);
+		App->render->Blit(uiSprites, 175, 54, &loseL);
 	}
 	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL())
 	{
-		App->render->Blit(winLoseText, 174, 54, &loseR);
-		App->render->Blit(winLoseText, 18, 48, &winL);
+		App->render->Blit(uiSprites, 174, 54, &loseR);
+		App->render->Blit(uiSprites, 18, 48, &winL);
 	}
 
 	if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL())
 	{
-		App->render->Blit(winLoseText, 30, 54, &winR);
-		App->render->Blit(winLoseText, 175, 54, &loseL);
+		App->render->Blit(uiSprites, 30, 54, &winR);
+		App->render->Blit(uiSprites, 175, 54, &loseL);
 	}
 	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL())
 	{
-		App->render->Blit(winLoseText, 174, 54, &loseR);
-		App->render->Blit(winLoseText, 18, 48, &winL);
+		App->render->Blit(uiSprites, 174, 54, &loseR);
+		App->render->Blit(uiSprites, 18, 48, &winL);
 	}
 	
 
