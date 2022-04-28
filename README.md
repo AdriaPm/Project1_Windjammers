@@ -2,33 +2,14 @@
 
 ## Description
 
-Windjammers is an arcade sports game, in which the main objective of it is to win your opponent in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches but adds a frenetic point of view when playing it due to its special features such as the goals, score points, unique characters and special courts.
+Windjammers is an arcade sports game, in which the main objective of it is to win your opponent
+in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches 
+but adds a frenetic point of view when playing it due to its special features such as the goals, 
+score points, unique characters and special courts.
 
 ## GitHub link
 
 https://github.com/Historn/Project-1.git
-
-## Usage
-
-Next Menu Screen/Confirm Map Selection: SPACE
-
-Player 1:
- Move/Select: - W: Up
-	      - S: Down
-	      - A: Left
-	      - D: Right
-Confirm/Shots: - C: Confirm Selection, Normal Shot
-	       - V: Parabolic Shot
-
-Player 2:
- Move/Select: - Up Arrow: Up
-	      - Down Arrow: Down
-	      - Left Arrow: Left
-	      - Right Arrow: Right
-Confirm/Shots: - N: Confirm Selection, Normal Shot
-	       - M: Parabolic Shot 
-
-Debug/God Mode: F1
 
 ## Members of I WAS HIDING STUDIOS;
 
@@ -38,26 +19,28 @@ Debug/God Mode: F1
 4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
 5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
 
-## License
+## Usage
 
-MIT License
+Next Menu Screen/Confirm Map Selection: SPACE
 
-Copyright (c) [2022] [I Was Hiding Studio: Windjammers]
+Player 1:
+ Move/Select: - W: Up
+	        - S: Down
+	        - A: Left
+	        - D: Right
+Confirm/Shots: - C: Confirm Selection, Normal Shot
+	         - V: Parabolic Shot
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Player 2:
+ Move/Select: - Up Arrow: Up
+	        - Down Arrow: Down
+	        - Left Arrow: Left
+	        - Right Arrow: Right
+Confirm/Shots: - N: Confirm Selection, Normal Shot
+	         - M: Parabolic Shot 
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+God Mode: - F1
+Debug Collisions: - F2
+Win: - F3
+Loose: - F4
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
