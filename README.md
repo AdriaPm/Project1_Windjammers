@@ -1,6 +1,6 @@
 # Windjammers
 
-TODO: Write a project description
+Windjammers is an arcade sports game, in which the main objective of it is to win your opponent in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches but adds a frenetic point of view when playing it due to its special features such as the goals, score points, unique characters and special courts.
 
 ## Installation
 
@@ -33,6 +33,14 @@ Debug/God Mode: F1
 3. Commit your changes: 'git commit -am 'Add some feature''
 4. Push to the branch: 'git push origin my-new-feature'
 5. Submit a pull request.
+
+## Members of I Was Hiding;
+
+1. Adrià Pons Mensa		[AdriàPm](https://github.com/AdriaPm)
+2. Arnau Jiménez Gallego	[Historn](https://github.com/Historn)
+3. Jan Neto Llorens		[JanNetoLlorens](https://github.com/JanNetoLlorens)
+4. Joel Chaves Moreno		[JoeyCM](https://github.com/JoeyCM)
+5. Rylan Graham			[RylanJGraham](https://github.com/RylanJGraham)
 
 ## History
 
