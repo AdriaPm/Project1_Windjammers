@@ -24,9 +24,8 @@ bool UPC::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/UPC.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
-
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/InitialScreen.png");
+	
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
