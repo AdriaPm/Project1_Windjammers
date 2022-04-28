@@ -81,6 +81,7 @@ public:
 	bool destroyed = false;
 
 	// Sound effects indices
+	uint ShotFx = 0;
 	uint laserFx = 0;
 	uint explosionFx = 0;
 

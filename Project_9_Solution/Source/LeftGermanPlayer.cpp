@@ -215,6 +215,8 @@ bool LeftGermanPlayer::Start()
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROW.png");
 	currentAnimation = &idleAnim;
 
+	ShotFx = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_3.wav");
+
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
 
@@ -472,7 +474,7 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
-		/*App->audio->PlayFx(laserFx);*/
+		App->audio->PlayFx(ShotFx);
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
