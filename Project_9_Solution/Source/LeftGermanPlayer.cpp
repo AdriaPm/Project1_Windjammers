@@ -466,40 +466,36 @@ Update_Status LeftGermanPlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN) {
 		if (currentAnimation != &Throw)
 		{
+			
 			Throw.Reset();
 			currentAnimation = &Throw;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			App->audio->PlayFx(ShotFx);
+
+			/*App->P1Status = Player_State_Left::PLAYER_THROW;*/
 		}
-		App->P1Status = Player_State_Left::PLAYER_THROW;
-
-	}
-
-	
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
-		App->audio->PlayFx(ShotFx); 
-		App->P1Status = Player_State_Left::PLAYER_THROW;
+		
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
-	if (/*App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE*/
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE /*&&
 		App->P1Status != Player_State_Left::PLAYER_HOLD
 		&& App->P1Status != Player_State_Left::PLAYER_MOVE
 		&& App->P1Status != Player_State_Left::PLAYER_THROW
-		&& App->P1Status != Player_State_Left::PLAYER_DIVE){
+		&& App->P1Status != Player_State_Left::PLAYER_DIVE*/){
 		currentAnimation = &idleAnim;
 		App->P1Status = Player_State_Left::PLAYER_IDLE;
 	}
 
-	if (App->P1Status == Player_State_Left::PLAYER_HOLD) {
-		currentAnimation = &HoldingAnim;
-	}
+	//if (App->P1Status == Player_State_Left::PLAYER_HOLD) {
+	//	currentAnimation = &HoldingAnim;
+	//}
 		
 
 	collider->SetPos(position.x, position.y);
@@ -589,9 +585,8 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		score += 23;
 	}
 
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
-	{
-		App->P1Status = Player_State_Left::PLAYER_HOLD;
-	}
+	//if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
+	//{
+	//}
 
 }
