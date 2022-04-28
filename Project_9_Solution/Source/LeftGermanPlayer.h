@@ -32,6 +32,8 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
+	void Movement();
+
 	uint getGerScoreL() { return scoreGerLeft; }
 
 public:
@@ -87,11 +89,16 @@ public:
 	uint ShotFx = 0;
 	uint laserFx = 0;
 	uint explosionFx = 0;
+	uint discThrowSFX = 0;
+
 
 	// Font score index
 	uint scoreGerLeft = 000;
 	int scoreFontGerLeft = -1;
 	char scoreTextGerLeft[10] = { "\0" };
+
+	//Detect if has disc
+	bool hasDisc = true;
 
 };
 

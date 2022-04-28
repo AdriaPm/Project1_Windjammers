@@ -63,6 +63,7 @@ public:
 	Particle diskR;
 	Particle disk;
 
+	
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
