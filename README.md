@@ -21,8 +21,6 @@ https://github.com/Historn/Project-1.git
 
 ## Usage
 
-Next Menu Screen/Confirm Map Selection: SPACE
-
 Player 1:
  Move/Select: - W: Up
 	        - S: Down
