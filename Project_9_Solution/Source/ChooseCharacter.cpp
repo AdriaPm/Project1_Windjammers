@@ -117,11 +117,11 @@ Update_Status ChooseCharacter::Update()
 		}
 
 		if (xMove1 == 9 && yMove1 == 128) {
-			App->choice1 = Player_Chosen_Left::Spanish;
+			App->choice1 = Player_Chosen_Left::German;
 		}
 
 		if (xMove1 == 153 && yMove1 == 72) {
-			App->choice1 = Player_Chosen_Left::German;
+			App->choice1 = Player_Chosen_Left::Spanish;
 		}
 	}
 
@@ -132,11 +132,11 @@ Update_Status ChooseCharacter::Update()
 		}
 
 		if (xMove2 == 39 && yMove2 == 128) {
-			App->choice2 = Player_Chosen_Right::Spanish;
+			App->choice2 = Player_Chosen_Right::German;
 		}
 
 		if (xMove2 == 183 && yMove2 == 72) {
-			App->choice2 = Player_Chosen_Right::German;
+			App->choice2 = Player_Chosen_Right::Spanish;
 		}
 	}
 
