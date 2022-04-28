@@ -88,9 +88,9 @@ public:
 
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
+	uint scoreRight = 000;
+	int scoreFontRight = -1;
+	char scoreTextRight[10] = { "\0" };
 
 };
 

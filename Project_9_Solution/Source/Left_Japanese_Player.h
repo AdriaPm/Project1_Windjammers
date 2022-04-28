@@ -32,7 +32,7 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	void Movement() override;
+	void Movement();
 
 public:
 	// Position of the player in the map
@@ -85,9 +85,13 @@ public:
 	uint slidingSFX = 0;
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
+	uint scoreLeft = 000;
+	int scoreFontLeft = -1;
+	char scoreTextLeft[10] = { "\0" };
+
+	uint counter = 00;
+	int counterFont = -1;
+	char counterText[5] = { "\0" };
 
 	//Detect if has disc
 	bool hasDisc = true;

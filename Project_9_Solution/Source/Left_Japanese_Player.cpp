@@ -199,29 +199,19 @@ bool Left_Japanese_Player::Start()
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
 	char lookupTable[] = { "0123456789" };
-	scoreFont = App->fonts->Load("Assets/Fonts/BasicText.png", lookupTable, 1);
+	scoreFontLeft = App->fonts->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png", lookupTable, 1);
 
 	return ret;
 }
 
 Update_Status Left_Japanese_Player::Update()
 {
+	//In this function are all the movement inputs and animations updates
 	Movement();
 	
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
-
-	
-	if(App->input->keys[SDL_SCANCODE_L] == Key_State::KEY_DOWN)
-	{
-		score += 500;
-	}
-	else if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN)
-	{
-		score += 300;
-	}
-	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -234,13 +224,10 @@ Update_Status Left_Japanese_Player::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
+	//// Draw UI (score) --------------------------------------
+	//sprintf_s(scoreTextLeft, 10, "%7d", scoreLeft);
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(66, 8, scoreFont, scoreText);
-
-	//App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	//App->fonts->BlitText(66, 8, scoreFontLeft, scoreTextLeft);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -297,15 +284,14 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	//Score points
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 	{
-		score += 3;
-
+		scoreLeft += 300;
 		//TODO: Add the winning condition
 
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 	{
-		score += 5;
+		scoreLeft += 500;
 
 		//TODO: Add the winning condition
 	}
@@ -550,4 +536,12 @@ void Left_Japanese_Player::Movement()
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
+	
+	/*if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
+		&& hasDisc == true)
+		currentAnimation = &diskHoldBEACH;*/
 }

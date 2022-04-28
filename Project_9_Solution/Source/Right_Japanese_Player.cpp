@@ -196,8 +196,8 @@ bool Right_Japanese_Player::Start()
 	//scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
+	char lookupTable[] = { "0123456789" };
+	scoreFontRight = App->fonts->Load("Assets/Fonts/BasicText.png", lookupTable, 1);
 
 	return ret;
 }
@@ -427,12 +427,9 @@ Update_Status Right_Japanese_Player::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
+	sprintf_s(scoreTextRight, 10, "%d", scoreRight);
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
-
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	App->fonts->BlitText(58, 248, scoreFontRight, scoreTextRight);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -488,7 +485,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
-		score += 23;
+		scoreRight += 23;
 	}
 
 
