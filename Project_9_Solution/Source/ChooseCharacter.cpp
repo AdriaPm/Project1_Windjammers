@@ -46,28 +46,28 @@ bool ChooseCharacter::Start()
 
 Update_Status ChooseCharacter::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
 		if (xMove1 == 9 && yMove1 == 72)
 		{
 			xMove1 = 9; yMove1 = 128;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
 		if (xMove1 == 9 && yMove1 == 128)
 		{
 			xMove1 = 9; yMove1 = 72;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
 		if (xMove1 == 9 && yMove1 == 72)
 		{
 			xMove1 =  153; yMove1 = 72;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
 		if (xMove1 == 153 && yMove1 == 72)
 		{
@@ -75,28 +75,28 @@ Update_Status ChooseCharacter::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
 		if (xMove2 == 39 && yMove2 == 72)
 		{
 			xMove2 = 39; yMove2 = 128;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
 		if (xMove2 == 39 && yMove2 == 128)
 		{
 			xMove2 = 39; yMove2 = 72;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
 		if (xMove2 == 39 && yMove2 == 72)
 		{
 			xMove2 = 183; yMove2 = 72;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
 		if (xMove2 == 183 && yMove2 == 72)
 		{
@@ -114,14 +114,17 @@ Update_Status ChooseCharacter::Update()
 	{
 		if (xMove1 == 9 && yMove1 == 72) {
 			App->choice1 = Player_Chosen_Left::Japanese;
+			App->LockedinP1 = Player_Locked::Locked1;
 		}
 
 		if (xMove1 == 9 && yMove1 == 128) {
 			App->choice1 = Player_Chosen_Left::German;
+			App->LockedinP1 = Player_Locked::Locked1;
 		}
 
 		if (xMove1 == 153 && yMove1 == 72) {
 			App->choice1 = Player_Chosen_Left::Spanish;
+			App->LockedinP1 = Player_Locked::Locked1;
 		}
 	}
 
@@ -129,14 +132,17 @@ Update_Status ChooseCharacter::Update()
 	{
 		if (xMove2 == 39 && yMove2 == 72) {
 			App->choice2 = Player_Chosen_Right::Japanese;
+			App->LockedinP2 = Player_Locked::Locked2;
 		}
 
 		if (xMove2 == 39 && yMove2 == 128) {
 			App->choice2 = Player_Chosen_Right::German;
+			App->LockedinP2 = Player_Locked::Locked2;
 		}
 
 		if (xMove2 == 183 && yMove2 == 72) {
 			App->choice2 = Player_Chosen_Right::Spanish;
+			App->LockedinP2 = Player_Locked::Locked2;
 		}
 	}
 
