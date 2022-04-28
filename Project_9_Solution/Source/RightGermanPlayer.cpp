@@ -442,8 +442,8 @@ Update_Status RightGermanPlayer::Update()
 
 
 	// Down Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_UP)
 	{
 		position.x += speedcross;
 		position.y += speedcross;
