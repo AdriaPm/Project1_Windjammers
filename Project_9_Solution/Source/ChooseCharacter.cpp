@@ -38,6 +38,10 @@ bool ChooseCharacter::Start()
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
+	chooseJapAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/JapaneseCharacter/Japanese_1.wav");
+	chooseGerAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_1.wav");
+	chooseSpaAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/SpanishCharacter/Spanish_1.wav");
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -115,16 +119,19 @@ Update_Status ChooseCharacter::Update()
 		if (xMove1 == 9 && yMove1 == 72) {
 			App->choice1 = Player_Chosen_Left::Japanese;
 			App->LockedinP1 = Player_Locked::Locked1;
+			App->audio->PlayFx(chooseJapAudio);
 		}
 
 		if (xMove1 == 9 && yMove1 == 128) {
 			App->choice1 = Player_Chosen_Left::German;
 			App->LockedinP1 = Player_Locked::Locked1;
+			App->audio->PlayFx(chooseGerAudio);
 		}
 
 		if (xMove1 == 153 && yMove1 == 72) {
 			App->choice1 = Player_Chosen_Left::Spanish;
 			App->LockedinP1 = Player_Locked::Locked1;
+			App->audio->PlayFx(chooseSpaAudio);
 		}
 	}
 
@@ -133,16 +140,19 @@ Update_Status ChooseCharacter::Update()
 		if (xMove2 == 39 && yMove2 == 72) {
 			App->choice2 = Player_Chosen_Right::Japanese;
 			App->LockedinP2 = Player_Locked::Locked2;
+			App->audio->PlayFx(chooseJapAudio);
 		}
 
 		if (xMove2 == 39 && yMove2 == 128) {
 			App->choice2 = Player_Chosen_Right::German;
 			App->LockedinP2 = Player_Locked::Locked2;
+			App->audio->PlayFx(chooseGerAudio);
 		}
 
 		if (xMove2 == 183 && yMove2 == 72) {
 			App->choice2 = Player_Chosen_Right::Spanish;
 			App->LockedinP2 = Player_Locked::Locked2;
+			App->audio->PlayFx(chooseSpaAudio);
 		}
 	}
 
