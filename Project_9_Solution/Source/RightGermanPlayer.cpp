@@ -132,6 +132,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDAnim.PushBack({ 1, 239, 28, 49 });
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
+	SlideDAnim.loop = false;
 	SlideDAnim.speed = 0.1f;
 
 
@@ -250,7 +251,7 @@ Update_Status RightGermanPlayer::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 	//Right Anim
@@ -262,7 +263,7 @@ Update_Status RightGermanPlayer::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 	//Down Anim
@@ -274,7 +275,7 @@ Update_Status RightGermanPlayer::Update()
 			downAnim.Reset();
 			currentAnimation = &downAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 	//Up Anim
@@ -286,7 +287,7 @@ Update_Status RightGermanPlayer::Update()
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 	//Up Left Anim
@@ -314,7 +315,7 @@ Update_Status RightGermanPlayer::Update()
 
 			currentAnimation = &UpRightAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 
@@ -328,7 +329,7 @@ Update_Status RightGermanPlayer::Update()
 		{
 			currentAnimation = &DownLeftAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 	// Down Right Anim
@@ -341,7 +342,7 @@ Update_Status RightGermanPlayer::Update()
 		{
 			currentAnimation = &DownRightAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_MOVE;
+		/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 	}
 
 
@@ -353,7 +354,7 @@ Update_Status RightGermanPlayer::Update()
 		{
 			currentAnimation = &SlideRAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 	//Up Slide Anim
@@ -365,7 +366,7 @@ Update_Status RightGermanPlayer::Update()
 			SlideUAnim.Reset();
 			currentAnimation = &SlideUAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 	//Left Slide Anim
@@ -382,15 +383,16 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	//Down Slide Anim
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
-		position.y += 5;
+		position.y += speedslide;
 
 		if (currentAnimation != &SlideDAnim)
 		{
+			SlideDAnim.Reset();
 			currentAnimation = &SlideDAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 	//Up Left Slide Anim
@@ -405,7 +407,7 @@ Update_Status RightGermanPlayer::Update()
 			SlideUpLeftAnim.Reset();
 			currentAnimation = &SlideUpLeftAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 	//Up Right Slide Anim
@@ -420,12 +422,12 @@ Update_Status RightGermanPlayer::Update()
 			SlideUpRightAnim.Reset();
 			currentAnimation = &SlideUpRightAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 	// Down Left Slide Anim
 	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
+		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedslide;
 		position.y += speedslide;
@@ -435,7 +437,7 @@ Update_Status RightGermanPlayer::Update()
 			SlideDownLeftAnim.Reset();
 			currentAnimation = &SlideDownLeftAnim;
 		}
-		App->P2Status = Player_State_Right::PLAYER_DIVE;
+		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 	}
 
 
@@ -482,7 +484,7 @@ Update_Status RightGermanPlayer::Update()
 		&& App->P2Status != Player_State_Right::PLAYER_THROW
 		&& App->P2Status != Player_State_Right::PLAYER_DIVE*/){
 		currentAnimation = &idleAnim;
-		App->P2Status = Player_State_Right::PLAYER_IDLE;
+		/*App->P2Status = Player_State_Right::PLAYER_IDLE;*/
 	}
 
 
