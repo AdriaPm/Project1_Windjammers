@@ -9,14 +9,23 @@
 
 DataEast::DataEast(bool startEnabled) : Module(startEnabled)
 {
-	DElogo.PushBack({ 227, 103, 24, 37 });
-	DElogo.PushBack({ 251, 103, 24, 39 });
-	DElogo.PushBack({ 275, 103, 24, 36 });
-	DElogo.PushBack({ 299, 103, 24, 35 });
-	DElogo.PushBack({ 323, 103, 24, 36 });
-	DElogo.PushBack({ 347, 103, 23, 36 });
-	DElogo.PushBack({ 370, 103, 23, 35 });
-	DElogo.PushBack({ 393, 103, 23, 36 });
+	DElogo.PushBack({ 227, 103, 99, 33 });
+	DElogo.PushBack({ 251, 103, 141, 32 });
+	DElogo.PushBack({ 275, 103, 250, 29});
+	DElogo.PushBack({ 299, 103, 250, 31});
+	DElogo.PushBack({ 323, 103, 250, 44 });
+	DElogo.PushBack({ 347, 103, 250, 50 });
+	DElogo.PushBack({ 370, 103, 250, 54 });
+	DElogo.PushBack({ 393, 103, 253, 61 });
+	DElogo.PushBack({ 227, 103, 250, 70 });
+	DElogo.PushBack({ 251, 103, 250, 71 });
+	DElogo.PushBack({ 275, 103, 253, 75 });
+	DElogo.PushBack({ 299, 103, 252, 78 });
+	DElogo.PushBack({ 323, 103, 252, 82 });
+	DElogo.PushBack({ 347, 103, 251, 86 });
+	DElogo.PushBack({ 370, 103, 252, 85 });
+	DElogo.PushBack({ 393, 103, 251, 88 });
+	DElogo.PushBack({ 393, 103, 252, 89 });
 	DElogo.speed = 0.1f;
 }
 
@@ -32,7 +41,8 @@ bool DataEast::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/DataEastScreen.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/DataEastScreendef.png");
+	bgTexture=App->textures->Load("Assets/Spriteswind/Sprites/UI/Start2.png")
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
