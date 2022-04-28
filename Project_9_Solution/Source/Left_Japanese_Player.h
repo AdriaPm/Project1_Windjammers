@@ -92,10 +92,6 @@ public:
 	int scoreJapFontLeft = -1;
 	char scoreJapTextLeft[10] = { "\0" };
 
-	uint counter = 00;
-	int counterFont = -1;
-	char counterText[5] = { "\0" };
-
 	//Detect if has disc
 	bool hasDisc = true;
 };

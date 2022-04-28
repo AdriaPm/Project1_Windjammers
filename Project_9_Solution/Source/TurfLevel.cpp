@@ -10,6 +10,8 @@
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 {
@@ -136,6 +138,11 @@ bool TurfLevel::Start()
 Update_Status TurfLevel::Update()
 {
 	background.Update();
+
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
