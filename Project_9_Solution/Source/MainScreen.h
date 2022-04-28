@@ -32,8 +32,13 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* Lettersp = nullptr;
 	SDL_Texture* Logow = nullptr;
+	
 	Animation Letters;
 	Animation Logo;
+
+	Animation* currentAnimation = nullptr;
+
+	uint selectionSFX = 0;
 };
 
 #endif

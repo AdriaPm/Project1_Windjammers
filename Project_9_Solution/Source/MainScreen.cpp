@@ -22,6 +22,7 @@ MainScreen::MainScreen(bool startEnabled) : Module(startEnabled)
 	Letters.PushBack({ 2295, 5, 258, 10 });
 	Letters.PushBack({ 2550, 0, 258, 10 });
 	Letters.speed = 0.1f;
+	Letters.loop = false;
 
 	//main logo anim
 	Logo.PushBack({ 0, 96, 20, 26 });
@@ -54,8 +55,8 @@ MainScreen::MainScreen(bool startEnabled) : Module(startEnabled)
 	Logo.PushBack({ 8220, 0, 285, 120 });
 	Logo.PushBack({ 8514, 0, 285, 120 });
 	Logo.PushBack({ 8807, 0, 285, 120 });
-	Logo.PushBack({ 9100, 0, 285, 120 });
 	Logo.speed = 0.1f;
+	Logo.loop = false;
 }
 
 MainScreen::~MainScreen()
@@ -73,8 +74,9 @@ bool MainScreen::Start()
 	Lettersp = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start3.png");
 	Logow = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start4.png");
 
+	currentAnimation = &Logo;
 
-
+	selectionSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/Select.wav");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -87,7 +89,10 @@ Update_Status MainScreen::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 90);
+		App->audio->PlayFx(selectionSFX);
 	}
+
+	currentAnimation->Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -95,8 +100,17 @@ Update_Status MainScreen::Update()
 // Update: draw background
 Update_Status MainScreen::PostUpdate()
 {
+	SDL_Rect rect = Logo.GetCurrentFrame();
+	SDL_Rect rect2 = Letters.GetCurrentFrame();
+
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-
+	App->render->Blit(Logow, 15, 30, &rect, false);
+	
+	if (currentAnimation->GetLoopCount() >= 1) {
+		currentAnimation = &Letters;
+		App->render->Blit(Lettersp, 22, 35, &rect2, false);
+	}
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
