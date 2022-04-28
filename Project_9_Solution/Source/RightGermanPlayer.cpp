@@ -345,7 +345,7 @@ Update_Status RightGermanPlayer::Update()
 
 
 	//Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
@@ -371,7 +371,7 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	//Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		position.x -= speedslide;
@@ -384,7 +384,7 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	//Down Slide Anim
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.y += speedslide;
 
@@ -397,7 +397,7 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	//Up Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
@@ -412,7 +412,7 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	//Up Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
@@ -427,7 +427,7 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 	// Down Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedcross;
@@ -443,7 +443,7 @@ Update_Status RightGermanPlayer::Update()
 
 
 	// Down Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedcross;
