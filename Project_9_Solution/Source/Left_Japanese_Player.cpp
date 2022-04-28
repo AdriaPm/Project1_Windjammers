@@ -492,39 +492,37 @@ void Left_Japanese_Player::Movement()
 	}
 	else if (hasDisc == true)
 	{
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
-			App->particles->diskL.speed.x = 5;
-			App->particles->diskL.speed.y = 0;
+			App->particles->diskL.speed.x = 5.0f;
+			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisc = false;
+			//hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-			App->particles->diskL.speed.x = 2;
-			App->particles->diskL.speed.y = -5;
+			App->particles->diskL.speed.x = 2.0f;
+			App->particles->diskL.speed.y = -7.0f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisc = false;
+			//hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
-			
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-			App->particles->diskL.speed.x = 2;
-			App->particles->diskL.speed.y = 5;
+			App->particles->diskL.speed.x = 2.0f;
+			App->particles->diskL.speed.y = 7.0f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisc = false;
+			//hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}

@@ -34,7 +34,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::DISK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::DISK] = false;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::LOWER_WALL] = true;
@@ -107,7 +107,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::NET][Collider::Type::ENEMY] = true;
 
 	matrix[Collider::Type::DISK][Collider::Type::DISK] = false;
-	matrix[Collider::Type::DISK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::DISK][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::DISK][Collider::Type::NET] = false;
 	matrix[Collider::Type::DISK][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::DISK][Collider::Type::UPPER_WALL] = true;
