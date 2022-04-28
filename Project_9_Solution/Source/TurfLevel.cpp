@@ -151,6 +151,8 @@ Update_Status TurfLevel::Update()
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
+
+		App->turflevel->Disable();
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -170,20 +172,20 @@ Update_Status TurfLevel::PostUpdate()
 	
 	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL() && App->RightJapanesePlayer->getJapScoreR() > 1200)
 	{
-		App->render->Blit(uiSprites, 30, 54, &winR);
-		App->render->Blit(uiSprites, 175, 54, &loseL);
+		App->render->Blit(uiSprites, 175, 54, &winR);
+		App->render->Blit(uiSprites, 30, 54, &loseL);
 		
 	}
 	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL() && App->LeftJapanesePlayer->getJapScoreL() > 1200)
 	{
-		App->render->Blit(uiSprites, 174, 54, &loseR);
-		App->render->Blit(uiSprites, 18, 48, &winL);
+		App->render->Blit(uiSprites, 18, 54, &loseR);
+		App->render->Blit(uiSprites, 174, 48, &winL);
 	}
 
 	if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL() && App->rightgermanyplayer->getGerScoreR() > 1200)
 	{
-		App->render->Blit(uiSprites, 30, 54, &winR);
-		App->render->Blit(uiSprites, 175, 54, &loseL);
+		App->render->Blit(uiSprites, 175, 54, &winR);
+		App->render->Blit(uiSprites, 30, 54, &loseL);
 	}
 	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL() && App->leftgermanyplayer->getGerScoreL() > 1200)
 	{
