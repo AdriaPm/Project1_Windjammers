@@ -13,6 +13,18 @@ Player 1:
 	      - S: Down
 	      - A: Left
 	      - D: Right
+Confirm/Shots: - C: Confirm Selection, Normal Shot
+	       - V: Parabolic Shot
+
+Player 2:
+ Move/Select: - Up Arrow: Up
+	      - Down Arrow: Down
+	      - Left Arrow: Left
+	      - Right Arrow: Right
+Confirm/Shots: - N: Confirm Selection, Normal Shot
+	       - M: Parabolic Shot 
+
+Debug/God Mode: F1
 
 ## Contributing
 
