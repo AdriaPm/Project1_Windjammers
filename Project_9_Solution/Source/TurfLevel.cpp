@@ -159,6 +159,7 @@ Update_Status TurfLevel::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 30, 54, &winR);
 		App->render->Blit(uiSprites, 175, 54, &loseL);
+		
 	}
 	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL())
 	{
