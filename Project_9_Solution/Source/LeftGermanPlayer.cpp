@@ -198,6 +198,10 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.PushBack({ 179, 14, 29, 29 });
 	victAnim.PushBack({ 208, 14, 31, 29 });
 
+	HoldingAnim.PushBack({184, 288, 22, 31});
+	HoldingAnim.loop = true;
+	HoldingAnim.speed = 0.1f;
+
 
 }
 
@@ -576,5 +580,9 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		score += 23;
 	}
 
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
+	{
+		currentAnimation = &HoldingAnim;
+	}
 
 }
