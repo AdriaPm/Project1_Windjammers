@@ -472,9 +472,9 @@ Update_Status LeftGermanPlayer::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
-		App->audio->PlayFx(ShotFx);
+		App->audio->PlayFx(ShotFx); 
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle

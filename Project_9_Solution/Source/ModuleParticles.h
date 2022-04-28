@@ -59,7 +59,10 @@ public:
 	//Template particle for a laser
 	Particle laser;
 
+	Particle diskL;
+	Particle diskR;
 	Particle disk;
+
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

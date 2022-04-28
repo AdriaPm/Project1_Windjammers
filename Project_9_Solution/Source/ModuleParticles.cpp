@@ -41,13 +41,21 @@ bool ModuleParticles::Start()
 	//laser.lifetime = 180;
 	//laser.anim.speed = 0.2f;
 
-	disk.anim.PushBack({ 117, 48, 17, 17});
-	disk.anim.PushBack({ 149, 48, 17, 17});
-	disk.anim.PushBack({ 181, 48, 17, 17});
-	disk.anim.PushBack({ 213, 48, 17, 17});
-	disk.lifetime = 350;
-	disk.speed.x = 5;
-	disk.anim.speed = 0.2f;
+	diskL.anim.PushBack({ 117, 48, 17, 17});
+	diskL.anim.PushBack({ 149, 48, 17, 17});
+	diskL.anim.PushBack({ 181, 48, 17, 17});
+	diskL.anim.PushBack({ 213, 48, 17, 17});
+	diskL.lifetime = 350;
+	diskL.speed.x = 5;
+	diskL.anim.speed = 0.2f;
+
+	diskR.anim.PushBack({ 117, 48, 17, 17 });
+	diskR.anim.PushBack({ 149, 48, 17, 17 });
+	diskR.anim.PushBack({ 181, 48, 17, 17 });
+	diskR.anim.PushBack({ 213, 48, 17, 17 });
+	diskR.lifetime = 350;
+	diskR.speed.x = -5;
+	diskR.anim.speed = 0.2f;
 
 	return true;
 }
