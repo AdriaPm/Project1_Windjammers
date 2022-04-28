@@ -91,7 +91,9 @@ bool SceneIntro::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/intobg.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
+	
+	
+	App->audio->PlayMusic("Assets/Music/Neo Geo AESMVS Intro.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -101,9 +103,11 @@ bool SceneIntro::Start()
 
 Update_Status SceneIntro::Update()
 {
+
+	
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 40);
+		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -112,8 +116,11 @@ Update_Status SceneIntro::Update()
 // Update: draw background
 Update_Status SceneIntro::PostUpdate()
 {
+	
+
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }

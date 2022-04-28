@@ -74,7 +74,7 @@ bool MainScreen::Start()
 	Logow = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start4.png");
 
 
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
+
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
