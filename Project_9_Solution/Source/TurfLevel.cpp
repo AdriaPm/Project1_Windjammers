@@ -147,28 +147,28 @@ Update_Status TurfLevel::PostUpdate()
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 	
-	if (App->RightJapanesePlayer->getScoreR() > App->LeftJapanesePlayer->getScoreL())
+	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL())
 	{
 		App->render->Blit(winLoseText, 30, 54, &winR);
 		App->render->Blit(winLoseText, 175, 54, &loseL);
 	}
-	else if (App->RightJapanesePlayer->getScoreR() < App->LeftJapanesePlayer->getScoreL())
+	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL())
 	{
 		App->render->Blit(winLoseText, 174, 54, &loseR);
 		App->render->Blit(winLoseText, 18, 48, &winL);
 	}
-/*
-	if (App->RightGermanPlayer->getScoreR() > App->LeftGermanPlayer->getScoreL())
+
+	if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL())
 	{
 		App->render->Blit(winLoseText, 30, 54, &winR);
 		App->render->Blit(winLoseText, 175, 54, &loseL);
 	}
-	else if (App->RightGermanPlayer->getScoreR() < App->LeftGermanPlayer->getScoreL())
+	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL())
 	{
 		App->render->Blit(winLoseText, 174, 54, &loseR);
 		App->render->Blit(winLoseText, 18, 48, &winL);
 	}
-	*/
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }

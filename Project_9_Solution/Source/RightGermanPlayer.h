@@ -32,6 +32,8 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
+	uint getGerScoreR() { return scoreGerRight; }
+
 public:
 	// Position of the player in the map
 	iPoint position;
@@ -86,9 +88,9 @@ public:
 	uint ShotFx = 0;
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
+	uint scoreGerRight = 000;
+	int scoreGerFontRight = -1;
+	char scoreGerTextRight[10] = { "\0" };
 
 };
 

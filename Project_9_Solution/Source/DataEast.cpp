@@ -27,6 +27,7 @@ DataEast::DataEast(bool startEnabled) : Module(startEnabled)
 	DElogo.PushBack({ 3514, 6, 251, 88 });
 	DElogo.PushBack({ 3765, 3, 252, 89 });
 	DElogo.speed = 0.1f;
+	DElogo.loop = false;
 }
 
 DataEast::~DataEast()
@@ -66,6 +67,7 @@ Update_Status DataEast::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(DELogo, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

@@ -32,7 +32,7 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	uint getScoreR(){return scoreRight;}
+	uint getJapScoreR(){return scoreJapRight;}
 
 public:
 	// Position of the player in the map
@@ -90,9 +90,9 @@ public:
 
 
 	// Font score index
-	uint scoreRight = 000;
-	int scoreFontRight = -1;
-	char scoreTextRight[10] = { "\0" };
+	uint scoreJapRight = 000;
+	int scoreJapFontRight = -1;
+	char scoreJapTextRight[10] = { "\0" };
 
 };
 

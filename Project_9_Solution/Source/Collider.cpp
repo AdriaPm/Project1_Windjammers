@@ -1,4 +1,5 @@
 #include "Collider.h"
+#include "Globals.h"
 
 Collider::Collider(SDL_Rect rectangle, Type type, Module* listener): rect(rectangle), type(type)
 {
@@ -17,6 +18,7 @@ bool Collider::Intersects(const SDL_Rect& r) const
 			rect.x + rect.w > r.x &&
 			rect.y < r.y + r.h &&
 			rect.h + rect.y > r.y);
+	LOG("Collision");
 }
 
 void Collider::AddListener(Module* listener)
