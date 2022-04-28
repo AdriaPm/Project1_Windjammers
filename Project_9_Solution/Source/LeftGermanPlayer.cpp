@@ -179,6 +179,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 146, 288, 28, 35 });
 	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 204, 288, 26, 35 });
+	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 230, 288, 22, 35 });
 	Throw.loop = false;
 	Throw.speed = 0.1f;
@@ -213,7 +214,7 @@ bool LeftGermanPlayer::Start()
 
 	bool ret = true;
 
-	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALL.png");
+	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROW.png");
 	currentAnimation = &idleAnim;
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -349,6 +350,7 @@ Update_Status LeftGermanPlayer::Update()
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
 		{
+			SlideRAnim.Reset();
 			currentAnimation = &SlideRAnim;
 		}
 		Player_State::PLAYER_DIVE;
