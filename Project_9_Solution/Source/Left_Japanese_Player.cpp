@@ -206,8 +206,16 @@ bool Left_Japanese_Player::Start()
 
 Update_Status Left_Japanese_Player::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	{
+		App->particles->disk.speed.x = 5;
+		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
+		//hasDisc = false;
+		/*App->audio->PlayFx(laserFx);*/
+	}
 	//In this function are all the movement inputs and animations updates
-	Movement();
+	//Movement();
 	
 	collider->SetPos(position.x, position.y);
 
@@ -506,11 +514,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			App->particles->disk.speed.x = 2.5f;
-			App->particles->disk.speed.y = -5.5f;
+			
+			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+			App->particles->disk.speed.x = 2;
+			App->particles->disk.speed.y = -5;
 			App->particles->disk.position.x += App->particles->disk.speed.x;
 			App->particles->disk.position.y += App->particles->disk.speed.y;
-			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			//hasDisc = false;
 			/*App->audio->PlayFx(laserFx);*/
@@ -518,11 +527,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
-			App->particles->disk.speed.x = 2.5f;
-			App->particles->disk.speed.y = 5.5f;
+			
+			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
+			App->particles->disk.speed.x = 2;
+			App->particles->disk.speed.y = 5;
 			App->particles->disk.position.x += App->particles->disk.speed.x;
 			App->particles->disk.position.y += App->particles->disk.speed.y;
-			Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			//hasDisc = false;
 			/*App->audio->PlayFx(laserFx);*/
@@ -536,12 +546,4 @@ void Left_Japanese_Player::Movement()
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
-	
-	/*if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
-		&& hasDisc == true)
-		currentAnimation = &diskHoldBEACH;*/
 }

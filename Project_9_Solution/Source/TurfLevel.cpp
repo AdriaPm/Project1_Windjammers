@@ -21,6 +21,10 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.05f;
 	background.loop = true;
 
+	winR = {224, 86, 100, 32};
+	winL = {324, 86, 112, 32};
+	loseR = {393, 27, 99, 27};
+	loseL = {0, 54, 100, 27};
 
 }
 
@@ -37,6 +41,8 @@ bool TurfLevel::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
+	winLoseText = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/UISpriteSheetFinal.png");
+	
 
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
@@ -90,7 +96,7 @@ bool TurfLevel::Start()
 		break;
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
-		App->LeftJapanesePlayer->hasDisc = true;
+		//App->LeftJapanesePlayer->hasDisc = true;
 		break;
 	/*case Player_Chosen_Left::Spanish:
 		App->leftgermanyplayer->Enable();
@@ -141,6 +147,28 @@ Update_Status TurfLevel::PostUpdate()
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 	
+	if (App->RightJapanesePlayer->getScoreR() > App->LeftJapanesePlayer->getScoreL())
+	{
+		App->render->Blit(winLoseText, 30, 54, &winR);
+		App->render->Blit(winLoseText, 175, 54, &loseL);
+	}
+	else if (App->RightJapanesePlayer->getScoreR() < App->LeftJapanesePlayer->getScoreL())
+	{
+		App->render->Blit(winLoseText, 174, 54, &loseR);
+		App->render->Blit(winLoseText, 18, 48, &winL);
+	}
+/*
+	if (App->RightGermanPlayer->getScoreR() > App->LeftGermanPlayer->getScoreL())
+	{
+		App->render->Blit(winLoseText, 30, 54, &winR);
+		App->render->Blit(winLoseText, 175, 54, &loseL);
+	}
+	else if (App->RightGermanPlayer->getScoreR() < App->LeftGermanPlayer->getScoreL())
+	{
+		App->render->Blit(winLoseText, 174, 54, &loseR);
+		App->render->Blit(winLoseText, 18, 48, &winL);
+	}
+	*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }

@@ -34,6 +34,14 @@ public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* winLoseText = nullptr;
+
+	SDL_Rect winL;
+	SDL_Rect winR;
+	SDL_Rect loseL;
+	SDL_Rect loseR;
+
+	
 	
 	// Animation for the public
 	Animation background;

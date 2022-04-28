@@ -197,7 +197,7 @@ bool Right_Japanese_Player::Start()
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
 	char lookupTable[] = { "0123456789" };
-	scoreFontRight = App->fonts->Load("Assets/Fonts/BasicText.png", lookupTable, 1);
+	scoreFontRight = App->fonts->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png", lookupTable, 1);
 
 	return ret;
 }
