@@ -36,11 +36,11 @@ Debug/God Mode: F1
 
 ## Members of I Was Hiding;
 
-1. Adrià Pons Mensa             [AdriàPm](https://github.com/AdriaPm)
-2. Arnau Jiménez Gallego	[Historn](https://github.com/Historn)
-3. Jan Neto Llorens		[JanNetoLlorens](https://github.com/JanNetoLlorens)
-4. Joel Chaves Moreno		[JoeyCM](https://github.com/JoeyCM)
-5. Rylan Graham			[RylanJGraham](https://github.com/RylanJGraham)
+1. Adrià Pons Mensa - CODE --> [AdriàPm](https://github.com/AdriaPm)
+2. Arnau Jiménez Gallego - CODE --> [Historn](https://github.com/Historn)
+3. Jan Neto Llorens - MANAGEMENT --> 	[JanNetoLlorens](https://github.com/JanNetoLlorens)
+4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
+5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
 
 ## History
 
