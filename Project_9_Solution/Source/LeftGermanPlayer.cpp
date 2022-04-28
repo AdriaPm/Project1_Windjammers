@@ -115,7 +115,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
 	SlideRAnim.PushBack({ 149, 188, 32, 31 });
 	SlideRAnim.loop = false;
-	SlideRAnim.speed = 0.1f;
+	SlideRAnim.speed = 4.0f;
 
 	//Slide Up
 	SlideUAnim.PushBack({ 1, 238, 28, 50 });
@@ -133,7 +133,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
 	SlideDAnim.loop = false;
-	SlideDAnim.speed = 0.1f;
+	SlideDAnim.speed = 4.0f;
 
 
 	//Slide Up Right
@@ -179,6 +179,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 146, 288, 28, 35 });
 	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 204, 288, 26, 35 });
+	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 230, 288, 22, 35 });
 	Throw.loop = false;
 	Throw.speed = 0.1f;
@@ -213,7 +214,7 @@ bool LeftGermanPlayer::Start()
 
 	bool ret = true;
 
-	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALL.png");
+	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROW.png");
 	currentAnimation = &idleAnim;
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -344,11 +345,12 @@ Update_Status LeftGermanPlayer::Update()
 
 
 	//Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
 		{
+			SlideRAnim.Reset();
 			currentAnimation = &SlideRAnim;
 		}
 		Player_State::PLAYER_DIVE;
@@ -367,7 +369,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
 	{
 		Player_State::PLAYER_DIVE;
 		position.x -= speedslide;
@@ -380,7 +382,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Down Slide Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
 	{
 		position.y += speedslide;
 
@@ -469,7 +471,7 @@ Update_Status LeftGermanPlayer::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		/*App->audio->PlayFx(laserFx);*/
 	}

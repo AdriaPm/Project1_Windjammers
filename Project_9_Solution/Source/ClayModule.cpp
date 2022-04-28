@@ -78,12 +78,34 @@ bool ClayModule::Start()
 	App->render->camera.y = 0;
 
 
-	App->LeftJapanesePlayer->Enable();
-	App->RightJapanesePlayer->Enable();
-	App->leftgermanyplayer->Enable();
-	App->rightgermanyplayer->Enable();
-	App->enemies->Enable();
+	switch (App->choice1)
+	{
+	case Player_Chosen_Left::German:
+		App->leftgermanyplayer->Enable();
+		break;
+	case Player_Chosen_Left::Japanese:
+		App->LeftJapanesePlayer->Enable();
+		break;
+	//case Player_Chosen_Left::Spanish:
+	//	App->leftgermanyplayer->Enable(); 
+	//	break;
+	}
+	
 
+	switch (App->choice2)
+	{
+	case Player_Chosen_Right::German:
+		App->rightgermanyplayer->Enable();
+		break;
+	case Player_Chosen_Right::Japanese:
+		App->RightJapanesePlayer->Enable();
+		break;
+	/*case Player_Chosen_Right::Spanish:
+		App->leftgermanyplayer->Enable();
+		break;*/
+	}
+
+	App->enemies->Enable();
 	return ret;
 }
 
@@ -107,10 +129,32 @@ Update_Status ClayModule::PostUpdate()
 
 bool ClayModule::CleanUp()
 {
-	App->LeftJapanesePlayer->Disable();
-	App->RightJapanesePlayer->Disable();
-	App->leftgermanyplayer->Disable();
-	App->rightgermanyplayer->Disable();
+	switch (App->choice1)
+	{
+	case Player_Chosen_Left::German:
+		App->leftgermanyplayer->Disable();
+		break;
+	case Player_Chosen_Left::Japanese:
+		App->LeftJapanesePlayer->Disable();
+		break;
+	/*case Player_Chosen_Left::Spanish:
+		App->leftgermanyplayer->Disable(); 
+		break;*/
+	}
+
+	switch (App->choice2)
+	{
+	case Player_Chosen_Right::German:
+		App->rightgermanyplayer->Disable();
+		break;
+	case Player_Chosen_Right::Japanese:
+		App->RightJapanesePlayer->Disable();
+		break;
+	/*case Player_Chosen_Right::Spanish:
+		App->leftgermanyplayer->Disable();
+		break;*/
+	}
+
 	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)

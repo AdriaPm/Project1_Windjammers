@@ -22,24 +22,32 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_MAP/sprite_disk_lawnMap.png");
+	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 	texture = App->textures->Load("Assets/Sprites/particles.png");
 
-	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	//// Explosion particle
+	//explosion.anim.PushBack({274, 296, 33, 30});
+	//explosion.anim.PushBack({313, 296, 33, 30});
+	//explosion.anim.PushBack({346, 296, 33, 30});
+	//explosion.anim.PushBack({382, 296, 33, 30});
+	//explosion.anim.PushBack({419, 296, 33, 30});
+	//explosion.anim.PushBack({457, 296, 33, 30});
+	//explosion.anim.loop = false;
+	//explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	//laser.anim.PushBack({ 232, 103, 16, 12 });
+	//laser.anim.PushBack({ 249, 103, 16, 12 });
+	//laser.speed.x = 5;
+	//laser.lifetime = 180;
+	//laser.anim.speed = 0.2f;
+
+	disk.anim.PushBack({ 117, 48, 17, 17});
+	disk.anim.PushBack({ 149, 48, 17, 17});
+	disk.anim.PushBack({ 181, 48, 17, 17});
+	disk.anim.PushBack({ 213, 48, 17, 17});
+	disk.lifetime = 350;
+	disk.speed.x = 5;
+	disk.anim.speed = 0.2f;
 
 	return true;
 }
@@ -117,7 +125,8 @@ Update_Status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			//App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(texture_disk, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

@@ -1,10 +1,12 @@
-# Windjammers
+# Windjammers - I WAS HIDING STUDIOS
 
-TODO: Write a project description
+## Description
 
-## Installation
+Windjammers is an arcade sports game, in which the main objective of it is to win your opponent in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches but adds a frenetic point of view when playing it due to its special features such as the goals, score points, unique characters and special courts.
 
-TODO: Describe the installation process
+## GitHub link
+
+https://github.com/Historn/Project-1.git
 
 ## Usage
 
@@ -13,22 +15,26 @@ Player 1:
 	      - S: Down
 	      - A: Left
 	      - D: Right
+Confirm/Shots: - C: Confirm Selection, Normal Shot
+	       - V: Parabolic Shot
 
-## Contributing
+Player 2:
+ Move/Select: - Up Arrow: Up
+	      - Down Arrow: Down
+	      - Left Arrow: Left
+	      - Right Arrow: Right
+Confirm/Shots: - N: Confirm Selection, Normal Shot
+	       - M: Parabolic Shot 
 
-1. Fork it!
-2. Create your feature branch: 'git checkout -b my-newfeature'
-3. Commit your changes: 'git commit -am 'Add some feature''
-4. Push to the branch: 'git push origin my-new-feature'
-5. Submit a pull request.
+Debug/God Mode: F1
 
-## History
+## Members of I WAS HIDING STUDIOS;
 
-TODO: Write History
-
-## Credits
-
-TODO: Write credits
+1. Adrià Pons Mensa - CODE --> [AdriàPm](https://github.com/AdriaPm)
+2. Arnau Jiménez Gallego - CODE --> [Historn](https://github.com/Historn)
+3. Jan Neto Llorens - MANAGEMENT --> 	[JanNetoLlorens](https://github.com/JanNetoLlorens)
+4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
+5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
 
 ## License
 
