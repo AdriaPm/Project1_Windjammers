@@ -10,6 +10,8 @@ https://github.com/Historn/Project-1.git
 
 ## Usage
 
+Next Menu Screen/Confirm Map Selection: SPACE
+
 Player 1:
  Move/Select: - W: Up
 	      - S: Down
@@ -30,7 +32,7 @@ Debug/God Mode: F1
 
 ## Members of I WAS HIDING STUDIOS;
 
-1. Adrià Pons Mensa - CODE --> [AdriàPm](https://github.com/AdriaPm)
+1. Adrià Pons Mensa - CODE --> [AdriaPm](https://github.com/AdriaPm)
 2. Arnau Jiménez Gallego - CODE --> [Historn](https://github.com/Historn)
 3. Jan Neto Llorens - MANAGEMENT --> 	[JanNetoLlorens](https://github.com/JanNetoLlorens)
 4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
