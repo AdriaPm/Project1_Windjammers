@@ -80,8 +80,7 @@ public:
 	bool destroyed = false;
 
 	// Sound effects indices
-	uint laserFx = 0;
-	uint explosionFx = 0;
+	uint slidingSFX = 0;
 
 	// Font score index
 	uint score = 000;
