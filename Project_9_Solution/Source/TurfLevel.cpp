@@ -37,7 +37,7 @@ bool TurfLevel::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
-	
+
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
 	///TURF MAP Colliders
@@ -85,11 +85,11 @@ bool TurfLevel::Start()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
+	/*case Player_Chosen_Left::Spanish:
+		App->leftgermanyplayer->Enable();
+		break;*/
 	}
-	//case Player_Chosen_Left::Spanish:
-	///*	App->leftgermanyplayer->Enable();*/
-	//	break;
-	//
+
 
 	switch (App->choice2)
 	{
@@ -99,6 +99,9 @@ bool TurfLevel::Start()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
+	/*case Player_Chosen_Right::Spanish:
+		App->leftgermanyplayer->Enable();
+		break;*/
 	}
 
 	App->enemies->Enable();
@@ -145,9 +148,9 @@ bool TurfLevel::CleanUp()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Disable();
 		break;
-	case Player_Chosen_Left::Spanish:
+	/*case Player_Chosen_Left::Spanish:
 		App->leftgermanyplayer->Disable();
-		break;
+		break;*/
 	}
 
 	switch (App->choice2)
@@ -158,9 +161,9 @@ bool TurfLevel::CleanUp()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Disable();
 		break;
-	case Player_Chosen_Right::Spanish:
+	/*case Player_Chosen_Right::Spanish:
 		App->leftgermanyplayer->Disable();
-		break;
+		break;*/
 	}
 
 	App->enemies->Disable();

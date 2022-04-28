@@ -86,9 +86,9 @@ bool ClayModule::Start()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
-	case Player_Chosen_Left::Spanish:
-		App->leftgermanyplayer->Enable(); 
-		break;
+	//case Player_Chosen_Left::Spanish:
+	//	App->leftgermanyplayer->Enable(); 
+	//	break;
 	}
 	
 
@@ -100,9 +100,9 @@ bool ClayModule::Start()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
-	case Player_Chosen_Right::Spanish:
+	/*case Player_Chosen_Right::Spanish:
 		App->leftgermanyplayer->Enable();
-		break;
+		break;*/
 	}
 
 	App->enemies->Enable();
@@ -137,9 +137,9 @@ bool ClayModule::CleanUp()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Disable();
 		break;
-	case Player_Chosen_Left::Spanish:
+	/*case Player_Chosen_Left::Spanish:
 		App->leftgermanyplayer->Disable(); 
-		break;
+		break;*/
 	}
 
 	switch (App->choice2)
@@ -150,9 +150,9 @@ bool ClayModule::CleanUp()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Disable();
 		break;
-	case Player_Chosen_Right::Spanish:
+	/*case Player_Chosen_Right::Spanish:
 		App->leftgermanyplayer->Disable();
-		break;
+		break;*/
 	}
 
 	App->enemies->Disable();
