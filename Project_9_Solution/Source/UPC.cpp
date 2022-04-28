@@ -26,6 +26,13 @@ bool UPC::Start()
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/InitialScreen.png");
 	
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2d28d57055bda7e666e33e499ab500fdee35e74e
+>>>>>>> Stashed changes
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 

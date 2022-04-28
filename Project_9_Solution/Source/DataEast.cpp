@@ -9,23 +9,23 @@
 
 DataEast::DataEast(bool startEnabled) : Module(startEnabled)
 {
-	DElogo.PushBack({ 227, 103, 99, 33 });
-	DElogo.PushBack({ 251, 103, 141, 32 });
-	DElogo.PushBack({ 275, 103, 250, 29});
-	DElogo.PushBack({ 299, 103, 250, 31});
-	DElogo.PushBack({ 323, 103, 250, 44 });
-	DElogo.PushBack({ 347, 103, 250, 50 });
-	DElogo.PushBack({ 370, 103, 250, 54 });
-	DElogo.PushBack({ 393, 103, 253, 61 });
-	DElogo.PushBack({ 227, 103, 250, 70 });
-	DElogo.PushBack({ 251, 103, 250, 71 });
-	DElogo.PushBack({ 275, 103, 253, 75 });
-	DElogo.PushBack({ 299, 103, 252, 78 });
-	DElogo.PushBack({ 323, 103, 252, 82 });
-	DElogo.PushBack({ 347, 103, 251, 86 });
-	DElogo.PushBack({ 370, 103, 252, 85 });
-	DElogo.PushBack({ 393, 103, 251, 88 });
-	DElogo.PushBack({ 393, 103, 252, 89 });
+	DElogo.PushBack({ 0, 41, 99, 33 });
+	DElogo.PushBack({ 108, 41, 141, 32 });
+	DElogo.PushBack({ 251, 41, 250, 29});
+	DElogo.PushBack({ 502, 38, 250, 31});
+	DElogo.PushBack({ 753, 35, 250, 44 });
+	DElogo.PushBack({ 1004, 32, 250, 50 });
+	DElogo.PushBack({ 1254, 29, 250, 54 });
+	DElogo.PushBack({ 1506, 28, 253, 61 });
+	DElogo.PushBack({ 1757, 25, 250, 70 });
+	DElogo.PushBack({ 2008, 22, 250, 71 });
+	DElogo.PushBack({ 2259, 19, 253, 75 });
+	DElogo.PushBack({ 2510, 17, 252, 78 });
+	DElogo.PushBack({ 2716, 11, 252, 82 });
+	DElogo.PushBack({ 3012, 15, 251, 86 });
+	DElogo.PushBack({ 3268, 8, 252, 85 });
+	DElogo.PushBack({ 3514, 6, 251, 88 });
+	DElogo.PushBack({ 3765, 3, 252, 89 });
 	DElogo.speed = 0.1f;
 }
 
@@ -42,7 +42,7 @@ bool DataEast::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/DataEastScreendef.png");
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start2.png");
+	DELogo = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start2.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
