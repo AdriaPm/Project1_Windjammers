@@ -1,10 +1,10 @@
-# Windjammers
+# Windjammers - I WAS HIDING STUDIOS
 
 Windjammers is an arcade sports game, in which the main objective of it is to win your opponent in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches but adds a frenetic point of view when playing it due to its special features such as the goals, score points, unique characters and special courts.
 
-## Installation
+## GitHub link
 
-TODO: Describe the installation process
+https://github.com/Historn/Project-1.git
 
 ## Usage
 
@@ -26,29 +26,13 @@ Confirm/Shots: - N: Confirm Selection, Normal Shot
 
 Debug/God Mode: F1
 
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: 'git checkout -b my-newfeature'
-3. Commit your changes: 'git commit -am 'Add some feature''
-4. Push to the branch: 'git push origin my-new-feature'
-5. Submit a pull request.
-
-## Members of I Was Hiding;
+## Members of I WAS HIDING STUDIOS;
 
 1. Adrià Pons Mensa - CODE --> [AdriàPm](https://github.com/AdriaPm)
 2. Arnau Jiménez Gallego - CODE --> [Historn](https://github.com/Historn)
 3. Jan Neto Llorens - MANAGEMENT --> 	[JanNetoLlorens](https://github.com/JanNetoLlorens)
 4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
 5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
-
-## History
-
-TODO: Write History
-
-## Credits
-
-TODO: Write credits
 
 ## License
 
