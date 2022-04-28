@@ -90,7 +90,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont Use/intobg.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/intobg.png");
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
 
 	App->render->camera.x = 0;
