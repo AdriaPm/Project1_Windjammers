@@ -480,13 +480,15 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	}
 
 
-
-
-
-	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+	//Score points
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
 	{
-		scoreJapRight += 23;
+		scoreJapRight += 300;
 	}
 
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+	{
+		scoreJapRight += 500;
+	}
 
 }

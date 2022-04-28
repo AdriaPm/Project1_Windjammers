@@ -581,4 +581,16 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 
+
+	//Score points
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
+	{
+		scoreGerRight += 300;
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+	{
+		scoreGerRight += 500;
+	}
+
 }
