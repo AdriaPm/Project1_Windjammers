@@ -352,8 +352,6 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			scoreGerRight += 0;
 		}
 	}
-<<<<<<< HEAD
-=======
 
 }
 
@@ -646,7 +644,7 @@ void RightGermanPlayer::Movement() {
 		/*App->P2Status = Player_State_Right::PLAYER_IDLE;*/
 	}
 
-<<<<<<< Updated upstream
+
 }
 
 void RightGermanPlayer::Movement() {
@@ -938,7 +936,4 @@ void RightGermanPlayer::Movement() {
 		/*App->P2Status = Player_State_Right::PLAYER_IDLE;*/
 	}
 
-=======
->>>>>>> 99424fbeec537b598096dee07409babb1773cffb
->>>>>>> Stashed changes
 }
