@@ -47,12 +47,14 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
-	//Move right
+	//Move right 
 	rightAnim.PushBack({ 269, 148, 41, 35 });
 	rightAnim.PushBack({ 310, 148, 29, 36 });
+	rightAnim.PushBack({ 385, 148, 41, 36 });
 	rightAnim.PushBack({ 339, 148, 46, 29 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
 	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 269, 148, 41, 35 });
 	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
