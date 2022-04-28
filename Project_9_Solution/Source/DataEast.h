@@ -32,6 +32,8 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* DELogo = nullptr;
 	Animation DElogo;
+
+	Animation* currentAnimation = nullptr;
 };
 
 #endif

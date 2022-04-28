@@ -46,6 +46,8 @@ bool DataEast::Start()
 	DELogo = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start2.png");
 
 
+	currentAnimation = &DElogo;
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -59,15 +61,22 @@ Update_Status DataEast::Update()
 		App->fade->FadeToBlack(this, (Module*)App->mainScreen, 40);
 	}
 
+	currentAnimation->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
 Update_Status DataEast::PostUpdate()
 {
+
+	SDL_Rect rect = DElogo.GetCurrentFrame();
+
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(DELogo, 0, 0, NULL);
+	//App->render->Blit(DELogo, 0, 0, NULL);
+
+	App->render->Blit(DELogo, 0, 0, &rect, false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
