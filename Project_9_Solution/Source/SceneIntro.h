@@ -30,10 +30,14 @@ public:
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
-	SDL_Texture* bgTexture = nullptr;
-	
+	SDL_Texture* bgTexture_white = nullptr;
+	SDL_Texture* bgTexture_black = nullptr;
+	SDL_Texture* NeoGeoLOGO = nullptr;
+
 	Animation NeoGeo;
 	Animation Max;
+
+	Animation* currentAnimation = nullptr;
 
 	int neogeospeed = 1;
 	int maxspeed = 1;

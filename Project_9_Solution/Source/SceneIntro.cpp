@@ -41,6 +41,7 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	NeoGeo.PushBack({ 6583, 6806, 232, 24 });	
 	NeoGeo.PushBack({ 6812, 7032, 232, 24 });
 	NeoGeo.speed = 0.1f;
+	NeoGeo.loop = false;
 	
 	//Max logo
 	Max.PushBack({ 227, 103, 24, 37 });
@@ -76,6 +77,7 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	Max.PushBack({ 370, 103, 23, 35 });
 	Max.PushBack({ 393, 103, 23, 36 });
 	Max.speed = 0.1f;
+	Max.loop = false;
 }
 
 SceneIntro::~SceneIntro()
@@ -90,8 +92,12 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/intobg.png");
-	
+	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
+	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
+
+	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1.png");
+
+	currentAnimation = &NeoGeo;
 	
 	App->audio->PlayMusic("Assets/Music/Neo Geo AESMVS Intro.ogg", 1.0f);
 
@@ -110,17 +116,19 @@ Update_Status SceneIntro::Update()
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
 	}
 
+	currentAnimation->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
 Update_Status SceneIntro::PostUpdate()
 {
-	
+	SDL_Rect rect = NeoGeo.GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
-	
+	App->render->Blit(bgTexture_white, 0, 0, NULL);
+	App->render->Blit(NeoGeoLOGO, 0, 0, &rect, false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
