@@ -38,6 +38,8 @@ bool ChooseCharacter::Start()
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
 
+	changeOption = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/ChangeOption.wav");
+
 	chooseJapAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/JapaneseCharacter/Japanese_1.wav");
 	chooseGerAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_1.wav");
 	chooseSpaAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/SpanishCharacter/Spanish_1.wav");
@@ -56,6 +58,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove1 = 9; yMove1 = 128;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
@@ -63,6 +66,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove1 = 9; yMove1 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
@@ -70,6 +74,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove1 =  153; yMove1 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN && (App->LockedinP1 != Player_Locked::Locked1))
 	{
@@ -77,6 +82,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove1 = 9; yMove1 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
@@ -85,6 +91,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove2 = 39; yMove2 = 128;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
@@ -92,6 +99,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove2 = 39; yMove2 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
@@ -99,6 +107,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove2 = 183; yMove2 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN && (App->LockedinP2 != Player_Locked::Locked2))
 	{
@@ -106,6 +115,7 @@ Update_Status ChooseCharacter::Update()
 		{
 			xMove2 = 39; yMove2 = 72;
 		}
+		App->audio->PlayFx(changeOption);
 	}
 
 	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)

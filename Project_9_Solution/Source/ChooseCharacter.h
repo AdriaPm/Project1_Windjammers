@@ -49,9 +49,11 @@ public:
 	uint chooseJapAudio = 0;
 	uint chooseGerAudio = 0;
 	uint chooseSpaAudio = 0;
+	
+	uint changeOption = 0;
 
 private:
 	int yMove1, xMove1, yMove2, xMove2;
 };
 
-#endif
+#endif 
