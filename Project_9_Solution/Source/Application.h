@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 22
+#define NUM_MODULES 23
 
 
 
@@ -14,6 +14,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
 class Left_Japanese_Player;
+class UPC;
 class SceneIntro;
 class DataEast;
 class MainScreen;
@@ -70,6 +71,7 @@ public:
 
 	LeftGermanPlayer* leftgermanyplayer = nullptr;
 	RightGermanPlayer* rightgermanyplayer = nullptr;
+	UPC* Upc = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	DataEast* dataEast = nullptr;
 	MainScreen* mainScreen = nullptr;

@@ -44,7 +44,7 @@ bool MainScreen::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	bgTexture = App->textures->Load("Assets / Spriteswind / Sprites / UI / Dont Use / introbg.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont Use/introbg.png");
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont Use/Start1.png");
 	
 	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
