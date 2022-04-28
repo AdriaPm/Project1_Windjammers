@@ -145,11 +145,10 @@ bool TurfLevel::CleanUp()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Disable();
 		break;
+	case Player_Chosen_Left::Spanish:
+		App->leftgermanyplayer->Disable();
+		break;
 	}
-	//case Player_Chosen_Left::Spanish:
-	///*	App->leftgermanyplayer->Enable();*/
-	//	break;
-	//
 
 	switch (App->choice2)
 	{
@@ -158,6 +157,9 @@ bool TurfLevel::CleanUp()
 		break;
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Disable();
+		break;
+	case Player_Chosen_Right::Spanish:
+		App->leftgermanyplayer->Disable();
 		break;
 	}
 
