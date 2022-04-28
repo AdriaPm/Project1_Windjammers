@@ -192,7 +192,7 @@ bool Left_Japanese_Player::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 25, 40 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 20, 40 }, Collider::Type::PLAYER, this);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
@@ -281,7 +281,6 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		position.x = 150 - 24;
 	}
 
-
 	//Score points
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 	{
@@ -291,6 +290,26 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 	{
 		scoreJapLeft += 500;
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
+	{
+		App->particles->diskL.speed.x = 1.0f;
+		App->particles->diskL.speed.y = 3.5f;
+		App->particles->diskL.position.x += App->particles->diskL.speed.x;
+		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
+	}
+	
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
+	{
+		App->particles->diskL.speed.x = 1.0f;
+		App->particles->diskL.speed.y = -3.5f;
+		App->particles->diskL.position.x += App->particles->diskL.speed.x;
+		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
 	}
 }
 
@@ -498,31 +517,31 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			App->particles->diskL.speed.x = 2.0f;
-			App->particles->diskL.speed.y = -7.0f;
+			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = -3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
-			App->particles->diskL.speed.x = 2.0f;
-			App->particles->diskL.speed.y = 7.0f;
+			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = 3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}

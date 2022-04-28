@@ -45,7 +45,7 @@ bool ModuleParticles::Start()
 	diskL.anim.PushBack({ 149, 48, 17, 17});
 	diskL.anim.PushBack({ 181, 48, 17, 17});
 	diskL.anim.PushBack({ 213, 48, 17, 17});
-	diskL.lifetime = 350;
+	diskL.lifetime = 1000;
 	diskL.speed.x = 5;
 	diskL.anim.speed = 0.2f;
 
@@ -53,7 +53,7 @@ bool ModuleParticles::Start()
 	diskR.anim.PushBack({ 149, 48, 17, 17 });
 	diskR.anim.PushBack({ 181, 48, 17, 17 });
 	diskR.anim.PushBack({ 213, 48, 17, 17 });
-	diskR.lifetime = 350;
+	diskR.lifetime = 1000;
 	diskR.speed.x = -5;
 	diskR.anim.speed = 0.2f;
 
@@ -97,7 +97,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1)
+		if (particles[i] != nullptr && particles[i]->collider == c1) //&& !particles[i]->collider->DISK
 		{
 			particles[i]->pendingToDelete = true;
 			particles[i]->collider->pendingToDelete = true;
