@@ -517,7 +517,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -529,7 +529,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -541,7 +541,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			//hasDisc = false;
+			hasDisc = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}
