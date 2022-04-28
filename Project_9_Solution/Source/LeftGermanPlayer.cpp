@@ -230,7 +230,7 @@ bool LeftGermanPlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 25, 40 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 20, 40 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789" };
 	scoreFontGerLeft = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
@@ -336,6 +336,26 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 	{
 		scoreGerLeft += 500;
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
+	{
+		App->particles->diskL.speed.x = 1.0f;
+		App->particles->diskL.speed.y = 3.5f;
+		App->particles->diskL.position.x += App->particles->diskL.speed.x;
+		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
+	{
+		App->particles->diskL.speed.x = 1.0f;
+		App->particles->diskL.speed.y = -3.5f;
+		App->particles->diskL.position.x += App->particles->diskL.speed.x;
+		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
 	}
 }
 
@@ -559,20 +579,14 @@ void LeftGermanPlayer::Movement() {
 	}
 
 	else if (App->particles->diskL.HasDiskL == true) {
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN) {
+	
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
+		{
 			if (currentAnimation != &Throw)
 			{
 				Throw.Reset();
 				currentAnimation = &Throw;
-				Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-				newParticle->collider->AddListener(this);
-				App->audio->PlayFx(ShotFx);
-
-				/*App->P1Status = Player_State_Left::PLAYER_THROW;*/
 			}
-		}
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
-		{
 			App->particles->diskL.speed.x = 5.0f;
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
