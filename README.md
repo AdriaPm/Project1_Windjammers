@@ -21,8 +21,6 @@ https://github.com/Historn/Project-1.git
 
 ## Usage
 
-Next Menu Screen/Confirm Map Selection: SPACE
-
 Player 1:
  Move/Select: - W: Up
 	        - S: Down
@@ -30,6 +28,9 @@ Player 1:
 	        - D: Right
 Confirm/Shots: - C: Confirm Selection, Normal Shot
 	         - V: Parabolic Shot
+
+Dash: - C (Hold) + Directional Input (WASD)(UP,DOWN,LEFT,RIGHT): Dashing/Diving 
+	
 
 Player 2:
  Move/Select: - Up Arrow: Up
