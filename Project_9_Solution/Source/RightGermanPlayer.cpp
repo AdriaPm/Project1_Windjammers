@@ -128,7 +128,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 
 	//Slide Down
 	SlideDAnim.PushBack({ 29, 239, 24, 49 });
-	SlideDAnim.PushBack({ 1, 239, 28, 49 });
+	SlideDAnim.PushBack({ 1, 239, 28, 49 }); 
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
 	SlideDAnim.loop = false;
