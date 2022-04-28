@@ -181,7 +181,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 79, 288, 28, 35 });
 	Throw.PushBack({ 1, 288, 22, 35 });
 	Throw.loop = false;
-	Throw.speed = 4.0f;
+	Throw.speed = 0.1f;
 
 	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
 
@@ -452,37 +452,35 @@ Update_Status RightGermanPlayer::Update()
 			SlideDownRightAnim.Reset();
 			currentAnimation = &SlideDownRightAnim;
 		}
+	}
 
-
+	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) {
+		if (currentAnimation != &Throw)
+		{
+			Throw.Reset();
+			currentAnimation = &Throw;
+		}
 	}
 
 	//Normal Throw Animation
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN)
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(ShotFx);
-		App->P2Status = Player_State_Right::PLAYER_THROW;
-		Throw.Reset();
-		currentAnimation = &Throw;
 	}
 
-			
-
-
-	
-
 	// If no up/down left/right movement detected, set the current animation back to idle
-	if (/*App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_IDLE)*/
+		&& App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_IDLE /*&&
 		App->P2Status != Player_State_Right::PLAYER_HOLD
 		&& App->P2Status != Player_State_Right::PLAYER_MOVE
 		&& App->P2Status != Player_State_Right::PLAYER_THROW
-		&& App->P2Status != Player_State_Right::PLAYER_DIVE){
+		&& App->P2Status != Player_State_Right::PLAYER_DIVE*/){
 		currentAnimation = &idleAnim;
 		App->P2Status = Player_State_Right::PLAYER_IDLE;
 	}
