@@ -504,7 +504,7 @@ Update_Status RightGermanPlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreGerTextRight, 10, "%7d", scoreGerRight);
+	sprintf_s(scoreGerTextRight, 10, "%d", scoreGerRight);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(204, 8, scoreGerFontRight, scoreGerTextRight);

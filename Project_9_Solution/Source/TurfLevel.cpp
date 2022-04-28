@@ -147,6 +147,10 @@ Update_Status TurfLevel::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 90);
+		App->LeftJapanesePlayer->scoreJapLeft = 0;
+		App->RightJapanesePlayer->scoreJapRight = 0;
+		App->leftgermanyplayer->scoreGerLeft = 0;
+		App->rightgermanyplayer->scoreGerRight = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -164,24 +168,24 @@ Update_Status TurfLevel::PostUpdate()
 
 	//App->fonts->BlitText(145, 21, counterFont, counterText);
 	
-	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL())
+	if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL() && App->RightJapanesePlayer->getJapScoreR() > 1200)
 	{
 		App->render->Blit(uiSprites, 30, 54, &winR);
 		App->render->Blit(uiSprites, 175, 54, &loseL);
 		
 	}
-	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL())
+	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL() && App->LeftJapanesePlayer->getJapScoreL() > 1200)
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 48, &winL);
 	}
 
-	if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL())
+	if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL() && App->rightgermanyplayer->getGerScoreR() > 1200)
 	{
 		App->render->Blit(uiSprites, 30, 54, &winR);
 		App->render->Blit(uiSprites, 175, 54, &loseL);
 	}
-	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL())
+	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL() && App->leftgermanyplayer->getGerScoreL() > 1200)
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 48, &winL);

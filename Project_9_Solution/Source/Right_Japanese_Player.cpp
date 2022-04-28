@@ -448,7 +448,6 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 		App->audio->PlayFx(explosionFx);
 		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
-
 		*/
 	
 	}
