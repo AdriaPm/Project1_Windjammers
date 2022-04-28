@@ -471,7 +471,7 @@ Update_Status LeftGermanPlayer::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		/*App->audio->PlayFx(laserFx);*/
 	}

@@ -45,7 +45,7 @@ bool ModuleParticles::Start()
 	disk.anim.PushBack({ 149, 48, 17, 17});
 	disk.anim.PushBack({ 181, 48, 17, 17});
 	disk.anim.PushBack({ 213, 48, 17, 17});
-	disk.lifetime = 180;
+	disk.lifetime = 350;
 	disk.speed.x = 5;
 	disk.anim.speed = 0.2f;
 
