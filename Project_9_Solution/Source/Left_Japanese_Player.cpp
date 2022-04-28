@@ -292,6 +292,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	{
 		scoreJapLeft += 500;
 	}
+
 }
 
 void Left_Japanese_Player::Movement() 
