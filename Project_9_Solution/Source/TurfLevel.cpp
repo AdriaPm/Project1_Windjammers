@@ -45,10 +45,16 @@ bool TurfLevel::Start()
 	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::UPPER_WALL);
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::LOWER_WALL);
-	//Leftside goal
-	App->collisions->AddCollider({ 0, 17, 10, 200 }, Collider::Type::LEFT_GOAL);
-	//Rightside goal
-	App->collisions->AddCollider({ 295, 17, 9, 200 }, Collider::Type::RIGHT_GOAL);
+	//Leftside 3points goal
+	App->collisions->AddCollider({ 0, 17, 10, 88 }, Collider::Type::LEFT_3P_GOAL);
+	App->collisions->AddCollider({ 0, 151, 10, 66 }, Collider::Type::LEFT_3P_GOAL);
+	//Leftside 5points goal
+	App->collisions->AddCollider({ 0, 105, 10, 46 }, Collider::Type::LEFT_5P_GOAL);
+	//Rightside 3points goal
+	App->collisions->AddCollider({ 295, 17, 10, 88 }, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 295, 151, 10, 66 }, Collider::Type::RIGHT_3P_GOAL);
+	//Rightside 5points goal
+	App->collisions->AddCollider({ 295, 105, 10, 46 }, Collider::Type::RIGHT_5P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 
@@ -84,6 +90,7 @@ bool TurfLevel::Start()
 		break;
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
+		App->LeftJapanesePlayer->hasDisc = true;
 		break;
 	/*case Player_Chosen_Left::Spanish:
 		App->leftgermanyplayer->Enable();

@@ -556,12 +556,12 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	//Collider player-left goal
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_GOAL) {
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL) {
 		position.x = 10;
 	}
 
 	//Collider player-right goal
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_GOAL) {
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
 		position.x = 295 - 25;
 	}
 

@@ -1,3 +1,4 @@
+
 #include "ModuleCollisions.h"
 
 #include "Application.h"
@@ -27,17 +28,18 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::PLAYER][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LOWER_WALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::LEFT_GOAL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::RIGHT_GOAL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::DISK] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::LOWER_WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::LEFT_GOAL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::RIGHT_GOAL] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_SHOT] = true;
@@ -45,8 +47,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::LOWER_WALL] = true;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::LEFT_GOAL] = true;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::RIGHT_GOAL] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER_SHOT] = false;
@@ -54,29 +56,49 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::LOWER_WALL] = true;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::LEFT_GOAL] = true;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::RIGHT_GOAL] = true;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
 
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::LEFT_GOAL] = false;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::DISK] = true;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::UPPER_WALL] = false;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::LOWER_WALL] = false;
-	matrix[Collider::Type::LEFT_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::LEFT_3P_GOAL] = false;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::UPPER_WALL] = false;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::LOWER_WALL] = false;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::LEFT_5P_GOAL] = false;
 
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::RIGHT_GOAL] = false;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::DISK] = true;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::UPPER_WALL] = false;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::LOWER_WALL] = false;
-	matrix[Collider::Type::RIGHT_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::LEFT_5P_GOAL] = false;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::UPPER_WALL] = false;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::LOWER_WALL] = false;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::LEFT_3P_GOAL] = false;
+
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::RIGHT_3P_GOAL] = false;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::UPPER_WALL] = false;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::LOWER_WALL] = false;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::RIGHT_5P_GOAL] = false;
 	
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::RIGHT_5P_GOAL] = false;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::UPPER_WALL] = false;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::LOWER_WALL] = false;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::NET] = false;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::RIGHT_3P_GOAL] = false;
+
 	matrix[Collider::Type::NET][Collider::Type::NET] = false;
 	matrix[Collider::Type::NET][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::NET][Collider::Type::DISK] = false;
@@ -90,8 +112,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::DISK][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::DISK][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::DISK][Collider::Type::LOWER_WALL] = true;
-	matrix[Collider::Type::DISK][Collider::Type::LEFT_GOAL] = true;
-	matrix[Collider::Type::DISK][Collider::Type::RIGHT_GOAL] = true;
+	matrix[Collider::Type::DISK][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::DISK][Collider::Type::RIGHT_3P_GOAL] = true;
+	matrix[Collider::Type::DISK][Collider::Type::LEFT_5P_GOAL] = true;
+	matrix[Collider::Type::DISK][Collider::Type::RIGHT_5P_GOAL] = true;
 
 }
 
@@ -194,11 +218,17 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::ENEMY_SHOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
-			case Collider::Type::LEFT_GOAL: // red
+			case Collider::Type::LEFT_3P_GOAL: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
-			case Collider::Type::RIGHT_GOAL: 
+			case Collider::Type::LEFT_5P_GOAL: 
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
+			break;
+			case Collider::Type::RIGHT_3P_GOAL: 
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+			case Collider::Type::RIGHT_5P_GOAL: 
+			App->render->DrawQuad(colliders[i]->rect, 255, 55, 0, alpha);
 			break;
 			case Collider::Type::NET: // light blue
 			App->render->DrawQuad(colliders[i]->rect, 100, 255, 255, alpha);

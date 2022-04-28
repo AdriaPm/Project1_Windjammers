@@ -87,6 +87,8 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 
+	//Detect if has disc
+	bool hasDisc = true;
 };
 
 #endif //!__MODULE_PLAYER_H__
