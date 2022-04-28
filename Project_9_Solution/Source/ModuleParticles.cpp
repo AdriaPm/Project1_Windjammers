@@ -22,7 +22,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_MAP/sprite_disk_lawnMap.png");
+	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 	texture = App->textures->Load("Assets/Sprites/particles.png");
 
 	// Explosion particle
