@@ -101,7 +101,7 @@ public:
 	char scoreTextGerLeft[10] = { "\0" };
 
 	//Detect if has disc
-	bool hasDisc = true;
+	bool hasDisk = true;
 
 };
 

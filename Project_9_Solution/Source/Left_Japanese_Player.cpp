@@ -330,13 +330,13 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
-		hasDisK = true;
+		hasDisk = true;
 	}
 }
 
 void Left_Japanese_Player::Movement() 
 {
-	if (hasDisK == false)
+	if (hasDisk == false)
 	{
 		//Left anim
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -530,7 +530,7 @@ void Left_Japanese_Player::Movement()
 			App->audio->PlayFx(slidingSFX);
 		}
 	}
-	else if (hasDisK == true)
+	else if (hasDisk == true)
 	{
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
@@ -538,7 +538,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisK = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -550,7 +550,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisK = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -562,7 +562,7 @@ void Left_Japanese_Player::Movement()
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			hasDisK = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}

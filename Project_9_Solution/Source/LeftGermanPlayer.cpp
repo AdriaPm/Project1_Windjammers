@@ -345,7 +345,13 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			scoreGerLeft += 500;
 		}
 	}
-<<<<<<< HEAD
+	else if (godMode == true) {
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
+			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+		{
+			scoreGerLeft += 0;
+		}
+	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
@@ -366,22 +372,16 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 	}
-=======
-<<<<<<< HEAD
-	else if (godMode == true) {
-		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL || 
-			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
-		{
-			scoreGerLeft += 0;
-		}
+	
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
+	{
+		hasDisk = true;
 	}
 	
-=======
->>>>>>> cb728fee271b0d86c77e6a2fbc980951119e7313
 }
 
 void LeftGermanPlayer::Movement() {
-	if (App->particles->diskL.HasDiskL == false) {
+	if (hasDisk == false) {
 		//Left Anim
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
@@ -598,9 +598,8 @@ void LeftGermanPlayer::Movement() {
 
 		//Normal Throw Animation
 	}
+	else if (hasDisk == false) {
 
-	else if (App->particles->diskL.HasDiskL == true) {
-	
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
 			if (currentAnimation != &Throw)
@@ -612,7 +611,7 @@ void LeftGermanPlayer::Movement() {
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskL.HasDiskL = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -624,7 +623,7 @@ void LeftGermanPlayer::Movement() {
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskL.HasDiskL = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -636,7 +635,7 @@ void LeftGermanPlayer::Movement() {
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskL.HasDiskL = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}
@@ -654,7 +653,6 @@ void LeftGermanPlayer::Movement() {
 		currentAnimation = &idleAnim;
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
 	}
-<<<<<<< Updated upstream
 }
 
 void LeftGermanPlayer::Movement() {
@@ -875,7 +873,6 @@ void LeftGermanPlayer::Movement() {
 
 		//Normal Throw Animation
 	}
-
 	else if (App->particles->diskL.HasDiskL == true) {
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN) {
 			if (currentAnimation != &Throw)
@@ -937,7 +934,4 @@ void LeftGermanPlayer::Movement() {
 		currentAnimation = &idleAnim;
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
 	}
-=======
->>>>>>> 99424fbeec537b598096dee07409babb1773cffb
->>>>>>> Stashed changes
 }

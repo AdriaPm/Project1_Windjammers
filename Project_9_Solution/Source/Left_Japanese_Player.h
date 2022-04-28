@@ -93,7 +93,7 @@ public:
 	char scoreJapTextLeft[10] = { "\0" };
 
 	//Detect if has disc
-	bool hasDisc = true;
+	bool hasDisk = true;
 
 	//God Mode
 	bool godMode = false;

@@ -92,7 +92,7 @@ public:
 	uint explosionFx = 0;
 	uint ShotFx = 0;
 	uint discThrowSFX = 0;
-	bool hasDisc = true;
+	bool hasDisk = false;
 
 
 	// Font score index

@@ -332,18 +332,18 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.HasDiskR == true;
 	}
 
+	if (godMode == false) {
 
-
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
 		{
 			scoreGerRight += 300;
 		}
 
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
-	{
-		scoreGerRight += 500;
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+		{
+			scoreGerRight += 500;
+		}
 	}
-
 	else if (godMode == true) {
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL ||
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
@@ -351,11 +351,32 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			scoreGerRight += 0;
 		}
 	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
+	{
+		App->particles->diskR.speed.x = -1.0f;
+		App->particles->diskR.speed.y = 3.5f;
+		App->particles->diskR.position.x += App->particles->diskR.speed.x;
+		App->particles->diskR.position.y += App->particles->diskR.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
+	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
+	{
+		App->particles->diskR.speed.x = -1.0f;
+		App->particles->diskR.speed.y = -3.5f;
+		App->particles->diskR.position.x += App->particles->diskR.speed.x;
+		App->particles->diskR.position.y += App->particles->diskR.speed.y;
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		newParticle->collider->AddListener(this);
+	}
+
 }
 
 
 void RightGermanPlayer::Movement() {
-	if (App->particles->diskR.HasDiskR == false) {
+	if (hasDisk = false) {
 		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 		{
 			position.x -= speed;
@@ -574,7 +595,7 @@ void RightGermanPlayer::Movement() {
 			}
 		}
 	}
-	else if (App->particles->diskR.HasDiskR == true) {
+	else if (hasDisk = true) {
 		if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) {
 			if (currentAnimation != &Throw)
 			{
@@ -600,7 +621,7 @@ void RightGermanPlayer::Movement() {
 			App->particles->diskR.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskR.HasDiskR = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -612,7 +633,7 @@ void RightGermanPlayer::Movement() {
 			App->particles->diskR.position.y += App->particles->diskR.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskR.HasDiskR = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
@@ -624,7 +645,7 @@ void RightGermanPlayer::Movement() {
 			App->particles->diskR.position.y += App->particles->diskR.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
-			App->particles->diskR.HasDiskR = false;
+			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}
@@ -644,25 +665,7 @@ void RightGermanPlayer::Movement() {
 	}
 
 
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
-	{
-		App->particles->diskR.speed.x = -1.0f;
-		App->particles->diskR.speed.y = 3.5f;
-		App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		App->particles->diskR.position.y += App->particles->diskR.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
-	}
-
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
-	{
-		App->particles->diskR.speed.x = -1.0f;
-		App->particles->diskR.speed.y = -3.5f;
-		App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		App->particles->diskR.position.y += App->particles->diskR.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
-	}
+	
 }
 
 void RightGermanPlayer::Movement() {

@@ -477,6 +477,10 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
 		position.x = 150 + 4;
 	}
+	
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK) {
+		hasDisk = true;
+	}
 
 	///Score points
 	if (App->input->keys[SDL_SCANCODE_F1] == Key_State::KEY_DOWN) {

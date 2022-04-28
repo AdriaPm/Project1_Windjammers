@@ -90,6 +90,9 @@ public:
 	//God Mode
 	bool godMode = false;
 
+	//disc bool
+	bool hasDisk = false;
+
 	// Font score index
 	uint scoreJapRight = 000;
 	int scoreJapFontRight = -1;
