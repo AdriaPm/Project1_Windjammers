@@ -32,7 +32,7 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	uint getScoreL(){return scoreLeft;}
+	uint getJapScoreL(){return scoreJapLeft;}
 
 	void Movement();
 
@@ -87,9 +87,9 @@ public:
 	uint slidingSFX = 0;
 
 	// Font score index
-	uint scoreLeft = 000;
-	int scoreFontLeft = -1;
-	char scoreTextLeft[10] = { "\0" };
+	uint scoreJapLeft = 000;
+	int scoreJapFontLeft = -1;
+	char scoreJapTextLeft[10] = { "\0" };
 
 	uint counter = 00;
 	int counterFont = -1;

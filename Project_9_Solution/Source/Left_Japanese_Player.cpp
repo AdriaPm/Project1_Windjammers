@@ -199,7 +199,7 @@ bool Left_Japanese_Player::Start()
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
 	char lookupTable[] = { "0123456789" };
-	scoreFontLeft = App->fonts->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png", lookupTable, 1);
+	scoreJapFontLeft = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
 
 	return ret;
 }
@@ -233,9 +233,9 @@ Update_Status Left_Japanese_Player::PostUpdate()
 	}
 
 	//// Draw UI (score) --------------------------------------
-	//sprintf_s(scoreTextLeft, 10, "%7d", scoreLeft);
+	sprintf_s(scoreJapTextLeft, 10, "%d", scoreJapLeft);
 
-	//App->fonts->BlitText(66, 8, scoreFontLeft, scoreTextLeft);
+	App->fonts->BlitText(66, 8, scoreJapFontLeft, scoreJapTextLeft);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -292,16 +292,12 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	//Score points
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 	{
-		scoreLeft += 300;
-		//TODO: Add the winning condition
-
+		scoreJapLeft += 300;
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 	{
-		scoreLeft += 500;
-
-		//TODO: Add the winning condition
+		scoreJapLeft += 500;
 	}
 }
 

@@ -475,7 +475,6 @@ Update_Status LeftGermanPlayer::Update()
 
 			/*App->P1Status = Player_State_Left::PLAYER_THROW;*/
 		}
-		
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
@@ -514,12 +513,12 @@ Update_Status LeftGermanPlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
+	sprintf_s(scoreTextGerLeft, 10, "%d", scoreGerLeft);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+	App->fonts->BlitText(58, 248, scoreFontGerLeft, scoreTextGerLeft);
 
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	App->fonts->BlitText(150, 248, scoreFontGerLeft, "this is just a font test");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -582,7 +581,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 	{
-		score += 23;
+		scoreGerLeft += 23;
 	}
 
 	//if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
