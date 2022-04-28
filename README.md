@@ -1,5 +1,7 @@
 # Windjammers - I WAS HIDING STUDIOS
 
+## Description
+
 Windjammers is an arcade sports game, in which the main objective of it is to win your opponent in a head-to-head flying disk match. Windjammers is based on classic volleyball/handball matches but adds a frenetic point of view when playing it due to its special features such as the goals, score points, unique characters and special courts.
 
 ## GitHub link
