@@ -70,6 +70,7 @@ public:
 	Animation Throw;
 	Animation ScoredOn;
 	Animation Scored;
+	Animation HoldingAnim;
 
 
 
