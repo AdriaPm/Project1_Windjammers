@@ -179,10 +179,9 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 79, 288, 28, 35 });
 	Throw.PushBack({ 49, 288, 30, 35 });
 	Throw.PushBack({ 23, 288, 26, 35 });
+	Throw.PushBack({ 49, 288, 30, 35 });
+	Throw.PushBack({ 79, 288, 28, 35 });
 	Throw.PushBack({ 1, 288, 22, 35 });
-	Throw.PushBack({ 116, 324, 22, 35 });
-
-
 	Throw.loop = false;
 	Throw.speed = 0.1f;
 
@@ -216,7 +215,7 @@ bool RightGermanPlayer::Start()
 
 	bool ret = true;
 
-	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHT.png");
+	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHTDISKTHROW.png");
 	currentAnimation = &idleAnim;
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -470,9 +469,9 @@ Update_Status RightGermanPlayer::Update()
 	}
 
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN)
 	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x - 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		/*App->audio->PlayFx(laserFx);*/
 	}

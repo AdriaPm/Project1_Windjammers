@@ -38,7 +38,7 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
-	int speedslide = 5;
+	int speedslide = 0.75;
 	int speedcross = 0.25;
 
 	// The player spritesheet loaded into an SDL_Texture
@@ -81,6 +81,7 @@ public:
 	bool destroyed = false;
 
 	// Sound effects indices
+	uint ShotFx = 0;
 	uint laserFx = 0;
 	uint explosionFx = 0;
 

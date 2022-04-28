@@ -98,7 +98,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.PushBack({ 179, 14, 26, 39 });
 	victAnim.PushBack({ 209, 14, 30, 39 });
 	victAnim.loop = false;
-	victAnim.speed = 0.1f;
+	victAnim.speed = 4.0f;
 
 	//Slide Left
 	SlideLAnim.PushBack({ 224, 239, 31, 31 });
@@ -106,25 +106,23 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
 	SlideLAnim.loop = false;
-	SlideLAnim.speed = 0.1f;
+	SlideLAnim.speed = 4.0f;
 
 	//Slide Right
-	SlideRAnim.PushBack({ 1, 188, 31, 31 });
-	SlideRAnim.PushBack({ 32, 188, 31, 31 });
-	SlideRAnim.PushBack({ 63, 188, 29, 31 });
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
-	SlideRAnim.PushBack({ 149, 188, 32, 31 });
+	SlideRAnim.PushBack({ 63, 188, 29, 31 });
+	SlideRAnim.PushBack({ 32, 188, 31, 31 });
+	SlideRAnim.PushBack({ 1, 188, 31, 31 });
 	SlideRAnim.loop = false;
 	SlideRAnim.speed = 4.0f;
 
 	//Slide Up
-	SlideUAnim.PushBack({ 1, 238, 28, 50 });
-	SlideUAnim.PushBack({ 29, 238, 24, 50 });
-	SlideUAnim.PushBack({ 53, 238, 31, 50 });
-	SlideUAnim.PushBack({ 84, 238, 23, 50 });
-	SlideUAnim.PushBack({ 107, 238, 32, 31 });
+	SlideUAnim.PushBack({ 232, 188, 23, 51 });
+	SlideUAnim.PushBack({ 203, 188, 29, 50 });
+	SlideUAnim.PushBack({ 180, 188, 23, 50 });
+	SlideUAnim.PushBack({ 149, 188, 31, 34 });
 	SlideUAnim.loop = false;
-	SlideUAnim.speed = 0.1f;
+	SlideUAnim.speed = 4.0f;
 
 
 	//Slide Down
@@ -142,7 +140,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideUpRightAnim.PushBack({ 1, 140, 37, 48 });
 	SlideUpRightAnim.PushBack({ 213, 92, 26, 42 });
 	SlideUpRightAnim.loop = false;
-	SlideUpRightAnim.speed = 0.1f;
+	SlideUpRightAnim.speed = 4.0f;
 
 
 	//Slide Up Left
@@ -152,7 +150,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
 	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
 	SlideUpLeftAnim.loop = false;
-	SlideUpLeftAnim.speed = 0.1f;
+	SlideUpLeftAnim.speed = 5.0f;
 
 
 	//Slide Down Left
@@ -161,7 +159,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDownLeftAnim.PushBack({ 102, 92, 35, 42 });
 	SlideDownLeftAnim.PushBack({ 71, 92, 31, 42 });
 	SlideDownLeftAnim.loop = false;
-	SlideDownLeftAnim.speed = 0.1f;
+	SlideDownLeftAnim.speed = 2.0f;
 
 
 	//Slide Down Right 
@@ -170,7 +168,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.PushBack({ 107, 140, 31, 42 });
 	SlideDownRightAnim.PushBack({ 215, 140, 31, 42 });
 	SlideDownRightAnim.loop = false;
-	SlideDownRightAnim.speed = 0.1f;
+	SlideDownRightAnim.speed = 4.0f;
 
 	//Throw 
 	Throw.PushBack({ 69, 288, 23, 35 });
@@ -216,6 +214,8 @@ bool LeftGermanPlayer::Start()
 
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROW.png");
 	currentAnimation = &idleAnim;
+
+	ShotFx = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_3.wav");
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
@@ -345,7 +345,7 @@ Update_Status LeftGermanPlayer::Update()
 
 
 	//Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		if (currentAnimation != &SlideRAnim)
@@ -357,7 +357,7 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Up Slide Anim
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.y -= speedslide;
 		if (currentAnimation != &SlideUAnim)
@@ -369,20 +369,21 @@ Update_Status LeftGermanPlayer::Update()
 	}
 
 	//Left Slide Anim
-	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		Player_State::PLAYER_DIVE;
 		position.x -= speedslide;
 
 		if (currentAnimation != &SlideLAnim)
 		{
+			SlideLAnim.Reset();
 			currentAnimation = &SlideLAnim;
 		}
 		
 	}
 
 	//Down Slide Anim
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.y += speedslide;
 
@@ -426,7 +427,7 @@ Update_Status LeftGermanPlayer::Update()
 
 	// Down Left Slide Anim
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speedslide;
 		position.y += speedslide;
@@ -441,8 +442,8 @@ Update_Status LeftGermanPlayer::Update()
 
 
 	// Down Right Slide Anim
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
 	{
 		position.x += speedslide;
 		position.y += speedslide;
@@ -473,7 +474,7 @@ Update_Status LeftGermanPlayer::Update()
 	{
 		Particle* newParticle = App->particles->AddParticle(App->particles->disk, position.x + 20, position.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
-		/*App->audio->PlayFx(laserFx);*/
+		App->audio->PlayFx(ShotFx);
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
