@@ -88,6 +88,7 @@ public:
 
 	// Sound effects indices
 	uint slidingSFX = 0;
+	uint discThrowSFX = 0;
 
 	//God Mode
 	bool godMode = false;
