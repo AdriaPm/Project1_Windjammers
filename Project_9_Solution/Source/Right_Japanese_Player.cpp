@@ -508,3 +508,245 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	}
 
 }
+
+void Right_Japanese_Player::Movement()
+{
+	if (hasDisk == false)
+	{
+		//Left anim
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speed;
+			if (currentAnimation != &leftAnim)
+			{
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
+		}
+
+		//Right anim
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+		{
+			position.x += speed;
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+		}
+
+		//Down anim
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+			position.y += speed;
+			if (currentAnimation != &downAnim)
+			{
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
+		}
+
+		//Up anim
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speed;
+			if (currentAnimation != &upAnim)
+			{
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
+		}
+
+		//Up Left Anim
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speedcross;
+			position.y -= speedcross;
+
+			if (currentAnimation != &leftAnim)
+			{
+				currentAnimation = &leftAnim;
+			}
+		}
+
+		//Up Right Anim
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+			position.x += speedcross;
+			position.y -= speedcross;
+
+			if (currentAnimation != &rightAnim)
+			{
+				currentAnimation = &rightAnim;
+			}
+		}
+
+		// Down Left Anim
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speedcross;
+			position.y += speedcross;
+
+			if (currentAnimation != &leftAnim)
+			{
+				currentAnimation = &leftAnim;
+			}
+		}
+
+		// Down Right Anim
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+		{
+			position.x += speedcross;
+			position.y += speedcross;
+
+			if (currentAnimation != &rightAnim)
+			{
+				currentAnimation = &rightAnim;
+			}
+		}
+
+		//Left Slide
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speedslide;
+			if (currentAnimation != &SlideLAnim)
+			{
+				SlideLAnim.Reset();
+				currentAnimation = &SlideLAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Right Slide
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.x += speedslide;
+			if (currentAnimation != &SlideRAnim)
+			{
+				SlideRAnim.Reset();
+				currentAnimation = &SlideRAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			if (currentAnimation != &SlideDAnim)
+			{
+				SlideDAnim.Reset();
+				currentAnimation = &SlideDAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			if (currentAnimation != &SlideUAnim)
+			{
+				SlideUAnim.Reset();
+				currentAnimation = &SlideUAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Left Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			position.x -= speedslide;
+			if (currentAnimation != &SlideUpLeftAnim)
+			{
+				SlideUpLeftAnim.Reset();
+				currentAnimation = &SlideUpLeftAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Right Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			position.x += speedslide;
+			if (currentAnimation != &SlideUpRightAnim)
+			{
+				SlideUpRightAnim.Reset();
+				currentAnimation = &SlideUpRightAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Left Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			position.x -= speedslide;
+			if (currentAnimation != &SlideDownLeftAnim)
+			{
+				SlideDownLeftAnim.Reset();
+				currentAnimation = &SlideDownLeftAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Right Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			position.x += speedslide;
+			if (currentAnimation != &SlideDownRightAnim)
+			{
+				SlideDownRightAnim.Reset();
+				currentAnimation = &SlideDownRightAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+	}
+	else if (hasDisk == true)
+	{
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
+		{
+			App->particles->diskL.speed.x = 5.0f;
+			App->particles->diskL.speed.y = 0.0f;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = -3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = 3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+	}
+
+	// If no up/down left/right movement detected, set the current animation back to idle
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
+		currentAnimation = &idleAnim;
+}

@@ -373,7 +373,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		newParticle->collider->AddListener(this);
 	}
 	
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
 	{
 		hasDisk = true;
 	}
@@ -598,7 +598,7 @@ void LeftGermanPlayer::Movement() {
 
 		//Normal Throw Animation
 	}
-	else if (hasDisk == false) {
+	else if (hasDisk == true) {
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{

@@ -328,7 +328,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		newParticle->collider->AddListener(this);
 	}
 	
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
 	{
 		hasDisk = true;
 	}
