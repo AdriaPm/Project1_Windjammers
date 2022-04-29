@@ -364,7 +364,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
 		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = 3.5f;
+		App->particles->diskL.speed.y = -3.5f;
 		App->particles->diskL.position.x += App->particles->diskL.speed.x;
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
@@ -374,7 +374,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
 	{
 		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = -3.5f;
+		App->particles->diskL.speed.y = 3.5f;
 		App->particles->diskL.position.x += App->particles->diskL.speed.x;
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
