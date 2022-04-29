@@ -29,6 +29,7 @@ enum class Player_Chosen_Left {
 };
 
 enum class Player_Locked {
+	NotLocked,
 	Locked1,
 	Locked2
 };

@@ -35,8 +35,8 @@ public:
 	Update_Status PostUpdate() override;
 
 public:
-	int player1conf;
-	int player2conf;
+	/*int player1conf;
+	int player2conf;*/
 	SDL_Texture* chooseCharacterTexture = nullptr;
 	SDL_Texture* playerIcon = nullptr;
 

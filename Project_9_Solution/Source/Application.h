@@ -61,8 +61,8 @@ public:
 	Player_Chosen_Left choice1;
 	Player_Chosen_Right choice2;
 
-	Player_Locked LockedinP1;
-	Player_Locked LockedinP2;
+	Player_Locked LockedinP1 = Player_Locked::NotLocked;
+	Player_Locked LockedinP2 = Player_Locked::NotLocked;
 
 	Player_State_Left P1Status;
 	Player_State_Right P2Status;
