@@ -230,7 +230,7 @@ bool LeftGermanPlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 20, 40 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 40 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789" };
 	scoreFontGerLeft = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
@@ -373,7 +373,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		newParticle->collider->AddListener(this);
 	}
 	
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
 		hasDisk = true;
 	}
