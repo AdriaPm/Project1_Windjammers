@@ -9,6 +9,10 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 #include <stdio.h>
 
@@ -338,11 +342,15 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 		{
 			scoreGerLeft += 300;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
 		}
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			scoreGerLeft += 500;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
 		}
 	}
 	else if (godMode == true) {
