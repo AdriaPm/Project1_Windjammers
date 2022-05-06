@@ -361,7 +361,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL && c2->type == Collider::Type::NET)
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
 		
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
