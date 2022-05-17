@@ -446,7 +446,7 @@ void RightGermanPlayer::Movement() {
 
 			if (currentAnimation != &UpLeftAnim)
 			{
-				UpLeftAnim.Reset();
+				
 				currentAnimation = &UpLeftAnim;
 			}
 
@@ -460,7 +460,7 @@ void RightGermanPlayer::Movement() {
 
 			if (currentAnimation != &UpRightAnim)
 			{
-				UpRightAnim.Reset();
+				
 				currentAnimation = &UpRightAnim;
 			}
 			/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
@@ -475,7 +475,7 @@ void RightGermanPlayer::Movement() {
 
 			if (currentAnimation != &DownLeftAnim)
 			{
-				DownLeftAnim.Reset();
+				
 				currentAnimation = &DownLeftAnim;
 			}
 			/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
@@ -489,7 +489,7 @@ void RightGermanPlayer::Movement() {
 
 			if (currentAnimation != &DownRightAnim)
 			{
-				DownRightAnim.Reset();
+				
 				currentAnimation = &DownRightAnim;
 			}
 			/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
