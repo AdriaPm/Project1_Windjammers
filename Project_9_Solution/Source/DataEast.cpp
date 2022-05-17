@@ -26,7 +26,7 @@ DataEast::DataEast(bool startEnabled) : Module(startEnabled)
 	DElogo.PushBack({ 3268, 8, 246, 85 });
 	DElogo.PushBack({ 3514, 6, 250, 88 });
 	DElogo.PushBack({ 3765, 3, 251, 89 });
-	DElogo.speed = 0.1f;
+	DElogo.speed = 0.4f;
 	DElogo.loop = false;
 }
 
