@@ -5,6 +5,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -32,6 +33,8 @@ public:
 	void SceneAnimations();
 
 public:
+	iPoint charPos;
+
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr; 
 	SDL_Texture* buttonsTexture = nullptr;
@@ -54,6 +57,7 @@ public:
 	Animation SlideUAnim;
 	Animation SlideDAnim;
 
+	float speed = 1.0f;
 	int currentAnimCount = 0;
 	//Animation* AnimationButtons[MAX_ANIMATIONS];
 	Animation* currentAButtons = nullptr;

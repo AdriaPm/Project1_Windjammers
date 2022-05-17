@@ -1,4 +1,5 @@
 #include "TutorialScene.h"
+#include <SDL/include/SDL.h>
 
 #include "Application.h"
 #include "Globals.h"
@@ -65,26 +66,6 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 456, 404, 46, 33 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.2f;
-	
-	//Move Up Right
-	upRightAnim.PushBack({ 269, 404, 42, 36 });
-	upRightAnim.PushBack({ 310, 404, 30, 37 });
-	upRightAnim.PushBack({ 339, 404, 47, 30 });
-	upRightAnim.PushBack({ 385, 404, 42, 37 });
-	upRightAnim.PushBack({ 426, 404, 29, 34 });
-	upRightAnim.PushBack({ 456, 404, 46, 33 });
-	upRightAnim.loop = true;
-	upRightAnim.speed = 0.2f;
-	
-	//Move Up Right
-	downLeftAnim.PushBack({ 269, 404, 42, 36 });
-	downLeftAnim.PushBack({ 310, 404, 30, 37 });
-	downLeftAnim.PushBack({ 339, 404, 47, 30 });
-	downLeftAnim.PushBack({ 385, 404, 42, 37 });
-	downLeftAnim.PushBack({ 426, 404, 29, 34 });
-	downLeftAnim.PushBack({ 456, 404, 46, 33 });
-	downLeftAnim.loop = true;
-	downLeftAnim.speed = 0.2f;
 
 	//Slide Left
 	SlideLAnim.PushBack({ 474, 359, 30, 33 });
@@ -166,6 +147,8 @@ TutorialScene::~TutorialScene()
 // Load assets
 bool TutorialScene::Start()
 {
+	charPos.x = 50;
+	charPos.y = 75;
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -215,7 +198,7 @@ Update_Status TutorialScene::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(bgTexture, SCREEN_WIDTH, 0, NULL);
 	App->render->Blit(buttonsTexture, 60, 150, &rect2, false);
-	App->render->Blit(characterTexture, 50, 75, &rect, false);
+	App->render->Blit(characterTexture, charPos.x, charPos.y, &rect, false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -226,6 +209,8 @@ void TutorialScene::SceneAnimations()
 	{
 		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsrightAnim;
+		charPos.x += speed;
+
 		//currentAnimation->ResetLoopCount();
 		//currentAButtons->ResetLoopCount();
 	}
@@ -234,6 +219,7 @@ void TutorialScene::SceneAnimations()
 	{
 		currentAnimation = &leftAnim;
 		currentAButtons = &ButtonsleftAnim;
+		charPos.x -= speed;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 4 && currentAButtons->GetLoopCount() >= 4)

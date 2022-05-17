@@ -7,7 +7,6 @@
 #define NUM_MODULES 23
 
 
-
 class Module;
 class ModuleWindow;
 class ModuleInput;
@@ -93,7 +92,6 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
-	
 
 	ModuleRender* render = nullptr;
 
