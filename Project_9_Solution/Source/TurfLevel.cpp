@@ -23,7 +23,7 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	background.PushBack({ 304, 0, 304, 224 });
 	background.PushBack({ 608, 0, 304, 224 });
 	background.PushBack({ 912, 0, 304, 224 });
-	background.speed = 0.05f;
+	background.speed = 0.07f;
 	background.loop = true;
 
 	winR = {224, 86, 100, 32};

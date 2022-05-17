@@ -40,7 +40,7 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	NeoGeo.PushBack({ 6355, 6579, 232, 24 });
 	NeoGeo.PushBack({ 6583, 6806, 232, 24 });	
 	NeoGeo.PushBack({ 6812, 7032, 232, 24 });
-	NeoGeo.speed = 0.1f;
+	NeoGeo.speed = 0.4f;
 	NeoGeo.loop = false;
 	
 	//Max logo
@@ -76,7 +76,7 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	Max.PushBack({ 347, 103, 23, 36 });
 	Max.PushBack({ 370, 103, 23, 35 });
 	Max.PushBack({ 393, 103, 23, 36 });
-	Max.speed = 0.1f;
+	Max.speed = 0.4f;
 	Max.loop = false;
 }
 

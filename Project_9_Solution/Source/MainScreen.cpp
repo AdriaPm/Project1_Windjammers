@@ -21,7 +21,7 @@ MainScreen::MainScreen(bool startEnabled) : Module(startEnabled)
 	Letters.PushBack({ 2040, 12, 258, 10 });
 	Letters.PushBack({ 2295, 5, 258, 10 });
 	Letters.PushBack({ 2550, 0, 258, 10 });
-	Letters.speed = 0.1f;
+	Letters.speed = 0.5f;
 	Letters.loop = false;
 
 	//main logo anim
@@ -55,7 +55,7 @@ MainScreen::MainScreen(bool startEnabled) : Module(startEnabled)
 	Logo.PushBack({ 8220, 0, 285, 120 });
 	Logo.PushBack({ 8514, 0, 285, 120 });
 	Logo.PushBack({ 8807, 0, 285, 120 });
-	Logo.speed = 0.1f;
+	Logo.speed = 0.6f;
 	Logo.loop = false;
 }
 
