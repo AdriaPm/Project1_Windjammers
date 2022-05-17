@@ -36,7 +36,7 @@ bool ChooseCharacter::Start()
 	currentAnimation1 = &p1;
 	currentAnimation2 = &p2;
 
-	chooseCharacterTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/ChooseCharacter.png");
+	chooseCharacterTexture = App->textures->Load("Assets/Spriteswind/Sprites/UI/choose_character_screen.png");
 	playerIcon = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
 	App->audio->PlayMusic("Assets/Music/001 Windjammers _ Flying Power Disc (wjammers) [#002] Get Ready! (Select).ogg", 1.0f);
