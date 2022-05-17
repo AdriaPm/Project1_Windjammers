@@ -65,6 +65,26 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 456, 404, 46, 33 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.2f;
+	
+	//Move Up Right
+	upRightAnim.PushBack({ 269, 404, 42, 36 });
+	upRightAnim.PushBack({ 310, 404, 30, 37 });
+	upRightAnim.PushBack({ 339, 404, 47, 30 });
+	upRightAnim.PushBack({ 385, 404, 42, 37 });
+	upRightAnim.PushBack({ 426, 404, 29, 34 });
+	upRightAnim.PushBack({ 456, 404, 46, 33 });
+	upRightAnim.loop = true;
+	upRightAnim.speed = 0.2f;
+	
+	//Move Up Right
+	downLeftAnim.PushBack({ 269, 404, 42, 36 });
+	downLeftAnim.PushBack({ 310, 404, 30, 37 });
+	downLeftAnim.PushBack({ 339, 404, 47, 30 });
+	downLeftAnim.PushBack({ 385, 404, 42, 37 });
+	downLeftAnim.PushBack({ 426, 404, 29, 34 });
+	downLeftAnim.PushBack({ 456, 404, 46, 33 });
+	downLeftAnim.loop = true;
+	downLeftAnim.speed = 0.2f;
 
 	//Slide Left
 	SlideLAnim.PushBack({ 474, 359, 30, 33 });
