@@ -95,7 +95,8 @@ bool SceneIntro::Start()
 	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
 	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
 
-	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1.png");
+	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1def.png");
+	//MaxLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start5.png");
 
 	currentAnimation = &NeoGeo;
 	
@@ -110,7 +111,7 @@ bool SceneIntro::Start()
 Update_Status SceneIntro::Update()
 {
 
-	
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
@@ -128,7 +129,8 @@ Update_Status SceneIntro::PostUpdate()
 
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture_white, 0, 0, NULL);
-	App->render->Blit(NeoGeoLOGO, 0, 0, &rect, false);
+	App->render->Blit(NeoGeoLOGO, 50, 50, &rect, false);
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }

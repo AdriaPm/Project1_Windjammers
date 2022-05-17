@@ -33,6 +33,7 @@ public:
 	SDL_Texture* bgTexture_white = nullptr;
 	SDL_Texture* bgTexture_black = nullptr;
 	SDL_Texture* NeoGeoLOGO = nullptr;
+	SDL_Texture* MaxLOGO = nullptr;
 
 	Animation NeoGeo;
 	Animation Max;
