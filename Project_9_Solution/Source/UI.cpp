@@ -27,6 +27,9 @@ bool UI::Start()
 {
 	bool ret = true;
 
+	leftScore = 0;
+	rightScore = 0;
+
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
 	char lookupTable[] = { "0123456789" };

@@ -166,43 +166,9 @@ Update_Status TurfLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
-	//App->render->Blit(uiSprites, 144, 13, &time);
-
-	//sprintf_s(counterText, 2, "%d", counter);
-
-	//App->fonts->BlitText(145, 21, counterFont, counterText);
 	
-	/*if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
-	{
-		App->LeftJapanesePlayer->scoreJapLeft = 1500;
-		App->leftgermanyplayer->scoreGerLeft = 1500;
-	}
-	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
-	{
-		App->RightJapanesePlayer->scoreJapRight = 1500;
-		App->rightgermanyplayer->scoreGerRight = 1500;
-	}
-	else if (App->RightJapanesePlayer->getJapScoreR() > App->LeftJapanesePlayer->getJapScoreL() && App->RightJapanesePlayer->getJapScoreR() > 1200)
-	{
-		App->render->Blit(uiSprites, 175, 54, &winR);
-		App->render->Blit(uiSprites, 30, 54, &loseL);
-		
-	}
-	else if (App->RightJapanesePlayer->getJapScoreR() < App->LeftJapanesePlayer->getJapScoreL() && App->LeftJapanesePlayer->getJapScoreL() > 1200)
-	{
-		App->render->Blit(uiSprites, 174, 54, &loseR);
-		App->render->Blit(uiSprites, 18, 54, &winL);
-	}
-	else if (App->rightgermanyplayer->getGerScoreR() > App->leftgermanyplayer->getGerScoreL() && App->rightgermanyplayer->getGerScoreR() > 1200)
-	{
-		App->render->Blit(uiSprites, 175, 54, &winR);
-		App->render->Blit(uiSprites, 30, 54, &loseL);
-	}
-	else if (App->rightgermanyplayer->getGerScoreR() < App->leftgermanyplayer->getGerScoreL() && App->leftgermanyplayer->getGerScoreL() > 1200)
-	{
-		App->render->Blit(uiSprites, 18, 54, &loseR);
-		App->render->Blit(uiSprites, 174, 54, &winL);
-	}*/
+
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
