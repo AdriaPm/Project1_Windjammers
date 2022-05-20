@@ -40,6 +40,25 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	NeoGeo.PushBack({ 6355, 6579, 232, 24 });
 	NeoGeo.PushBack({ 6583, 6806, 232, 24 });	
 	NeoGeo.PushBack({ 6812, 7032, 232, 24 });
+	NeoGeo.PushBack({ 1, 225, 226, 7 });
+	NeoGeo.PushBack({ 227, 452, 226, 11 });
+	NeoGeo.PushBack({ 455, 679, 229, 17 });
+	NeoGeo.PushBack({ 682, 905, 226, 18 });
+	NeoGeo.PushBack({ 908, 1133, 226, 19 });
+	NeoGeo.PushBack({ 1137, 1360, 226, 17 });
+	NeoGeo.PushBack({ 1361, 1587, 227, 25 });
+	NeoGeo.PushBack({ 1588, 1813, 228, 23 });
+	NeoGeo.PushBack({ 1815, 2040, 228, 27 });
+	NeoGeo.PushBack({ 2043, 2267, 228, 26 });
+	NeoGeo.PushBack({ 2268, 2494, 228, 32 });
+	NeoGeo.PushBack({ 2495, 2722, 228, 33 });
+	NeoGeo.PushBack({ 2722, 2949, 229, 33 });
+	NeoGeo.PushBack({ 2949, 3176, 228, 37 });
+	NeoGeo.PushBack({ 3176, 3403, 228, 41 });
+	NeoGeo.PushBack({ 3403, 3630, 228, 40 });
+	NeoGeo.PushBack({ 3636, 3850,215 , 42 });
+	NeoGeo.PushBack({ 3870, 4070, 201, 41 });	
+	
 	NeoGeo.speed = 0.4f;
 	NeoGeo.loop = false;
 	

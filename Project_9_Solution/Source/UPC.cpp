@@ -38,6 +38,26 @@ Update_Status UPC::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 40);
 	}
+	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN) 
+	{
+		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
+	}
+	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->mainScreen, 40);
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
+	}
+	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 40);
+	}
+	if (App->input->keys[SDL_SCANCODE_5] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 40);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
