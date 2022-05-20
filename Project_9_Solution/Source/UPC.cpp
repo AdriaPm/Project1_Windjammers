@@ -34,27 +34,28 @@ bool UPC::Start()
 
 Update_Status UPC::Update()
 {
+	//Normal execution with all of the screens
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 40);
 	}
+	//Go to: DE screen
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN) 
 	{
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
 	}
+	//Go to: Main screen
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->mainScreen, 40);
 	}
+	//Go to: tutorial screen
 	if (App->input->keys[SDL_SCANCODE_3] == Key_State::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
-	}
-	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->tutorialScene, 40);
 	}
-	if (App->input->keys[SDL_SCANCODE_5] == Key_State::KEY_DOWN)
+	//Go to: character selection screen
+	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->chooseCharacter, 40);
 	}
