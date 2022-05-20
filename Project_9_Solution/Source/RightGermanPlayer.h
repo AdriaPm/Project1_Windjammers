@@ -75,9 +75,6 @@ public:
 	Animation ScoredOn;
 	Animation Scored;
 
-
-
-
 	// The player's collider
 	Collider* collider = nullptr;
 

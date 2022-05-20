@@ -1,4 +1,7 @@
 #include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -287,11 +290,15 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 		{
 			App->ui->leftScore += 300;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
 		}
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			App->ui->leftScore += 500;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
 		}
 	}
 	else if (godMode == true) {
