@@ -166,13 +166,13 @@ Update_Status TurfLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
-	App->render->Blit(uiSprites, 144, 13, &time);
+	//App->render->Blit(uiSprites, 144, 13, &time);
 
 	//sprintf_s(counterText, 2, "%d", counter);
 
 	//App->fonts->BlitText(145, 21, counterFont, counterText);
 	
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
+	/*if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
 	{
 		App->LeftJapanesePlayer->scoreJapLeft = 1500;
 		App->leftgermanyplayer->scoreGerLeft = 1500;
@@ -202,7 +202,7 @@ Update_Status TurfLevel::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 18, 54, &loseR);
 		App->render->Blit(uiSprites, 174, 54, &winL);
-	}
+	}*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }

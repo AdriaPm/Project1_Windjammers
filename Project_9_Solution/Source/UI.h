@@ -39,9 +39,11 @@ public:
 
 	uint rightScore = 000;
 	char rightScoreText[10] = { "\0" };
+	int rightScoreFont = -1;
+
 	uint leftScore = 000;
 	char leftScoreText[10] = { "\0" };
-	int scoreFont = -1;
+	int leftScoreFont = -1;
 
 	uint counter = 000;
 	int counterFont = -1;
