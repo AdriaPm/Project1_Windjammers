@@ -93,10 +93,7 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
-<<<<<<< Updated upstream
-=======
 	UI* ui = nullptr;
->>>>>>> Stashed changes
 
 	ModuleRender* render = nullptr;
 
