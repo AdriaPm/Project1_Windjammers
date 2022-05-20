@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Globals.h"
 #include "MemLeaks.h"
+#include <stdio.h>
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
@@ -84,6 +85,17 @@ int main(int argc, char* argv[])
 				state = Main_States::MAIN_EXIT;
 			}
 		}
+		int delta = SDL_GetTicks() - starttick;     //actual time b/w frames
+
+		int avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
+
+		if (delta < desiredDelta)
+		{
+			SDL_Delay(desiredDelta - delta);
+		}
+		char s[128];
+		sprintf_s(s, "FPS: %.2f", avgFPS);
+		//SDL_SetWindowTitle(App->window->window, s);
 	}
 
 	LOG("\nBye :)\n");
