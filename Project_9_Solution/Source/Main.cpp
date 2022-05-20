@@ -19,8 +19,8 @@ enum class Main_States
 
 Application* App = nullptr;
 
-int fps = 60;
-int desiredDelta = 1000 / fps;  //desired time b/w frames
+//int fps = 60;
+//int desiredDelta = 1000 / fps;  //desired time b/w frames
 
 int main(int argc, char* argv[])
 {
@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	int main_return = EXIT_FAILURE;
 	Main_States state = Main_States::MAIN_CREATION;
 
-	int starttick = SDL_GetTicks();
+	//int starttick = SDL_GetTicks();
 
 	while (state != Main_States::MAIN_EXIT)
 	{
@@ -85,17 +85,15 @@ int main(int argc, char* argv[])
 				state = Main_States::MAIN_EXIT;
 			}
 		}
-		int delta = SDL_GetTicks() - starttick;     //actual time b/w frames
+		//int delta = SDL_GetTicks() - starttick;     //actual time b/w frames
 
-		int avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
+		//int avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
 
-		if (delta < desiredDelta)
-		{
-			SDL_Delay(desiredDelta - delta);
-		}
-		char s[128];
-		sprintf_s(s, "FPS: %.2f", avgFPS);
-		//SDL_SetWindowTitle(App->window->window, s);
+		//if (delta < desiredDelta)
+		//{
+		//	SDL_Delay(desiredDelta - delta);
+		//}
+		
 	}
 
 	LOG("\nBye :)\n");

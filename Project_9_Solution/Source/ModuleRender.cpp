@@ -10,7 +10,7 @@
 
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
-
+	
 }
 
 ModuleRender::~ModuleRender()
