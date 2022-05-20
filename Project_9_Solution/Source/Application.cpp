@@ -41,6 +41,7 @@ Application::Application()
 	modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
+	
 
 	modules[4] = Upc = new UPC(true);
 	modules[5] = sceneIntro = new SceneIntro(false);
@@ -60,8 +61,9 @@ Application::Application()
 	modules[19] =	collisions =	new ModuleCollisions(true);
 	modules[20] =	fade =			new ModuleFadeToBlack(true);
 	modules[21] =	fonts =			new ModuleFonts(true);
-	modules[22] =	render =		new ModuleRender(true);
-	modules[23] =	ui =			new UI(false);
+	modules[22] =	ui	 =			new UI(false);
+	modules[23] =	render =		new ModuleRender(true);
+	
 
 	
 	
