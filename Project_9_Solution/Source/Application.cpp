@@ -112,8 +112,8 @@ Update_Status Application::Update()
 	float ms = 1000 / (t2 - t1);
 	
 
-	do { t2 = SDL_GetTicks();
-	} while ((t2-t1) < 20);
+	//do { t2 = SDL_GetTicks();
+	//} while ((t2-t1) < 20);
 
 	char s[128];
 	sprintf_s(s, "FPS: %.2f", ms);

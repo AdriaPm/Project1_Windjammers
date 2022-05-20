@@ -63,12 +63,12 @@ bool TurfLevel::Start()
 	App->collisions->AddCollider({ 0, 17, 10, 88 }, Collider::Type::LEFT_3P_GOAL);
 	App->collisions->AddCollider({ 0, 151, 10, 66 }, Collider::Type::LEFT_3P_GOAL);
 	//Leftside 5points goal
-	App->collisions->AddCollider({ 0, 105, 10, 46 }, Collider::Type::LEFT_5P_GOAL);
+	App->collisions->AddCollider({ 0, 105, 5, 46 }, Collider::Type::LEFT_5P_GOAL);
 	//Rightside 3points goal
 	App->collisions->AddCollider({ 295, 17, 10, 88 }, Collider::Type::RIGHT_3P_GOAL);
 	App->collisions->AddCollider({ 295, 151, 10, 66 }, Collider::Type::RIGHT_3P_GOAL);
 	//Rightside 5points goal
-	App->collisions->AddCollider({ 295, 105, 10, 46 }, Collider::Type::RIGHT_5P_GOAL);
+	App->collisions->AddCollider({ 300, 105, 5, 46 }, Collider::Type::RIGHT_5P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 

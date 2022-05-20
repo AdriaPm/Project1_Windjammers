@@ -490,8 +490,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->rightScore += 300;
 		}
-
-		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
 			App->ui->rightScore += 500;
 		}
