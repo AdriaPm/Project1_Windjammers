@@ -18,12 +18,17 @@ enum class Main_States
 
 Application* App = nullptr;
 
+int fps = 60;
+int desiredDelta = 1000 / fps;  //desired time b/w frames
+
 int main(int argc, char* argv[])
 {
 	ReportMemoryLeaks();
 
 	int main_return = EXIT_FAILURE;
 	Main_States state = Main_States::MAIN_CREATION;
+
+	int starttick = SDL_GetTicks();
 
 	while (state != Main_States::MAIN_EXIT)
 	{
