@@ -13,6 +13,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "UI.h"
 
 #include <stdio.h>
 
@@ -125,6 +126,7 @@ bool TurfLevel::Start()
 	}
 
 	App->enemies->Enable();
+	App->ui->Enable();
 
 	//case Player_Chosen_Right::Spanish:
 	//	/*	App->leftgermanyplayer->Enable();*/
@@ -174,7 +176,6 @@ Update_Status TurfLevel::PostUpdate()
 	{
 		App->LeftJapanesePlayer->scoreJapLeft = 1500;
 		App->leftgermanyplayer->scoreGerLeft = 1500;
-
 	}
 	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
 	{
@@ -233,8 +234,9 @@ bool TurfLevel::CleanUp()
 		App->leftgermanyplayer->Disable();
 		break;*/
 	}
-
+	
 	App->enemies->Disable();
+	App->ui->Disable();
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;

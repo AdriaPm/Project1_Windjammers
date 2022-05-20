@@ -13,6 +13,7 @@
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
+#include "UI.h"
 
 #include <stdio.h>
 
@@ -236,9 +237,6 @@ bool LeftGermanPlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 15, 40 }, Collider::Type::PLAYER, this);
 
-	char lookupTable[] = { "0123456789" };
-	scoreFontGerLeft = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
-
 	return ret;
 }
 
@@ -261,11 +259,6 @@ Update_Status LeftGermanPlayer::PostUpdate()
 		App->render->Blit(texture2, position.x, position.y, &rect);
 	}
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreTextGerLeft, 10, "%d", scoreGerLeft);
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(66, 8, scoreFontGerLeft, scoreTextGerLeft);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -341,14 +334,14 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 		{
-			scoreGerLeft += 300;
+			App->ui->leftScore += 300;
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
 		}
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
-			scoreGerLeft += 500;
+			App->ui->leftScore += 500;
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
 		}
@@ -357,7 +350,7 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
-			scoreGerLeft += 0;
+			App->ui->leftScore += 0;
 		}
 	}
 

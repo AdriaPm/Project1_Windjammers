@@ -27,6 +27,7 @@
 #include "ModuleRender.h"
 #include "ChooseMap.h"
 #include "ChooseCharacter.h"
+#include "UI.h"
 
 Application::Application()
 {
@@ -60,6 +61,7 @@ Application::Application()
 	modules[20] =	fade =			new ModuleFadeToBlack(true);
 	modules[21] =	fonts =			new ModuleFonts(true);
 	modules[22] =	render =		new ModuleRender(true);
+	modules[23] =	ui =			new UI(false);
 
 	
 	

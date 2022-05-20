@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "UI.h"
 
 #include <stdio.h>
 
@@ -199,8 +200,6 @@ bool Left_Japanese_Player::Start()
 	//scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "0123456789" };
-	scoreJapFontLeft = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
 
 	return ret;
 }
@@ -225,10 +224,6 @@ Update_Status Left_Japanese_Player::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-	//// Draw UI (score) --------------------------------------
-	sprintf_s(scoreJapTextLeft, 10, "%d", scoreJapLeft);
-
-	App->fonts->BlitText(66, 8, scoreJapFontLeft, scoreJapTextLeft);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -291,19 +286,19 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 		{
-			scoreJapLeft += 300;
+			App->ui->leftScore += 300;
 		}
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
-			scoreJapLeft += 500;
+			App->ui->leftScore += 500;
 		}
 	}
 	else if (godMode == true) {
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
-			scoreJapLeft += 0;
+			App->ui->leftScore += 0;
 		}
 	}
 	

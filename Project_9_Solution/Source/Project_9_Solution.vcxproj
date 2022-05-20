@@ -110,6 +110,7 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="TutorialScene.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="UPC.h" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="UPC.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
