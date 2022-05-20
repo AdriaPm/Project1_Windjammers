@@ -1,4 +1,7 @@
 #include "RightGermanPlayer.h"
+#include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -9,10 +12,6 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
-#include "Left_Japanese_Player.h"
-#include "Right_Japanese_Player.h"
-#include "LeftGermanPlayer.h"
-#include "RightGermanPlayer.h"
 #include "UI.h"
 
 #include <stdio.h>

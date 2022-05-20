@@ -1,4 +1,7 @@
 #include "Right_Japanese_Player.h"
+#include "Left_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"

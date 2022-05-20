@@ -35,12 +35,13 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 	
-	t1 = SDL_GetTicks();
+	//t1 = SDL_GetTicks();
 
 	modules[0] = window = new ModuleWindow(true);
 	modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
+	
 
 	modules[4] = Upc = new UPC(true);
 	modules[5] = sceneIntro = new SceneIntro(false);
@@ -60,8 +61,9 @@ Application::Application()
 	modules[19] =	collisions =	new ModuleCollisions(true);
 	modules[20] =	fade =			new ModuleFadeToBlack(true);
 	modules[21] =	fonts =			new ModuleFonts(true);
-	modules[22] =	render =		new ModuleRender(true);
-	modules[23] =	ui =			new UI(false);
+	modules[22] =	ui	 =			new UI(false);
+	modules[23] =	render =		new ModuleRender(true);
+	
 
 	
 	
@@ -106,17 +108,17 @@ Update_Status Application::Update()
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 
-	float t2 = SDL_GetTicks();
-	float ms = 1000 / (t2 - t1);
+	/*float t2 = SDL_GetTicks();
+	float ms = 1000 / (t2 - t1);*/
 	
 
 	/*do { t2 = SDL_GetTicks();
 	} while ((t2-t1) < 20);*/
 
-	char s[128];
+	/*char s[128];
 	sprintf_s(s, "FPS: %.2f", ms);
 	SDL_SetWindowTitle(App->window->window, s);
-	t1 = t2;
+	t1 = t2;*/
 
 	return ret;
 }
