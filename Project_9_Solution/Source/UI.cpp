@@ -30,28 +30,14 @@ bool UI::Start()
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
 	char lookupTable[] = { "0123456789" };
-	scoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
+	leftScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
+	rightScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
 	
 	return ret;
 }
 
 Update_Status UI::Update()
 {
-	return Update_Status::UPDATE_CONTINUE;
-}
-
-Update_Status UI::PostUpdate()
-{
-	// Draw UI (score) --------------------------------------
-	sprintf_s(rightScoreText, 10, "%d", rightScore);
-
-	App->fonts->BlitText(204, 8, scoreFont, rightScoreText);//right
-
-
-	sprintf_s(leftScoreText, 10, "%d", leftScore);
-
-	App->fonts->BlitText(66, 8, scoreFont, leftScoreText);//left
-
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
 	{
 		leftScore = 1500;
@@ -60,7 +46,24 @@ Update_Status UI::PostUpdate()
 	{
 		rightScore = 1500;
 	}
-	else if (getRightScore() > getLeftScore() && getRightScore() > 1200)
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
+Update_Status UI::PostUpdate()
+{
+	// Draw UI (score) --------------------------------------
+	sprintf_s(rightScoreText, 10, "%d", rightScore);
+
+	App->fonts->BlitText(204, 8, rightScoreFont, rightScoreText);//right
+
+
+	sprintf_s(leftScoreText, 10, "%d", leftScore);
+
+	App->fonts->BlitText(66, 8, leftScoreFont, leftScoreText);//left
+
+	
+	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
@@ -71,6 +74,8 @@ Update_Status UI::PostUpdate()
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
 	}
+
+	App->render->Blit(uiSprites, 144, 13, &time);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
