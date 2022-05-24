@@ -34,6 +34,8 @@ public:
 
 	void Movement();
 
+	void DASH();
+
 	uint getGerScoreR() { return scoreGerRight; }
 
 public:
@@ -74,6 +76,7 @@ public:
 	Animation Throw;
 	Animation ScoredOn;
 	Animation Scored;
+	Animation HoldingAnim;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -90,6 +93,7 @@ public:
 	uint ShotFx = 0;
 	uint discThrowSFX = 0;
 	bool hasDisk = false;
+	bool inslide = false;
 
 
 	// Font score index
