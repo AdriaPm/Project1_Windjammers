@@ -1,5 +1,10 @@
 #include "UI.h"
 
+
+#include "SDL/include/SDL.h"
+//#pragma comment( lib, "SDL/libx86/SDL2.lib" )
+//#pragma comment( lib, "SDL/libx86/SDL2main.lib" )
+
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -23,6 +28,21 @@ UI::~UI()
 
 }
 
+void UI::oneSecWait()
+{
+
+}
+
+void UI::timeCounterClock()
+{
+	timeCounter = 30;
+	for (size_t i = 30; i > 0; i--)
+	{
+		//SDL_Delay(1000);
+		timeCounter--;
+	}
+}
+
 bool UI::Start()
 {
 	bool ret = true;
@@ -34,9 +54,11 @@ bool UI::Start()
 
 	char lookupTable1[] = { "0123456789" };
 	char lookupTable2[] = { "0123456789GO" };
+	char lookupTable3[] = { "0123456789UP" };
 
 	ScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable1, 1);
 	scoreCounterFont = App->fonts->Load("Assets/Fonts/Score_Counter.png", lookupTable2, 1);
+	timeCounterFont = App->fonts->Load("Assets/Fonts/Time_Counter.png", lookupTable3, 1);
 	
 	return ret;
 }
@@ -51,6 +73,8 @@ Update_Status UI::Update()
 	{
 		rightScore = 1500;
 	}
+
+	timeCounterClock();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -73,6 +97,9 @@ Update_Status UI::PostUpdate()
 	sprintf_s(counterLeftScoreText, 10, "%2d", counterLeftScore);
 	App->fonts->BlitText(114, 17, scoreCounterFont, counterLeftScoreText);
 
+	//Time Counter
+	sprintf_s(timeCounterText, 10, "%2d", timeCounter);
+	App->fonts->BlitText(145, 21, timeCounterFont, timeCounterText);
 
 	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
 	{

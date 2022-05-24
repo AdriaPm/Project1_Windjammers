@@ -25,7 +25,8 @@ public:
 
 
 	//void OnCollision(Collider* c1, Collider* c2) override;
-
+	void timeCounterClock();
+	void oneSecWait();
 
 	int getLeftScore() { return leftScore; }
 	int getRightScore() { return rightScore; }
