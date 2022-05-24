@@ -152,18 +152,62 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	//Scored
 	Scored.PushBack({ 21, 103, 23, 37 });
 
+
 	//Throw---TODO: Put the disk in the trowing animation.
+
+	//Disk Throw TURF MAP (RED Disk)
 	/*
-	Throw.PushBack({ , , , });
-	Throw.PushBack({ , , , });
-	Throw.PushBack({ , , , });
+	throwTURF.PushBack({ , , , });
+	throwTURF.PushBack({ , , , });
+	throwTURF.PushBack({ , , , });
+	throwTURF.PushBack({ , , , });
+	throwTURF.loop = false;
+	throwTURF.speed = 0.1f;
 	*/
 
-	//Disk Holding TURF MAP
+	//Disk Throw CLAY MAP (GREEN Disk)
+	/*
+	throwCLAY.PushBack({ , , , });
+	throwCLAY.PushBack({ , , , });
+	throwCLAY.PushBack({ , , , });
+	throwCLAY.PushBack({ , , , });
+	throwCLAY.loop = false;
+	throwCLAY.speed = 0.1f;
+	*/
 
-	//Disk Holding CLAY MAP
+	//Disk Throw BEACH MAP (BLUE Disk)
+	/*
+	throwBEACH.PushBack({ , , , });
+	throwBEACH.PushBack({ , , , });
+	throwBEACH.PushBack({ , , , });
+	throwBEACH.PushBack({ , , , });
+	throwBEACH.loop = false;
+	throwBEACH.speed = 0.1f;
+	*/
 
-	//Disk Holding BEACH MAP
+	//Hold---TODO 
+
+	//Disk Holding TURF MAP (RED Disk)
+	/*
+	diskHoldTURF.PushBack({ , , , });
+	diskHoldTURF.PushBack({ , , , });
+	diskHoldTURF.PushBack({ , , , });
+	diskHoldTURF.PushBack({ , , , });
+	diskHoldTURF.loop = true;
+	diskHoldTURF.speed = 0.1f;
+	*/
+
+	//Disk Holding CLAY MAP (GREEN Disk)
+	/*
+	diskHoldCLAY.PushBack({ , , , });
+	diskHoldCLAY.PushBack({ , , , });
+	diskHoldCLAY.PushBack({ , , , });
+	diskHoldCLAY.PushBack({ , , , });
+	diskHoldCLAY.loop = true;
+	diskHoldCLAY.speed = 0.1f;
+	*/
+
+	//Disk Holding BEACH MAP (BLUE Disk)
 	diskHoldBEACH.PushBack({ 0, 500, 51, 52 });
 	diskHoldBEACH.PushBack({ 52, 503, 50, 49 });
 	diskHoldBEACH.PushBack({ 104, 505, 50, 47 });
