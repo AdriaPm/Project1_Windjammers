@@ -109,11 +109,15 @@ Update_Status Application::Update()
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 
 	float t2 = SDL_GetTicks();
-	float ms = 1000 / (t2 - t1);
-	
+	float frameTime = t2 - t1;
+	float ms = 1000 / frameTime;
 
-	//do { t2 = SDL_GetTicks();
-	//} while ((t2-t1) < 20);
+	/*do { t2 = SDL_GetTicks();
+	} while (ms < 16.7f);*/
+
+	/*if (ms > frameTime) {
+		SDL_Delay(ms - frameTime);
+	}*/
 
 	char s[128];
 	sprintf_s(s, "FPS: %.2f", ms);

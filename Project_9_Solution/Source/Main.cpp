@@ -19,8 +19,8 @@ enum class Main_States
 
 Application* App = nullptr;
 
-//int fps = 60;
-//int desiredDelta = 1000 / fps;  //desired time b/w frames
+float fps = 60.00f;
+float desiredDelta = 1000 / fps;  //desired time b/w frames
 
 int main(int argc, char* argv[])
 {
@@ -33,6 +33,9 @@ int main(int argc, char* argv[])
 
 	while (state != Main_States::MAIN_EXIT)
 	{
+
+		float frameStart = SDL_GetTicks();
+
 		switch (state)
 		{
 			case Main_States::MAIN_CREATION:
@@ -85,14 +88,17 @@ int main(int argc, char* argv[])
 				state = Main_States::MAIN_EXIT;
 			}
 		}
-		//int delta = SDL_GetTicks() - starttick;     //actual time b/w frames
 
-		//int avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
 
-		//if (delta < desiredDelta)
-		//{
-		//	SDL_Delay(desiredDelta - delta);
-		//}
+		float frameEnd = SDL_GetTicks();
+		float delta = frameEnd - frameStart;     //actual time b/w frames
+
+		float avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
+
+		if (delta < desiredDelta)
+		{
+			SDL_Delay(desiredDelta - delta);
+		}
 		
 	}
 
