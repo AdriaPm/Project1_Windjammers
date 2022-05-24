@@ -456,6 +456,7 @@ void RightGermanPlayer::Movement() {
 			{
 				
 				currentAnimation = &UpRightAnim;
+				
 			}
 			/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 		}
@@ -498,6 +499,7 @@ void RightGermanPlayer::Movement() {
 			{
 				SlideRAnim.Reset();
 				currentAnimation = &SlideRAnim;
+				
 			}
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
