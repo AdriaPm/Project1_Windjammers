@@ -111,6 +111,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
+	
 	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
 	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
 
