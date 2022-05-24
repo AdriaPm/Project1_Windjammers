@@ -187,6 +187,7 @@ bool Right_Japanese_Player::Start()
 	currentAnimation = &idleAnim;
 
 	slidingSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Sliding.wav");
+	discThrowSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Disc/Throwing_1.wav");
 
 	position.x = 190;
 	position.y = 130;
@@ -194,6 +195,7 @@ bool Right_Japanese_Player::Start()
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 15, 40 }, Collider::Type::PLAYER, this);
+
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
