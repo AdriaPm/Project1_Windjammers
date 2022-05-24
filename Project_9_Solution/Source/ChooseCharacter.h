@@ -34,6 +34,8 @@ public:
 
 	Update_Status PostUpdate() override;
 
+	bool CleanUp();
+
 public:
 	/*int player1conf;
 	int player2conf;*/

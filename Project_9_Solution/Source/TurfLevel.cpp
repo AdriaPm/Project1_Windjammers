@@ -55,6 +55,7 @@ bool TurfLevel::Start()
 	App->audio->PlayMusic("Assets/Music/turf.ogg", 1.0f);
 
 	///TURF MAP Colliders
+	App->collisions->Enable();
 	//Upperside collider
 	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::UPPER_WALL);
 	//Bottomside collider
@@ -104,7 +105,6 @@ bool TurfLevel::Start()
 		break;
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
-		//App->LeftJapanesePlayer->hasDisc = true;
 		break;
 	/*case Player_Chosen_Left::Spanish:
 		App->leftgermanyplayer->Enable();
@@ -154,7 +154,7 @@ Update_Status TurfLevel::Update()
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
 
-		App->turflevel->Disable();
+		
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -175,32 +175,44 @@ Update_Status TurfLevel::PostUpdate()
 
 bool TurfLevel::CleanUp()
 {
-	switch (App->choice1)
-	{
-	case Player_Chosen_Left::German:
-		App->leftgermanyplayer->Disable();
-		break;
-	case Player_Chosen_Left::Japanese:
-		App->LeftJapanesePlayer->Disable();
-		break;
-	/*case Player_Chosen_Left::Spanish:
-		App->leftgermanyplayer->Disable();
-		break;*/
-	}
+	//switch (App->choice1)
+	//{
+	//case Player_Chosen_Left::German:
+	//	App->leftgermanyplayer->Disable();
+	//	break;
+	//case Player_Chosen_Left::Japanese:
+	//	App->LeftJapanesePlayer->Disable();
+	//	break;
+	///*case Player_Chosen_Left::Spanish:
+	//	App->leftgermanyplayer->Disable();
+	//	break;*/
+	//}
 
-	switch (App->choice2)
-	{
-	case Player_Chosen_Right::German:
-		App->rightgermanyplayer->Disable();
-		break;
-	case Player_Chosen_Right::Japanese:
-		App->RightJapanesePlayer->Disable();
-		break;
-	/*case Player_Chosen_Right::Spanish:
-		App->leftgermanyplayer->Disable();
-		break;*/
-	}
-	
+	//switch (App->choice2)
+	//{
+	//case Player_Chosen_Right::German:
+	//	App->rightgermanyplayer->Disable();
+	//	break;
+	//case Player_Chosen_Right::Japanese:
+	//	App->RightJapanesePlayer->Disable();
+	//	break;
+	///*case Player_Chosen_Right::Spanish:
+	//	App->leftgermanyplayer->Disable();
+	//	break;*/
+	//}
+	Player_Chosen_Right::NONE;
+	Player_Chosen_Left::NONE;
+
+	App->LockedinP1 == Player_Locked::NotLocked;
+	App->LockedinP2 == Player_Locked::NotLocked;
+
+	App->leftgermanyplayer->Disable();
+	App->LeftJapanesePlayer->Disable();
+	App->rightgermanyplayer->Disable();
+	App->RightJapanesePlayer->Disable();
+	App->collisions->Disable();
+	App->turflevel->Disable();
+
 	App->enemies->Disable();
 	App->ui->Disable();
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)

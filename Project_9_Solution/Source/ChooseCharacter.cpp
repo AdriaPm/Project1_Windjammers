@@ -43,8 +43,8 @@ bool ChooseCharacter::Start()
 
 	changeOption = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/UI/ChangeOption.wav");
 
-	/*App->LockedinP1 = Player_Locked::NotLocked;
-	App->LockedinP2 = Player_Locked::NotLocked;*/
+	App->LockedinP1 = Player_Locked::NotLocked;
+	App->LockedinP2 = Player_Locked::NotLocked;
 
 	chooseJapAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/JapaneseCharacter/Japanese_1.wav");
 	chooseGerAudio = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_1.wav");
@@ -204,4 +204,13 @@ Update_Status ChooseCharacter::PostUpdate()
 	App->render->Blit(playerIcon, xMove2, yMove2, &rect2);
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+bool ChooseCharacter::CleanUp()
+{
+	
+	App->chooseCharacter->Disable();
+	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+
+	return true;
 }
