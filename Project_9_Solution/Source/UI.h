@@ -24,11 +24,13 @@ public:
 	bool CleanUp();
 
 
-	void OnCollision(Collider* c1, Collider* c2) override;
+	//void OnCollision(Collider* c1, Collider* c2) override;
 
 
 	int getLeftScore() { return leftScore; }
 	int getRightScore() { return rightScore; }
+	int getCounterLeftScore() { return leftScore; }
+	int getCounterRightScore() { return rightScore; }
 
 	//God Mode
 	bool godMode = false;

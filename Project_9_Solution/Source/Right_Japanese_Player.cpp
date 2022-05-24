@@ -280,12 +280,14 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
 		{
 			App->ui->rightScore += 300; 
+			App->ui->counterRightScore += 3;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
 			App->ui->rightScore += 500;
+			App->ui->counterRightScore += 3;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
 		}

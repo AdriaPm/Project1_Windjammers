@@ -91,32 +91,32 @@ Update_Status UI::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void UI::OnCollision(Collider* c1, Collider* c2)
-{
-	if (godMode == false) 
-	{
-		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
-		{
-			//App->ui->leftScore += 300;
-			counterLeftScore += 3;
-		}
-		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
-		{
-			//App->ui->leftScore += 500;
-			counterLeftScore += 5;
-		}
-		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
-		{
-			//App->ui->leftScore += 300;
-			counterRightScore += 3;
-		}
-		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
-		{
-			//App->ui->leftScore += 500;
-			counterRightScore += 5;
-		}
-	}
-}
+//void UI::OnCollision(Collider* c1, Collider* c2)
+//{
+//	if (godMode == false) 
+//	{
+//		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
+//		{
+//			//App->ui->leftScore += 300;
+//			counterLeftScore += 3;
+//		}
+//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+//		{
+//			//App->ui->leftScore += 500;
+//			counterLeftScore += 5;
+//		}
+//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
+//		{
+//			//App->ui->leftScore += 300;
+//			counterRightScore += 3;
+//		}
+//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+//		{
+//			//App->ui->leftScore += 500;
+//			counterRightScore += 5;
+//		}
+//	}
+//}
 
 bool UI::CleanUp()
 {
