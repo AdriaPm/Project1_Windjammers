@@ -32,9 +32,11 @@ bool UI::Start()
 
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
-	char lookupTable[] = { "0123456789" };
-	leftScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
-	rightScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable, 1);
+	char lookupTable1[] = { "0123456789" };
+	char lookupTable2[] = { "0123456789GO" };
+
+	ScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable1, 1);
+	scoreCounterFont = App->fonts->Load("Assets/Fonts/Score_Counter.png", lookupTable2, 1);
 	
 	return ret;
 }
@@ -55,17 +57,23 @@ Update_Status UI::Update()
 
 Update_Status UI::PostUpdate()
 {
-	// Draw UI (score) --------------------------------------
+	// Draw UI 
+
+	//Score
 	sprintf_s(rightScoreText, 10, "%d", rightScore);
-
-	App->fonts->BlitText(204, 8, rightScoreFont, rightScoreText);//right
-
+	App->fonts->BlitText(204, 8, ScoreFont, rightScoreText);//right
 
 	sprintf_s(leftScoreText, 10, "%d", leftScore);
-
-	App->fonts->BlitText(66, 8, leftScoreFont, leftScoreText);//left
-
+	App->fonts->BlitText(66, 8, ScoreFont, leftScoreText);//left
 	
+	//Counter Score
+	sprintf_s(counterRightScoreText, 10, "%2d", counterRightScore);
+	App->fonts->BlitText(162, 17, scoreCounterFont, counterRightScoreText);
+
+	sprintf_s(counterLeftScoreText, 10, "%2d", counterLeftScore);
+	App->fonts->BlitText(114, 17, scoreCounterFont, counterLeftScoreText);
+
+
 	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
@@ -81,6 +89,33 @@ Update_Status UI::PostUpdate()
 	App->render->Blit(uiSprites, 144, 13, &time);
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+void UI::OnCollision(Collider* c1, Collider* c2)
+{
+	if (godMode == false) 
+	{
+		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
+		{
+			//App->ui->leftScore += 300;
+			counterLeftScore += 3;
+		}
+		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
+		{
+			//App->ui->leftScore += 500;
+			counterLeftScore += 5;
+		}
+		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
+		{
+			//App->ui->leftScore += 300;
+			counterRightScore += 3;
+		}
+		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
+		{
+			//App->ui->leftScore += 500;
+			counterRightScore += 5;
+		}
+	}
 }
 
 bool UI::CleanUp()

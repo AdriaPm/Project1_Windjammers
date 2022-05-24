@@ -497,8 +497,8 @@ void RightGermanPlayer::Movement() {
 		}
 
 
-		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
-			inslide == true;
+		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT) {
+			inslide = true;
 		}
 
 	}
@@ -567,7 +567,8 @@ void RightGermanPlayer::Movement() {
 	}
 
 	if (inslide == true) {
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN)
+
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedslide;
 			if (currentAnimation != &SlideRAnim)
@@ -575,7 +576,6 @@ void RightGermanPlayer::Movement() {
 				SlideRAnim.Reset();
 				currentAnimation = &SlideRAnim;
 			}
-			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
 		//Up Slide Anim
@@ -590,7 +590,7 @@ void RightGermanPlayer::Movement() {
 		}
 
 		//Left Slide Anim
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
 		{
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 			position.x -= speedslide;
@@ -603,7 +603,7 @@ void RightGermanPlayer::Movement() {
 		}
 
 		//Down Slide Anim
-		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 		{
 			position.y += speedslide;
 
@@ -626,7 +626,6 @@ void RightGermanPlayer::Movement() {
 				SlideUpLeftAnim.Reset();
 				currentAnimation = &SlideUpLeftAnim;
 			}
-			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
 		//Up Right Slide Anim
@@ -657,7 +656,7 @@ void RightGermanPlayer::Movement() {
 		}
 
 		// Down Right Slide Anim
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedcross;
 			position.y += speedcross;
@@ -669,6 +668,14 @@ void RightGermanPlayer::Movement() {
 			}
 		}
 
+		if (App->input->keys[SDL_SCANCODE_RIGHT] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_LEFT] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_UP] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_DOWN] != Key_State::KEY_REPEAT
+			&& inslide == true) {
+			inslide = false;
+			
+		}
 	}
 }
 
