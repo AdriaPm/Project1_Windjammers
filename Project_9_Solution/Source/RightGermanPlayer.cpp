@@ -360,7 +360,7 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.speed.y = 3.5f;
 		App->particles->diskR.position.x += App->particles->diskR.speed.x;
 		App->particles->diskR.position.y += App->particles->diskR.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
+		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 	}
 

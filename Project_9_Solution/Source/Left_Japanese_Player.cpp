@@ -333,6 +333,11 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	{
 		hasDisk = true;
 	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
+	{
+		App->particles->diskR.HasDiskR == true;
+	}
 }
 
 void Left_Japanese_Player::Movement() 
