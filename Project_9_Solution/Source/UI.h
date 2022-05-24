@@ -24,9 +24,14 @@ public:
 	bool CleanUp();
 
 
+	void OnCollision(Collider* c1, Collider* c2) override;
+
+
 	int getLeftScore() { return leftScore; }
 	int getRightScore() { return rightScore; }
 
+	//God Mode
+	bool godMode = false;
 
 	SDL_Texture* uiSprites = nullptr;
 
@@ -36,19 +41,24 @@ public:
 	SDL_Rect loseR;
 	SDL_Rect time;
 
-
+	//score
 	uint rightScore = 000;
 	char rightScoreText[10] = { "\0" };
-	int rightScoreFont = -1;
-
 	uint leftScore = 000;
 	char leftScoreText[10] = { "\0" };
-	int leftScoreFont = -1;
+	int ScoreFont = -1;
 
-	uint counter = 000;
-	int counterFont = -1;
-	char counterText[10] = { "\0" };
+	//time
+	uint timeCounter = 000;
+	int timeCounterFont = -1;
+	char timeCounterText[10] = { "\0" };
 
+	//counter score
+	uint counterRightScore = 000;
+	char counterRightScoreText[10] = { "\0" };
+	uint counterLeftScore = 000;
+	char counterLeftScoreText[10] = { "\0" };
+	int scoreCounterFont = -1;
 };
 
 #endif
