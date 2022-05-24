@@ -39,6 +39,7 @@ class Application
 
 public:
 
+	
 	//Constructor. Creates all necessary modules for the application
 	Application();
 
@@ -58,6 +59,7 @@ public:
 	// An array to store all modules
 	Module* modules[NUM_MODULES];
 
+
 	Player_Chosen_Left choice1;
 	Player_Chosen_Right choice2;
 
@@ -66,7 +68,6 @@ public:
 
 	Player_State_Left P1Status;
 	Player_State_Right P2Status;
-
 
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;

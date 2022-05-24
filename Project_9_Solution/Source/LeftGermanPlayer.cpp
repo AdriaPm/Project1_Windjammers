@@ -600,6 +600,7 @@ void LeftGermanPlayer::Movement() {
 		//Normal Throw Animation
 	}
 	else if (hasDisk == true) {
+		currentAnimation = &HoldingAnim;
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
@@ -608,6 +609,7 @@ void LeftGermanPlayer::Movement() {
 				Throw.Reset();
 				currentAnimation = &Throw;
 			}
+			
 			App->particles->diskL.speed.x = 5.0f;
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
@@ -646,12 +648,14 @@ void LeftGermanPlayer::Movement() {
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE /*&&
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
+		&& hasDisk != true) /*&&
 		App->P1Status != Player_State_Left::PLAYER_HOLD
 		&& App->P1Status != Player_State_Left::PLAYER_MOVE
 		&& App->P1Status != Player_State_Left::PLAYER_THROW
-		&& App->P1Status != Player_State_Left::PLAYER_DIVE*/) {
+		&& App->P1Status != Player_State_Left::PLAYER_DIVE*/ {
 		currentAnimation = &idleAnim;
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
 	}
+	
 }
