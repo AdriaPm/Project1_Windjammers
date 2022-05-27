@@ -586,6 +586,7 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
+			//Throwing animation
 			if (currentAnimation != &throwTURF) {
 				throwTURF.Reset();
 				currentAnimation = &throwTURF;
@@ -601,6 +602,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = -3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
@@ -613,6 +620,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = 3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
