@@ -218,16 +218,13 @@ void TutorialScene::SceneAnimations()
 		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsrightAnim;
 		charPos.x += speed;
-
-		//currentAnimation->ResetLoopCount();
-		//currentAButtons->ResetLoopCount();
 	}
 	
-	if (currentAnimation->GetLoopCount() >= 2 && currentAButtons->GetLoopCount() >= 2)
+	if (currentAnimation->GetLoopCount() >= 2.5 && currentAButtons->GetLoopCount() >= 2.5)
 	{
 		currentAnimation = &leftAnim;
 		currentAButtons = &ButtonsleftAnim;
-		charPos.x -= speed;
+		charPos.x -= speed + .1f;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 4 && currentAButtons->GetLoopCount() >= 4)
@@ -291,4 +288,5 @@ void TutorialScene::SceneAnimations()
 		currentAnimation = &idleAnim;
 		currentAButtons = &ButtonsidleAnim;
 	}
+
 }

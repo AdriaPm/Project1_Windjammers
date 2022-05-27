@@ -74,8 +74,9 @@ Update_Status UPC::PostUpdate()
 
 bool UPC::CleanUp()
 {
-
-	App->Upc->Disable();
-
+	if (bgTexture != nullptr) {
+		App->textures->Unload(bgTexture);
+	}
+	
 	return true;
 }

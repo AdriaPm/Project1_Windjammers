@@ -1,3 +1,5 @@
+#include <SDL/include/SDL.h>
+
 #include "Left_Japanese_Player.h"
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
@@ -156,25 +158,25 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	///THROW
 
 	//Disk Throw TURF MAP (RED Disk)
-	throwTURF.PushBack({ 163, 723, 35, 40});
-	throwTURF.PushBack({ 128, 723, 36, 38});
-	throwTURF.PushBack({ 91, 723, 38, 40});
+	throwTURF.PushBack({ 164, 723, 35, 40});
+	throwTURF.PushBack({ 129, 723, 34, 38});
+	throwTURF.PushBack({ 91, 723, 37, 40});
 	throwTURF.loop = false;
-	throwTURF.speed = 0.1f;
+	throwTURF.speed = 0.2f;
 
 	//Disk Throw CLAY MAP (GREEN Disk)
 	throwCLAY.PushBack({ 276, 723, 34, 40});
 	throwCLAY.PushBack({ 240, 723, 36, 38});
 	throwCLAY.PushBack({ 203, 723, 37, 40});
 	throwCLAY.loop = false;
-	throwCLAY.speed = 0.1f;
+	throwCLAY.speed = 0.2f;
 
 	//Disk Throw BEACH MAP (BLUE Disk)
 	throwBEACH.PushBack({ 387, 723, 34, 40});
 	throwBEACH.PushBack({ 351, 723, 35, 38});
 	throwBEACH.PushBack({ 314, 723, 37, 40});
 	throwBEACH.loop = false;
-	throwBEACH.speed = 0.1f;
+	throwBEACH.speed = 0.2f;
 
 
 	///HOLD
@@ -574,8 +576,22 @@ void Left_Japanese_Player::Movement()
 	}
 	else if (hasDisk == true)
 	{
+		int discTime = SDL_GetTicks();
+
+		//Holding disk animation
+		if (currentAnimation != &diskHoldTURF) {
+			diskHoldTURF.Reset();
+			currentAnimation = &diskHoldTURF;
+		}
+
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
 			App->particles->diskL.speed.x = 5.0f;
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
@@ -586,6 +602,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = -3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
@@ -598,6 +620,12 @@ void Left_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = 3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
@@ -614,6 +642,8 @@ void Left_Japanese_Player::Movement()
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE 
+		&& hasDisk==false)
 		currentAnimation = &idleAnim;
+
 }
