@@ -203,6 +203,14 @@ Update_Status TutorialScene::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
+bool TutorialScene::CleanUp()
+{
+
+	App->tutorialScene->Disable();
+
+	return true;
+}
+
 void TutorialScene::SceneAnimations() 
 {
 	if (currentAnimation->GetLoopCount() >= 1 && currentAButtons->GetLoopCount() >= 1)
