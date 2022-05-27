@@ -72,7 +72,9 @@ public:
 	Animation SlideUpRightAnim;
 	Animation SlideDownRightAnim;
 	Animation SlideDownLeftAnim;
-	Animation Throw;
+	Animation throwTURF;
+	Animation throwCLAY;
+	Animation throwBEACH;
 	Animation ScoredOn;
 	Animation Scored;
 	Animation diskHoldTURF;
