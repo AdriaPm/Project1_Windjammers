@@ -13,6 +13,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "UI.h"
+#include "SDL/include/SDL.h"
 
 #include <stdio.h>
 
@@ -110,7 +111,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideLAnim.PushBack({ 139, 239, 29, 31 });
 	SlideLAnim.PushBack({ 107, 239, 32, 31 });
 	SlideLAnim.loop = false;
-	SlideLAnim.speed = 0.1f;
+	SlideLAnim.speed = 1.0f;
 
 	//Slide Right
 	SlideRAnim.PushBack({ 92, 188, 57, 31 });
@@ -175,6 +176,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDownRightAnim.loop = false;
 
 	//Throw 
+
 	Throw.PushBack({ 161, 288, 23, 35 });
 	Throw.PushBack({ 137, 288, 24, 35 });
 	Throw.PushBack({ 107, 288, 30, 35 });
@@ -185,7 +187,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 79, 288, 28, 35 });
 	Throw.PushBack({ 1, 288, 22, 35 });
 	Throw.loop = false;
-	Throw.speed = 0.1f;
+	Throw.speed = 1.0f;
 
 	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
 
@@ -224,6 +226,8 @@ bool RightGermanPlayer::Start()
 
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHTDISKTHROW.png");
 	currentAnimation = &idleAnim;
+
+	t1 = SDL_GetTicks();
 
 	/*laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
@@ -499,7 +503,7 @@ void RightGermanPlayer::Movement() {
 		}
 
 
-		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT) {
+		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
 			inslide = true;
 		}
 
@@ -511,12 +515,8 @@ void RightGermanPlayer::Movement() {
 
 		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE)
 		{
-			if (currentAnimation != &Throw)
-			{
-				Throw.Reset();
-				currentAnimation = &Throw;
-			}
-
+			currentAnimation = &Throw;
+				
 			App->particles->diskR.speed.x = -5.0f;
 			App->particles->diskR.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
@@ -573,11 +573,8 @@ void RightGermanPlayer::Movement() {
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedslide;
-			if (currentAnimation != &SlideRAnim)
-			{
-				SlideRAnim.Reset();
-				currentAnimation = &SlideRAnim;
-			}
+			currentAnimation = &SlideRAnim;
+			inslide = false;
 		}
 
 		//Up Slide Anim
@@ -589,6 +586,7 @@ void RightGermanPlayer::Movement() {
 				SlideUAnim.Reset();
 				currentAnimation = &SlideUAnim;
 			}
+			inslide = false;
 		}
 
 		//Left Slide Anim
@@ -602,6 +600,7 @@ void RightGermanPlayer::Movement() {
 				SlideLAnim.Reset();
 				currentAnimation = &SlideLAnim;
 			}
+			inslide = false;
 		}
 
 		//Down Slide Anim
@@ -614,6 +613,7 @@ void RightGermanPlayer::Movement() {
 				SlideDAnim.Reset();
 				currentAnimation = &SlideDAnim;
 			}
+			inslide = false;
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
@@ -628,6 +628,7 @@ void RightGermanPlayer::Movement() {
 				SlideUpLeftAnim.Reset();
 				currentAnimation = &SlideUpLeftAnim;
 			}
+			inslide = false;
 		}
 
 		//Up Right Slide Anim
@@ -641,6 +642,7 @@ void RightGermanPlayer::Movement() {
 				SlideUpRightAnim.Reset();
 				currentAnimation = &SlideUpRightAnim;
 			}
+			inslide = false;
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
@@ -655,6 +657,7 @@ void RightGermanPlayer::Movement() {
 				SlideDownLeftAnim.Reset();
 				currentAnimation = &SlideDownLeftAnim;
 			}
+			inslide = false;
 		}
 
 		// Down Right Slide Anim
@@ -668,16 +671,17 @@ void RightGermanPlayer::Movement() {
 				SlideDownRightAnim.Reset();
 				currentAnimation = &SlideDownRightAnim;
 			}
+			inslide = false;
 		}
 
-		if (App->input->keys[SDL_SCANCODE_RIGHT] != Key_State::KEY_REPEAT &&
+	/*	if (App->input->keys[SDL_SCANCODE_RIGHT] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_LEFT] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_UP] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_DOWN] != Key_State::KEY_REPEAT
 			&& inslide == true) {
-			inslide = false;
 			
-		}
+			
+		}*/
 	}
 }
 
