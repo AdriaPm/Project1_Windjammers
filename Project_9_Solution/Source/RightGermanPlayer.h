@@ -36,6 +36,21 @@ public:
 
 	void DASH();
 
+	void throwing(){
+		Throw.PushBack({ 161, 288, 23, 35 });
+		Throw.PushBack({ 137, 288, 24, 35 });
+		Throw.PushBack({ 107, 288, 30, 35 });
+		Throw.PushBack({ 79, 288, 28, 35 });
+		Throw.PushBack({ 49, 288, 30, 35 });
+		Throw.PushBack({ 23, 288, 26, 35 });
+		Throw.PushBack({ 49, 288, 30, 35 });
+		Throw.PushBack({ 79, 288, 28, 35 });
+		Throw.PushBack({ 1, 288, 22, 35 });
+		Throw.loop = false;
+		Throw.speed = 0.1f;
+	}
+
+
 	uint getGerScoreR() { return scoreGerRight; }
 
 public:
@@ -44,8 +59,9 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
-	int speedslide = 3;
+	int speedslide = 1;
 	int speedcross = 0.25;
+	int t1;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;
