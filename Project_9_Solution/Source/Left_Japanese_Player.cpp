@@ -1,3 +1,5 @@
+#include <SDL/include/SDL.h>
+
 #include "Left_Japanese_Player.h"
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
@@ -574,6 +576,7 @@ void Left_Japanese_Player::Movement()
 	}
 	else if (hasDisk == true)
 	{
+		int discTime = SDL_GetTicks();
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
 			App->particles->diskL.speed.x = 5.0f;

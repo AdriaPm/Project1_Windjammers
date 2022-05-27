@@ -166,9 +166,6 @@ Update_Status TurfLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
-	
-
-	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
