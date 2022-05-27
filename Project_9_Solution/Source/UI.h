@@ -23,26 +23,28 @@ public:
 
 	bool CleanUp();
 
-
-	//void OnCollision(Collider* c1, Collider* c2) override;
-	void timeCounterClock();
-	void oneSecWait();
-
 	int getLeftScore() { return leftScore; }
 	int getRightScore() { return rightScore; }
 	int getCounterLeftScore() { return leftScore; }
 	int getCounterRightScore() { return rightScore; }
+	float getSeconds() { return seconds; }
 
 	//God Mode
 	bool godMode = false;
 
 	SDL_Texture* uiSprites = nullptr;
 
+	Animation* currentAnimation = nullptr;
+
 	SDL_Rect winL;
 	SDL_Rect winR;
 	SDL_Rect loseL;
 	SDL_Rect loseR;
 	SDL_Rect time;
+
+	Animation time_thirty;
+	Animation time_fifteen;
+	Animation time_ten;
 
 	//score
 	uint rightScore = 000;
@@ -55,6 +57,7 @@ public:
 	uint timeCounter = 000;
 	int timeCounterFont = -1;
 	char timeCounterText[10] = { "\0" };
+	int timeControl;
 
 	//counter score
 	uint counterRightScore = 000;
@@ -62,6 +65,10 @@ public:
 	uint counterLeftScore = 000;
 	char counterLeftScoreText[10] = { "\0" };
 	int scoreCounterFont = -1;
+
+	int t1, t2;
+	float seconds;
+
 };
 
 #endif

@@ -2,8 +2,6 @@
 
 
 #include "SDL/include/SDL.h"
-//#pragma comment( lib, "SDL/libx86/SDL2.lib" )
-//#pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -21,6 +19,20 @@ UI::UI(bool startEnabled) : Module(startEnabled)
 	loseR = { 393, 27, 99, 27 };
 	loseL = { 0, 54, 100, 27 };
 	time = { 175, 11, 15, 5 };
+
+	time_thirty.PushBack({ 192, 86, 32, 32 });
+	time_thirty.PushBack({ 192, 86, 32, 32 });
+	time_thirty.PushBack({ 192, 86, 32, 32 });
+	time_thirty.loop = true;
+	time_thirty.speed = 0.2f;
+
+	time_fifteen.PushBack({ 376, 54, 32, 32 });
+	time_fifteen.loop = true;
+	time_fifteen.speed = 0.1f;
+
+	time_ten.PushBack({ 344, 54, 32, 32 });
+	time_ten.loop = true;
+	time_ten.speed = 0.1f;
 }
 
 UI::~UI()
@@ -28,24 +40,13 @@ UI::~UI()
 
 }
 
-void UI::oneSecWait()
-{
-
-}
-
-void UI::timeCounterClock()
-{
-	timeCounter = 30;
-	for (size_t i = 30; i > 0; i--)
-	{
-		//SDL_Delay(1000);
-		timeCounter--;
-	}
-}
-
 bool UI::Start()
 {
 	bool ret = true;
+
+	t1 = SDL_GetTicks();
+
+	currentAnimation = &time_thirty;
 
 	leftScore = 0;
 	rightScore = 0;
@@ -65,6 +66,10 @@ bool UI::Start()
 
 Update_Status UI::Update()
 {
+	t2 = SDL_GetTicks();
+	seconds = (t2 - t1) / 1000;
+	timeCounter = 30-(int)seconds;
+
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
 	{
 		leftScore = 1500;
@@ -74,7 +79,9 @@ Update_Status UI::Update()
 		rightScore = 1500;
 	}
 
-	timeCounterClock();
+	
+
+	currentAnimation->Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -83,6 +90,12 @@ Update_Status UI::PostUpdate()
 {
 	// Draw UI 
 
+	//Time
+	App->render->Blit(uiSprites, 144, 13, &time);
+
+	sprintf_s(timeCounterText, 10, "%d", timeCounter);
+	App->fonts->BlitText(145, 21, timeCounterFont, timeCounterText);
+	
 	//Score
 	sprintf_s(rightScoreText, 10, "%d", rightScore);
 	App->fonts->BlitText(204, 8, ScoreFont, rightScoreText);//right
@@ -101,6 +114,22 @@ Update_Status UI::PostUpdate()
 	sprintf_s(timeCounterText, 10, "%2d", timeCounter);
 	App->fonts->BlitText(145, 21, timeCounterFont, timeCounterText);
 
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+
+	if (timeCounter == 0)
+	{
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 15)
+	{
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 20)
+	{
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+
+	//Win Lose
 	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
@@ -113,37 +142,9 @@ Update_Status UI::PostUpdate()
 		App->render->Blit(uiSprites, 18, 54, &winL);
 	}
 
-	App->render->Blit(uiSprites, 144, 13, &time);
-
 	return Update_Status::UPDATE_CONTINUE;
 }
-
-//void UI::OnCollision(Collider* c1, Collider* c2)
-//{
-//	if (godMode == false) 
-//	{
-//		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
-//		{
-//			//App->ui->leftScore += 300;
-//			counterLeftScore += 3;
-//		}
-//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
-//		{
-//			//App->ui->leftScore += 500;
-//			counterLeftScore += 5;
-//		}
-//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_3P_GOAL)
-//		{
-//			//App->ui->leftScore += 300;
-//			counterRightScore += 3;
-//		}
-//		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
-//		{
-//			//App->ui->leftScore += 500;
-//			counterRightScore += 5;
-//		}
-//	}
-//}
+	
 
 bool UI::CleanUp()
 {
