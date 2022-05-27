@@ -577,6 +577,7 @@ void Left_Japanese_Player::Movement()
 	else if (hasDisk == true)
 	{
 		int discTime = SDL_GetTicks();
+		LOG("%d", discTime);
 
 		//Holding disk animation
 		if (currentAnimation != &diskHoldTURF) {
@@ -592,13 +593,14 @@ void Left_Japanese_Player::Movement()
 				currentAnimation = &throwTURF;
 			}
 
-			App->particles->diskL.speed.x = 5.0f;
-			App->particles->diskL.speed.y = 0.0f;
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-			newParticle->collider->AddListener(this);
-			hasDisk = false;
-			App->audio->PlayFx(discThrowSFX);
-		}
+				App->particles->diskL.speed.x = 5.0f;
+				App->particles->diskL.speed.y = 0.0f;
+				Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+				newParticle->collider->AddListener(this);
+				hasDisk = false;
+				discTime = 0;
+				App->audio->PlayFx(discThrowSFX);
+			}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
@@ -635,6 +637,8 @@ void Left_Japanese_Player::Movement()
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
+
+		
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
