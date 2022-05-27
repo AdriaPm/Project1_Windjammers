@@ -115,7 +115,7 @@ bool SceneIntro::Start()
 	MaxLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start5.png");
 	
 	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
-	//bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
+	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
 
 	currentAnimation = &NeoGeo;
 	//currentAnimation = &Max;
@@ -137,6 +137,7 @@ Update_Status SceneIntro::Update()
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 40);
 	}
 
+	
 	currentAnimation->Update();
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -146,11 +147,13 @@ Update_Status SceneIntro::Update()
 Update_Status SceneIntro::PostUpdate()
 {
 	SDL_Rect rect = NeoGeo.GetCurrentFrame();
+	SDL_Rect rect2 = Max.GetCurrentFrame();
 
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture_white, 0, 0, NULL);
-	App->render->Blit(NeoGeoLOGO, 50, 50, &rect, false);
-
+	App->render->Blit(NeoGeoLOGO, 43, 50, &rect, false);
+	//App->render->Blit(bgTexture_black, 0, 0, NULL);
+	App->render->Blit(MaxLOGO, 50, 200, &rect2, false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
