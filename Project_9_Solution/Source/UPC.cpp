@@ -71,3 +71,11 @@ Update_Status UPC::PostUpdate()
 
 	return Update_Status::UPDATE_CONTINUE;
 }
+
+bool UPC::CleanUp()
+{
+
+	App->Upc->Disable();
+
+	return true;
+}

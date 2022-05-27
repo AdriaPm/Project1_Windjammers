@@ -210,6 +210,7 @@ bool ChooseCharacter::CleanUp()
 {
 	
 	App->chooseCharacter->Disable();
+	
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
