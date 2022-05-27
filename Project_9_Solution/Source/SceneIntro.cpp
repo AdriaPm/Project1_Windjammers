@@ -109,14 +109,16 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
+
+	//Anims on top of bg
+	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1def.png");
+	MaxLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start5.png");
 	
 	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
-	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
-
-	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1def.png");
-	//MaxLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start5.png");
+	//bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
 
 	currentAnimation = &NeoGeo;
+	//currentAnimation = &Max;
 	
 	App->audio->PlayMusic("Assets/Music/Neo Geo AESMVS Intro.ogg", 1.0f);
 
