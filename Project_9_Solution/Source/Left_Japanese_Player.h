@@ -90,6 +90,13 @@ public:
 	// Sound effects indices
 	uint slidingSFX = 0;
 	uint discThrowSFX = 0;
+	uint diskCollisionSFX = 0;
+	uint goalSFX = 0;
+	uint crowdGoalSFX = 0;
+	uint crowdWinSFX = 0;
+
+	uint referee3ptsSFX = 0;
+	uint referee5ptsSFX = 0;
 
 	// Font score index
 	uint scoreJapLeft = 000;
