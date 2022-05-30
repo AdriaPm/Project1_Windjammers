@@ -305,10 +305,16 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL) {
 		position.x = 10;
 	}
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_5P_GOAL) {
+		position.x = 5;
+	}
 
 	//Collider player-right goal
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
-		position.x = 295 - 25;
+		position.x = 295 - 15;
+	}
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_5P_GOAL) {
+		position.x = 295 - 10;
 	}
 
 	//Collider player-net
