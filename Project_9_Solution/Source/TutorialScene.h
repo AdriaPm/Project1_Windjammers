@@ -60,7 +60,7 @@ public:
 	Animation SlideDAnim;
 
 	float speed = 1.0f;
-	int currentAnimCount = 0;
+	//int currentAnimCount = 0;
 	//Animation* AnimationButtons[MAX_ANIMATIONS];
 	Animation* currentAButtons = nullptr;
 	// Buttons set of animations
