@@ -104,7 +104,7 @@ Update_Status ChooseMap::Update()
 		}
 		else if (yMove == 79)
 		{
-			App->fade->FadeToBlack(this, (Module*)App->turflevel, 90);
+			App->fade->FadeToBlack(this, (Module*)App->beachlevel, 90);
 			App->audio->PlayFx(selectMapAudio);
 		}
 		else if (yMove == 104)
