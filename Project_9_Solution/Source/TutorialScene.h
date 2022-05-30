@@ -60,8 +60,8 @@ public:
 	Animation SlideDAnim;
 
 	float speed = 1.0f;
-	//int currentAnimCount = 0;
-	//Animation* AnimationButtons[MAX_ANIMATIONS];
+
+
 	Animation* currentAButtons = nullptr;
 	// Buttons set of animations
 	Animation ButtonsidleAnim;
@@ -79,12 +79,5 @@ public:
 	Animation ButtonsSlideDAnim;
 
 };
-
-//enum class ButtonsAnims {
-//	Idle, Up, Down, Right, Left,
-//	UpRight, DownLeft, UpLeft, DownRight,
-//	SlideLeft, SlideRight, SlideUp, SlideDown
-//
-//};
 
 #endif

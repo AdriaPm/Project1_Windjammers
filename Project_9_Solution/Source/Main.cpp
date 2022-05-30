@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "ModuleWindow.h"
 #include "Globals.h"
 #include "MemLeaks.h"
 #include <stdio.h>
@@ -19,12 +20,14 @@ enum class Main_States
 
 Application* App = nullptr;
 
-float fps = 60.00f;
-float desiredDelta = 1000 / fps;  //desired time b/w frames
-
 int main(int argc, char* argv[])
 {
 	ReportMemoryLeaks();
+
+	int fps = 60;
+	int desiredDelta = 1000 / fps;  //desired time b/w frames
+	Uint32 frameStart = 0;
+
 
 	int main_return = EXIT_FAILURE;
 	Main_States state = Main_States::MAIN_CREATION;
@@ -34,7 +37,7 @@ int main(int argc, char* argv[])
 	while (state != Main_States::MAIN_EXIT)
 	{
 
-		float frameStart = SDL_GetTicks();
+		frameStart = SDL_GetTicks();
 
 		switch (state)
 		{
@@ -89,17 +92,19 @@ int main(int argc, char* argv[])
 			}
 		}
 
+		int frameEnd = SDL_GetTicks() - frameStart;
 
-		float frameEnd = SDL_GetTicks();
-		float delta = frameEnd - frameStart;     //actual time b/w frames
-
-		float avgFPS = 1000 / (desiredDelta - delta);  //calculating FPS HERE
-
-		if (delta < desiredDelta)
+		if (frameEnd < desiredDelta)
 		{
-			SDL_Delay(desiredDelta - delta);
+			SDL_Delay(desiredDelta - frameEnd);
 		}
 		
+		int avgFPS = 1000 / (desiredDelta - frameEnd);  //calculating FPS HERE
+
+		char s[128];
+		sprintf_s(s, "FPS: %d", avgFPS);
+		SDL_SetWindowTitle(App->window->window, s);
+
 	}
 
 	LOG("\nBye :)\n");

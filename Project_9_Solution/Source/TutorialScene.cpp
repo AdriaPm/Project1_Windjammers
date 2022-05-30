@@ -198,7 +198,7 @@ Update_Status TutorialScene::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(bgTexture, SCREEN_WIDTH, 0, NULL);
 	App->render->Blit(buttonsTexture, 60, 150, &rect2, false);
-	App->render->Blit(characterTexture, charPos.x, charPos.y, &rect, false);
+	App->render->Blit(characterTexture, charPos.x, charPos.y, &rect, 2.0f,false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -215,14 +215,14 @@ void TutorialScene::SceneAnimations()
 {
 	if (currentAnimation->GetLoopCount() >= 1 && currentAButtons->GetLoopCount() >= 1)
 	{
-		charPos.x += speed;
+		charPos.x += speed + 1;
 		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsrightAnim;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 2.5 && currentAButtons->GetLoopCount() >= 2.5)
 	{
-		charPos.x -= speed + .1f;
+		charPos.x -= speed + 1;
 		currentAnimation = &leftAnim;
 		currentAButtons = &ButtonsleftAnim;
 	}

@@ -98,11 +98,6 @@ public:
 
 	ModuleRender* render = nullptr;
 
-	//Framerate Limit Vars
-	float t1;
-	float frameTime;
-	float FPS = 60.0f;
-
 };
 
 // Global var made extern for Application ---
