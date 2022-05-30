@@ -16,6 +16,9 @@
 
 #include <stdio.h>
 
+#define initialXPos 240
+#define initialYPos 105
+
 Right_Japanese_Player::Right_Japanese_Player(bool startEnabled) : Module(startEnabled)
 {
 	///CHAR1: Japanese
@@ -230,8 +233,8 @@ bool Right_Japanese_Player::Start()
 	referee3ptsSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/ThreePoints.wav");
 	referee5ptsSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/FivePoints.wav");
 
-	position.x = 190;
-	position.y = 130;
+	position.x = initialXPos;
+	position.y = initialYPos;
 
 	destroyed = false;
 
@@ -331,6 +334,12 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee3ptsSFX);
+
+			//reset players positions when scoring
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->LeftJapanesePlayer->position.x = 50;
+			App->LeftJapanesePlayer->position.y = 105;
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
@@ -338,10 +347,17 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterRightScore += 3;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+
 			//sfx
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee5ptsSFX);
+
+			//reset players positions when scoring
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->LeftJapanesePlayer->position.x = 50;
+			App->LeftJapanesePlayer->position.y = 105;
 		}
 	}
 	else if (godMode == true) {
