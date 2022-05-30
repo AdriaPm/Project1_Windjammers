@@ -45,19 +45,34 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// Character set of animations
+	// A set of animations
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
-	Animation upRightAnim;
-	Animation downLeftAnim;
-	Animation upLeftAnim;
-	Animation downRightAnim;
+	Animation victAnim;
+	Animation loseAnim;
 	Animation SlideLAnim;
 	Animation SlideRAnim;
 	Animation SlideUAnim;
 	Animation SlideDAnim;
+	Animation UpRightAnim;
+	Animation UpLeftAnim;
+	Animation DownRightAnim;
+	Animation DownLeftAnim;
+	Animation SlideUpLeftAnim;
+	Animation SlideUpRightAnim;
+	Animation SlideDownRightAnim;
+	Animation SlideDownLeftAnim;
+	Animation throwTURF;
+	Animation throwCLAY;
+	Animation throwBEACH;
+	Animation ScoredOn;
+	Animation Scored;
+	Animation diskHoldTURF;
+	Animation diskHoldCLAY;
+	Animation diskHoldBEACH;
 
 	float speed = 1.0f;
 

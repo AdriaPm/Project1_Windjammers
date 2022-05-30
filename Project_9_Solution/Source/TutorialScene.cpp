@@ -12,7 +12,7 @@
 TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 {
 
-	//Character Animations
+	///CHAR1: Japanese
 	// idle animation
 	idleAnim.PushBack({ 227, 103, 24, 37 });
 	idleAnim.PushBack({ 251, 103, 24, 39 });
@@ -23,7 +23,7 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	idleAnim.PushBack({ 370, 103, 23, 35 });
 	idleAnim.PushBack({ 393, 103, 23, 36 });
 	idleAnim.loop = true;
-	idleAnim.speed = 0.25f;
+	idleAnim.speed = 0.1f;
 
 	// move upwards
 	upAnim.PushBack({ 0, 191, 30, 50 });
@@ -33,7 +33,7 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	upAnim.PushBack({ 120, 191, 30, 53 });
 	upAnim.PushBack({ 150, 191, 30, 40 });
 	upAnim.loop = true;
-	upAnim.speed = 0.25f;
+	upAnim.speed = 0.1f;
 
 	// Move down
 	downAnim.PushBack({ 94, 148, 31, 34 });
@@ -43,90 +43,146 @@ TutorialScene::TutorialScene(bool startEnabled) : Module(startEnabled)
 	downAnim.PushBack({ 208, 148, 32, 38 });
 	downAnim.PushBack({ 240, 148, 29, 43 });
 	downAnim.loop = true;
-	downAnim.speed = 0.25f;
+	downAnim.speed = 0.1f;
 
-	//Move right
-
-	rightAnim.PushBack({ 310, 148, 29, 36 });
+	//Move right 
 	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 454, 148, 45, 32 });
-	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 310, 148, 29, 36 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
 	rightAnim.PushBack({ 339, 148, 46, 29 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 269, 148, 41, 35 });
+	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.25f;
+	rightAnim.speed = 0.1f;
 
 	//Move left
-	leftAnim.PushBack({ 269, 404, 42, 36 });
-	leftAnim.PushBack({ 310, 404, 30, 37 });
-	leftAnim.PushBack({ 339, 404, 47, 30 });
-	leftAnim.PushBack({ 385, 404, 42, 37 });
-	leftAnim.PushBack({ 426, 404, 29, 34 });
-	leftAnim.PushBack({ 456, 404, 46, 33 });
+	leftAnim.PushBack({ 269, 404, 41, 35 });
+	leftAnim.PushBack({ 310, 404, 29, 36 });
+	leftAnim.PushBack({ 339, 404, 46, 29 });
+	leftAnim.PushBack({ 385, 404, 41, 36 });
+	leftAnim.PushBack({ 426, 404, 28, 33 });
+	leftAnim.PushBack({ 456, 404, 45, 32 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.25f;
+	leftAnim.speed = 0.1f;
 
 	//Slide Left
 	SlideLAnim.PushBack({ 474, 359, 30, 33 });
 	SlideLAnim.PushBack({ 0, 404, 43, 31 });
 	SlideLAnim.PushBack({ 43, 404, 51, 24 });
-	SlideLAnim.loop = true;
-	SlideLAnim.speed = 0.025f;
+	SlideLAnim.loop = false;
+	SlideLAnim.speed = 2;
 
 	//Slide Right
 	SlideRAnim.PushBack({ 474, 103, 30, 33 });
 	SlideRAnim.PushBack({ 0, 148, 43, 31 });
 	SlideRAnim.PushBack({ 43, 148, 51, 24 });
-	SlideRAnim.loop = true;
-	SlideRAnim.speed = 0.025f;
+	SlideRAnim.loop = false;
+	SlideRAnim.speed = 2;
 
 	//Slide Up
 	SlideUAnim.PushBack({ 374, 191, 28, 33 });
 	SlideUAnim.PushBack({ 402, 191, 31, 24 });
-	SlideUAnim.PushBack({ 433, 191, 25, 33 });
-	SlideUAnim.loop = true;
-	SlideUAnim.speed = 0.025f;
+	SlideUAnim.PushBack({ 433, 191, 25, 53 });
+	SlideUAnim.loop = false;
+	SlideUAnim.speed = 2;
 
 	//Slide Down
 	SlideDAnim.PushBack({ 213, 46, 32, 41 });
 	SlideDAnim.PushBack({ 245, 46, 32, 49 });
 	SlideDAnim.PushBack({ 277, 46, 25, 57 });
-	SlideDAnim.loop = true;
-	SlideDAnim.speed = 0.025f;
+	SlideDAnim.loop = false;
+	SlideDAnim.speed = 2;
+
+	//Slide Up Right
+	SlideUpRightAnim.PushBack({ 270, 191, 27, 37 });
+	SlideUpRightAnim.PushBack({ 297, 191, 32, 30 });
+	SlideUpRightAnim.PushBack({ 329, 191, 45, 41 });
+	SlideUpRightAnim.loop = false;
+	SlideUpRightAnim.speed = 2;
+
+	//Slide Up Left
+	SlideUpLeftAnim.PushBack({ 270, 447, 27, 27 });
+	SlideUpLeftAnim.PushBack({ 297, 447, 32, 30 });
+	SlideUpLeftAnim.PushBack({ 329, 447, 45, 41 });
+	SlideUpLeftAnim.loop = false;
+	SlideUpLeftAnim.speed = 2;
+
+	//Slide Down Right
+	SlideDownRightAnim.PushBack({ 107, 46, 33, 35 });
+	SlideDownRightAnim.PushBack({ 140, 46, 37, 40 });
+	SlideDownRightAnim.PushBack({ 177, 46, 36, 48 });
+	SlideDownRightAnim.loop = false;
+	SlideDownRightAnim.speed = 2;
+
+	//Slide Down Left
+	SlideDownLeftAnim.PushBack({ 107, 302, 33, 35 });
+	SlideDownLeftAnim.PushBack({ 140, 302, 37, 40 });
+	SlideDownLeftAnim.PushBack({ 177, 302, 36, 48 });
+	SlideDownLeftAnim.loop = false;
+	SlideDownLeftAnim.speed = 2;
+
+	//Victory
+	victAnim.PushBack({ 77, 0, 33, 40 });
+	victAnim.PushBack({ 110, 0, 34, 41 });
+	victAnim.PushBack({ 144, 0, 33, 40 });
+	victAnim.PushBack({ 177, 0, 34, 41 });
+	victAnim.loop = true;
+	victAnim.speed = 0.05f;
+
+	//Lose
+	loseAnim.PushBack({ 44, 103, 22, 40 });
+	loseAnim.PushBack({ 66, 103, 24, 39 });
+	loseAnim.PushBack({ 90, 103, 24, 39 });
+	loseAnim.PushBack({ 114, 103, 23, 40 });
+	loseAnim.PushBack({ 137, 103, 22, 40 });
+	loseAnim.loop = true;
+	loseAnim.speed = 0.05f;
+
+	//Got scored on
+	ScoredOn.PushBack({ 159, 359, 22, 36 });
+
+	//Scored
+	Scored.PushBack({ 21, 103, 23, 37 });
+
+
+	///THROW
+
+	//Disk Throw TURF MAP (RED Disk)
+	throwTURF.PushBack({ 164, 723, 35, 40 });
+	throwTURF.PushBack({ 129, 723, 34, 38 });
+	throwTURF.PushBack({ 91, 723, 37, 40 });
+	throwTURF.loop = false;
+	throwTURF.speed = 0.2f;
+
+
 
 	//Joystick and Buttons Animations
-	//AnimationButtons[0] = &ButtonsidleAnim;
 	ButtonsidleAnim.PushBack({ 0, 0, 171, 65 });
 	ButtonsidleAnim.speed = 0.25f;
 	ButtonsidleAnim.loop = true;
 
-	//AnimationButtons[1] = &ButtonsrightAnim;
 	ButtonsrightAnim.PushBack({ 171, 0, 171, 65});
 	ButtonsrightAnim.speed = 0.25f;
 	ButtonsrightAnim.loop = true;
 
-	//AnimationButtons[2] = &ButtonsleftAnim;
 	ButtonsleftAnim.PushBack({ 342, 0, 190, 65 });
 	ButtonsleftAnim.speed = 0.25f;
 	ButtonsleftAnim.loop = true;
 
-	//AnimationButtons[3] = &ButtonsupAnim;
 	ButtonsupAnim.PushBack({ 532, 0, 171, 65 });
 	ButtonsupAnim.speed = 0.25f;
 	ButtonsupAnim.loop = true;
 
-	//AnimationButtons[4] = &ButtonsdownAnim;
 	ButtonsdownAnim.PushBack({ 703, 0, 171, 65 });
 	ButtonsdownAnim.speed = 0.25f;
 	ButtonsdownAnim.loop = true;
 
-	//AnimationButtons[5] = &ButtonsUpRightAnim;
 	ButtonsUpRightAnim.PushBack({ 874, 0, 170, 65 });
 	ButtonsUpRightAnim.speed = 0.25f;
 	ButtonsUpRightAnim.loop = true;
 
-	//AnimationButtons[6] = &ButtonsDownLeftAnim;
 	ButtonsDownLeftAnim.PushBack({ 0, 76, 182, 65 });
 	ButtonsDownLeftAnim.speed = 0.25f;
 	ButtonsDownLeftAnim.loop = true;
@@ -205,6 +261,11 @@ Update_Status TutorialScene::PostUpdate()
 
 bool TutorialScene::CleanUp()
 {
+	/*delete currentAButtons;
+	currentAButtons = nullptr;
+	
+	delete currentAnimation;
+	currentAnimation = nullptr;*/
 
 	App->tutorialScene->Disable();
 
@@ -215,20 +276,21 @@ void TutorialScene::SceneAnimations()
 {
 	if (currentAnimation->GetLoopCount() >= 1 && currentAButtons->GetLoopCount() >= 1)
 	{
-		charPos.x += speed + 1;
 		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsrightAnim;
+		charPos.x += speed + 1;
 	}
 	
-	if (currentAnimation->GetLoopCount() >= 2.5 && currentAButtons->GetLoopCount() >= 2.5)
+	if (currentAnimation->GetLoopCount() >= 2.2 && currentAButtons->GetLoopCount() >= 2.2)
 	{
-		charPos.x -= speed + 1;
 		currentAnimation = &leftAnim;
 		currentAButtons = &ButtonsleftAnim;
+		charPos.x -= speed + 1;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 4 && currentAButtons->GetLoopCount() >= 4)
 	{
+		charPos.x -= 0;
 		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsrightAnim;
 	}
@@ -267,19 +329,20 @@ void TutorialScene::SceneAnimations()
 	
 	if (currentAnimation->GetLoopCount() >= 9 && currentAButtons->GetLoopCount() >= 9)
 	{
-		currentAnimation = &upRightAnim;
+		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsUpRightAnim;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 10 && currentAButtons->GetLoopCount() >= 10)
 	{
-		currentAnimation = &downLeftAnim;
+		//speed x and y
+		currentAnimation = &leftAnim;
 		currentAButtons = &ButtonsDownLeftAnim;
 	}
 	
 	if (currentAnimation->GetLoopCount() >= 12 && currentAButtons->GetLoopCount() >= 12)
 	{
-		currentAnimation = &upRightAnim;
+		currentAnimation = &rightAnim;
 		currentAButtons = &ButtonsUpRightAnim;
 	}
 	
@@ -287,6 +350,74 @@ void TutorialScene::SceneAnimations()
 	{
 		currentAnimation = &idleAnim;
 		currentAButtons = &ButtonsidleAnim;
+	}
+
+	if (currentAnimation->GetLoopCount() >= 13 && currentAButtons->GetLoopCount() >= 13)
+	{
+		currentAnimation = &rightAnim;
+		currentAButtons = &ButtonsDownRightAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 14 && currentAButtons->GetLoopCount() >= 14)
+	{
+		currentAnimation = &leftAnim;
+		currentAButtons = &ButtonsUpLeftAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 15 && currentAButtons->GetLoopCount() >= 15)
+	{
+		currentAnimation = &rightAnim;
+		currentAButtons = &ButtonsDownRightAnim;
+	}
+
+	if (currentAnimation->GetLoopCount() >= 15.9 && currentAButtons->GetLoopCount() >= 15.9)
+	{
+		currentAnimation = &idleAnim;
+		currentAButtons = &ButtonsidleAnim;
+	}
+	
+	// SLIDE ANIMS
+	// ADD IDLE ANIMS OF 1 FRAME BETWEEEN EACH SLIDE
+	//
+	if (currentAnimation->GetLoopCount() >= 16 && currentAButtons->GetLoopCount() >= 16)
+	{
+		currentAnimation = &SlideRAnim;
+		currentAButtons = &ButtonsSlideRAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 17 && currentAButtons->GetLoopCount() >= 17)
+	{
+		//charPos.y -= speed < charPos.x Goes Down and centered 
+		currentAnimation = &SlideLAnim;
+		currentAButtons = &ButtonsSlideLAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 18 && currentAButtons->GetLoopCount() >= 18)
+	{
+		//charPos.y += speed Goes Up and left 
+		currentAnimation = &SlideLAnim;
+		currentAButtons = &ButtonsSlideLAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 19 && currentAButtons->GetLoopCount() >= 19)
+	{
+		//charPos.y += speed Goes Up and left 
+		currentAnimation = &SlideRAnim;
+		currentAButtons = &ButtonsSlideRAnim;
+	}
+	
+	if (currentAnimation->GetLoopCount() >= 20 && currentAButtons->GetLoopCount() >= 20)
+	{
+		//charPos.y += speed Goes Up and left 
+		currentAnimation = &SlideRAnim;
+		currentAButtons = &ButtonsSlideRAnim;
+	}
+
+	if (currentAnimation->GetLoopCount() >= 21 && currentAButtons->GetLoopCount() >= 21)
+	{
+		//Centre
+		currentAnimation = &SlideLAnim;
+		currentAButtons = &ButtonsSlideLAnim;
 	}
 
 }

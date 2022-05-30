@@ -153,8 +153,6 @@ Update_Status TurfLevel::Update()
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
-
-		
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
