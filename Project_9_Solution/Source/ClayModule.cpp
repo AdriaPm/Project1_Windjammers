@@ -38,17 +38,21 @@ bool ClayModule::Start()
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClayMap_spritesheet.png");
 
-	App->audio->PlayMusic("Assets/Music/ClayCourt.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Music/clay.ogg", 1.0f);
 
-	///TURF MAP Colliders
+	///CLAY MAP Colliders
 	//Upperside collider
 	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::UPPER_WALL);
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::LOWER_WALL);
 	//Leftside goal
-	App->collisions->AddCollider({ 0, 17, 10, 200 }, Collider::Type::LEFT_3P_GOAL);
+	App->collisions->AddCollider({ 0, 40, 12, 48 }, Collider::Type::LEFT_3P_GOAL);
+	App->collisions->AddCollider({ 0, 88, 6, 49 }, Collider::Type::LEFT_5P_GOAL);
+	App->collisions->AddCollider({ 0, 137, 12, 64 }, Collider::Type::LEFT_3P_GOAL);
 	//Rightside goal
-	App->collisions->AddCollider({ 295, 17, 9, 200 }, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 292, 40, 12, 48 }, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 298, 88, 6, 49}, Collider::Type::RIGHT_5P_GOAL);
+	App->collisions->AddCollider({ 292, 137, 12, 64}, Collider::Type::RIGHT_3P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 
