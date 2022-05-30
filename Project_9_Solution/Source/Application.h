@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 24
+#define NUM_MODULES 25
 
 
 class Module;
@@ -19,6 +19,7 @@ class DataEast;
 class MainScreen;
 class TutorialScene;
 class TurfLevel;
+class BeachLevel;
 class ClayModule;
 class ModuleParticles;
 class ModuleCollisions;
@@ -87,6 +88,7 @@ public:
 	ChooseCharacter* chooseCharacter = nullptr;
 	ChooseMap* chooseMap = nullptr;
 	TurfLevel* turflevel = nullptr;
+	BeachLevel* beachlevel = nullptr;
 	ClayModule* clay = nullptr;
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;

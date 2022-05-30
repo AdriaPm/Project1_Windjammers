@@ -1,4 +1,4 @@
-#include "ClayModule.h"
+#include "BeachLevel.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -17,47 +17,59 @@
 
 #include <stdio.h>
 
-ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
+BeachLevel::BeachLevel(bool startEnabled) : Module(startEnabled)
 {
 
 	background.PushBack({ 0, 0, 304, 224 });
 	background.PushBack({ 304, 0, 304, 224 });
 	background.PushBack({ 608, 0, 304, 224 });
 	background.PushBack({ 912, 0, 304, 224 });
-	background.speed = 0.05f;
+	background.speed = 0.07f;
 	background.loop = true;
 
+	winR = { 224, 86, 100, 32 };
+	winL = { 324, 86, 112, 32 };
+	loseR = { 393, 27, 99, 27 };
+	loseL = { 0, 54, 100, 27 };
+	time = { 175, 11, 15, 5 };
 }
 
-ClayModule::~ClayModule()
+BeachLevel::~BeachLevel()
 {
 
 }
 
 // Load assets
-bool ClayModule::Start()
+bool BeachLevel::Start()
 {
 	LOG("Loading background assets");
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClayMap_spritesheet.png");
+	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/BeachMap_spritesheet.png");
+	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
-	App->audio->PlayMusic("Assets/Music/clay.ogg", 1.0f);
+	char lookupTable[] = { "0123456789" };
+	counter = App->fonts->Load("Assets/Fonts/.png", lookupTable, 1);
 
-	///CLAY MAP Colliders
+	App->audio->PlayMusic("Assets/Music/beach.ogg", 1.0f);
+
+	///TURF MAP Colliders
+	App->collisions->Enable();
 	//Upperside collider
 	App->collisions->AddCollider({ 0, 0, 304, 40 }, Collider::Type::UPPER_WALL);
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 199, 304, 25 }, Collider::Type::LOWER_WALL);
-	//Leftside goal
-	App->collisions->AddCollider({ 0, 40, 12, 48 }, Collider::Type::LEFT_3P_GOAL);
-	App->collisions->AddCollider({ 0, 88, 6, 49 }, Collider::Type::LEFT_5P_GOAL);
-	App->collisions->AddCollider({ 0, 137, 12, 64 }, Collider::Type::LEFT_3P_GOAL);
-	//Rightside goal
-	App->collisions->AddCollider({ 292, 40, 12, 48 }, Collider::Type::RIGHT_3P_GOAL);
-	App->collisions->AddCollider({ 298, 88, 6, 49}, Collider::Type::RIGHT_5P_GOAL);
-	App->collisions->AddCollider({ 292, 137, 12, 64}, Collider::Type::RIGHT_3P_GOAL);
+	//Leftside 3points goal
+	App->collisions->AddCollider({ 0, 17, 10, 88 }, Collider::Type::LEFT_3P_GOAL);
+	App->collisions->AddCollider({ 0, 151, 10, 66 }, Collider::Type::LEFT_3P_GOAL);
+	//Leftside 5points goal
+	App->collisions->AddCollider({ 0, 105, 5, 46 }, Collider::Type::LEFT_5P_GOAL);
+	//Rightside 3points goal
+	App->collisions->AddCollider({ 295, 17, 10, 88 }, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 295, 151, 10, 66 }, Collider::Type::RIGHT_3P_GOAL);
+	//Rightside 5points goal
+	App->collisions->AddCollider({ 300, 105, 5, 46 }, Collider::Type::RIGHT_5P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 
@@ -86,7 +98,6 @@ bool ClayModule::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-
 	switch (App->choice1)
 	{
 	case Player_Chosen_Left::German:
@@ -95,11 +106,11 @@ bool ClayModule::Start()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
-	//case Player_Chosen_Left::Spanish:
-	//	App->leftgermanyplayer->Enable(); 
-	//	break;
+		/*case Player_Chosen_Left::Spanish:
+			App->leftgermanyplayer->Enable();
+			break;*/
 	}
-	
+
 
 	switch (App->choice2)
 	{
@@ -109,62 +120,58 @@ bool ClayModule::Start()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
-	/*case Player_Chosen_Right::Spanish:
-		App->leftgermanyplayer->Enable();
-		break;*/
+		/*case Player_Chosen_Right::Spanish:
+			App->leftgermanyplayer->Enable();
+			break;*/
 	}
 
 	App->enemies->Enable();
+	App->ui->Enable();
+
+	//case Player_Chosen_Right::Spanish:
+	//	/*	App->leftgermanyplayer->Enable();*/
+	//	break;
+
+
+	//App->leftgermanyplayer->Enable();
+	//App->LeftJapanesePlayer->Enable();
+	//App->rightgermanyplayer->Enable();
+	//
+	//App->rightgermanyplayer->Enable();
+
 	return ret;
 }
 
-Update_Status ClayModule::Update()
+Update_Status BeachLevel::Update()
 {
 	background.Update();
+
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->dataEast, 90);
+		App->LeftJapanesePlayer->scoreJapLeft = 0;
+		App->RightJapanesePlayer->scoreJapRight = 0;
+		App->leftgermanyplayer->scoreGerLeft = 0;
+		App->rightgermanyplayer->scoreGerRight = 0;
+
+
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
-Update_Status ClayModule::PostUpdate()
+Update_Status BeachLevel::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool ClayModule::CleanUp()
+bool BeachLevel::CleanUp()
 {
-	switch (App->choice1)
-	{
-	case Player_Chosen_Left::German:
-		App->leftgermanyplayer->Disable();
-		break;
-	case Player_Chosen_Left::Japanese:
-		App->LeftJapanesePlayer->Disable();
-		break;
-	/*case Player_Chosen_Left::Spanish:
-		App->leftgermanyplayer->Disable(); 
-		break;*/
-	}
-
-	switch (App->choice2)
-	{
-	case Player_Chosen_Right::German:
-		App->rightgermanyplayer->Disable();
-		break;
-	case Player_Chosen_Right::Japanese:
-		App->RightJapanesePlayer->Disable();
-		break;
-	/*case Player_Chosen_Right::Spanish:
-		App->leftgermanyplayer->Disable();
-		break;*/
-	}
-
-	App->enemies->Disable();
 
 	Player_Chosen_Right::NONE;
 	Player_Chosen_Left::NONE;
@@ -176,13 +183,11 @@ bool ClayModule::CleanUp()
 	App->LeftJapanesePlayer->Disable();
 	App->rightgermanyplayer->Disable();
 	App->RightJapanesePlayer->Disable();
-	
 	App->collisions->Disable();
-	App->clay->Disable();
-	App->ui->Disable();
+	App->beachlevel->Disable();
 
-	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+	App->enemies->Disable();
+	App->ui->Disable();
 
 	return true;
 }
-

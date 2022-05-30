@@ -16,6 +16,7 @@
 #include "MainScreen.h"
 #include "TutorialScene.h"
 #include "TurfLevel.h"
+#include"BeachLevel.h"
 #include "ClayModule.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
@@ -51,20 +52,19 @@ Application::Application()
 	modules[9] = chooseCharacter = new ChooseCharacter(false);
 	modules[10] = chooseMap = new ChooseMap(false);
 	modules[11] = turflevel = new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[12] = clay = new ClayModule(false);
-	modules[13] = LeftJapanesePlayer = new Left_Japanese_Player(false);	//Player starts disabled
-	modules[14] = leftgermanyplayer = new LeftGermanPlayer(false);
-	modules[15] = rightgermanyplayer = new RightGermanPlayer(false);
-	modules[16] = RightJapanesePlayer = new Right_Japanese_Player(false);
-	modules[17] =	particles =		new ModuleParticles(true);
-	modules[18] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-	modules[19] =	collisions =	new ModuleCollisions(true);
-	modules[20] =	fade =			new ModuleFadeToBlack(true);
-	modules[21] =	fonts =			new ModuleFonts(true);
-	modules[22] =	ui	 =			new UI(false);
-	modules[23] =	render =		new ModuleRender(true);
-	
-
+	modules[12] = beachlevel = new BeachLevel(false);
+	modules[13] = clay = new ClayModule(false);
+	modules[14] = LeftJapanesePlayer = new Left_Japanese_Player(false);	//Player starts disabled
+	modules[15] = leftgermanyplayer = new LeftGermanPlayer(false);
+	modules[16] = rightgermanyplayer = new RightGermanPlayer(false);
+	modules[17] = RightJapanesePlayer = new Right_Japanese_Player(false);
+	modules[18] =	particles =		new ModuleParticles(true);
+	modules[19] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[20] =	collisions =	new ModuleCollisions(true);
+	modules[21] =	fade =			new ModuleFadeToBlack(true);
+	modules[22] =	fonts =			new ModuleFonts(true);
+	modules[23] =	ui	 =			new UI(false);
+	modules[24] =	render =		new ModuleRender(true);
 	
 	
 }
