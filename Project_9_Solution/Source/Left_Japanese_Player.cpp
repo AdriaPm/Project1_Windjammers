@@ -684,8 +684,6 @@ void Left_Japanese_Player::Movement()
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
-
-		
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle
