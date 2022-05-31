@@ -15,6 +15,8 @@
 #include "ModuleFonts.h"
 #include "UI.h"
 
+#include "ModuleParticles.h"
+
 #include <stdio.h>
 
 TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
@@ -26,6 +28,18 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	background.PushBack({ 912, 0, 304, 224 });
 	background.speed = 0.07f;
 	background.loop = true;
+
+	leftRef.PushBack({0,0,304,224});
+	leftRef.speed = 0.1f;
+	leftRef.loop = false;
+
+	rightRef.PushBack({ 608,0,304,224 });
+	rightRef.speed = 0.1f;
+	rightRef.loop = false;
+
+	midRef.PushBack({ 304,0,304,224 });
+	midRef.speed = 0.1f;
+	midRef.loop = false;
 
 	winR = {224, 86, 100, 32};
 	winL = {324, 86, 112, 32};
@@ -48,6 +62,10 @@ bool TurfLevel::Start()
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
+
+	refTexture= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TURF_JUDGE/JudgeTURF_spritesheet.png");
+
+	currentRefAnim = &midRef;
 
 	char lookupTable[] = { "0123456789" };
 	counter = App->fonts->Load("Assets/Fonts/.png", lookupTable, 1);
@@ -72,6 +90,7 @@ bool TurfLevel::Start()
 	App->collisions->AddCollider({ 300, 105, 5, 46 }, Collider::Type::RIGHT_5P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
+
 
 	////First two columns colliders
 	//App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
@@ -154,6 +173,28 @@ Update_Status TurfLevel::Update()
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
 	}
+	
+	//Referee looks left
+	if (App->particles->disk.position.x < 150) {
+		if (currentRefAnim != &leftRef)
+		{
+			currentRefAnim = &leftRef;
+		}
+	}
+	//Referee looks mid
+	if (App->particles->disk.position.x >= 150 && App->particles->disk.position.x <= 155) {
+		if (currentRefAnim != &midRef)
+		{
+			currentRefAnim = &midRef;
+		}
+	}
+	//Referee looks right
+	if (App->particles->disk.position.x > 155) {
+		if (currentRefAnim != &rightRef)
+		{
+			currentRefAnim = &rightRef;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -164,9 +205,16 @@ Update_Status TurfLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
+	
+	//Referee
+	SDL_Rect rect = currentRefAnim->GetCurrentFrame();
+	App->render->Blit(refTexture, 0, 0, &rect);
 
+	
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
+
 
 bool TurfLevel::CleanUp()
 {

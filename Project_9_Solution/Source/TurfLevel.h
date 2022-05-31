@@ -35,6 +35,9 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* uiSprites = nullptr;
+	
+	SDL_Texture* refTexture = nullptr;
+	
 
 	SDL_Rect winL;
 	SDL_Rect winR;
@@ -43,6 +46,11 @@ public:
 	SDL_Rect time;
 
 	Animation background;
+
+	Animation* currentRefAnim = nullptr;
+	Animation leftRef;
+	Animation rightRef;
+	Animation midRef;
 
 	uint counter = 000;
 	int counterFont = -1;

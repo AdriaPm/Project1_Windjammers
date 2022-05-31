@@ -24,7 +24,7 @@ struct Collider
 		RIGHT_5P_GOAL,
 		NET,
 		DISK,
-
+		
 
 		MAX
 	};

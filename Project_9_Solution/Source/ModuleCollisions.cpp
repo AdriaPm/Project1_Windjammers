@@ -116,7 +116,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::DISK][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::DISK][Collider::Type::LEFT_5P_GOAL] = true;
 	matrix[Collider::Type::DISK][Collider::Type::RIGHT_5P_GOAL] = true;
-
+	
 }
 
 // Destructor
