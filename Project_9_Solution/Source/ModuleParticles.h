@@ -63,12 +63,12 @@ public:
 	Particle diskR;
 	Particle disk;
 
-	
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* texture_disk = nullptr;
+
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
