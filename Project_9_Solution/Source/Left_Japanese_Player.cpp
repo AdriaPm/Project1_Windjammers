@@ -656,6 +656,7 @@ void Left_Japanese_Player::Movement()
 				currentAnimation = &throwTURF;
 			}
 
+
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = -3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
