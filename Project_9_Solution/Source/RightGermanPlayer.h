@@ -110,7 +110,6 @@ public:
 	uint discThrowSFX = 0;
 	bool hasDisk = false;
 	bool inslide = false;
-	uint discThrowSFX = 0;
 	uint slidingSFX = 0;
 	uint diskCollisionSFX = 0;
 	uint goalSFX = 0;
