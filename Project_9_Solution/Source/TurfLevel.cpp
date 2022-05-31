@@ -174,30 +174,25 @@ Update_Status TurfLevel::Update()
 		App->rightgermanyplayer->scoreGerRight = 0;
 	}
 	
-	//Referee looks left
+	//Referee looks
 	if (App->particles->diskR.position.x < SCREEN_WIDTH / 2 || App->particles->diskL.position.x < SCREEN_WIDTH / 2) {
 		if (currentRefAnim != &leftRef)
 		{
 			currentRefAnim = &leftRef;
 		}
 	}
-	//Referee looks right
 	else if (App->particles->diskR.position.x > SCREEN_WIDTH / 2 || App->particles->diskL.position.x > SCREEN_WIDTH / 2) {
 		if (currentRefAnim != &rightRef)
 		{
 			currentRefAnim = &rightRef;
 		}
 	}
-
-	/*
-	//Referee looks mid
-	if (App->particles->disk.position.x >= 150 && App->particles->disk.position.x <= 155) {
+	else if (App->particles->diskR.position.x == SCREEN_WIDTH / 2 || App->particles->diskL.position.x == SCREEN_WIDTH / 2) {
 		if (currentRefAnim != &midRef)
 		{
 			currentRefAnim = &midRef;
 		}
 	}
-	*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }
