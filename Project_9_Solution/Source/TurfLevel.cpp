@@ -175,12 +175,21 @@ Update_Status TurfLevel::Update()
 	}
 	
 	//Referee looks left
-	if (App->particles->disk.position.x < 150) {
+	if (App->particles->diskR.position.x < SCREEN_WIDTH / 2 || App->particles->diskL.position.x < SCREEN_WIDTH / 2) {
 		if (currentRefAnim != &leftRef)
 		{
 			currentRefAnim = &leftRef;
 		}
 	}
+	//Referee looks right
+	else if (App->particles->diskR.position.x > SCREEN_WIDTH / 2 || App->particles->diskL.position.x > SCREEN_WIDTH / 2) {
+		if (currentRefAnim != &rightRef)
+		{
+			currentRefAnim = &rightRef;
+		}
+	}
+
+	/*
 	//Referee looks mid
 	if (App->particles->disk.position.x >= 150 && App->particles->disk.position.x <= 155) {
 		if (currentRefAnim != &midRef)
@@ -188,13 +197,7 @@ Update_Status TurfLevel::Update()
 			currentRefAnim = &midRef;
 		}
 	}
-	//Referee looks right
-	if (App->particles->disk.position.x > 155) {
-		if (currentRefAnim != &rightRef)
-		{
-			currentRefAnim = &rightRef;
-		}
-	}
+	*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }
