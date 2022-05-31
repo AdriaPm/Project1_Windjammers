@@ -17,6 +17,9 @@
 
 #include <stdio.h>
 
+#define initialXPos 240
+#define initialYPos 105
+
 RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation
@@ -233,9 +236,18 @@ bool RightGermanPlayer::Start()
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");*/
 
 	ShotFx = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/GermanCharacter/German_3.wav");
+	slidingSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Sliding.wav");
+	discThrowSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Disc/Throwing_1.wav");
+	diskCollisionSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Disc/WallCollision.wav");
+	goalSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Disc/Goal.wav");
+	crowdGoalSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Crowd/Crowd1.wav");
+	crowdWinSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Crowd/CrowdWin.wav");
 
-	position.x = 222;
-	position.y = 135;
+	referee3ptsSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/ThreePoints.wav");
+	referee5ptsSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/FivePoints.wav");
+
+	position.x = initialXPos;
+	position.y = initialYPos;
 
 	destroyed = false;
 
@@ -348,6 +360,10 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterRightScore += 3;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+
+			App->audio->PlayFx(goalSFX);
+			App->audio->PlayFx(crowdGoalSFX);
+			App->audio->PlayFx(referee3ptsSFX);
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
@@ -355,6 +371,10 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterRightScore += 5;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+
+			App->audio->PlayFx(goalSFX);
+			App->audio->PlayFx(crowdGoalSFX);
+			App->audio->PlayFx(referee5ptsSFX);
 		}
 	}
 	else if (godMode == true) {
@@ -362,6 +382,9 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
 			App->ui->rightScore += 0;
+
+			App->audio->PlayFx(goalSFX);
+			App->audio->PlayFx(crowdGoalSFX);
 		}
 	}
 
@@ -373,6 +396,7 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.position.y += App->particles->diskR.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
+		App->audio->PlayFx(diskCollisionSFX);
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)

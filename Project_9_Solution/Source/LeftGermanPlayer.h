@@ -85,6 +85,8 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
+	bool inslide = false;
+
 	//God Mode
 	bool godMode = false;
 
@@ -93,6 +95,15 @@ public:
 	uint laserFx = 0;
 	uint explosionFx = 0;
 	uint discThrowSFX = 0;
+	uint slidingSFX = 0;
+	uint discThrowSFX = 0;
+	uint diskCollisionSFX = 0;
+	uint goalSFX = 0;
+	uint crowdGoalSFX = 0;
+	uint crowdWinSFX = 0;
+
+	uint referee3ptsSFX = 0;
+	uint referee5ptsSFX = 0;
 
 
 	// Font score index
@@ -102,7 +113,6 @@ public:
 
 	//Detect if has disc
 	bool hasDisk = true;
-
 };
 
 #endif //!__LeftGermanPlayer_H__ once
