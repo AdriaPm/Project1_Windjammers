@@ -112,7 +112,6 @@ public:
 	bool inslide = false;
 	uint discThrowSFX = 0;
 	uint slidingSFX = 0;
-	uint discThrowSFX = 0;
 	uint diskCollisionSFX = 0;
 	uint goalSFX = 0;
 	uint crowdGoalSFX = 0;
