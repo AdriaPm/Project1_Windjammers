@@ -47,10 +47,12 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;
+	SDL_Texture* shadowtexture = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
+	Animation* shadowAnimation = nullptr;
 
 	// A set of animations
 	Animation idleAnim;
@@ -75,6 +77,8 @@ public:
 	Animation ScoredOn;
 	Animation Scored;
 	Animation HoldingAnim;
+	Animation ShadowAnim;
+
 
 
 
