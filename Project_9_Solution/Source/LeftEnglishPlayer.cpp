@@ -25,29 +25,25 @@
 
 LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 {
-	///CHAR1: Japanese
+	///CHAR3: English
 	// idle animation
-	idleAnim.PushBack({ 227, 103, 24, 37 });
-	idleAnim.PushBack({ 251, 103, 24, 39 });
-	idleAnim.PushBack({ 275, 103, 24, 36 });
-	idleAnim.PushBack({ 299, 103, 24, 35 });
-	idleAnim.PushBack({ 323, 103, 24, 36 });
-	idleAnim.PushBack({ 347, 103, 23, 36 });
-	idleAnim.PushBack({ 370, 103, 23, 35 });
-	idleAnim.PushBack({ 393, 103, 23, 36 });
+	idleAnim.PushBack({ 693, 389, 117, 106 });
+	idleAnim.PushBack({ 577, 391, 116, 104 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
 	// move upwards
-	upAnim.PushBack({ 0, 191, 30, 50 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 120, 191, 30, 53 });
-	upAnim.PushBack({ 150, 191, 30, 40 });
+	upAnim.PushBack({ 756, 719, 72, 118 });
+	upAnim.PushBack({ 0, 838, 71, 116 });
+	upAnim.PushBack({ 913, 720, 77, 117 });
+	upAnim.PushBack({ 832, 720, 80, 117 });
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
+
+	/// TODO: Animations English player
+	/*
+	
 	// Move down
 	downAnim.PushBack({ 94, 148, 31, 34 });
 	downAnim.PushBack({ 125, 148, 30, 38 });
@@ -213,6 +209,7 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
 
+	*/
 }
 
 LeftEnglishPlayer::~LeftEnglishPlayer()

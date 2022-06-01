@@ -25,7 +25,7 @@
 
 RightEnglishPlayer::RightEnglishPlayer(bool startEnabled) : Module(startEnabled)
 {
-	///CHAR1: Japanese
+	///CHAR3: English
 	// idle animation
 	idleAnim.PushBack({ 227, 103, 24, 37 });
 	idleAnim.PushBack({ 251, 103, 24, 39 });
