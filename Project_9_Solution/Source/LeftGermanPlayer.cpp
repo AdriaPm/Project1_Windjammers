@@ -381,6 +381,11 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 300;
 			App->ui->counterLeftScore += 3;
+
+			scored3 = true;
+
+			currentAnimation = &idleAnim;
+
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
 
@@ -399,6 +404,8 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 500;
 			App->ui->counterLeftScore += 5;
+
+
 			App->rightgermanyplayer->hasDisk == true;
 			App->RightJapanesePlayer->hasDisk == true;
 
@@ -622,7 +629,8 @@ void LeftGermanPlayer::Movement() {
 		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
 		&& hasDisk != true
-		&& inslide != true){
+		&& inslide != true
+		&& scored3 != true){
 		currentAnimation = &idleAnim;
 		}
 		
@@ -742,4 +750,11 @@ void LeftGermanPlayer::Movement() {
 
 			}*/
 	}
+
+	if (scored3 == true) {
+		currentAnimation = &victAnim;
+		SDL_Delay(5000);
+		App->rightgermanyplayer->currentAnimation = &ScoredOn;
+	}
 }
+

@@ -34,6 +34,10 @@ public:
 
 	void Movement();
 
+	
+
+	void IsDefeated();
+
 	uint getGerScoreL() { return scoreGerLeft; }
 
 public:
@@ -93,6 +97,11 @@ public:
 
 	//God Mode
 	bool godMode = false;
+
+	bool isDefeated = false;
+	bool isCelebrating = false;
+
+	bool scored3 = false;
 
 	// Sound effects indices
 	uint ShotFx = 0;

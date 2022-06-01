@@ -103,6 +103,9 @@ public:
 	//God Mode
 	bool godMode = false;
 
+	bool isDefeated = false;
+	bool isCelebrating = false;
+
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;

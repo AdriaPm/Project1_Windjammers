@@ -709,5 +709,23 @@ void RightGermanPlayer::Movement() {
 			
 		}*/
 	}
+
+	if (isDefeated == true) {
+		currentAnimation = &ScoredOn;
+		App->leftgermanyplayer->isCelebrating = true;
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+			isDefeated = false;
+			currentAnimation = &HoldingAnim;
+		}
+	}
+
+	if (isCelebrating == true) {
+		currentAnimation = &victAnim;
+		App->leftgermanyplayer->isDefeated = true;
+			if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+				isCelebrating = false;
+				currentAnimation = &idleAnim;
+			}
+	}
 }
 
