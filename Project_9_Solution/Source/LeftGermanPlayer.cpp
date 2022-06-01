@@ -399,12 +399,13 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y = initialYPos;
 			App->RightJapanesePlayer->position.x = 240;
 			App->RightJapanesePlayer->position.y = 105;
+			App->rightgermanyplayer->position.x = 240;
+			App->rightgermanyplayer->position.y = 105;
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			App->ui->leftScore += 500;
 			App->ui->counterLeftScore += 5;
-
 
 			App->rightgermanyplayer->hasDisk == true;
 			App->RightJapanesePlayer->hasDisk == true;
@@ -417,6 +418,8 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y = initialYPos;
 			App->RightJapanesePlayer->position.x = 240;
 			App->RightJapanesePlayer->position.y = 105;
+			App->rightgermanyplayer->position.x = 240;
+			App->rightgermanyplayer->position.y = 105;
 		}
 
 		
@@ -752,9 +755,16 @@ void LeftGermanPlayer::Movement() {
 	}
 
 	if (scored3 == true) {
+
 		currentAnimation = &victAnim;
-		SDL_Delay(5000);
-		App->rightgermanyplayer->currentAnimation = &ScoredOn;
+		double startTime = SDL_GetTicks();
+		double endtime = startTime + 10000;
+
+		while(startTime < endtime) {
+			currentAnimation = &victAnim;
+		}
+
+		scored3 = false;
 	}
 }
 
