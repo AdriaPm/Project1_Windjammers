@@ -19,14 +19,14 @@ enum class Update_Status
 enum class Player_Chosen_Right {
 	Japanese,
 	German,
-	Spanish,
+	English,
 	NONE
 };
 
 enum class Player_Chosen_Left {
 	Japanese,
 	German,
-	Spanish,
+	English,
 	NONE
 };
 

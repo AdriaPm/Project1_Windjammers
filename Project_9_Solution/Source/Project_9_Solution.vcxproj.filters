@@ -37,6 +37,8 @@
     <ClCompile Include="UPC.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="BeachLevel.cpp" />
+    <ClCompile Include="LeftEnglishPlayer.cpp" />
+    <ClCompile Include="RightEnglishPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -77,5 +79,7 @@
     <ClInclude Include="UPC.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="BeachLevel.h" />
+    <ClInclude Include="LeftEnglishPlayer.h" />
+    <ClInclude Include="RightEnglishPlayer.h" />
   </ItemGroup>
 </Project>

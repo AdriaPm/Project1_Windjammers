@@ -50,7 +50,7 @@ public:
 
 	uint chooseJapAudio = 0;
 	uint chooseGerAudio = 0;
-	uint chooseSpaAudio = 0;
+	uint chooseEngAudio = 0;
 	
 	uint changeOption = 0;
 

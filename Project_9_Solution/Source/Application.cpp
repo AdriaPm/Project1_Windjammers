@@ -20,6 +20,8 @@
 #include "ClayModule.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
+#include "LeftEnglishPlayer.h"
+
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -56,13 +58,15 @@ Application::Application()
 	modules[15] = leftgermanyplayer = new LeftGermanPlayer(false);
 	modules[16] = rightgermanyplayer = new RightGermanPlayer(false);
 	modules[17] = RightJapanesePlayer = new Right_Japanese_Player(false);
-	modules[18] =	particles =		new ModuleParticles(true);
-	modules[19] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-	modules[20] =	collisions =	new ModuleCollisions(true);
-	modules[21] =	fade =			new ModuleFadeToBlack(true);
-	modules[22] =	fonts =			new ModuleFonts(true);
-	modules[23] =	ui	 =			new UI(false);
-	modules[24] =	render =		new ModuleRender(true);
+	modules[18] = leftenglishplayer = new LeftEnglishPlayer(false);
+
+	modules[19] =	particles =		new ModuleParticles(true);
+	modules[20] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[21] =	collisions =	new ModuleCollisions(true);
+	modules[22] =	fade =			new ModuleFadeToBlack(true);
+	modules[23] =	fonts =			new ModuleFonts(true);
+	modules[24] =	ui	 =			new UI(false);
+	modules[25] =	render =		new ModuleRender(true);
 	
 	
 }

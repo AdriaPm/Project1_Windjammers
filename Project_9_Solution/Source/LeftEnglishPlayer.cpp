@@ -1,11 +1,11 @@
 #include <SDL/include/SDL.h>
+#include "LeftEnglishPlayer.h"
 
+#include "RightEnglishPlayer.h"
 #include "Left_Japanese_Player.h"
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
-#include "LeftEnglishPlayer.h"
-#include "RightEnglishPlayer.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -23,7 +23,7 @@
 #define initialXPos 50
 #define initialYPos 105
 
-Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnabled)
+LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 {
 	///CHAR1: Japanese
 	// idle animation
@@ -107,7 +107,7 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	SlideDAnim.PushBack({ 277, 46, 25, 57 });
 	SlideDAnim.loop = false;
 	SlideDAnim.speed = 2;
-	
+
 	//Slide Up Right
 	SlideUpRightAnim.PushBack({ 270, 191, 27, 37 });
 	SlideUpRightAnim.PushBack({ 297, 191, 32, 30 });
@@ -163,23 +163,23 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	///THROW
 
 	//Disk Throw TURF MAP (RED Disk)
-	throwTURF.PushBack({ 164, 723, 35, 40});
-	throwTURF.PushBack({ 129, 723, 34, 38});
-	throwTURF.PushBack({ 91, 723, 37, 40});
+	throwTURF.PushBack({ 164, 723, 35, 40 });
+	throwTURF.PushBack({ 129, 723, 34, 38 });
+	throwTURF.PushBack({ 91, 723, 37, 40 });
 	throwTURF.loop = false;
 	throwTURF.speed = 0.2f;
 
 	//Disk Throw CLAY MAP (GREEN Disk)
-	throwCLAY.PushBack({ 276, 723, 34, 40});
-	throwCLAY.PushBack({ 240, 723, 36, 38});
-	throwCLAY.PushBack({ 203, 723, 37, 40});
+	throwCLAY.PushBack({ 276, 723, 34, 40 });
+	throwCLAY.PushBack({ 240, 723, 36, 38 });
+	throwCLAY.PushBack({ 203, 723, 37, 40 });
 	throwCLAY.loop = false;
 	throwCLAY.speed = 0.2f;
 
 	//Disk Throw BEACH MAP (BLUE Disk)
-	throwBEACH.PushBack({ 387, 723, 34, 40});
-	throwBEACH.PushBack({ 351, 723, 35, 38});
-	throwBEACH.PushBack({ 314, 723, 37, 40});
+	throwBEACH.PushBack({ 387, 723, 34, 40 });
+	throwBEACH.PushBack({ 351, 723, 35, 38 });
+	throwBEACH.PushBack({ 314, 723, 37, 40 });
 	throwBEACH.loop = false;
 	throwBEACH.speed = 0.2f;
 
@@ -187,19 +187,19 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	///HOLD
 
 	//Disk Holding TURF MAP (RED Disk)
-	diskHoldTURF.PushBack({ 0, 809, 50, 52});
-	diskHoldTURF.PushBack({ 51, 812, 50, 49});
-	diskHoldTURF.PushBack({ 103, 814, 50, 47});
-	diskHoldTURF.PushBack({ 154, 811, 51, 50});
-	diskHoldTURF.PushBack({ 206, 809, 51, 52});
+	diskHoldTURF.PushBack({ 0, 809, 50, 52 });
+	diskHoldTURF.PushBack({ 51, 812, 50, 49 });
+	diskHoldTURF.PushBack({ 103, 814, 50, 47 });
+	diskHoldTURF.PushBack({ 154, 811, 51, 50 });
+	diskHoldTURF.PushBack({ 206, 809, 51, 52 });
 	diskHoldTURF.loop = true;
 	diskHoldTURF.speed = 0.1f;
-	
+
 	//Disk Holding CLAY MAP (GREEN Disk)
-	diskHoldCLAY.PushBack({ 0, 861, 51, 52});
-	diskHoldCLAY.PushBack({ 52, 864, 50, 49});
-	diskHoldCLAY.PushBack({ 104, 866, 50, 47});
-	diskHoldCLAY.PushBack({ 155, 863, 51, 50});
+	diskHoldCLAY.PushBack({ 0, 861, 51, 52 });
+	diskHoldCLAY.PushBack({ 52, 864, 50, 49 });
+	diskHoldCLAY.PushBack({ 104, 866, 50, 47 });
+	diskHoldCLAY.PushBack({ 155, 863, 51, 50 });
 	diskHoldCLAY.PushBack({ 207, 861, 51, 52 });
 	diskHoldCLAY.loop = true;
 	diskHoldCLAY.speed = 0.1f;
@@ -215,18 +215,18 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 
 }
 
-Left_Japanese_Player::~Left_Japanese_Player()
+LeftEnglishPlayer::~LeftEnglishPlayer()
 {
 
 }
 
-bool Left_Japanese_Player::Start()
+bool LeftEnglishPlayer::Start()
 {
 	LOG("Loading player textures");
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteALL.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English.png");
 	currentAnimation = &idleAnim;
 
 	slidingSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Sliding.wav");
@@ -243,7 +243,7 @@ bool Left_Japanese_Player::Start()
 	position.x = initialXPos;
 	position.y = initialYPos;
 
-	
+
 
 	destroyed = false;
 
@@ -258,11 +258,11 @@ bool Left_Japanese_Player::Start()
 	return ret;
 }
 
-Update_Status Left_Japanese_Player::Update()
+Update_Status LeftEnglishPlayer::Update()
 {
 	//In this function are all the movement inputs and animations updates
 	Movement();
-	
+
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
@@ -270,7 +270,7 @@ Update_Status Left_Japanese_Player::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Left_Japanese_Player::PostUpdate()
+Update_Status LeftEnglishPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -282,10 +282,8 @@ Update_Status Left_Japanese_Player::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
+void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
-
 	if (c1 == collider && destroyed == false)
 	{
 		/*
@@ -299,24 +297,24 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
 
 		*/
-		
-		
+
+
 
 	}
-	
+
 	/// PLAYER COLLIDERS WITH THE MAP
 	//Collider player-upper wall
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
 		position.y = 40;
 	}
-	
+
 	//Collider player-lower wall
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
-		position.y = 199-40;
+		position.y = 199 - 40;
 	}
 
 	//Collider player-left goal
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL){
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL) {
 		position.x = 10;
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_5P_GOAL) {
@@ -325,7 +323,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 	//Collider player-right goal
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
-		position.x = 295-25;
+		position.x = 295 - 25;
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_5P_GOAL) {
 		position.x = 295 - 20;
@@ -336,7 +334,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		position.x = 150 - 19;
 	}
 
-	
+
 	///Score points
 	if (App->input->keys[SDL_SCANCODE_F1] == Key_State::KEY_DOWN) {
 		godMode = !godMode;
@@ -350,7 +348,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterLeftScore += 3;
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
-			
+
 			//sfx
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
@@ -391,7 +389,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->audio->PlayFx(crowdGoalSFX);
 		}
 	}
-	
+
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
@@ -403,7 +401,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
-	
+
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
 	{
 		App->particles->diskL.speed.x = 1.0f;
@@ -414,7 +412,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
-	
+
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
 		hasDisk = true;
@@ -426,7 +424,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	}
 }
 
-void Left_Japanese_Player::Movement() 
+void LeftEnglishPlayer::Movement()
 {
 	if (hasDisk == false)
 	{
@@ -641,14 +639,14 @@ void Left_Japanese_Player::Movement()
 				currentAnimation = &throwTURF;
 			}
 
-				App->particles->diskL.speed.x = 5.0f;
-				App->particles->diskL.speed.y = 0.0f;
-				Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
-				newParticle->collider->AddListener(this);
-				hasDisk = false;
-				discTime = 0;
-				App->audio->PlayFx(discThrowSFX);
-			}
+			App->particles->diskL.speed.x = 5.0f;
+			App->particles->diskL.speed.y = 0.0f;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			discTime = 0;
+			App->audio->PlayFx(discThrowSFX);
+		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
@@ -693,8 +691,8 @@ void Left_Japanese_Player::Movement()
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE 
-		&& hasDisk==false)
+		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
+		&& hasDisk == false)
 		currentAnimation = &idleAnim;
 
 }

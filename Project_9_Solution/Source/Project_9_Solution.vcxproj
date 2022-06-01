@@ -78,6 +78,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="BeachLevel.h" />
+    <ClInclude Include="LeftEnglishPlayer.h" />
     <ClInclude Include="LeftGermanPlayer.h" />
     <ClInclude Include="ChooseCharacter.h" />
     <ClInclude Include="ChooseMap.h" />
@@ -95,6 +96,7 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="RightEnglishPlayer.h" />
     <ClInclude Include="RightGermanPlayer.h" />
     <ClInclude Include="Right_Japanese_Player.h" />
     <ClInclude Include="SceneIntro.h" />
@@ -117,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="BeachLevel.cpp" />
+    <ClCompile Include="LeftEnglishPlayer.cpp" />
     <ClCompile Include="LeftGermanPlayer.cpp" />
     <ClCompile Include="ChooseCharacter.cpp" />
     <ClCompile Include="ChooseMap.cpp" />
@@ -135,6 +138,7 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
+    <ClCompile Include="RightEnglishPlayer.cpp" />
     <ClCompile Include="RightGermanPlayer.cpp" />
     <ClCompile Include="Right_Japanese_Player.cpp" />
     <ClCompile Include="SceneIntro.cpp" />

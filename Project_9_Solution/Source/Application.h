@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 25
+#define NUM_MODULES 26
 
 
 class Module;
@@ -32,6 +32,7 @@ class RightGermanPlayer;
 class ChooseMap;
 class ChooseCharacter;
 class Right_Japanese_Player;
+class LeftEnglishPlayer;
 class UI;
 
 
@@ -96,6 +97,7 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
+	LeftEnglishPlayer* leftenglishplayer = nullptr;
 	UI* ui = nullptr;
 
 	ModuleRender* render = nullptr;
