@@ -240,7 +240,7 @@ bool Right_Japanese_Player::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 15, 40 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 20, 40 }, Collider::Type::PLAYER, this);
 
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
@@ -337,6 +337,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterRightScore += 3;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+			App->leftenglishplayer->hasDisk = true;
 
 			//sfx
 			App->audio->PlayFx(goalSFX);
@@ -352,9 +353,10 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
 			App->ui->rightScore += 500;
-			App->ui->counterRightScore += 3;
+			App->ui->counterRightScore += 5;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+			App->leftenglishplayer->hasDisk = true;
 
 			//sfx
 			App->audio->PlayFx(goalSFX);
@@ -375,6 +377,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->ui->rightScore += 0;
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
+			App->leftenglishplayer->hasDisk = true;
 
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);

@@ -10,6 +10,8 @@
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
+#include "LeftEnglishPlayer.h"
+#include "RightEnglishPlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -106,9 +108,9 @@ bool BeachLevel::Start()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
-		/*case Player_Chosen_Left::Spanish:
-			App->leftgermanyplayer->Enable();
-			break;*/
+	case Player_Chosen_Left::English:
+		App->leftenglishplayer->Enable();
+		break;
 	}
 
 
@@ -120,9 +122,9 @@ bool BeachLevel::Start()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
-		/*case Player_Chosen_Right::Spanish:
-			App->leftgermanyplayer->Enable();
-			break;*/
+	case Player_Chosen_Right::English:
+		App->righenglishplayer->Enable();
+		break;
 	}
 
 	App->enemies->Enable();
@@ -153,8 +155,8 @@ Update_Status BeachLevel::Update()
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
-
-
+		
+		//TODO: english score
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -183,6 +185,8 @@ bool BeachLevel::CleanUp()
 	App->LeftJapanesePlayer->Disable();
 	App->rightgermanyplayer->Disable();
 	App->RightJapanesePlayer->Disable();
+	App->righenglishplayer->Disable();
+	App->leftenglishplayer->Disable();
 	App->collisions->Disable();
 	App->beachlevel->Disable();
 

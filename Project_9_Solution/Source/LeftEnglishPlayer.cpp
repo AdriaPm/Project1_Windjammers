@@ -345,6 +345,7 @@ void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterLeftScore += 3;
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
 
 			//sfx
 			App->audio->PlayFx(goalSFX);
@@ -363,6 +364,7 @@ void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->ui->counterLeftScore += 5;
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
 
 			//sfx
 			App->audio->PlayFx(goalSFX);
@@ -381,6 +383,9 @@ void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			App->ui->leftScore += 0;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
 
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);

@@ -10,6 +10,8 @@
 #include "Right_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
 #include "RightGermanPlayer.h"
+#include "LeftEnglishPlayer.h"
+#include "RightEnglishPlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -95,9 +97,9 @@ bool ClayModule::Start()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Enable();
 		break;
-	//case Player_Chosen_Left::Spanish:
-	//	App->leftgermanyplayer->Enable(); 
-	//	break;
+	case Player_Chosen_Left::English:
+		App->leftenglishplayer->Enable(); 
+		break;
 	}
 	
 
@@ -109,9 +111,9 @@ bool ClayModule::Start()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Enable();
 		break;
-	/*case Player_Chosen_Right::Spanish:
-		App->leftgermanyplayer->Enable();
-		break;*/
+	case Player_Chosen_Right::English:
+		App->righenglishplayer->Enable();
+		break;
 	}
 
 	App->enemies->Enable();
@@ -146,9 +148,9 @@ bool ClayModule::CleanUp()
 	case Player_Chosen_Left::Japanese:
 		App->LeftJapanesePlayer->Disable();
 		break;
-	/*case Player_Chosen_Left::Spanish:
-		App->leftgermanyplayer->Disable(); 
-		break;*/
+	case Player_Chosen_Left::English:
+		App->leftenglishplayer->Disable(); 
+		break;
 	}
 
 	switch (App->choice2)
@@ -159,9 +161,9 @@ bool ClayModule::CleanUp()
 	case Player_Chosen_Right::Japanese:
 		App->RightJapanesePlayer->Disable();
 		break;
-	/*case Player_Chosen_Right::Spanish:
-		App->leftgermanyplayer->Disable();
-		break;*/
+	case Player_Chosen_Right::English:
+		App->righenglishplayer->Disable();
+		break;
 	}
 
 	App->enemies->Disable();
@@ -176,7 +178,8 @@ bool ClayModule::CleanUp()
 	App->LeftJapanesePlayer->Disable();
 	App->rightgermanyplayer->Disable();
 	App->RightJapanesePlayer->Disable();
-	
+	App->righenglishplayer->Disable();
+	App->leftenglishplayer->Disable();
 	App->collisions->Disable();
 	App->clay->Disable();
 	App->ui->Disable();
