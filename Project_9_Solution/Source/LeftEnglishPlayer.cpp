@@ -127,10 +127,8 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	*/
 
 	//Victory
-	victAnim.PushBack({ 77, 0, 33, 40 });
-	victAnim.PushBack({ 110, 0, 34, 41 });
-	victAnim.PushBack({ 144, 0, 33, 40 });
-	victAnim.PushBack({ 177, 0, 34, 41 });
+	victAnim.PushBack({ 289, 304, 32, 41 });
+	victAnim.PushBack({ 323, 305, 33, 40 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
 	
@@ -145,60 +143,50 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	//Scored
 	Scored.PushBack({ 327, 257, 38, 38 });
 
-	/*
 	///THROW
-
 	//Disk Throw TURF MAP (RED Disk)
-	throwTURF.PushBack({ 164, 723, 35, 40 });
-	throwTURF.PushBack({ 129, 723, 34, 38 });
-	throwTURF.PushBack({ 91, 723, 37, 40 });
+	throwTURF.PushBack({ 175, 517, 37, 35 });
+	throwTURF.PushBack({ 212, 516, 42, 34 });
+	throwTURF.PushBack({ 260, 512, 43, 46 });
+	throwTURF.PushBack({ 309, 515, 35, 39 });
 	throwTURF.loop = false;
 	throwTURF.speed = 0.2f;
 
 	//Disk Throw CLAY MAP (GREEN Disk)
-	throwCLAY.PushBack({ 276, 723, 34, 40 });
-	throwCLAY.PushBack({ 240, 723, 36, 38 });
-	throwCLAY.PushBack({ 203, 723, 37, 40 });
+	throwCLAY.PushBack({ 174, 563, 38, 35 });
+	throwCLAY.PushBack({ 212, 562, 42, 34 });
+	throwCLAY.PushBack({ 260, 512, 43, 46 });
+	throwCLAY.PushBack({ 309, 515, 35, 39 });
 	throwCLAY.loop = false;
 	throwCLAY.speed = 0.2f;
 
 	//Disk Throw BEACH MAP (BLUE Disk)
-	throwBEACH.PushBack({ 387, 723, 34, 40 });
-	throwBEACH.PushBack({ 351, 723, 35, 38 });
-	throwBEACH.PushBack({ 314, 723, 37, 40 });
+	throwBEACH.PushBack({ 176, 609, 36, 35 });
+	throwBEACH.PushBack({ 212, 608, 42, 34 });
+	throwBEACH.PushBack({ 260, 512, 43, 46 });
+	throwBEACH.PushBack({ 309, 515, 35, 39 });
 	throwBEACH.loop = false;
 	throwBEACH.speed = 0.2f;
 
-
 	///HOLD
-
 	//Disk Holding TURF MAP (RED Disk)
-	diskHoldTURF.PushBack({ 0, 809, 50, 52 });
-	diskHoldTURF.PushBack({ 51, 812, 50, 49 });
-	diskHoldTURF.PushBack({ 103, 814, 50, 47 });
-	diskHoldTURF.PushBack({ 154, 811, 51, 50 });
-	diskHoldTURF.PushBack({ 206, 809, 51, 52 });
+	diskHoldTURF.PushBack({ 0, 347, 55, 42 });
+	diskHoldTURF.PushBack({ 55, 347, 53, 42 });
 	diskHoldTURF.loop = true;
 	diskHoldTURF.speed = 0.1f;
 
 	//Disk Holding CLAY MAP (GREEN Disk)
-	diskHoldCLAY.PushBack({ 0, 861, 51, 52 });
-	diskHoldCLAY.PushBack({ 52, 864, 50, 49 });
-	diskHoldCLAY.PushBack({ 104, 866, 50, 47 });
-	diskHoldCLAY.PushBack({ 155, 863, 51, 50 });
-	diskHoldCLAY.PushBack({ 207, 861, 51, 52 });
+	diskHoldCLAY.PushBack({ 0, 401, 55, 43 });
+	diskHoldCLAY.PushBack({ 5, 401, 53, 43 });
 	diskHoldCLAY.loop = true;
 	diskHoldCLAY.speed = 0.1f;
 
 	//Disk Holding BEACH MAP (BLUE Disk)
-	diskHoldBEACH.PushBack({ 0, 500, 51, 52 });
-	diskHoldBEACH.PushBack({ 52, 503, 50, 49 });
-	diskHoldBEACH.PushBack({ 104, 505, 50, 47 });
-	diskHoldBEACH.PushBack({ 155, 502, 51, 50 });
-	diskHoldBEACH.PushBack({ 207, 500, 51, 52 });
+	diskHoldBEACH.PushBack({ 0, 455, 55, 44 });
+	diskHoldBEACH.PushBack({ 55, 455, 53, 44 });
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
-	*/
+	
 
 }
 
