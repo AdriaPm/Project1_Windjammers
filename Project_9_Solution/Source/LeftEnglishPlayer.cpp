@@ -170,19 +170,19 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 
 	///HOLD
 	//Disk Holding TURF MAP (RED Disk)
-	diskHoldTURF.PushBack({ 0, 347, 55, 42 });
+	diskHoldTURF.PushBack({ 2, 345, 53, 44 });
 	diskHoldTURF.PushBack({ 55, 347, 53, 42 });
 	diskHoldTURF.loop = true;
 	diskHoldTURF.speed = 0.1f;
 
 	//Disk Holding CLAY MAP (GREEN Disk)
-	diskHoldCLAY.PushBack({ 0, 401, 55, 43 });
+	diskHoldCLAY.PushBack({ 2, 400, 53, 44 });
 	diskHoldCLAY.PushBack({ 5, 401, 53, 43 });
 	diskHoldCLAY.loop = true;
 	diskHoldCLAY.speed = 0.1f;
 
 	//Disk Holding BEACH MAP (BLUE Disk)
-	diskHoldBEACH.PushBack({ 0, 455, 55, 44 });
+	diskHoldBEACH.PushBack({ 2, 455, 53, 44 });
 	diskHoldBEACH.PushBack({ 55, 455, 53, 44 });
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
