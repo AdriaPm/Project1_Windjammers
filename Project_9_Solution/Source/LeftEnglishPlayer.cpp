@@ -27,8 +27,10 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 {
 	///CHAR3: English
 	// idle animation
-	idleAnim.PushBack({ 321, 259, 39, 35 });
-	idleAnim.PushBack({ 360, 259, 39, 35 });
+	idleAnim.PushBack({ 230, 439, 39, 34 });
+	idleAnim.PushBack({ 269, 438, 39, 35 });
+	idleAnim.PushBack({ 308, 437, 40, 36 });
+	idleAnim.PushBack({ 348, 439, 39, 34 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
@@ -122,6 +124,8 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDownLeftAnim.loop = false;
 	SlideDownLeftAnim.speed = 2;
 
+	*/
+
 	//Victory
 	victAnim.PushBack({ 77, 0, 33, 40 });
 	victAnim.PushBack({ 110, 0, 34, 41 });
@@ -129,8 +133,7 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.PushBack({ 177, 0, 34, 41 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
-	*/
-
+	
 	//Lose
 	loseAnim.PushBack({ 234, 105, 37, 35 });
 	loseAnim.loop = true;
@@ -138,11 +141,11 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 
 	//Got scored on
 	ScoredOn.PushBack({ 234, 105, 37, 35 });
-	/*
+	
 	//Scored
-	Scored.PushBack({ 21, 103, 23, 37 });
+	Scored.PushBack({ 327, 257, 38, 38 });
 
-
+	/*
 	///THROW
 
 	//Disk Throw TURF MAP (RED Disk)
