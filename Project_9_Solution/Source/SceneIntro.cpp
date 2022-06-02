@@ -37,7 +37,6 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	NeoGeo.PushBack({ 679, 226, 231, 22 });
 	NeoGeo.PushBack({ 907, 230, 231, 22 });
 	NeoGeo.PushBack({ 2, 271, 226, 18 });
-	NeoGeo.PushBack({ 229, 271, 299, 19 });
 	NeoGeo.PushBack({ 456, 272, 227, 13 });	
 	NeoGeo.PushBack({ 682, 272, 226, 10 });
 	NeoGeo.PushBack({ 909, 272, 228, 10 });
@@ -54,7 +53,6 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	NeoGeo.PushBack({ 3, 358, 224, 24 });
 	NeoGeo.PushBack({ 226, 356, 229, 30 });
 	NeoGeo.PushBack({ 454, 355, 229, 33 });
-	NeoGeo.PushBack({ 680, 354, 321, 34 });
 	NeoGeo.PushBack({ 910, 355, 233, 41 });	
 	
 	NeoGeo.speed = 0.4f;
