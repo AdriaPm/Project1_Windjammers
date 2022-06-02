@@ -41,39 +41,31 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	upAnim.loop = true;
 	upAnim.speed = 0.2f;
 
-
-	/// TODO: Animations English player
-	
-	
 	// Move down
 	downAnim.PushBack({ 41, 54, 27, 32 });
 	downAnim.PushBack({ 75, 49, 30, 43 });
 	downAnim.PushBack({ 110, 53, 27, 35 });
+	downAnim.PushBack({ 323, 355, 27, 32 });
+	downAnim.PushBack({ 392, 354, 27, 35 });
 	downAnim.loop = true;
 	downAnim.speed = 0.2f;
 
 	//Move right 
-	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 310, 148, 29, 36 });
-	rightAnim.PushBack({ 385, 148, 41, 36 });
-	rightAnim.PushBack({ 339, 148, 46, 29 });
-	rightAnim.PushBack({ 385, 148, 41, 36 });
-	rightAnim.PushBack({ 426, 148, 28, 33 });
-	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 454, 148, 45, 32 });
+	rightAnim.PushBack({ 422, 4, 25, 36 });
+	rightAnim.PushBack({ 453, 4, 34, 35 });
+	rightAnim.PushBack({ 2, 52, 32, 36 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.1f;
+	rightAnim.speed = 0.2f;
 
 	//Move left
-	leftAnim.PushBack({ 269, 404, 41, 35 });
-	leftAnim.PushBack({ 310, 404, 29, 36 });
-	leftAnim.PushBack({ 339, 404, 46, 29 });
-	leftAnim.PushBack({ 385, 404, 41, 36 });
-	leftAnim.PushBack({ 426, 404, 28, 33 });
-	leftAnim.PushBack({ 456, 404, 45, 32 });
+	leftAnim.PushBack({ 3, 158, 32, 36 });
+	leftAnim.PushBack({ 38, 159, 34, 35 });
+	leftAnim.PushBack({ 78, 158, 25, 36 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.1f;
+	leftAnim.speed = 0.2f;
 
+	/// TODO: Animations English player
+	/*
 	//Slide Left
 	SlideLAnim.PushBack({ 474, 359, 30, 33 });
 	SlideLAnim.PushBack({ 0, 404, 43, 31 });
@@ -137,19 +129,16 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	victAnim.PushBack({ 177, 0, 34, 41 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
+	*/
 
 	//Lose
-	loseAnim.PushBack({ 44, 103, 22, 40 });
-	loseAnim.PushBack({ 66, 103, 24, 39 });
-	loseAnim.PushBack({ 90, 103, 24, 39 });
-	loseAnim.PushBack({ 114, 103, 23, 40 });
-	loseAnim.PushBack({ 137, 103, 22, 40 });
+	loseAnim.PushBack({ 234, 105, 37, 35 });
 	loseAnim.loop = true;
 	loseAnim.speed = 0.05f;
 
 	//Got scored on
-	ScoredOn.PushBack({ 159, 359, 22, 36 });
-
+	ScoredOn.PushBack({ 234, 105, 37, 35 });
+	/*
 	//Scored
 	Scored.PushBack({ 21, 103, 23, 37 });
 
@@ -206,6 +195,7 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	diskHoldBEACH.PushBack({ 207, 500, 51, 52 });
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
+	*/
 
 }
 
