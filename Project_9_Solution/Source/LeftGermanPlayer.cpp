@@ -754,17 +754,17 @@ void LeftGermanPlayer::Movement() {
 			}*/
 	}
 
-	if (scored3 == true) {
+	//if (scored3 == true) {
 
-		currentAnimation = &victAnim;
-		double startTime = SDL_GetTicks();
-		double endtime = startTime + 10000;
+	//	currentAnimation = &victAnim;
+	//	double startTime = SDL_GetTicks();
+	//	double endtime = startTime + 10000;
 
-		while(startTime < endtime) {
-			currentAnimation = &victAnim;
-		}
+	//	while(startTime < endtime) {
+	//		currentAnimation = &victAnim;
+	//	}
 
-		scored3 = false;
-	}
+	//	scored3 = false;
+	//}
 }
 
