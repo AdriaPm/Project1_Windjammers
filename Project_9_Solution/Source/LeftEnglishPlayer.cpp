@@ -223,7 +223,7 @@ bool LeftEnglishPlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English_spritesheet.png");
 	currentAnimation = &idleAnim;
 
 	slidingSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Sliding.wav");
