@@ -78,6 +78,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="BeachLevel.h" />
+    <ClInclude Include="Disc.h" />
     <ClInclude Include="LeftEnglishPlayer.h" />
     <ClInclude Include="LeftGermanPlayer.h" />
     <ClInclude Include="ChooseCharacter.h" />
@@ -119,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="BeachLevel.cpp" />
+    <ClCompile Include="Disc.cpp" />
     <ClCompile Include="LeftEnglishPlayer.cpp" />
     <ClCompile Include="LeftGermanPlayer.cpp" />
     <ClCompile Include="ChooseCharacter.cpp" />
