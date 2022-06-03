@@ -67,64 +67,73 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	leftAnim.speed = 0.2f;
 
 	/// TODO: Animations English player
-	/*
+	
 	//Slide Left
-	SlideLAnim.PushBack({ 474, 359, 30, 33 });
-	SlideLAnim.PushBack({ 0, 404, 43, 31 });
-	SlideLAnim.PushBack({ 43, 404, 51, 24 });
+	SlideLAnim.PushBack({ 307, 95, 66, 30 });
+	SlideLAnim.PushBack({ 311, 216, 45, 31 });
+	SlideLAnim.PushBack({ 276, 210, 35, 33 });
+	SlideLAnim.PushBack({ 129, 302, 23, 44 });
 	SlideLAnim.loop = false;
-	SlideLAnim.speed = 2;
+	SlideLAnim.speed = 1.0f;
 
 	//Slide Right
-	SlideRAnim.PushBack({ 474, 103, 30, 33 });
-	SlideRAnim.PushBack({ 0, 148, 43, 31 });
-	SlideRAnim.PushBack({ 43, 148, 51, 24 });
+	SlideRAnim.PushBack({ 307, 55, 66, 30 });
+	SlideRAnim.PushBack({ 417, 56, 45, 30 });
+	SlideRAnim.PushBack({ 462, 49, 35, 34 });
+	SlideRAnim.PushBack({ 203, 100, 25, 44 });
 	SlideRAnim.loop = false;
-	SlideRAnim.speed = 2;
+	SlideRAnim.speed = 1.0f;
 
+	
 	//Slide Up
-	SlideUAnim.PushBack({ 374, 191, 28, 33 });
-	SlideUAnim.PushBack({ 402, 191, 31, 24 });
-	SlideUAnim.PushBack({ 433, 191, 25, 53 });
+	SlideUAnim.PushBack({ 427, 404, 31, 66 });
+	SlideUAnim.PushBack({ 428, 315, 32, 45 });
+	SlideUAnim.PushBack({ 424, 369, 36, 32 });
+	SlideUAnim.PushBack({ 416, 253, 44, 23 });
 	SlideUAnim.loop = false;
-	SlideUAnim.speed = 2;
+	SlideUAnim.speed = 1.0f;
 
+	
 	//Slide Down
-	SlideDAnim.PushBack({ 213, 46, 32, 41 });
-	SlideDAnim.PushBack({ 245, 46, 32, 49 });
-	SlideDAnim.PushBack({ 277, 46, 25, 57 });
+	SlideDAnim.PushBack({ 426, 473, 30, 66 });
+	SlideDAnim.PushBack({ 427, 583, 32, 45 });
+	SlideDAnim.PushBack({ 423, 542, 36, 32 });
+	SlideDAnim.PushBack({ 415, 667, 44, 23 });
 	SlideDAnim.loop = false;
-	SlideDAnim.speed = 2;
+	SlideDAnim.speed = 1.0f;
 
 	//Slide Up Right
-	SlideUpRightAnim.PushBack({ 270, 191, 27, 37 });
-	SlideUpRightAnim.PushBack({ 297, 191, 32, 30 });
-	SlideUpRightAnim.PushBack({ 329, 191, 45, 41 });
+	SlideUpRightAnim.PushBack({ 200, 651, 45, 57 });
+	SlideUpRightAnim.PushBack({ 285, 664, 32, 44 });
+	SlideUpRightAnim.PushBack({ 247, 672, 33, 35 });
+	SlideUpRightAnim.PushBack({ 356, 670, 37, 38 });
 	SlideUpRightAnim.loop = false;
-	SlideUpRightAnim.speed = 2;
+	SlideUpRightAnim.speed = 1.0f;
 
+	
 	//Slide Up Left
-	SlideUpLeftAnim.PushBack({ 270, 447, 27, 27 });
-	SlideUpLeftAnim.PushBack({ 297, 447, 32, 30 });
-	SlideUpLeftAnim.PushBack({ 329, 447, 45, 41 });
+	SlideUpLeftAnim.PushBack({ 154, 651, 45, 56 });
+	SlideUpLeftAnim.PushBack({ 82, 664, 32, 44 });
+	SlideUpLeftAnim.PushBack({ 119, 673, 33, 34 });
+	SlideUpLeftAnim.PushBack({ 6, 670, 37, 38});
 	SlideUpLeftAnim.loop = false;
-	SlideUpLeftAnim.speed = 2;
+	SlideUpLeftAnim.speed = 1.0f;
 
 	//Slide Down Right
-	SlideDownRightAnim.PushBack({ 107, 46, 33, 35 });
-	SlideDownRightAnim.PushBack({ 140, 46, 37, 40 });
-	SlideDownRightAnim.PushBack({ 177, 46, 36, 48 });
+	SlideDownRightAnim.PushBack({ 200, 710, 45, 57 });
+	SlideDownRightAnim.PushBack({ 285, 710, 32, 44 });
+	SlideDownRightAnim.PushBack({ 247, 711, 33, 34 });
+	SlideDownRightAnim.PushBack({ 356, 670, 37, 38 });
 	SlideDownRightAnim.loop = false;
-	SlideDownRightAnim.speed = 2;
+	SlideDownRightAnim.speed = 1.0f;
 
 	//Slide Down Left
-	SlideDownLeftAnim.PushBack({ 107, 302, 33, 35 });
-	SlideDownLeftAnim.PushBack({ 140, 302, 37, 40 });
-	SlideDownLeftAnim.PushBack({ 177, 302, 36, 48 });
+	SlideDownLeftAnim.PushBack({ 154, 711, 45, 57 });
+	SlideDownLeftAnim.PushBack({ 82, 710, 32, 44 });
+	SlideDownLeftAnim.PushBack({ 119, 711, 33, 35 });
+	SlideDownLeftAnim.PushBack({ 6, 670, 37, 38 });
 	SlideDownLeftAnim.loop = false;
-	SlideDownLeftAnim.speed = 2;
-
-	*/
+	SlideDownLeftAnim.speed = 1.0f;
 
 	//Victory
 	victAnim.PushBack({ 289, 304, 32, 41 });
@@ -187,7 +196,6 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
 	
-
 }
 
 LeftEnglishPlayer::~LeftEnglishPlayer()
