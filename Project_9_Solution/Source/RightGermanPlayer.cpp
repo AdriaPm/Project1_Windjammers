@@ -366,6 +366,17 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee3ptsSFX);
+
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->leftgermanyplayer->position.x = 50;
+			App->leftgermanyplayer->position.y = 105;
+
+			App->LeftJapanesePlayer->position.x = 50;
+			App->LeftJapanesePlayer->position.y = 105;
+
+			App->leftenglishplayer->position.x = 50;
+			App->leftenglishplayer->position.y = 105;
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
@@ -377,6 +388,17 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee5ptsSFX);
+
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->leftgermanyplayer->position.x = 50;
+			App->leftgermanyplayer->position.y = 105;
+
+			App->LeftJapanesePlayer->position.x = 50;
+			App->LeftJapanesePlayer->position.y = 105;
+
+			App->leftenglishplayer->position.x = 50;
+			App->leftenglishplayer->position.y = 105;
 		}
 	}
 	else if (godMode == true) {

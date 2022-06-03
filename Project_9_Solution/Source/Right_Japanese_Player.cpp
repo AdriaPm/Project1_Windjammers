@@ -349,6 +349,12 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			position.y = initialYPos;
 			App->LeftJapanesePlayer->position.x = 50;
 			App->LeftJapanesePlayer->position.y = 105;
+
+			App->leftgermanyplayer->position.x = 50;
+			App->leftgermanyplayer->position.y = 105;
+
+			App->leftenglishplayer->position.x = 50;
+			App->leftenglishplayer->position.y = 105;
 		}
 		else if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LEFT_5P_GOAL)
 		{
@@ -368,6 +374,12 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			position.y = initialYPos;
 			App->LeftJapanesePlayer->position.x = 50;
 			App->LeftJapanesePlayer->position.y = 105;
+
+			App->leftgermanyplayer->position.x = 50;
+			App->leftgermanyplayer->position.y = 105;
+
+			App->leftenglishplayer->position.x = 50;
+			App->leftenglishplayer->position.y = 105;
 		}
 	}
 	else if (godMode == true) {
