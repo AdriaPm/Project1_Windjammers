@@ -99,7 +99,9 @@ int main(int argc, char* argv[])
 			SDL_Delay(desiredDelta - frameEnd);
 		}
 		
-		int avgFPS = 1000 / (desiredDelta - frameEnd);  //calculating FPS HERE
+		frameEnd = SDL_GetTicks() - frameStart;
+
+		int avgFPS = 1000 / frameEnd;  //calculating FPS HERE
 
 		char s[128];
 		sprintf_s(s, "FPS: %d", avgFPS);

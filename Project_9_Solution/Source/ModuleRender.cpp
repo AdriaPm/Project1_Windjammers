@@ -46,6 +46,11 @@ Update_Status ModuleRender::PreUpdate()
 	//Set the color used for drawing operations
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
+	//
+	// FULLSCREEN MODE UNCOMMENT
+	// 
+	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE);
+
 	//Clear rendering target
 	SDL_RenderClear(renderer);
 
