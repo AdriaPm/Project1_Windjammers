@@ -27,189 +27,168 @@ RightEnglishPlayer::RightEnglishPlayer(bool startEnabled) : Module(startEnabled)
 {
 	///CHAR3: English
 	// idle animation
-	idleAnim.PushBack({ 227, 103, 24, 37 });
-	idleAnim.PushBack({ 251, 103, 24, 39 });
-	idleAnim.PushBack({ 275, 103, 24, 36 });
-	idleAnim.PushBack({ 299, 103, 24, 35 });
-	idleAnim.PushBack({ 323, 103, 24, 36 });
-	idleAnim.PushBack({ 347, 103, 23, 36 });
-	idleAnim.PushBack({ 370, 103, 23, 35 });
-	idleAnim.PushBack({ 393, 103, 23, 36 });
+	idleAnim.PushBack({ 348, 475, 39, 34 });
+	idleAnim.PushBack({ 309, 474, 39, 35 });
+	idleAnim.PushBack({ 269, 473, 40, 36 });
+	idleAnim.PushBack({ 230, 475, 39, 34 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
 	// move upwards
-	upAnim.PushBack({ 0, 191, 30, 50 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 120, 191, 30, 53 });
-	upAnim.PushBack({ 150, 191, 30, 40 });
+	upAnim.PushBack({ 129, 209, 27, 39 });
+	upAnim.PushBack({ 97, 209, 25, 39 });
+	upAnim.PushBack({ 62, 204, 26, 49 });
+	upAnim.PushBack({ 31, 209, 24, 39 });
+	upAnim.PushBack({ 0, 209, 26, 39 });
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 94, 148, 31, 34 });
-	downAnim.PushBack({ 125, 148, 30, 38 });
-	downAnim.PushBack({ 155, 148, 24, 43 });
-	downAnim.PushBack({ 179, 148, 29, 35 });
-	downAnim.PushBack({ 208, 148, 32, 38 });
-	downAnim.PushBack({ 240, 148, 29, 43 });
+	downAnim.PushBack({ 391, 398, 27, 32 });
+	downAnim.PushBack({ 354, 393, 30, 43 });
+	downAnim.PushBack({ 323, 397, 26, 35 });
+	downAnim.PushBack({ 290, 398, 28, 32 });
+	downAnim.PushBack({ 253, 393, 30, 43 });
+	downAnim.PushBack({ 222, 397, 26, 35 });
 	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
 	//Move right 
-	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 310, 148, 29, 36 });
-	rightAnim.PushBack({ 385, 148, 41, 36 });
-	rightAnim.PushBack({ 339, 148, 46, 29 });
-	rightAnim.PushBack({ 385, 148, 41, 36 });
-	rightAnim.PushBack({ 426, 148, 28, 33 });
-	rightAnim.PushBack({ 269, 148, 41, 35 });
-	rightAnim.PushBack({ 454, 148, 45, 32 });
+	rightAnim.PushBack({ 422, 4, 25, 36 });
+	rightAnim.PushBack({ 453, 4, 34, 35 });
+	rightAnim.PushBack({ 2, 52, 32, 36 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 
 	//Move left
-	leftAnim.PushBack({ 269, 404, 41, 35 });
-	leftAnim.PushBack({ 310, 404, 29, 36 });
-	leftAnim.PushBack({ 339, 404, 46, 29 });
-	leftAnim.PushBack({ 385, 404, 41, 36 });
-	leftAnim.PushBack({ 426, 404, 28, 33 });
-	leftAnim.PushBack({ 456, 404, 45, 32 });
+	leftAnim.PushBack({ 3, 158, 32, 36 });
+	leftAnim.PushBack({ 38, 159, 34, 35 });
+	leftAnim.PushBack({ 78, 158, 25, 36 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
 	//Slide Left
-	SlideLAnim.PushBack({ 474, 359, 30, 33 });
-	SlideLAnim.PushBack({ 0, 404, 43, 31 });
-	SlideLAnim.PushBack({ 43, 404, 51, 24 });
+	SlideLAnim.PushBack({ 307, 95, 66, 30 });
+	SlideLAnim.PushBack({ 311, 216, 45, 31 });
+	SlideLAnim.PushBack({ 276, 210, 35, 33 });
+	SlideLAnim.PushBack({ 129, 302, 23, 44 });
 	SlideLAnim.loop = false;
 	SlideLAnim.speed = 2;
 
 	//Slide Right
-	SlideRAnim.PushBack({ 474, 103, 30, 33 });
-	SlideRAnim.PushBack({ 0, 148, 43, 31 });
-	SlideRAnim.PushBack({ 43, 148, 51, 24 });
+	SlideRAnim.PushBack({ 307, 55, 66, 30 });
+	SlideRAnim.PushBack({ 417, 56, 45, 30 });
+	SlideRAnim.PushBack({ 462, 49, 35, 34 });
+	SlideRAnim.PushBack({ 203, 100, 25, 44 });
 	SlideRAnim.loop = false;
 	SlideRAnim.speed = 2;
 
 	//Slide Up
-	SlideUAnim.PushBack({ 374, 191, 28, 33 });
-	SlideUAnim.PushBack({ 402, 191, 31, 24 });
-	SlideUAnim.PushBack({ 433, 191, 25, 53 });
+	SlideUAnim.PushBack({ 427, 404, 31, 66 });
+	SlideUAnim.PushBack({ 428, 315, 32, 45 });
+	SlideUAnim.PushBack({ 424, 369, 36, 32 });
+	SlideUAnim.PushBack({ 416, 253, 44, 23 });
 	SlideUAnim.loop = false;
 	SlideUAnim.speed = 2;
 
 	//Slide Down
-	SlideDAnim.PushBack({ 213, 46, 32, 41 });
-	SlideDAnim.PushBack({ 245, 46, 32, 49 });
-	SlideDAnim.PushBack({ 277, 46, 25, 57 });
+	SlideDAnim.PushBack({ 426, 473, 30, 66 });
+	SlideDAnim.PushBack({ 427, 583, 32, 45 });
+	SlideDAnim.PushBack({ 423, 542, 36, 32 });
+	SlideDAnim.PushBack({ 415, 667, 44, 23 });
 	SlideDAnim.loop = false;
 	SlideDAnim.speed = 2;
 
 	//Slide Up Right
-	SlideUpRightAnim.PushBack({ 270, 191, 27, 37 });
-	SlideUpRightAnim.PushBack({ 297, 191, 32, 30 });
-	SlideUpRightAnim.PushBack({ 329, 191, 45, 41 });
+	SlideUpRightAnim.PushBack({ 200, 651, 45, 57 });
+	SlideUpRightAnim.PushBack({ 285, 664, 32, 44 });
+	SlideUpRightAnim.PushBack({ 247, 672, 33, 35 });
+	SlideUpRightAnim.PushBack({ 356, 670, 37, 38 });
 	SlideUpRightAnim.loop = false;
 	SlideUpRightAnim.speed = 2;
 
 	//Slide Up Left
-	SlideUpLeftAnim.PushBack({ 270, 447, 27, 27 });
-	SlideUpLeftAnim.PushBack({ 297, 447, 32, 30 });
-	SlideUpLeftAnim.PushBack({ 329, 447, 45, 41 });
+	SlideUpLeftAnim.PushBack({ 154, 651, 45, 56 });
+	SlideUpLeftAnim.PushBack({ 82, 664, 32, 44 });
+	SlideUpLeftAnim.PushBack({ 119, 673, 33, 34 });
+	SlideUpLeftAnim.PushBack({ 6, 670, 37, 38 });
 	SlideUpLeftAnim.loop = false;
 	SlideUpLeftAnim.speed = 2;
 
 	//Slide Down Right
-	SlideDownRightAnim.PushBack({ 107, 46, 33, 35 });
-	SlideDownRightAnim.PushBack({ 140, 46, 37, 40 });
-	SlideDownRightAnim.PushBack({ 177, 46, 36, 48 });
+	SlideDownRightAnim.PushBack({ 200, 710, 45, 57 });
+	SlideDownRightAnim.PushBack({ 285, 710, 32, 44 });
+	SlideDownRightAnim.PushBack({ 247, 711, 33, 34 });
+	SlideDownRightAnim.PushBack({ 356, 670, 37, 38 });
 	SlideDownRightAnim.loop = false;
 	SlideDownRightAnim.speed = 2;
 
 	//Slide Down Left
-	SlideDownLeftAnim.PushBack({ 107, 302, 33, 35 });
-	SlideDownLeftAnim.PushBack({ 140, 302, 37, 40 });
-	SlideDownLeftAnim.PushBack({ 177, 302, 36, 48 });
+	SlideDownLeftAnim.PushBack({ 154, 711, 45, 57 });
+	SlideDownLeftAnim.PushBack({ 82, 710, 32, 44 });
+	SlideDownLeftAnim.PushBack({ 119, 711, 33, 35 });
+	SlideDownLeftAnim.PushBack({ 6, 670, 37, 38 });
 	SlideDownLeftAnim.loop = false;
 	SlideDownLeftAnim.speed = 2;
 
 	//Victory
-	victAnim.PushBack({ 77, 0, 33, 40 });
-	victAnim.PushBack({ 110, 0, 34, 41 });
-	victAnim.PushBack({ 144, 0, 33, 40 });
-	victAnim.PushBack({ 177, 0, 34, 41 });
+	victAnim.PushBack({ 289, 304, 32, 41 });
+	victAnim.PushBack({ 323, 305, 33, 40 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
 
 	//Lose
-	loseAnim.PushBack({ 44, 103, 22, 40 });
-	loseAnim.PushBack({ 66, 103, 24, 39 });
-	loseAnim.PushBack({ 90, 103, 24, 39 });
-	loseAnim.PushBack({ 114, 103, 23, 40 });
-	loseAnim.PushBack({ 137, 103, 22, 40 });
+	loseAnim.PushBack({ 234, 105, 37, 35 });
 	loseAnim.loop = true;
 	loseAnim.speed = 0.05f;
 
 	//Got scored on
-	ScoredOn.PushBack({ 159, 359, 22, 36 });
+	ScoredOn.PushBack({ 234, 105, 37, 35 });
 
 	//Scored
-	Scored.PushBack({ 21, 103, 23, 37 });
-
+	Scored.PushBack({ 327, 257, 38, 38 });
 
 	///THROW
-
 	//Disk Throw TURF MAP (RED Disk)
-	throwTURF.PushBack({ 164, 723, 35, 40 });
-	throwTURF.PushBack({ 129, 723, 34, 38 });
-	throwTURF.PushBack({ 91, 723, 37, 40 });
+	throwTURF.PushBack({ 132, 517, 37, 35 });
+	throwTURF.PushBack({ 90, 516, 42, 34 });
+	throwTURF.PushBack({ 41, 512, 43, 46 });
+	throwTURF.PushBack({ 0, 515, 35, 39 });
 	throwTURF.loop = false;
 	throwTURF.speed = 0.2f;
 
 	//Disk Throw CLAY MAP (GREEN Disk)
-	throwCLAY.PushBack({ 276, 723, 34, 40 });
-	throwCLAY.PushBack({ 240, 723, 36, 38 });
-	throwCLAY.PushBack({ 203, 723, 37, 40 });
+	throwCLAY.PushBack({ 132, 563, 37, 35 });
+	throwCLAY.PushBack({ 90, 562, 42, 34 });
+	throwCLAY.PushBack({ 41, 512, 43, 46 });
+	throwCLAY.PushBack({ 0, 515, 35, 39 });
 	throwCLAY.loop = false;
 	throwCLAY.speed = 0.2f;
 
 	//Disk Throw BEACH MAP (BLUE Disk)
-	throwBEACH.PushBack({ 387, 723, 34, 40 });
-	throwBEACH.PushBack({ 351, 723, 35, 38 });
-	throwBEACH.PushBack({ 314, 723, 37, 40 });
+	throwBEACH.PushBack({ 132, 609, 36, 35 });
+	throwBEACH.PushBack({ 90, 608, 42, 34 });
+	throwBEACH.PushBack({ 41, 512, 43, 46 });
+	throwBEACH.PushBack({ 0, 515, 35, 39 });
 	throwBEACH.loop = false;
 	throwBEACH.speed = 0.2f;
 
-
 	///HOLD
-
 	//Disk Holding TURF MAP (RED Disk)
-	diskHoldTURF.PushBack({ 0, 809, 50, 52 });
-	diskHoldTURF.PushBack({ 51, 812, 50, 49 });
-	diskHoldTURF.PushBack({ 103, 814, 50, 47 });
-	diskHoldTURF.PushBack({ 154, 811, 51, 50 });
-	diskHoldTURF.PushBack({ 206, 809, 51, 52 });
+	diskHoldTURF.PushBack({ 110, 347, 53, 42 });
+	diskHoldTURF.PushBack({ 163, 344, 54, 45 });
 	diskHoldTURF.loop = true;
 	diskHoldTURF.speed = 0.1f;
 
 	//Disk Holding CLAY MAP (GREEN Disk)
-	diskHoldCLAY.PushBack({ 0, 861, 51, 52 });
-	diskHoldCLAY.PushBack({ 52, 864, 50, 49 });
-	diskHoldCLAY.PushBack({ 104, 866, 50, 47 });
-	diskHoldCLAY.PushBack({ 155, 863, 51, 50 });
-	diskHoldCLAY.PushBack({ 207, 861, 51, 52 });
+	diskHoldCLAY.PushBack({ 109, 401, 53, 43 });
+	diskHoldCLAY.PushBack({ 162, 399, 54, 45 });
 	diskHoldCLAY.loop = true;
 	diskHoldCLAY.speed = 0.1f;
 
 	//Disk Holding BEACH MAP (BLUE Disk)
-	diskHoldBEACH.PushBack({ 0, 500, 51, 52 });
-	diskHoldBEACH.PushBack({ 52, 503, 50, 49 });
-	diskHoldBEACH.PushBack({ 104, 505, 50, 47 });
-	diskHoldBEACH.PushBack({ 155, 502, 51, 50 });
-	diskHoldBEACH.PushBack({ 207, 500, 51, 52 });
+	diskHoldBEACH.PushBack({ 109, 455, 53, 44 });
+	diskHoldBEACH.PushBack({ 162, 454, 54, 45 });
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
 
@@ -226,7 +205,7 @@ bool RightEnglishPlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English.png");
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English_spritesheet.png");
 	currentAnimation = &idleAnim;
 
 	slidingSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Sliding.wav");
