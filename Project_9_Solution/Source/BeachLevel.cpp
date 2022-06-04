@@ -151,6 +151,7 @@ Update_Status BeachLevel::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->dataEast, 90);
+
 		App->LeftJapanesePlayer->scoreJapLeft = 0;
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
