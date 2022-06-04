@@ -106,7 +106,7 @@ public:
 	char scoreEngTextLeft[10] = { "\0" };
 
 	//Detect if has disc
-	bool hasDisk = true;
+	bool hasDisk = false;
 
 	//God Mode
 	bool godMode = false;

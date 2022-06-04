@@ -23,12 +23,12 @@ bool Disc::Start()
 	texture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 
 	//WHEN CHOOSE MAP CHANGE DISK
-	/*if(App->map == MapType::Turf)
+	if(App->map == MapType::Turf)
 		texture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 	else if(App->map == MapType::Beach)
 		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");
 	else if(App->map == MapType::Clay)
-		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");*/
+		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");
 
 	turfDisc.PushBack({ 117, 48, 17, 17 });
 	turfDisc.PushBack({ 149, 48, 17, 17 });
@@ -61,12 +61,12 @@ bool Disc::CleanUp()
 
 void Disc::OnCollision(Collider* c1, Collider* c2)
 {
-	//// Destroy particles that collide
-	//if (this != nullptr && collider == c1 && c2->type == Collider::Type::PLAYER) //&& !particles[i]->collider->DISK
-	//{
-	//	collider->pendingToDelete = true;
-	//	Disable();
-	//}
+	// Destroy particles that collide
+	if (this != nullptr && collider == c1 && c2->type == Collider::Type::PLAYER) //&& !particles[i]->collider->DISK
+	{
+		collider->pendingToDelete = true;
+		Disable();
+	}
 	
 }
 
@@ -80,8 +80,8 @@ Update_Status Disc::Update()
 
 	if (isAlive)
 	{
-		//if(MapType::Turf)
-		turfDisc.Update();
+		if(MapType::Turf)
+			turfDisc.Update();
 		//Add anims
 
 		// If the particle has a specific lifetime, check when it has to be destroyed

@@ -2,6 +2,7 @@
 #define __APPLICATION_H__
 
 #include "Globals.h"
+#include "ChooseMap.h"
 
 
 #define NUM_MODULES 27
@@ -72,7 +73,7 @@ public:
 	Player_State_Left P1Status;
 	Player_State_Right P2Status;
 
-	//MapType map = MapType::NotChosen;
+	MapType map = MapType::NotChosen;
 
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;
