@@ -213,6 +213,11 @@ Left_Japanese_Player::Left_Japanese_Player(bool startEnabled) : Module(startEnab
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
 
+	//SHADOW EFFECT
+	shadowAnim.PushBack({ 0,0,31,31 });
+	shadowAnim.PushBack({ 0,31,31,31 });
+	shadowAnim.loop = true;
+	shadowAnim.speed = 0.3f;
 }
 
 Left_Japanese_Player::~Left_Japanese_Player()
@@ -225,7 +230,7 @@ bool Left_Japanese_Player::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-
+	shadowTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/Shadow_spritesheet.png");
 	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteALL.png");
 	currentAnimation = &idleAnim;
 
@@ -266,6 +271,7 @@ Update_Status Left_Japanese_Player::Update()
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
+	shadowAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -275,6 +281,8 @@ Update_Status Left_Japanese_Player::PostUpdate()
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
+		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
