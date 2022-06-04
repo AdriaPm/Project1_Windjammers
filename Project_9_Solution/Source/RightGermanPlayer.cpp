@@ -141,7 +141,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideDAnim.PushBack({ 84, 239, 23, 49 });
 	SlideDAnim.PushBack({ 53, 239, 31, 49 });
 	SlideDAnim.loop = false;
-	SlideDAnim.speed = 0.1f;
+	SlideDAnim.speed = 10.0f;
 
 
 	//Slide Up Right
@@ -150,7 +150,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideUpRightAnim.PushBack({ 1, 140, 37, 48 });
 	SlideUpRightAnim.PushBack({ 213, 92, 26, 42 });
 	SlideUpRightAnim.loop = false;
-	SlideUpRightAnim.speed = 0.1f;
+	SlideUpRightAnim.speed = 0.5f;
 
 
 	//Slide Up Left
@@ -160,7 +160,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	SlideUpLeftAnim.PushBack({ 191, 53, 28, 35 });
 	SlideUpLeftAnim.PushBack({ 107, 238, 32, 31 });
 	SlideUpLeftAnim.loop = false;
-	SlideUpLeftAnim.speed = 0.1f;
+	SlideUpLeftAnim.speed = 0.5f;
 
 
 	//Slide Down Left
@@ -560,10 +560,9 @@ void RightGermanPlayer::Movement() {
 		}
 
 
-		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
+		while (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_REPEAT) {
 			inslide = true;
 		}
-
 	}
 
 	else if (hasDisk == true) {
@@ -613,8 +612,7 @@ void RightGermanPlayer::Movement() {
 		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_IDLE
-		&& hasDisk != true
-		&& inslide != true){/*&&
+		&& hasDisk != true){/*&&
 		App->P2Status != Player_State_Right::PLAYER_HOLD
 		&& App->P2Status != Player_State_Right::PLAYER_MOVE
 		&& App->P2Status != Player_State_Right::PLAYER_THROW
@@ -631,7 +629,7 @@ void RightGermanPlayer::Movement() {
 		{
 			position.x += speedslide;
 			currentAnimation = &SlideRAnim;
-			inslide = false;
+			
 		}
 
 		//Up Slide Anim
@@ -643,7 +641,7 @@ void RightGermanPlayer::Movement() {
 				SlideUAnim.Reset();
 				currentAnimation = &SlideUAnim;
 			}
-			inslide = false;
+		
 		}
 
 		//Left Slide Anim
@@ -657,20 +655,16 @@ void RightGermanPlayer::Movement() {
 				SlideLAnim.Reset();
 				currentAnimation = &SlideLAnim;
 			}
-			inslide = false;
+		
 		}
 
 		//Down Slide Anim
 		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 		{
-			position.y += speedslide;
-
-			if (currentAnimation != &SlideDAnim)
-			{
+			/*position.y += speedslide;*/
 				SlideDAnim.Reset();
 				currentAnimation = &SlideDAnim;
-			}
-			inslide = false;
+			
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
@@ -685,7 +679,7 @@ void RightGermanPlayer::Movement() {
 				SlideUpLeftAnim.Reset();
 				currentAnimation = &SlideUpLeftAnim;
 			}
-			inslide = false;
+			
 		}
 
 		//Up Right Slide Anim
@@ -699,7 +693,7 @@ void RightGermanPlayer::Movement() {
 				SlideUpRightAnim.Reset();
 				currentAnimation = &SlideUpRightAnim;
 			}
-			inslide = false;
+			
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 		}
 
@@ -714,7 +708,7 @@ void RightGermanPlayer::Movement() {
 				SlideDownLeftAnim.Reset();
 				currentAnimation = &SlideDownLeftAnim;
 			}
-			inslide = false;
+			
 		}
 
 		// Down Right Slide Anim
@@ -728,7 +722,6 @@ void RightGermanPlayer::Movement() {
 				SlideDownRightAnim.Reset();
 				currentAnimation = &SlideDownRightAnim;
 			}
-			inslide = false;
 		}
 
 	/*	if (App->input->keys[SDL_SCANCODE_RIGHT] != Key_State::KEY_REPEAT &&
