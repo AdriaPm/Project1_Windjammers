@@ -591,9 +591,13 @@ void LeftGermanPlayer::Movement() {
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
+		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT){
 			inslide = true;
 		}
+		else {
+			inslide = false;
+		}
+
 		//Normal Throw Animation
 	}
 
@@ -657,15 +661,15 @@ void LeftGermanPlayer::Movement() {
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
 	if (inslide == true) {
 
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedslide;
 			currentAnimation = &SlideRAnim;
-			inslide = false;
+			/*inslide = false;*/
 		}
 
 		//Up Slide Anim
-		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT) {
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) {
 			position.y -= speedslide;
 
 			if (currentAnimation != &SlideUAnim)
@@ -677,7 +681,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Left Slide Anim
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
 			position.x -= speedslide;
