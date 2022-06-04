@@ -59,6 +59,8 @@ public:
 	//Template particle for a laser
 	Particle laser;
 
+	Particle wallCollision;
+
 	Particle diskL;
 	Particle diskR;
 	Particle disk;
@@ -66,7 +68,7 @@ public:
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* texture_particles = nullptr;
 	SDL_Texture* texture_disk = nullptr;
 
 

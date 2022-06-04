@@ -426,6 +426,9 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
+
+		//App->particles->AddParticle(App->particles->explosion, App->particles->diskL.position.x + 5, App->particles->diskL.position.y - 5, Collider::Type::NONE, 5);
+
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 	
@@ -437,6 +440,9 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
+
+		//App->particles->AddParticle(App->particles->explosion, App->particles->diskL.position.x + 5, App->particles->diskL.position.y - 5, Collider::Type::NONE, 5);
+
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 	

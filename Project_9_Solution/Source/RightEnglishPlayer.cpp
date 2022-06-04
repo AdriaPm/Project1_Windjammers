@@ -319,7 +319,7 @@ void RightEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//Collider player-net
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::NET) {
-		position.x = 150 - 19;
+		position.x = 150 + 4;
 	}
 
 

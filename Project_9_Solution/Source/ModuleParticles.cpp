@@ -23,7 +23,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	texture_particles = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
 
 	//// Explosion particle
 	//explosion.anim.PushBack({274, 296, 33, 30});
@@ -56,6 +56,10 @@ bool ModuleParticles::Start()
 	diskR.lifetime = 1000;
 	diskR.speed.x = -5;
 	diskR.anim.speed = 0.2f;
+
+	wallCollision.anim.PushBack({ 232, 142, 58, 51});
+	wallCollision.anim.speed = 0.1f;
+	wallCollision.lifetime = 500;
 
 
 	return true;
@@ -134,7 +138,7 @@ Update_Status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			//App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(texture_particles, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 			App->render->Blit(texture_disk, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
