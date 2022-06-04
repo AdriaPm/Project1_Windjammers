@@ -10,7 +10,9 @@
 struct SDL_Texture;
 struct Collider;
 
-struct Disc : public Module
+
+
+class Disc : public Module
 {
 public:
 	// Constructor
@@ -87,9 +89,7 @@ public:
 
 private:
 
-	SDL_Texture* turfTexture = nullptr;
-	SDL_Texture* beachTexture = nullptr;
-	SDL_Texture* clayTexture = nullptr;
+	SDL_Texture* texture = nullptr;
 
 };
 
