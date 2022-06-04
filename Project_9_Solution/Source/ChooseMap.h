@@ -11,6 +11,7 @@ enum MapType
 	Turf,
 	Beach,
 	Clay,
+	NotChosen,
 };
 
 class ChooseMap : public Module

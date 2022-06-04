@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "p2Point.h"
 #include "Collider.h"
+#include "ChooseMap.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -55,8 +56,17 @@ public:
 	// Defines the speed at which the disc will move (pixels per second)
 	iPoint speed;
 
+	MapType map = MapType::Turf;
+
+	// The pointer to the current player animation
+	// It will be switched depending on the player's movement direction
+	Animation* currentDiscAnimation = nullptr;
+
 	// A set of rectangle sprites
-	Animation anim;
+	Animation turfDisc;
+	Animation japaneseSuperShot;
+	Animation germanSuperShot;
+	Animation englishSuperShot;
 
 	// Defines wether the disc is alive or not
 	// Disc will be set to not alive until "spawnTime" is reached
@@ -66,6 +76,9 @@ public:
 	// Negative values mean the particle is waiting to be activated
 	int frameCount = 0;
 
+	// Defines the total amount of frames during which the particle will be active
+	uint lifetime = 0;
+
 	bool HasDiskL = true;
 	bool HasDiskR = false;
 
@@ -74,7 +87,9 @@ public:
 
 private:
 
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* turfTexture = nullptr;
+	SDL_Texture* beachTexture = nullptr;
+	SDL_Texture* clayTexture = nullptr;
 
 };
 
