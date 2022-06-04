@@ -66,6 +66,7 @@ public:
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;
 	SDL_Texture* shadowTexture = nullptr;
+	SDL_Texture* particlestexture = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -95,6 +96,7 @@ public:
 	Animation Scored;
 	Animation HoldingAnim;
 	Animation shadowAnim;
+	Animation DiskCollisionBoundary;
 
 	// The player's collider
 	Collider* collider = nullptr;

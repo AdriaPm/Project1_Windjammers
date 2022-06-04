@@ -232,8 +232,12 @@ bool RightGermanPlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
+
 	shadowTexture = App->textures->Load("Assets/Spriteswind/Particles/Shadow_spritesheet.png");
+	
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHTDISKTHROW.png");
+
+
 	currentAnimation = &idleAnim;
 
 	t1 = SDL_GetTicks();
@@ -276,6 +280,7 @@ Update_Status RightGermanPlayer::Update()
 
 	currentAnimation->Update();
 	shadowAnim.Update();
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -288,7 +293,7 @@ Update_Status RightGermanPlayer::PostUpdate()
 		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture2, position.x, position.y, &rect);
-
+	
 	}
 
 	
@@ -428,6 +433,7 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.position.y += App->particles->diskR.speed.y;
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 

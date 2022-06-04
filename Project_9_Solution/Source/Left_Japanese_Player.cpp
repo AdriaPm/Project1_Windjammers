@@ -424,6 +424,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskL.speed.y = 3.5f;
 		App->particles->diskL.position.x += App->particles->diskL.speed.x;
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 
