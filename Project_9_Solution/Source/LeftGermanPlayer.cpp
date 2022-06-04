@@ -193,11 +193,12 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.loop = false;
 	Throw.speed = 0.2f;
 
+	/*
 	ShadowAnim.PushBack({36, 530, 33, 33});
 	ShadowAnim.PushBack({80, 530, 33, 33});
 	ShadowAnim.loop = true;
 	ShadowAnim.speed = 2.0f;
-
+	*/
 
 	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
 
@@ -222,6 +223,11 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	HoldingAnim.loop = true;
 	HoldingAnim.speed = 0.1f;
 
+	//SHADOW EFFECT
+	shadowAnim.PushBack({ 0,0,31,31 });
+	shadowAnim.PushBack({ 0,31,31,31 });
+	shadowAnim.loop = true;
+	shadowAnim.speed = 0.3f;
 
 }
 
@@ -237,8 +243,9 @@ bool LeftGermanPlayer::Start()
 	bool ret = true;
 
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLDISKTHROWwithEffects.png");
-	shadowtexture = App->textures->Load("Assets/Spriteswind/Particles/CHAR2ALLDISKTHROWwithEffects.png");
-	shadowAnimation = &ShadowAnim;
+	//shadowtexture = App->textures->Load("Assets/Spriteswind/Particles/CHAR2ALLDISKTHROWwithEffects.png");
+	shadowTexture = App->textures->Load("Assets/Spriteswind/Particles/Shadow_spritesheet.png");
+	//shadowAnimation = &ShadowAnim;
 	currentAnimation = &idleAnim;
 	
 	/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
@@ -270,9 +277,9 @@ Update_Status LeftGermanPlayer::Update()
 
 	collider->SetPos(position.x, position.y);
 
-	shadowAnimation->Update();
-	currentAnimation->Update();
 	
+	currentAnimation->Update();
+	shadowAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -283,8 +290,8 @@ Update_Status LeftGermanPlayer::PostUpdate()
 	{
 
 		//Shadow
-		SDL_Rect shadowrect = shadowAnimation->GetCurrentFrame();
-		App->render->Blit(shadowtexture, position.x, position.y, &shadowrect);
+		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
+		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
 
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture2, position.x, position.y, &rect);
@@ -473,12 +480,14 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 void LeftGermanPlayer::Movement() {
 	if (hasDisk == false) {
-
+		
+		/*
 		if (shadowAnimation != &ShadowAnim)
 		{
 			leftAnim.Reset();
 			shadowAnimation = &ShadowAnim;
 		} 
+		*/
 
 		//Left Anim
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)

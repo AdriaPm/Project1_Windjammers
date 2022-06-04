@@ -215,7 +215,11 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	HoldingAnim.loop = true;
 	HoldingAnim.speed = 0.1f;
 
-
+	//SHADOW EFFECT
+	shadowAnim.PushBack({ 0,0,31,31 });
+	shadowAnim.PushBack({ 0,31,31,31 });
+	shadowAnim.loop = true;
+	shadowAnim.speed = 0.3f;
 }
 
 RightGermanPlayer::~RightGermanPlayer()
@@ -228,7 +232,7 @@ bool RightGermanPlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-
+	shadowTexture = App->textures->Load("Assets/Spriteswind/Particles/Shadow_spritesheet.png");
 	texture2 = App->textures->Load("Assets/Spriteswind/Sprites/CHAR2/CHAR2ALLRIGHTDISKTHROW.png");
 	currentAnimation = &idleAnim;
 
@@ -271,6 +275,7 @@ Update_Status RightGermanPlayer::Update()
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
+	shadowAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -279,8 +284,11 @@ Update_Status RightGermanPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
+		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
+		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture2, position.x, position.y, &rect);
+
 	}
 
 	

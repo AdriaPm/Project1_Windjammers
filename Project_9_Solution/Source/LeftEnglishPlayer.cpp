@@ -195,6 +195,12 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	diskHoldBEACH.PushBack({ 55, 455, 53, 44 });
 	diskHoldBEACH.loop = true;
 	diskHoldBEACH.speed = 0.1f;
+
+	//SHADOW EFFECT
+	shadowAnim.PushBack({ 0,0,31,31 });
+	shadowAnim.PushBack({ 0,31,31,31 });
+	shadowAnim.loop = true;
+	shadowAnim.speed = 0.3f;
 	
 }
 
@@ -208,7 +214,7 @@ bool LeftEnglishPlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-
+	shadowTexture = App->textures->Load("Assets/Spriteswind/Particles/Shadow_spritesheet.png");
 	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR3/English_spritesheet.png");
 	currentAnimation = &idleAnim;
 
@@ -249,6 +255,7 @@ Update_Status LeftEnglishPlayer::Update()
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
+	shadowAnim.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -257,6 +264,8 @@ Update_Status LeftEnglishPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
+		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
+		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}

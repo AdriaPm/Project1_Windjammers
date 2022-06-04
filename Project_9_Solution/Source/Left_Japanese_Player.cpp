@@ -230,7 +230,7 @@ bool Left_Japanese_Player::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-	shadowTexture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/Shadow_spritesheet.png");
+	shadowTexture = App->textures->Load("Assets/Spriteswind/Particles/Shadow_spritesheet.png");
 	texture = App->textures->Load("Assets/Spriteswind/Sprites/CHAR1/JapaneseSpriteALL.png");
 	currentAnimation = &idleAnim;
 
