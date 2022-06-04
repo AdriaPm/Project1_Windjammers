@@ -66,6 +66,11 @@ bool UI::Start()
 
 Update_Status UI::Update()
 {
+	if (timeCounter == 0)
+	{
+		t1 = SDL_GetTicks();
+	}
+
 	t2 = SDL_GetTicks();
 	seconds = (t2 - t1) / 1000;
 	timeCounter = 30-(int)seconds;
@@ -78,8 +83,6 @@ Update_Status UI::Update()
 	{
 		rightScore = 1500;
 	}
-
-	
 
 	currentAnimation->Update();
 
@@ -130,6 +133,20 @@ Update_Status UI::PostUpdate()
 	}
 
 	//Win Lose
+	if (timeCounter == 0)
+	{
+		if (getRightScore() > getLeftScore())
+		{
+			App->render->Blit(uiSprites, 175, 54, &winR);
+			App->render->Blit(uiSprites, 30, 54, &loseL);
+		}
+		else if (getRightScore() < getLeftScore())
+		{
+			App->render->Blit(uiSprites, 174, 54, &loseR);
+			App->render->Blit(uiSprites, 18, 54, &winL);
+		}
+	}
+
 	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
