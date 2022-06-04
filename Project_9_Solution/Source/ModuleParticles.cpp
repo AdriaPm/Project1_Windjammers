@@ -23,12 +23,9 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture_disk = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
-<<<<<<< Updated upstream
 	texture_particles = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
-=======
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	//texture = App->textures->Load("Assets/Sprites/particles.png");
 	textureFX = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
->>>>>>> Stashed changes
 
 	//// Explosion particle
 	//explosion.anim.PushBack({274, 296, 33, 30});
@@ -62,16 +59,15 @@ bool ModuleParticles::Start()
 	diskR.speed.x = -5;
 	diskR.anim.speed = 0.2f;
 
-<<<<<<< Updated upstream
 	wallCollision.anim.PushBack({ 232, 142, 58, 51});
 	wallCollision.anim.speed = 0.1f;
 	wallCollision.lifetime = 500;
-=======
+
 	caught.anim.PushBack({ 232, 202, 70, 69 });
 	caught.lifetime = 3;
 	caught.speed.x = 0;
 	caught.anim.speed = 0.2f;
->>>>>>> Stashed changes
+
 
 
 	return true;
