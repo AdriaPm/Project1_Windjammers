@@ -20,12 +20,15 @@ bool Disc::Start()
 {
 	LOG("Loading Disc");
 
-	if(App->map == MapType::Turf)
+	texture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
+
+	//WHEN CHOOSE MAP CHANGE DISK
+	/*if(App->map == MapType::Turf)
 		texture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/sprite_disk_lawnMap.png");
 	else if(App->map == MapType::Beach)
 		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");
 	else if(App->map == MapType::Clay)
-		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");
+		texture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/sprite_disk_beachMap.png");*/
 
 	turfDisc.PushBack({ 117, 48, 17, 17 });
 	turfDisc.PushBack({ 149, 48, 17, 17 });
@@ -77,7 +80,7 @@ Update_Status Disc::Update()
 
 	if (isAlive)
 	{
-		if(MapType::Turf)
+		//if(MapType::Turf)
 		turfDisc.Update();
 		//Add anims
 
@@ -89,7 +92,7 @@ Update_Status Disc::Update()
 		}
 		// Otherwise the particle is destroyed when the animation is finished
 		else if (turfDisc.HasFinished())
-			Disable;
+			Disable();
 
 		// Update the position in the screen
 		position.x += speed.x;
@@ -106,7 +109,7 @@ Update_Status Disc::PostUpdate()
 {
 	if (isAlive == true)
 	{
-		App->render->Blit(texture, position.x, position.y, &currentDiscAnimation.GetCurrentFrame());
+		App->render->Blit(texture, position.x, position.y, &turfDisc.GetCurrentFrame());
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

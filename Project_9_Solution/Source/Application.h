@@ -72,7 +72,7 @@ public:
 	Player_State_Left P1Status;
 	Player_State_Right P2Status;
 
-	MapType map = MapType::NotChosen;
+	//MapType map = MapType::NotChosen;
 
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;

@@ -99,19 +99,19 @@ Update_Status ChooseMap::Update()
 	{
 		if (yMove == 55)
 		{
-			App->map = MapType::Turf;
+			//App->map = MapType::Turf;
 			App->fade->FadeToBlack(this, (Module*)App->turflevel, 40);
 			App->audio->PlayFx(selectMapAudio);
 		}
 		else if (yMove == 79)
 		{
-			App->map = MapType::Beach;
+			//App->map = MapType::Beach;
 			App->fade->FadeToBlack(this, (Module*)App->beachlevel, 90);
 			App->audio->PlayFx(selectMapAudio);
 		}
 		else if (yMove == 104)
 		{
-			App->map = MapType::Clay;
+			//App->map = MapType::Clay;
 			App->fade->FadeToBlack(this, (Module*)App->clay, 90);
 			App->audio->PlayFx(selectMapAudio);
 		}
