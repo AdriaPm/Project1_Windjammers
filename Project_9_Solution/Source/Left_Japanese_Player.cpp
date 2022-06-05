@@ -457,6 +457,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
+		Particle* caughtstraightL = App->particles->AddParticle(App->particles->caughtleftsidenormal, position.x + 20, position.y - 20, Collider::Type::NONE);
 		hasDisk = true;
 	}
 

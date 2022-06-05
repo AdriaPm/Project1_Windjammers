@@ -438,10 +438,12 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
 	{
 		App->particles->diskR.HasDiskR == true;
+	
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
+		Particle* caugthstraightR = App->particles->AddParticle(App->particles->caughtrightsidenormal, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);
 		hasDisk = true;
 	}
 
