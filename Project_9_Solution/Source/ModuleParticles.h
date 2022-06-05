@@ -65,6 +65,8 @@ public:
 	Particle diskR;
 	Particle disk;
 	Particle caught;
+	Particle goalscoredleft;
+	Particle goalscoredright;
 	
 
 
