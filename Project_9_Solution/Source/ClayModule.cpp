@@ -57,9 +57,9 @@ bool ClayModule::Start()
 	App->collisions->AddCollider({ 0, 88, 6, 49 }, Collider::Type::LEFT_5P_GOAL);
 	App->collisions->AddCollider({ 0, 137, 11, 64 }, Collider::Type::LEFT_3P_GOAL);
 	//Rightside goal
-	App->collisions->AddCollider({ 292, 40, 12, 48 }, Collider::Type::RIGHT_3P_GOAL);
-	App->collisions->AddCollider({ 299, 88, 6, 49}, Collider::Type::RIGHT_5P_GOAL);
-	App->collisions->AddCollider({ 292, 137, 12, 64}, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 295, 40, 12, 48 }, Collider::Type::RIGHT_3P_GOAL);
+	App->collisions->AddCollider({ 300, 88, 6, 49}, Collider::Type::RIGHT_5P_GOAL);
+	App->collisions->AddCollider({ 295, 137, 12, 64}, Collider::Type::RIGHT_3P_GOAL);
 	//Center net
 	App->collisions->AddCollider({ 151, 32, 3, 171 }, Collider::Type::NET);
 

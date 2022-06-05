@@ -41,7 +41,7 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	upAnim.PushBack({ 243, 51, 24, 39 });
 	upAnim.PushBack({ 272, 51, 26, 39 });
 	upAnim.loop = true;
-	upAnim.speed = 0.2f;
+	upAnim.speed = 0.1f;
 
 	// Move down
 	downAnim.PushBack({ 41, 54, 27, 32 });
@@ -50,21 +50,21 @@ LeftEnglishPlayer::LeftEnglishPlayer(bool startEnabled) : Module(startEnabled)
 	downAnim.PushBack({ 323, 355, 27, 32 });
 	downAnim.PushBack({ 392, 354, 27, 35 });
 	downAnim.loop = true;
-	downAnim.speed = 0.2f;
+	downAnim.speed = 0.1f;
 
 	//Move right 
 	rightAnim.PushBack({ 422, 4, 25, 36 });
 	rightAnim.PushBack({ 453, 4, 34, 35 });
 	rightAnim.PushBack({ 2, 52, 32, 36 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.2f;
+	rightAnim.speed = 0.1f;
 
 	//Move left
 	leftAnim.PushBack({ 3, 158, 32, 36 });
 	leftAnim.PushBack({ 38, 159, 34, 35 });
 	leftAnim.PushBack({ 78, 158, 25, 36 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.2f;
+	leftAnim.speed = 0.1f;
 
 	/// TODO: Animations English player
 	
@@ -276,24 +276,6 @@ Update_Status LeftEnglishPlayer::PostUpdate()
 
 void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
-	{
-		/*
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		App->audio->PlayFx(explosionFx);
-		App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);
-
-		*/
-
-
-
-	}
-
 	/// PLAYER COLLIDERS WITH THE MAP
 	//Collider player-upper wall
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {

@@ -261,7 +261,7 @@ bool RightGermanPlayer::Start()
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 15, 40 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 20, 40 }, Collider::Type::PLAYER, this);
 
 	
 
@@ -303,34 +303,6 @@ Update_Status RightGermanPlayer::PostUpdate()
 
 void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
-	{
-		//App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		//App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		//App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		//App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		//App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		/*App->audio->PlayFx(explosionFx);*/
-		/*App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 60);*/
-
-		if (position.x <= 10) {
-			position.x = 10;
-		}
-
-		if (position.x >= 295 - 25) {
-			position.x = 295 - 25;
-		}
-
-		if (position.y <= 40) {
-			position.y = 40;
-		}
-
-		if (position.y >= 199 - 40) {
-			position.y = 199 - 40;
-		}
-	}
-
 	/// PLAYER COLLIDERS WITH THE MAP
 	//Collider player-upper wall
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::UPPER_WALL) {
@@ -349,7 +321,10 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//Collider player-right goal
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
-		position.x = 295 - 25;
+		position.x = 295 - 20;
+	}
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_5P_GOAL) {
+		position.x = 295 - 15;
 	}
 
 	//Collider player-net
