@@ -105,14 +105,15 @@ Update_Status UI::Update()
 	seconds = (t2 - t1) / 1000;
 	timeCounter = 30-(int)seconds;
 
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)	//Direct WIN (F3)
 	{
 		leftSets = 3;
 		numSets = 3;
 		
-		App->audio->PlayMusic("Assets/Music/winner.ogg");
+		//App->audio->PlayMusic("Assets/Music/GameOver.ogg");
 		App->audio->PlayFx(winnerRefereeSFX);
 
+		
 		if (App->LeftJapanesePlayer->IsEnabled()) {
 			App->LeftJapanesePlayer->currentAnimation = &App->LeftJapanesePlayer->victAnim;
 			App->LeftJapanesePlayer->currentAnimation->Update();
@@ -125,7 +126,7 @@ Update_Status UI::Update()
 			App->leftenglishplayer->currentAnimation = &App->leftenglishplayer->victAnim;
 			App->leftenglishplayer->currentAnimation->Update();
 		}
-
+		
 		if(App->map == MapType::Turf)
 			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
 		else if(App->map == MapType::Beach)
@@ -133,13 +134,25 @@ Update_Status UI::Update()
 		else if (App->map == MapType::Clay)
 			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
 
+		//Reset score to 0
+		App->LeftJapanesePlayer->scoreJapLeft = 0;
+		App->RightJapanesePlayer->scoreJapRight = 0;
+		App->leftgermanyplayer->scoreGerLeft = 0;
+		App->rightgermanyplayer->scoreGerRight = 0;
+		App->leftenglishplayer->scoreEngLeft = 0;
+		App->righenglishplayer->scoreEngRight = 0;
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) //Direct LOSE (F4)
 	{
 		rightSets = 3;
 		numSets = 3;
 
-		App->audio->PlayMusic("Assets/Music/winner.ogg");
+		//App->audio->PlayMusic("Assets/Music/GameOver.ogg");
 		App->audio->PlayFx(winnerRefereeSFX);
 
 		if (App->LeftJapanesePlayer->IsEnabled()) {
@@ -161,6 +174,19 @@ Update_Status UI::Update()
 			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
 		else if (App->map == MapType::Clay)
 			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
+		//Reset score to 0
+		App->LeftJapanesePlayer->scoreJapLeft = 0;
+		App->RightJapanesePlayer->scoreJapRight = 0;
+		App->leftgermanyplayer->scoreGerLeft = 0;
+		App->rightgermanyplayer->scoreGerRight = 0;
+		App->leftenglishplayer->scoreEngLeft = 0;
+		App->righenglishplayer->scoreEngRight = 0;
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 
 	currentAnimation->Update();

@@ -32,7 +32,7 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	uint getEngScoreL() { return scoreEngLeft; }
+	uint getEngScoreL() { return scoreEngRight; }
 
 	void Movement();
 
@@ -101,9 +101,9 @@ public:
 	uint referee5ptsSFX = 0;
 
 	// Font score index
-	uint scoreEngLeft = 000;
-	int scoreEngFontLeft = -1;
-	char scoreEngTextLeft[10] = { "\0" };
+	uint scoreEngRight = 000;
+	int scoreEngFontRight = -1;
+	char scoreEngTextRight[10] = { "\0" };
 
 	//Detect if has disc
 	bool hasDisk = false;
