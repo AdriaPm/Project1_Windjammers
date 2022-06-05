@@ -44,10 +44,20 @@ public:
 	SDL_Rect loseL;
 	SDL_Rect loseR;
 	SDL_Rect time;
+	SDL_Rect sets_count;
 
 	Animation time_thirty;
 	Animation time_fifteen;
 	Animation time_ten;
+	Animation time_nine;
+	Animation time_eight;
+	Animation time_seven;
+	Animation time_six;
+	Animation time_five;
+	Animation time_four;
+	Animation time_three;
+	Animation time_two;
+	Animation time_one;
 
 	//score
 	uint rightScore = 000;
@@ -69,11 +79,17 @@ public:
 	char counterLeftScoreText[10] = { "\0" };
 	int scoreCounterFont = -1;
 
+	//sets count
+	uint rightSets = 000;
+	char setsCountRightText[10] = { "\0" };
+	uint leftSets = 000;
+	char setsCountLeftText[10] = { "\0" };
+	int setsCountFont = -1;
+
 	int t1, t2;
 	float seconds;
 
 	int numSets;
-	int leftSets, rightSets;
 
 	//SFX
 	uint winnerRefereeSFX = 0;
