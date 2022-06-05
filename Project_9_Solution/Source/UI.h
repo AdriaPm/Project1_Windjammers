@@ -86,10 +86,14 @@ public:
 	char setsCountLeftText[10] = { "\0" };
 	int setsCountFont = -1;
 
-	int t1, t2;
-	float seconds;
+private:
+	int t1, t2, t1Aux, t2Aux;
+	float seconds, secondsAux;
 
 	int numSets;
+	bool endSet;
+	bool matchStarted;
+	bool setCountedAlready;
 
 	//SFX
 	uint winnerRefereeSFX = 0;

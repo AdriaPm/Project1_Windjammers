@@ -42,7 +42,7 @@ UI::UI(bool startEnabled) : Module(startEnabled)
 	time_fifteen.loop = true;
 	time_fifteen.speed = 0.1f;
 
-	time_ten.PushBack({ 344, 86, 32, 32 });
+	time_ten.PushBack({ 344, 54, 32, 32 });
 	time_ten.loop = true;
 	time_ten.speed = 0.1f;
 
@@ -96,7 +96,12 @@ bool UI::Start()
 
 	currentAnimation = &time_thirty;
 
-	numSets = -1;
+	numSets = 0;
+	endSet = false;
+	setCountedAlready = false;
+	matchStarted = false;
+
+	secondsAux = 6.0f;
 
 	leftScore = 0;
 	rightScore = 0;
@@ -120,27 +125,54 @@ bool UI::Start()
 
 Update_Status UI::Update()
 {
-	if (timeCounter == 0)
+	t2 = SDL_GetTicks();
+	seconds = (t2 - t1) / 1000;
+
+	if (secondsAux < 5.0f)
 	{
-		if (getCounterRightScore() > getCounterLeftScore())
+			timeCounter = 0;
+	}
+	else
+	{
+		timeCounter = 30 - (int)seconds;
+
+		if (endSet == true)
+		{
+			endSet = false;
+			setCountedAlready = false;
+			counterLeftScore = 0;
+			counterRightScore = 0;
+		}
+	}
+
+	if (timeCounter == 0 && matchStarted == true)
+	{
+		if (getCounterRightScore() > getCounterLeftScore() && setCountedAlready == false)
 		{
 			rightSets++;
 			numSets++;
 		}
-		else if (getCounterRightScore() < getCounterLeftScore())
+		else if (getCounterRightScore() < getCounterLeftScore() && setCountedAlready == false)
 		{
 			leftSets++;
 			numSets++;
 		}
 
 		t1 = SDL_GetTicks();
-		counterLeftScore = 0;
-		counterRightScore = 0;
+
+		if (endSet == false)
+		{
+			t1Aux = SDL_GetTicks();
+			endSet = true;
+			setCountedAlready = true;
+		}
 	}
 
-	t2 = SDL_GetTicks();
-	seconds = (t2 - t1) / 1000;
-	timeCounter = 30-(int)seconds;
+	if (endSet == true)
+	{
+		t2Aux = SDL_GetTicks();
+		secondsAux = (t2Aux - t1Aux) / 1000;
+	}
 
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)	//Direct WIN (F3)
 	{
@@ -172,13 +204,6 @@ Update_Status UI::Update()
 			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
 
 		//Reset score to 0
-		App->LeftJapanesePlayer->scoreJapLeft = 0;
-		App->RightJapanesePlayer->scoreJapRight = 0;
-		App->leftgermanyplayer->scoreGerLeft = 0;
-		App->rightgermanyplayer->scoreGerRight = 0;
-		App->leftenglishplayer->scoreEngLeft = 0;
-		App->righenglishplayer->scoreEngRight = 0;
-
 		App->ui->counterLeftScore = 0;
 		App->ui->leftScore = 0;
 		App->ui->counterRightScore = 0;
@@ -213,17 +238,15 @@ Update_Status UI::Update()
 			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
 
 		//Reset score to 0
-		App->LeftJapanesePlayer->scoreJapLeft = 0;
-		App->RightJapanesePlayer->scoreJapRight = 0;
-		App->leftgermanyplayer->scoreGerLeft = 0;
-		App->rightgermanyplayer->scoreGerRight = 0;
-		App->leftenglishplayer->scoreEngLeft = 0;
-		App->righenglishplayer->scoreEngRight = 0;
-
 		App->ui->counterLeftScore = 0;
 		App->ui->leftScore = 0;
 		App->ui->counterRightScore = 0;
 		App->ui->rightScore = 0;
+	}
+
+	if (matchStarted == false)
+	{
+		matchStarted = true;
 	}
 
 	currentAnimation->Update();
@@ -384,11 +407,35 @@ Update_Status UI::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
+
+		if (App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 	else if (getRightSets() < getLeftSets() && (numSets == 3 || (getLeftSets() == 2 && getRightSets() == 0 )))
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
+
+		if (App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 
 	if (getRightSets() == 3 && getNumSets() == 3)
@@ -396,11 +443,34 @@ Update_Status UI::PostUpdate()
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
 
+		if (App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 	else if (getLeftSets() == 3 && getNumSets() == 3)
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
+
+		if (App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
