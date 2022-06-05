@@ -42,9 +42,45 @@ UI::UI(bool startEnabled) : Module(startEnabled)
 	time_fifteen.loop = true;
 	time_fifteen.speed = 0.1f;
 
-	time_ten.PushBack({ 344, 54, 32, 32 });
+	time_ten.PushBack({ 344, 86, 32, 32 });
 	time_ten.loop = true;
 	time_ten.speed = 0.1f;
+
+	time_nine.PushBack({ 128, 86, 32, 32 });
+	time_nine.loop = true;
+	time_nine.speed = 0.1f;
+
+	time_eight.PushBack({ 96, 86, 32, 32 });
+	time_eight.loop = true;
+	time_eight.speed = 0.1f;
+
+	time_seven.PushBack({ 64, 86, 32, 32 });
+	time_seven.loop = true;
+	time_seven.speed = 0.1f;
+
+	time_six.PushBack({ 32, 86, 32, 32 });
+	time_six.loop = true;
+	time_six.speed = 0.1f;
+
+	time_five.PushBack({ 0, 86, 32, 32 });
+	time_five.loop = true;
+	time_five.speed = 0.1f;
+
+	time_four.PushBack({ 472, 54, 32, 32 });
+	time_four.loop = true;
+	time_four.speed = 0.1f;
+
+	time_three.PushBack({ 440, 54, 32, 32 });
+	time_three.loop = true;
+	time_three.speed = 0.1f;
+
+	time_two.PushBack({ 408, 54, 32, 32 });
+	time_two.loop = true;
+	time_two.speed = 0.1f;
+
+	time_one.PushBack({ 312, 54, 32, 32 });
+	time_one.loop = true;
+	time_one.speed = 0.1f;
 }
 
 UI::~UI()
@@ -211,6 +247,96 @@ Update_Status UI::PostUpdate()
 		{
 			time_fifteen.Reset();
 			currentAnimation = &time_fifteen;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 10)
+	{
+		if (currentAnimation != &time_ten)
+		{
+			time_ten.Reset();
+			currentAnimation = &time_ten;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 9)
+	{
+		if (currentAnimation != &time_nine)
+		{
+			time_nine.Reset();
+			currentAnimation = &time_nine;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 8)
+	{
+		if (currentAnimation != &time_eight)
+		{
+			time_eight.Reset();
+			currentAnimation = &time_eight;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 7)
+	{
+		if (currentAnimation != &time_seven)
+		{
+			time_seven.Reset();
+			currentAnimation = &time_seven;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 6)
+	{
+		if (currentAnimation != &time_six)
+		{
+			time_six.Reset();
+			currentAnimation = &time_six;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 5)
+	{
+		if (currentAnimation != &time_five)
+		{
+			time_five.Reset();
+			currentAnimation = &time_five;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 4)
+	{
+		if (currentAnimation != &time_four)
+		{
+			time_four.Reset();
+			currentAnimation = &time_four;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 3)
+	{
+		if (currentAnimation != &time_three)
+		{
+			time_three.Reset();
+			currentAnimation = &time_three;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 2)
+	{
+		if (currentAnimation != &time_two)
+		{
+			time_two.Reset();
+			currentAnimation = &time_two;
+		}
+		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+	else if (timeCounter == 1)
+	{
+		if (currentAnimation != &time_one)
+		{
+			time_one.Reset();
+			currentAnimation = &time_one;
 		}
 		App->render->Blit(uiSprites, 136, 8, &rect);
 	}

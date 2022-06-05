@@ -49,6 +49,15 @@ public:
 	Animation time_thirty;
 	Animation time_fifteen;
 	Animation time_ten;
+	Animation time_nine;
+	Animation time_eight;
+	Animation time_seven;
+	Animation time_six;
+	Animation time_five;
+	Animation time_four;
+	Animation time_three;
+	Animation time_two;
+	Animation time_one;
 
 	//score
 	uint rightScore = 000;
@@ -81,13 +90,9 @@ public:
 	float seconds;
 
 	int numSets;
-<<<<<<< Updated upstream
-	int leftSets, rightSets;
 
 	//SFX
 	uint winnerRefereeSFX = 0;
-=======
->>>>>>> Stashed changes
 };
 
 #endif
