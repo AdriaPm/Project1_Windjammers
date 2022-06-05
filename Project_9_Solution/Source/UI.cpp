@@ -30,6 +30,7 @@ UI::UI(bool startEnabled) : Module(startEnabled)
 	loseR = { 393, 27, 99, 27 };
 	loseL = { 0, 54, 100, 27 };
 	time = { 175, 11, 15, 5 };
+	sets_count = { 315, 27, 78, 27 };
 
 	time_thirty.PushBack({ 192, 86, 32, 32 });
 	time_thirty.PushBack({ 192, 86, 32, 32 });
@@ -61,9 +62,6 @@ bool UI::Start()
 
 	numSets = -1;
 
-	leftSets = 0;
-	rightSets = 0;
-
 	leftScore = 0;
 	rightScore = 0;
 
@@ -72,10 +70,12 @@ bool UI::Start()
 	char lookupTable1[] = { "0123456789" };
 	char lookupTable2[] = { "0123456789GO" };
 	char lookupTable3[] = { "0123456789UP" };
+	char lookupTable4[] = { "0123" };
 
 	ScoreFont = App->fonts->Load("Assets/Fonts/Score.png", lookupTable1, 1);
 	scoreCounterFont = App->fonts->Load("Assets/Fonts/Score_Counter.png", lookupTable2, 1);
 	timeCounterFont = App->fonts->Load("Assets/Fonts/Time_Counter.png", lookupTable3, 1);
+	setsCountFont = App->fonts->Load("Assets/Fonts/SetsCount.png", lookupTable4, 1);
 	
 	winnerRefereeSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/WinnerReferee.wav");
 
@@ -89,16 +89,17 @@ Update_Status UI::Update()
 		if (getCounterRightScore() > getCounterLeftScore())
 		{
 			rightSets++;
+			numSets++;
 		}
 		else if (getCounterRightScore() < getCounterLeftScore())
 		{
 			leftSets++;
+			numSets++;
 		}
 
 		t1 = SDL_GetTicks();
 		counterLeftScore = 0;
 		counterRightScore = 0;
-		numSets++;
 	}
 
 	t2 = SDL_GetTicks();
@@ -212,6 +213,18 @@ Update_Status UI::PostUpdate()
 			currentAnimation = &time_fifteen;
 		}
 		App->render->Blit(uiSprites, 136, 8, &rect);
+	}
+
+	//Sets Count
+	if (timeCounter == 0)
+	{
+		sprintf_s(setsCountLeftText, 10, "%d", leftSets);
+		App->fonts->BlitText(62, 120, setsCountFont, setsCountLeftText);
+
+		App->render->Blit(uiSprites, 113, 120, &sets_count);
+
+		sprintf_s(setsCountRightText, 10, "%d", rightSets);
+		App->fonts->BlitText(196, 120, setsCountFont, setsCountRightText);
 	}
 
 	//Win Lose
