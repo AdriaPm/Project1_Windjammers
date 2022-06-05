@@ -443,7 +443,17 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
-		Particle* caugthstraightR = App->particles->AddParticle(App->particles->caughtrightsidenormal, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);
+		
+		if (c1->rect.y < this->position.y) {
+			Particle* UpAngleCatch = App->particles->AddParticle(App->particles->caughtrightsideup, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);
+		}
+		//else if (c1->rect.y < (this->position.y - 40)) {
+		//	/*Particle* Down = App->particles->AddParticle(App->particles->caughtrightsidenormaldown, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);*/
+		//}
+		else {
+			Particle* caugthstraightR = App->particles->AddParticle(App->particles->caughtrightsidenormal, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);
+		}
+
 		hasDisk = true;
 	}
 

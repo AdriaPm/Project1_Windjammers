@@ -86,6 +86,17 @@ bool ModuleParticles::Start()
 	caughtrightsidenormal.speed.x = 0;
 	caughtrightsidenormal.anim.speed = 0.2f;
 
+	caughtrightsideup.anim.PushBack({ 302, 295, 50, 52 });
+	//caughtrightsideup.anim.PushBack({ 204, 280, 49, 79 });
+	//caughtrightsideup.anim.PushBack({ 157, 280, 49, 79 });
+	//caughtrightsideup.anim.PushBack({ 110, 280, 45, 79 });
+	caughtrightsideup.anim.loop = false;
+	caughtrightsideup.lifetime = 20;
+	caughtrightsideup.speed.x = 0;
+	caughtrightsideup.anim.speed = 0.2f;
+
+
+
 	goalscoredleft.anim.PushBack({ 4, 192, 41, 77 });
 	goalscoredleft.anim.PushBack({ 42, 192, 51, 81 });
 	goalscoredleft.anim.PushBack({ 92, 191, 42, 86 });
