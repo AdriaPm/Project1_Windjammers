@@ -356,6 +356,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 300;
 			App->ui->counterLeftScore += 3;
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
@@ -382,8 +383,10 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 500;
 			App->ui->counterLeftScore += 5;
-			
+
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
+
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
 			App->righenglishplayer->hasDisk = true;
@@ -442,6 +445,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskL.speed.y = -3.5f;
 		App->particles->diskL.position.x += App->particles->diskL.speed.x;
 		App->particles->diskL.position.y += App->particles->diskL.speed.y;
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 

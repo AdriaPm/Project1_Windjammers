@@ -67,6 +67,8 @@ public:
 	Particle caught;
 	Particle goalscoredleft;
 	Particle goalscoredright;
+	Particle goalscoredright3pts;
+	Particle goalscoredleft3pts;
 	
 
 

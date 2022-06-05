@@ -344,6 +344,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->rightScore += 300; 
 			App->ui->counterRightScore += 3;
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x + 10, c1->rect.y, Collider::Type::NONE);
 			Particle* goalscoredleft = App->particles->AddParticle(App->particles->goalscoredleft, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
@@ -370,6 +371,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->rightScore += 500;
 			App->ui->counterRightScore += 5;
+			Particle* goalscoredleft3pts = App->particles->AddParticle(App->particles->goalscoredleft3pts, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredleft = App->particles->AddParticle(App->particles->goalscoredleft, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
@@ -413,6 +415,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.speed.y = 3.5f;
 		App->particles->diskR.position.x += App->particles->diskR.speed.x;
 		App->particles->diskR.position.y += App->particles->diskR.speed.y;
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
@@ -424,6 +427,7 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		App->particles->diskR.speed.y = -3.5f;
 		App->particles->diskR.position.x += App->particles->diskR.speed.x;
 		App->particles->diskR.position.y += App->particles->diskR.speed.y;
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
 		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
