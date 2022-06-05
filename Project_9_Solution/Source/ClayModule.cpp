@@ -117,6 +117,8 @@ bool ClayModule::Start()
 	}
 
 	App->enemies->Enable();
+	App->ui->Enable();
+
 	return ret;
 }
 
