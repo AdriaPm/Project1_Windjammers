@@ -134,8 +134,9 @@ Update_Status ClayModule::Update()
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
-
-		//TODO: english score
+		App->leftenglishplayer->scoreEngLeft = 0;
+		App->righenglishplayer->scoreEngRight = 0;
+		
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
