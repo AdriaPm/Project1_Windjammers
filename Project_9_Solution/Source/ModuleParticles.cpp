@@ -129,7 +129,6 @@ bool ModuleParticles::Start()
 	goalscoredright3pts.anim.PushBack({ 121, 500, 59, 35 });
 	goalscoredright3pts.anim.PushBack({ 180, 500, 55, 35 });
 	goalscoredright3pts.anim.PushBack({ 121, 500, 59, 35 });
-
 	/*--*/
 	goalscoredright3pts.anim.PushBack({ 333, 500, 45, 35 });
 	goalscoredright3pts.anim.PushBack({ 9, 500, 28, 35 });
@@ -143,6 +142,32 @@ bool ModuleParticles::Start()
 	goalscoredright3pts.lifetime = 200;
 	goalscoredright3pts.speed.x = 0;
 	goalscoredright3pts.anim.speed = 0.1f;
+
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	goalscoredright5pts.anim.PushBack({ 239, 570, 60, 35 });
+	goalscoredright5pts.anim.PushBack({ 298, 570, 56, 35 });
+	/*--*/
+	goalscoredright5pts.anim.PushBack({ 404, 570, 48, 35 });
+	goalscoredright5pts.anim.PushBack({ 451, 570, 45, 35 });
+	goalscoredright5pts.anim.PushBack({ 108, 570, 32, 35 });
+	goalscoredright5pts.anim.PushBack({ 140, 570, 28, 35 });
+	goalscoredright5pts.anim.PushBack({ 168, 570, 24, 35 });
+	goalscoredright5pts.anim.PushBack({ 192, 570, 20, 35 });
+	goalscoredright5pts.anim.PushBack({ 212, 570, 16, 35 });
+	goalscoredright5pts.anim.PushBack({ 228, 570, 12, 35 });
+	goalscoredright5pts.anim.loop = false;
+	goalscoredright5pts.lifetime = 200;
+	goalscoredright5pts.speed.x = 0;
+	goalscoredright5pts.anim.speed = 0.1f;
 
 
 	goalscoredleft3pts.anim.PushBack({ 141, 535, 58, 34 });
@@ -170,6 +195,30 @@ bool ModuleParticles::Start()
 	goalscoredleft3pts.lifetime = 200;
 	goalscoredleft3pts.speed.x = 0;
 	goalscoredleft3pts.anim.speed = 0.1f;
+
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	goalscoredleft5pts.anim.PushBack({ 238, 606, 60, 34 });
+	goalscoredleft5pts.anim.PushBack({ 299, 570, 56, 34 });
+	/*--*/
+	goalscoredleft5pts.anim.PushBack({ 108, 570, 32, 35 });
+	goalscoredleft5pts.anim.PushBack({ 140, 570, 28, 35 });
+	goalscoredleft5pts.anim.PushBack({ 168, 570, 24, 35 });
+	goalscoredleft5pts.anim.PushBack({ 192, 570, 20, 35 });
+	goalscoredleft5pts.anim.PushBack({ 212, 570, 16, 35 });
+	goalscoredleft5pts.anim.PushBack({ 228, 570, 11, 35 });
+	goalscoredleft5pts.anim.loop = false;
+	goalscoredleft5pts.lifetime = 200;
+	goalscoredleft5pts.speed.x = 0;
+	goalscoredleft5pts.anim.speed = 0.1f;
 
 	return true;
 }

@@ -73,6 +73,8 @@ public:
 	Particle caughtleftsidenormal;
 	Particle caughtrightsideup;
 	Particle caughtrightsidedown;
+	Particle goalscoredright5pts;
+	Particle goalscoredleft5pts;
 	
 
 
