@@ -66,23 +66,25 @@ bool ModuleParticles::Start()
 	caught.anim.PushBack({ 232, 202, 70, 69 });
 	caught.lifetime = 3;
 	caught.speed.x = 0;
-	caught.anim.speed = 0.2f;
+	caught.anim.speed = 0.1f;
 
 	goalscoredleft.anim.PushBack({ 4, 192, 41, 77 });
 	goalscoredleft.anim.PushBack({ 42, 192, 51, 81 });
 	goalscoredleft.anim.PushBack({ 92, 191, 42, 86 });
 	goalscoredleft.anim.PushBack({ 134, 191, 54, 79 });
-	goalscoredleft.lifetime = 15;
+	goalscoredleft.anim.loop = false;
+	goalscoredleft.lifetime = 40;
 	goalscoredleft.speed.x = 0;
-	goalscoredleft.anim.speed = 0.1f;
+	goalscoredleft.anim.speed = 0.05f;
 
 	goalscoredright.anim.PushBack({ 251, 285, 46, 68 });
 	goalscoredright.anim.PushBack({ 204, 280, 49, 79 });
 	goalscoredright.anim.PushBack({ 157, 280, 49, 79 });
 	goalscoredright.anim.PushBack({ 110, 280, 45, 79 });
-	goalscoredright.lifetime = 15;
+	goalscoredright.anim.loop = false;
+	goalscoredright.lifetime = 40;
 	goalscoredright.speed.x = 0;
-	goalscoredright.anim.speed = 0.1f;
+	goalscoredright.anim.speed = 0.05f;
 
 	goalscoredright3pts.anim.PushBack({ 180, 500, 55, 35 });
 	goalscoredright3pts.anim.PushBack({ 121, 500, 59, 35 });

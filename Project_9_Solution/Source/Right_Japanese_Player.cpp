@@ -344,8 +344,9 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->rightScore += 300; 
 			App->ui->counterRightScore += 3;
-			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x + 10, c1->rect.y, Collider::Type::NONE);
 			Particle* goalscoredleft = App->particles->AddParticle(App->particles->goalscoredleft, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x + 10, c1->rect.y - 10, Collider::Type::NONE);
+			
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
 			App->leftenglishplayer->hasDisk = true;
@@ -371,8 +372,9 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->rightScore += 500;
 			App->ui->counterRightScore += 5;
-			Particle* goalscoredleft3pts = App->particles->AddParticle(App->particles->goalscoredleft3pts, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredleft = App->particles->AddParticle(App->particles->goalscoredleft, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredleft3pts = App->particles->AddParticle(App->particles->goalscoredleft3pts, c1->rect.x + 10, c1->rect.y - 10, Collider::Type::NONE);
+			
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
 			App->leftenglishplayer->hasDisk = true;
