@@ -97,6 +97,8 @@ private:
 
 	//SFX
 	uint winnerRefereeSFX = 0;
+	uint whistleRefereeSFX = 0;
+	uint crowdWinSFX = 0;
 };
 
 #endif

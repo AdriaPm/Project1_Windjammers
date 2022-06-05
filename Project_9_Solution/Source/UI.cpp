@@ -119,6 +119,8 @@ bool UI::Start()
 	setsCountFont = App->fonts->Load("Assets/Fonts/SetsCount.png", lookupTable4, 1);
 	
 	winnerRefereeSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/WinnerReferee.wav");
+	whistleRefereeSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/Whistle_1.wav");
+	crowdWinSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Crowd/CrowdWin.wav");
 
 	return ret;
 }
@@ -181,7 +183,7 @@ Update_Status UI::Update()
 		
 		//App->audio->PlayMusic("Assets/Music/GameOver.ogg");
 		App->audio->PlayFx(winnerRefereeSFX);
-
+		App->audio->PlayFx(crowdWinSFX);
 		
 		if (App->LeftJapanesePlayer->IsEnabled()) {
 			App->LeftJapanesePlayer->currentAnimation = &App->LeftJapanesePlayer->victAnim;
@@ -216,6 +218,7 @@ Update_Status UI::Update()
 
 		//App->audio->PlayMusic("Assets/Music/GameOver.ogg");
 		App->audio->PlayFx(winnerRefereeSFX);
+		App->audio->PlayFx(crowdWinSFX);
 
 		if (App->LeftJapanesePlayer->IsEnabled()) {
 			App->LeftJapanesePlayer->currentAnimation = &App->LeftJapanesePlayer->victAnim;
@@ -393,6 +396,8 @@ Update_Status UI::PostUpdate()
 	//Sets Count
 	if (timeCounter == 0)
 	{
+		App->audio->PlayFx(whistleRefereeSFX);
+		
 		sprintf_s(setsCountLeftText, 10, "%d", leftSets);
 		App->fonts->BlitText(62, 120, setsCountFont, setsCountLeftText);
 
@@ -407,6 +412,9 @@ Update_Status UI::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
+
+		//App->audio->PlayFx(winnerRefereeSFX);
+		//App->audio->PlayFx(crowdWinSFX);
 
 		if (App->map == MapType::Turf)
 			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
@@ -424,6 +432,9 @@ Update_Status UI::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
+
+		//App->audio->PlayFx(winnerRefereeSFX);
+		//App->audio->PlayFx(crowdWinSFX);
 
 		if (App->map == MapType::Turf)
 			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
@@ -443,6 +454,9 @@ Update_Status UI::PostUpdate()
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
 
+		//App->audio->PlayFx(winnerRefereeSFX);
+		//App->audio->PlayFx(crowdWinSFX);
+
 		if (App->map == MapType::Turf)
 			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
 		else if (App->map == MapType::Beach)
@@ -459,6 +473,9 @@ Update_Status UI::PostUpdate()
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
+
+		//App->audio->PlayFx(winnerRefereeSFX);
+		//App->audio->PlayFx(crowdWinSFX);
 
 		if (App->map == MapType::Turf)
 			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);

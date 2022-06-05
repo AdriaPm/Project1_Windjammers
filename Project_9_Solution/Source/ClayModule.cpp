@@ -137,6 +137,10 @@ Update_Status ClayModule::Update()
 		App->leftenglishplayer->scoreEngLeft = 0;
 		App->righenglishplayer->scoreEngRight = 0;
 		
+		App->ui->counterLeftScore = 0;
+		App->ui->leftScore = 0;
+		App->ui->counterRightScore = 0;
+		App->ui->rightScore = 0;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
