@@ -9,6 +9,17 @@
 #include "ModuleFonts.h"
 #include "ModuleInput.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
+#include "ChooseMap.h"
+#include "ChooseCharacter.h"
+#include "ModuleAudio.h"
+
+#include "Left_Japanese_Player.h"
+#include "Right_Japanese_Player.h"
+#include "LeftGermanPlayer.h"
+#include "RightGermanPlayer.h"
+#include "LeftEnglishPlayer.h"
+#include "RightEnglishPlayer.h"
 
 #include "stdio.h"
 
@@ -66,6 +77,8 @@ bool UI::Start()
 	scoreCounterFont = App->fonts->Load("Assets/Fonts/Score_Counter.png", lookupTable2, 1);
 	timeCounterFont = App->fonts->Load("Assets/Fonts/Time_Counter.png", lookupTable3, 1);
 	
+	winnerRefereeSFX = App->audio->LoadFx("Assets/Sound_Effects(SFX)wind/Referee/WinnerReferee.wav");
+
 	return ret;
 }
 
@@ -92,15 +105,62 @@ Update_Status UI::Update()
 	seconds = (t2 - t1) / 1000;
 	timeCounter = 30-(int)seconds;
 
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_REPEAT)
 	{
 		leftSets = 3;
 		numSets = 3;
+		
+		App->audio->PlayMusic("Assets/Music/winner.ogg");
+		App->audio->PlayFx(winnerRefereeSFX);
+
+		if (App->LeftJapanesePlayer->IsEnabled()) {
+			App->LeftJapanesePlayer->currentAnimation = &App->LeftJapanesePlayer->victAnim;
+			App->LeftJapanesePlayer->currentAnimation->Update();
+		}
+		else if (App->leftgermanyplayer->IsEnabled()) {
+			App->leftgermanyplayer->currentAnimation = &App->leftgermanyplayer->victAnim;
+			App->leftgermanyplayer->currentAnimation->Update();
+		}
+		else if (App->leftenglishplayer->IsEnabled()) {
+			App->leftenglishplayer->currentAnimation = &App->leftenglishplayer->victAnim;
+			App->leftenglishplayer->currentAnimation->Update();
+		}
+
+		if(App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if(App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
+
 	}
 	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
 	{
 		rightSets = 3;
 		numSets = 3;
+
+		App->audio->PlayMusic("Assets/Music/winner.ogg");
+		App->audio->PlayFx(winnerRefereeSFX);
+
+		if (App->LeftJapanesePlayer->IsEnabled()) {
+			App->LeftJapanesePlayer->currentAnimation = &App->LeftJapanesePlayer->victAnim;
+			App->LeftJapanesePlayer->currentAnimation->Update();
+		}
+		else if (App->leftgermanyplayer->IsEnabled()) {
+			App->leftgermanyplayer->currentAnimation = &App->leftgermanyplayer->victAnim;
+			App->leftgermanyplayer->currentAnimation->Update();
+		}
+		else if (App->leftenglishplayer->IsEnabled()) {
+			App->leftenglishplayer->currentAnimation = &App->leftenglishplayer->victAnim;
+			App->leftenglishplayer->currentAnimation->Update();
+		}
+
+		if (App->map == MapType::Turf)
+			App->fade->FadeToBlack((Module*)App->turflevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Beach)
+			App->fade->FadeToBlack((Module*)App->beachlevel, (Module*)App->sceneIntro, 150);
+		else if (App->map == MapType::Clay)
+			App->fade->FadeToBlack((Module*)App->clay, (Module*)App->sceneIntro, 150);
 	}
 
 	currentAnimation->Update();

@@ -74,6 +74,9 @@ public:
 
 	int numSets;
 	int leftSets, rightSets;
+
+	//SFX
+	uint winnerRefereeSFX = 0;
 };
 
 #endif
