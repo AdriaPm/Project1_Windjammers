@@ -156,8 +156,9 @@ Update_Status BeachLevel::Update()
 		App->RightJapanesePlayer->scoreJapRight = 0;
 		App->leftgermanyplayer->scoreGerLeft = 0;
 		App->rightgermanyplayer->scoreGerRight = 0;
+		App->leftenglishplayer->scoreEngLeft = 0;
+		App->righenglishplayer->scoreEngRight = 0;
 		
-		//TODO: english score
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
