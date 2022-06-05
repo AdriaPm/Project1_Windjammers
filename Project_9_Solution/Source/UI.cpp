@@ -24,7 +24,7 @@ UI::UI(bool startEnabled) : Module(startEnabled)
 	time_thirty.PushBack({ 192, 86, 32, 32 });
 	time_thirty.PushBack({ 192, 86, 32, 32 });
 	time_thirty.loop = true;
-	time_thirty.speed = 0.2f;
+	time_thirty.speed = 0.1f;
 
 	time_fifteen.PushBack({ 376, 54, 32, 32 });
 	time_fifteen.loop = true;
@@ -48,6 +48,11 @@ bool UI::Start()
 
 	currentAnimation = &time_thirty;
 
+	numSets = -1;
+
+	leftSets = 0;
+	rightSets = 0;
+
 	leftScore = 0;
 	rightScore = 0;
 
@@ -68,7 +73,19 @@ Update_Status UI::Update()
 {
 	if (timeCounter == 0)
 	{
+		if (getCounterRightScore() > getCounterLeftScore())
+		{
+			rightSets++;
+		}
+		else if (getCounterRightScore() < getCounterLeftScore())
+		{
+			leftSets++;
+		}
+
 		t1 = SDL_GetTicks();
+		counterLeftScore = 0;
+		counterRightScore = 0;
+		numSets++;
 	}
 
 	t2 = SDL_GetTicks();
@@ -77,11 +94,13 @@ Update_Status UI::Update()
 
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
 	{
-		leftScore = 1500;
+		leftSets = 3;
+		numSets = 3;
 	}
 	else if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
 	{
-		rightScore = 1500;
+		rightSets = 3;
+		numSets = 3;
 	}
 
 	currentAnimation->Update();
@@ -95,9 +114,6 @@ Update_Status UI::PostUpdate()
 
 	//Time
 	App->render->Blit(uiSprites, 144, 13, &time);
-
-	sprintf_s(timeCounterText, 10, "%d", timeCounter);
-	App->fonts->BlitText(145, 21, timeCounterFont, timeCounterText);
 	
 	//Score
 	sprintf_s(rightScoreText, 10, "%d", rightScore);
@@ -119,41 +135,44 @@ Update_Status UI::PostUpdate()
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
-	if (timeCounter == 0)
+	if (timeCounter == 30)
 	{
+		if (currentAnimation != &time_thirty)
+			{
+				time_thirty.Reset();
+				currentAnimation = &time_thirty;
+			}
 		App->render->Blit(uiSprites, 136, 8, &rect);
 	}
 	else if (timeCounter == 15)
 	{
-		App->render->Blit(uiSprites, 136, 8, &rect);
-	}
-	else if (timeCounter == 20)
-	{
+		if (currentAnimation != &time_fifteen)
+		{
+			time_fifteen.Reset();
+			currentAnimation = &time_fifteen;
+		}
 		App->render->Blit(uiSprites, 136, 8, &rect);
 	}
 
 	//Win Lose
-	if (timeCounter == 0)
+	if (getRightSets() > getLeftSets() && (numSets == 3 || (getRightSets() == 2 && getLeftSets() == 0)))
 	{
-		if (getRightScore() > getLeftScore())
-		{
-			App->render->Blit(uiSprites, 175, 54, &winR);
-			App->render->Blit(uiSprites, 30, 54, &loseL);
-		}
-		else if (getRightScore() < getLeftScore())
-		{
-			App->render->Blit(uiSprites, 174, 54, &loseR);
-			App->render->Blit(uiSprites, 18, 54, &winL);
-		}
+		App->render->Blit(uiSprites, 175, 54, &winR);
+		App->render->Blit(uiSprites, 30, 54, &loseL);
+	}
+	else if (getRightSets() < getLeftSets() && (numSets == 3 || (getLeftSets() == 2 && getRightSets() == 0 )))
+	{
+		App->render->Blit(uiSprites, 174, 54, &loseR);
+		App->render->Blit(uiSprites, 18, 54, &winL);
 	}
 
-	if (getRightScore() > getLeftScore() && getRightScore() > 1200)
+	if (getRightSets() == 3 && getNumSets() == 3)
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
 
 	}
-	else if (getRightScore() < getLeftScore() && getLeftScore() > 1200)
+	else if (getLeftSets() == 3 && getNumSets() == 3)
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);

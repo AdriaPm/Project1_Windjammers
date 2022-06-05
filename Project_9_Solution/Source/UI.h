@@ -25,9 +25,12 @@ public:
 
 	int getLeftScore() { return leftScore; }
 	int getRightScore() { return rightScore; }
-	int getCounterLeftScore() { return leftScore; }
-	int getCounterRightScore() { return rightScore; }
+	int getCounterLeftScore() { return counterLeftScore; }
+	int getCounterRightScore() { return counterRightScore; }
+	int getLeftSets() { return leftSets; }
+	int getRightSets() { return rightSets; }
 	float getSeconds() { return seconds; }
+	int getNumSets() { return numSets; }
 
 	//God Mode
 	bool godMode = false;
@@ -69,6 +72,8 @@ public:
 	int t1, t2;
 	float seconds;
 
+	int numSets;
+	int leftSets, rightSets;
 };
 
 #endif

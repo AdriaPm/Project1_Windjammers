@@ -291,7 +291,7 @@ Update_Status LeftGermanPlayer::PostUpdate()
 
 		//Shadow
 		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
-		App->render->Blit(shadowTexture, position.x + 3, position.y + 20, &shadowRect);
+		App->render->Blit(shadowTexture, position.x, position.y + 15, &shadowRect);
 
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture2, position.x, position.y, &rect);
