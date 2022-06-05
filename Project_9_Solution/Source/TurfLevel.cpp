@@ -31,17 +31,17 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.07f;
 	background.loop = true;
 
-	leftRef.PushBack({0,0,304,224});
+	leftRef.PushBack({1226,53,52,41});
 	leftRef.speed = 0.1f;
-	leftRef.loop = false;
+	leftRef.loop = true;
 
-	rightRef.PushBack({ 608,0,304,224 });
+	rightRef.PushBack({ 1226,101,54,40});
 	rightRef.speed = 0.1f;
-	rightRef.loop = false;
+	rightRef.loop = true;
 
-	midRef.PushBack({ 304,0,304,224 });
+	midRef.PushBack({ 1225,6,52,41 });
 	midRef.speed = 0.1f;
-	midRef.loop = false;
+	midRef.loop = true;
 
 	winR = {224, 86, 100, 32};
 	winL = {324, 86, 112, 32};
@@ -65,7 +65,7 @@ bool TurfLevel::Start()
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
-	refTexture= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TURF_JUDGE/JudgeTURF_spritesheet.png");
+	refTexture= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
 
 	currentRefAnim = &midRef;
 
@@ -143,6 +143,7 @@ bool TurfLevel::Start()
 Update_Status TurfLevel::Update()
 {
 	background.Update();
+	currentRefAnim->Update();
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
@@ -157,19 +158,19 @@ Update_Status TurfLevel::Update()
 	}
 	
 	//Referee looks
-	if (App->particles->diskR.position.x < SCREEN_WIDTH / 2 || App->particles->diskL.position.x < SCREEN_WIDTH / 2) {
+	if (App->leftenglishplayer->hasDisk == true || App->leftgermanyplayer->hasDisk == true || App->LeftJapanesePlayer->hasDisk == true ) {
 		if (currentRefAnim != &leftRef)
 		{
 			currentRefAnim = &leftRef;
 		}
 	}
-	else if (App->particles->diskR.position.x > SCREEN_WIDTH / 2 || App->particles->diskL.position.x > SCREEN_WIDTH / 2) {
+	else if (App->righenglishplayer->hasDisk == true || App->rightgermanyplayer->hasDisk == true || App->LeftJapanesePlayer->hasDisk == true) {
 		if (currentRefAnim != &rightRef)
 		{
 			currentRefAnim = &rightRef;
 		}
 	}
-	else if (App->particles->diskR.position.x == SCREEN_WIDTH / 2 || App->particles->diskL.position.x == SCREEN_WIDTH / 2) {
+	else {
 		if (currentRefAnim != &midRef)
 		{
 			currentRefAnim = &midRef;
