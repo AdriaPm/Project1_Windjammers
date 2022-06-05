@@ -104,6 +104,20 @@ public:
 
 		return(*this);
 	}
+	
+	p2Point& NegateX()
+	{
+		x = -x;
+
+		return(*this);
+	}
+	
+	p2Point& NegateY()
+	{
+		y = -y;
+
+		return(*this);
+	}
 
 	// Distances ---------------------------------------------
 	TYPE DistanceTo(const p2Point& v) const

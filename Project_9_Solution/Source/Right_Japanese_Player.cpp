@@ -397,25 +397,13 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
-		App->particles->diskR.speed.x = -1.0f;
-		App->particles->diskR.speed.y = 3.5f;
-		App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		App->particles->diskR.position.y += App->particles->diskR.speed.y;
 		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
 	{
-		App->particles->diskR.speed.x = -1.0f;
-		App->particles->diskR.speed.y = -3.5f;
-		App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		App->particles->diskR.position.y += App->particles->diskR.speed.y;
 		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskR, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 

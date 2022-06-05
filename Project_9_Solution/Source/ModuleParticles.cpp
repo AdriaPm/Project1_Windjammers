@@ -211,7 +211,20 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1) //&& !particles[i]->collider->DISK
+		if (particles[i] != nullptr && particles[i]->collider == c1 && !particles[i]->collider->DISK) //&& !particles[i]->collider->DISK
+		{
+			particles[i]->pendingToDelete = true;
+			particles[i]->collider->pendingToDelete = true;
+			break;
+		}
+		
+		if (particles[i]->collider->DISK && c2->type == Collider::Type::UPPER_WALL || c2->type == Collider::Type::LOWER_WALL) //&& !particles[i]->collider->DISK
+		{
+			particles[i]->speed.NegateY();
+			break;
+		}
+		else if(particles[i]->collider->DISK && c2->type == Collider::Type::PLAYER || c2->type == Collider::Type::LEFT_3P_GOAL || c2->type == Collider::Type::RIGHT_3P_GOAL
+			|| c2->type == Collider::Type::LEFT_5P_GOAL || c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			particles[i]->pendingToDelete = true;
 			particles[i]->collider->pendingToDelete = true;
