@@ -48,7 +48,7 @@ bool UI::Start()
 
 	currentAnimation = &time_thirty;
 
-	numSets = 0;
+	numSets = -1;
 
 	leftSets = 0;
 	rightSets = 0;
@@ -155,27 +155,16 @@ Update_Status UI::PostUpdate()
 	}
 
 	//Win Lose
-	if (getRightSets() == 2 && getLeftSets() == 0)
+	if (getRightSets() > getLeftSets() && (numSets == 3 || (getRightSets() == 2 && getLeftSets() == 0)))
 	{
 		App->render->Blit(uiSprites, 175, 54, &winR);
 		App->render->Blit(uiSprites, 30, 54, &loseL);
 	}
-	else if (getLeftSets() == 2 && getRightSets() == 0 )
+	else if (getRightSets() < getLeftSets() && (numSets == 3 || (getLeftSets() == 2 && getRightSets() == 0 )))
 	{
 		App->render->Blit(uiSprites, 174, 54, &loseR);
 		App->render->Blit(uiSprites, 18, 54, &winL);
 	}
-	else if (getRightSets() > getLeftSets() && numSets == 3)
-	{
-		App->render->Blit(uiSprites, 175, 54, &winR);
-		App->render->Blit(uiSprites, 30, 54, &loseL);
-	}
-	else if (getRightSets() < getLeftSets() && numSets == 3)
-	{
-		App->render->Blit(uiSprites, 174, 54, &loseR);
-		App->render->Blit(uiSprites, 18, 54, &winL);
-	}
-
 
 	if (getRightSets() == 3 && getNumSets() == 3)
 	{
