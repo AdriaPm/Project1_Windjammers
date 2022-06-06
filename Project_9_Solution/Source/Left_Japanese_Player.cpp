@@ -297,36 +297,36 @@ Update_Status Left_Japanese_Player::Update()
 	}
 
 
-	if (godMode == false) {
-		if (App->particles->diskLParabolic.anim.pingpong == false && App->particles->diskLParabolic.anim.HasFinished() == true)
-		{
+	//if (godMode == false) {
+	//	if (App->particles->diskLParabolic.anim.pingpong == false && App->particles->diskLParabolic.anim.HasFinished() == true)
+	//	{
 
-			App->ui->leftScore += 200;
-			App->ui->counterLeftScore += 2;
+	//		App->ui->leftScore += 200;
+	//		App->ui->counterLeftScore += 2;
 
-			App->rightgermanyplayer->hasDisk = true;
-			App->RightJapanesePlayer->hasDisk = true;
-			App->righenglishplayer->hasDisk = true;
+	//		App->rightgermanyplayer->hasDisk = true;
+	//		App->RightJapanesePlayer->hasDisk = true;
+	//		App->righenglishplayer->hasDisk = true;
 
-			//sfx
-			App->audio->PlayFx(goalSFX);
-			App->audio->PlayFx(crowdGoalSFX);
-			App->audio->PlayFx(referee3ptsSFX);
+	//		//sfx
+	//		App->audio->PlayFx(goalSFX);
+	//		App->audio->PlayFx(crowdGoalSFX);
+	//		App->audio->PlayFx(referee3ptsSFX);
 
-			//reset players positions when scoring
-			position.x = initialXPos;
-			position.y = initialYPos;
-			App->RightJapanesePlayer->position.x = 240;
-			App->RightJapanesePlayer->position.y = 105;
+	//		//reset players positions when scoring
+	//		position.x = initialXPos;
+	//		position.y = initialYPos;
+	//		App->RightJapanesePlayer->position.x = 240;
+	//		App->RightJapanesePlayer->position.y = 105;
 
-			App->rightgermanyplayer->position.x = 240;
-			App->rightgermanyplayer->position.y = 105;
+	//		App->rightgermanyplayer->position.x = 240;
+	//		App->rightgermanyplayer->position.y = 105;
 
-			App->righenglishplayer->position.x = 240;
-			App->righenglishplayer->position.y = 105;
-			App->particles->diskLParabolic.SetToDelete();
-		}
-	}
+	//		App->righenglishplayer->position.x = 240;
+	//		App->righenglishplayer->position.y = 105;
+	//		App->particles->diskLParabolic.SetToDelete();
+	//	}
+	//}
 
 	collider->SetPos(position.x, position.y);
 
@@ -465,8 +465,9 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->righenglishplayer->position.y = 105;
 		}
 		
-		if(c1->type == Collider::Type::PARABOLIC_DISK && App->particles->diskLParabolic.anim.pingpong == false)
+		if(c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::FLOOR && App->particles->diskLParabolic.anim.pingpong == false)
 		{
+			App->particles->diskLParabolic.isAlive = false;
 			App->particles->diskLParabolic.SetToDelete();
 			App->ui->leftScore += 200;
 			App->ui->counterLeftScore += 2;

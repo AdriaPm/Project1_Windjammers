@@ -48,11 +48,8 @@ public:
 
 	Animation background;
 
-	Animation* currentRefAnim = nullptr;
-	Animation leftRef;
-	Animation rightRef;
-	Animation midRef;
-
+	Animation refereeAnim;
+	
 	Animation leftJapanese;
 	Animation leftGerman;
 	Animation leftEnglish;

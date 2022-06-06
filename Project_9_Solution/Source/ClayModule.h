@@ -36,9 +36,12 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* textureVS = nullptr;
+	SDL_Texture* refTexture = nullptr;
 
 	// Animation for the public
 	Animation background;
+
+	Animation refereeAnim;
 
 	Animation leftJapanese;
 	Animation leftGerman;

@@ -29,6 +29,10 @@ BeachLevel::BeachLevel(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.07f;
 	background.loop = true;
 
+	refereeAnim.PushBack({ 304, 0, 304, 224 });
+	refereeAnim.speed = 0.1f;
+	refereeAnim.loop = true;
+
 	// VS players
 	leftJapanese.PushBack({ 366, 113, 120, 54 });
 	leftJapanese.loop = true;
@@ -77,6 +81,7 @@ bool BeachLevel::Start()
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/BEACH_SPRITES/BeachMap_spritesheet.png");
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
+	refTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TURF_JUDGE/JudgeTURF_spritesheet.png");
 	textureVS = App->textures->Load("Assets/Spriteswind/Sprites/UI/Character_versus_screen.png");
 
 	char lookupTable[] = { "0123456789" };
@@ -175,6 +180,7 @@ bool BeachLevel::Start()
 Update_Status BeachLevel::Update()
 {
 	background.Update();
+	refereeAnim.Update();
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
@@ -209,6 +215,10 @@ Update_Status BeachLevel::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
+
+	//Referee
+	SDL_Rect rect = refereeAnim.GetCurrentFrame();
+	App->render->Blit(refTexture, 0, 0, &rect);
 
 	//VS players
 	if (counter < 150) {
