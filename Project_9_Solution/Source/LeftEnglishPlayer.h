@@ -44,6 +44,7 @@ public:
 	int speed = 1;
 	int speedslide = 0.75;
 	int speedcross = 0.25;
+	int slidetickinit;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -110,6 +111,22 @@ public:
 
 	//God Mode
 	bool godMode = false;
+
+	int timevic;
+	int timedef;
+
+	int slidetickinit;
+	int throwtickinit;
+	bool throwingdisk;
+
+	bool inslide = false;
+
+	bool isDefeated = false;
+	bool isCelebrating = false;
+
+	bool scored3 = false;
+
+	bool inAnim = false;
 };
 
 #endif //!__LEFT_ENGLISH_PLAYER_H__

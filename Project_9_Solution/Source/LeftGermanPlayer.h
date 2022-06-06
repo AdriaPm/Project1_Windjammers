@@ -50,6 +50,7 @@ public:
 	int speed = 1;
 	int speedslide = 0.75;
 	int speedcross = 0.25;
+	int slidetickinit;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;

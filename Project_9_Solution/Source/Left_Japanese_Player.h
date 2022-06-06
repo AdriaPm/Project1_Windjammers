@@ -44,6 +44,17 @@ public:
 	int speed = 1;
 	int speedslide = 0.75;
 	int speedcross = 0.25;
+	int timevic;
+	int timedef;
+
+	int slidetickinit;
+	int throwtickinit;
+	bool throwingdisk;
+
+	bool isCelebrating = false;
+	bool inslide = false;
+
+	bool isDefeated = false;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -52,6 +63,9 @@ public:
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
+
+
+	
 
 	// A set of animations
 	Animation idleAnim;
