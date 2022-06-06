@@ -36,6 +36,9 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* uiSprites = nullptr;
 	SDL_Texture* textureVS = nullptr;
+	SDL_Texture* refTexture = nullptr;
+
+	Animation refereeAnim;
 
 	SDL_Rect winL;
 	SDL_Rect winR;

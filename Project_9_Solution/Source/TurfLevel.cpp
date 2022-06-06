@@ -32,17 +32,10 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.07f;
 	background.loop = true;
 
-	leftRef.PushBack({1226,53,52,41});
-	leftRef.speed = 0.1f;
-	leftRef.loop = true;
+	refereeAnim.PushBack({ 304, 0, 304, 224 });
+	refereeAnim.speed = 0.1f;
+	refereeAnim.loop = true;
 
-	rightRef.PushBack({ 1226,101,54,40});
-	rightRef.speed = 0.1f;
-	rightRef.loop = true;
-
-	midRef.PushBack({ 1225,6,52,41 });
-	midRef.speed = 0.1f;
-	midRef.loop = true;
 
 	// VS players
 	leftJapanese.PushBack({ 366, 113, 120, 54 });
@@ -92,10 +85,9 @@ bool TurfLevel::Start()
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
-	refTexture= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
+	refTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TURF_JUDGE/JudgeTURF_spritesheet.png");
 	textureVS = App->textures->Load("Assets/Spriteswind/Sprites/UI/Character_versus_screen.png");
 
-	currentRefAnim = &midRef;
 
 	char lookupTable[] = { "0123456789" };
 	counter = App->fonts->Load("Assets/Fonts/.png", lookupTable, 1);
@@ -170,7 +162,7 @@ bool TurfLevel::Start()
 Update_Status TurfLevel::Update()
 {
 	background.Update();
-	currentRefAnim->Update();
+	refereeAnim.Update();
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
@@ -189,25 +181,7 @@ Update_Status TurfLevel::Update()
 		App->ui->rightScore = 0;
 	}
 	
-	//Referee looks
-	if (App->leftenglishplayer->hasDisk == true || App->leftgermanyplayer->hasDisk == true || App->LeftJapanesePlayer->hasDisk == true ) {
-		if (currentRefAnim != &leftRef)
-		{
-			currentRefAnim = &leftRef;
-		}
-	}
-	else if (App->righenglishplayer->hasDisk == true || App->rightgermanyplayer->hasDisk == true || App->LeftJapanesePlayer->hasDisk == true) {
-		if (currentRefAnim != &rightRef)
-		{
-			currentRefAnim = &rightRef;
-		}
-	}
-	else {
-		if (currentRefAnim != &midRef)
-		{
-			currentRefAnim = &midRef;
-		}
-	}
+	
 
 	leftJapanese.Update();
 	leftGerman.Update();
@@ -227,7 +201,7 @@ Update_Status TurfLevel::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 	
 	//Referee
-	SDL_Rect rect = currentRefAnim->GetCurrentFrame();
+	SDL_Rect rect = refereeAnim.GetCurrentFrame();
 	App->render->Blit(refTexture, 0, 0, &rect);
 
 	//VS players

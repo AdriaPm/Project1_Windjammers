@@ -192,7 +192,7 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 79, 288, 28, 35 });
 	Throw.PushBack({ 1, 288, 22, 35 });
 	Throw.loop = false;
-	Throw.speed = 0.3f;
+	Throw.speed = 10.0f;
 
 	//Holding Disk GET SPRITE WITH DIFFERENT COLOUR DISKS FOR EACH MAP -------------------
 
@@ -210,8 +210,8 @@ RightGermanPlayer::RightGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Scored.PushBack({ 153, 14, 26, 29 });
 
 	//Victory 
-	victAnim.PushBack({ 179, 14, 29, 29 });
-	victAnim.PushBack({ 208, 14, 31, 29 });
+	victAnim.PushBack({ 179, 13, 29, 40 });
+	victAnim.PushBack({ 208, 13, 32, 40 });
 	victAnim.loop = true;
 	victAnim.speed = 0.05f;
 
@@ -324,10 +324,16 @@ Update_Status RightGermanPlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+
 		SDL_Rect shadowRect = shadowAnim.GetCurrentFrame();
 		App->render->Blit(shadowTexture, position.x, position.y + 15, &shadowRect);
+
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture2, position.x, position.y, &rect);
+
+		
+	
+		
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -487,8 +493,6 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		//}
 
 		Particle* caugthstraightR = App->particles->AddParticle(App->particles->caughtrightsidenormal, this->position.x - 20, this->position.y - 20, Collider::Type::NONE);
-
-
 		hasDisk = true;
 	}
 
@@ -603,7 +607,7 @@ void RightGermanPlayer::Movement() {
 			/*App->P2Status = Player_State_Right::PLAYER_MOVE;*/
 		}
 
-		if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) {
+		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN) {
 			slidetickinit = SDL_GetTicks();
 			inslide = true;
 		}
@@ -612,8 +616,10 @@ void RightGermanPlayer::Movement() {
 	if (inslide == true) {
 
 		int timestart = SDL_GetTicks() - slidetickinit;
+
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_DOWN)
 		{
+			Particle* newdashParticle = App->particles->AddParticle(App->particles->DashSmokeR, position.x, position.y, Collider::Type::NONE);
 			position.x += 40;	
 
 			if (currentAnimation != &SlideRAnim){
@@ -625,7 +631,10 @@ void RightGermanPlayer::Movement() {
 
 		//Up Slide Anim
 		if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_DOWN) {
+
 			position.y -= 40;
+			Particle* newdashParticle = App->particles->AddParticle(App->particles->DashSmokeU, position.x, position.y, Collider::Type::NONE);
+
 			if (currentAnimation != &SlideUAnim)
 			{
 				SlideUAnim.Reset();
@@ -638,6 +647,7 @@ void RightGermanPlayer::Movement() {
 		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_DOWN)
 		{
 			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
+			Particle* newdashParticle = App->particles->AddParticle(App->particles->DashSmokeL, position.x, position.y, Collider::Type::NONE);
 			position.x -= 40;
 
 			if (currentAnimation != &SlideLAnim)
@@ -651,7 +661,8 @@ void RightGermanPlayer::Movement() {
 			//Down Slide Anim
 		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_DOWN)
 		{
-				position.y += 40;
+			Particle* newdashParticle = App->particles->AddParticle(App->particles->DashSmokeD, position.x, position.y, Collider::Type::NONE);
+			position.y += 40;
 			if (currentAnimation != &SlideDAnim)
 			{
 				SlideDAnim.Reset();
@@ -731,7 +742,7 @@ void RightGermanPlayer::Movement() {
 
 	else if (hasDisk == true) {
 
-		if (currentAnimation != &HoldingAnim && currentAnimation != &ScoredOn) {
+		if (currentAnimation != &HoldingAnim) {
 			HoldingAnim.Reset();
 			currentAnimation = &HoldingAnim;
 		}
@@ -745,7 +756,7 @@ void RightGermanPlayer::Movement() {
 
 			App->particles->diskR.speed.x = -5.0f;
 			App->particles->diskR.speed.y = 0.0f;
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK, 30);
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
@@ -764,7 +775,7 @@ void RightGermanPlayer::Movement() {
 			App->particles->diskR.speed.y = -3.5f;
 			App->particles->diskR.position.x += App->particles->diskR.speed.x;
 			App->particles->diskR.position.y += App->particles->diskR.speed.y;
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK,-100);
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
@@ -797,6 +808,24 @@ void RightGermanPlayer::Movement() {
 
 			App->particles->diskR.speed.x = -2.0f;
 			App->particles->diskR.speed.y = -3.5f;
+			App->particles->diskR.position.x += App->particles->diskR.speed.x;
+			App->particles->diskR.position.y += App->particles->diskR.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+		{
+			//Throwing animation
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
+
+			App->particles->diskR.speed.x = 1.0f;
+			App->particles->diskR.speed.y = 3.5f;
 			App->particles->diskR.position.x += App->particles->diskR.speed.x;
 			App->particles->diskR.position.y += App->particles->diskR.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
