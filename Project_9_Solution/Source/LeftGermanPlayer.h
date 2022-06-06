@@ -103,6 +103,8 @@ public:
 
 	bool scored3 = false;
 
+	bool inAnim = false;
+
 	// Sound effects indices
 	uint ShotFx = 0;
 	uint laserFx = 0;
