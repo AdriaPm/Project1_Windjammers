@@ -843,8 +843,8 @@ void Right_Japanese_Player::Movement()
 				currentAnimation = &throwTURF;
 			}
 
-			App->particles->diskRParabolic.speed.x = -1.0f;
-			App->particles->diskRParabolic.speed.y = 3.5f;
+			App->particles->diskRParabolic.speed.x = -2.0f;
+			App->particles->diskRParabolic.speed.y = 1.5f;
 			App->particles->diskRParabolic.position.x += App->particles->diskRParabolic.speed.x;
 			App->particles->diskRParabolic.position.y += App->particles->diskRParabolic.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskRParabolic, position.x - 20, position.y, Collider::Type::PARABOLIC_DISK);
