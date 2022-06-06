@@ -422,7 +422,35 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->righenglishplayer->position.y = 105;
 		}
 		
-		
+		if(c1->type == Collider::Type::PARABOLIC_DISK && App->particles->diskLParabolic.anim.pingpong == false)
+		{
+			App->particles->diskLParabolic.SetToDelete();
+			App->ui->leftScore += 200;
+			App->ui->counterLeftScore += 2;
+			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
+
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
+
+			//sfx
+			App->audio->PlayFx(goalSFX);
+			App->audio->PlayFx(crowdGoalSFX);
+			App->audio->PlayFx(referee3ptsSFX);
+
+			//reset players positions when scoring
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->RightJapanesePlayer->position.x = 240;
+			App->RightJapanesePlayer->position.y = 105;
+
+			App->rightgermanyplayer->position.x = 240;
+			App->rightgermanyplayer->position.y = 105;
+
+			App->righenglishplayer->position.x = 240;
+			App->righenglishplayer->position.y = 105;
+		}
 	}
 	else if (godMode == true) {
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
