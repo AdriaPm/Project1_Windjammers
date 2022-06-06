@@ -34,6 +34,8 @@ public:
 
 	void Movement();
 
+	void PointsScored();
+
 	void DASH();
 
 	void throwing(){
@@ -59,9 +61,10 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
-	int speedslide = 1;
+	int speedslide = 40;
 	int speedcross = 0.25;
 	int t1;
+	int slidetickinit;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture2 = nullptr;
@@ -109,6 +112,9 @@ public:
 
 	bool isDefeated = false;
 	bool isCelebrating = false;
+
+	int timevic;
+	int timedef;
 
 	// Sound effects indices
 	uint laserFx = 0;

@@ -34,6 +34,8 @@ public:
 
 	void Movement();
 
+	void PointsScored();
+
 	
 
 	void IsDefeated();
@@ -98,7 +100,12 @@ public:
 	//God Mode
 	bool godMode = false;
 
-	int time1 = 0;
+	int timevic;
+	int timedef;
+
+	int slidetickinit;
+	int throwtickinit;
+	bool throwingdisk;
 
 	bool isDefeated = false;
 	bool isCelebrating = false;
