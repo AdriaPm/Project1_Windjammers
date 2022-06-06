@@ -40,6 +40,7 @@
     <ClCompile Include="LeftEnglishPlayer.cpp" />
     <ClCompile Include="RightEnglishPlayer.cpp" />
     <ClCompile Include="Disc.cpp" />
+    <ClCompile Include="ModuleController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -83,5 +84,6 @@
     <ClInclude Include="LeftEnglishPlayer.h" />
     <ClInclude Include="RightEnglishPlayer.h" />
     <ClInclude Include="Disc.h" />
+    <ClInclude Include="ModuleController.h" />
   </ItemGroup>
 </Project>

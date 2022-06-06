@@ -5,7 +5,7 @@
 #include "ChooseMap.h"
 
 
-#define NUM_MODULES 27
+#define NUM_MODULES 28
 
 
 class Module;
@@ -14,6 +14,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
 class Left_Japanese_Player;
+class ModuleController;
 class UPC;
 class SceneIntro;
 class DataEast;
@@ -85,6 +86,7 @@ public:
 
 	LeftGermanPlayer* leftgermanyplayer = nullptr;
 	RightGermanPlayer* rightgermanyplayer = nullptr;
+	ModuleController* controller = nullptr;
 	UPC* Upc = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	DataEast* dataEast = nullptr;
