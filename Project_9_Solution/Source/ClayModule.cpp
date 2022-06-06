@@ -30,6 +30,10 @@ ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.05f;
 	background.loop = true;
 
+	refereeAnim.PushBack({ 304, 0, 304, 224 });
+	refereeAnim.speed = 0.1f;
+	refereeAnim.loop = true;
+
 	// VS players
 	leftJapanese.PushBack({ 366, 113, 120, 54 });
 	leftJapanese.loop = true;
@@ -70,6 +74,8 @@ bool ClayModule::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClayMap_spritesheet.png");
+
+	refTexture = App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TURF_JUDGE/JudgeTURF_spritesheet.png");
 
 	textureVS = App->textures->Load("Assets/Spriteswind/Sprites/UI/Character_versus_screen.png");
 
@@ -153,6 +159,7 @@ bool ClayModule::Start()
 Update_Status ClayModule::Update()
 {
 	background.Update();
+	refereeAnim.Update();
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_DOWN)
 	{
@@ -187,6 +194,10 @@ Update_Status ClayModule::PostUpdate()
 	// Draw everything --------------------------------------
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
+
+	//Referee
+	SDL_Rect rect = refereeAnim.GetCurrentFrame();
+	App->render->Blit(refTexture, 0, 0, &rect);
 
 	//VS players
 	if (counter < 150) {
