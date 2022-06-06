@@ -49,7 +49,7 @@ Update_Status ModuleRender::PreUpdate()
 	//
 	// FULLSCREEN MODE UNCOMMENT
 	// 
-	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE);
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE);
 
 	//Clear rendering target
 	SDL_RenderClear(renderer);
