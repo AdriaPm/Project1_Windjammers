@@ -660,7 +660,6 @@ void Right_Japanese_Player::Movement()
 
 		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 		{
-			LOG("TIRO")
 			//Throwing animation
 			if (currentAnimation != &throwTURF) {
 				throwTURF.Reset();
