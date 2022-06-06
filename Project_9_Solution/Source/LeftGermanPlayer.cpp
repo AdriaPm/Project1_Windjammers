@@ -324,13 +324,12 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		position.x = 5;
 	}
 
-
 	//Collider player-right goal
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_3P_GOAL) {
-		position.x = 295 - 20;
+		position.x = 295 - 25;
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::RIGHT_5P_GOAL) {
-		position.x = 295 - 15;
+		position.x = 295 - 20;
 	}
 
 	//Collider player-net
@@ -338,15 +337,6 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		position.x = 150 - 19;
 	}
 
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::ENEMY)
-	{
-		scoreGerLeft += 23;
-	}
-
-	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
-	{
-		App->particles->diskL.HasDiskL == true;
-	}
 
 	///Score points
 	if (App->input->keys[SDL_SCANCODE_F1] == Key_State::KEY_DOWN) {
@@ -359,25 +349,24 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 300;
 			App->ui->counterLeftScore += 3;
-
-			scored3 = true;
-
-			currentAnimation = &idleAnim;
+			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
 
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
 
-			/*sfx*/
+			//sfx
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee3ptsSFX);
 
-			/*position reset*/
+			//reset players positions when scoring
 			position.x = initialXPos;
 			position.y = initialYPos;
 			App->RightJapanesePlayer->position.x = 240;
 			App->RightJapanesePlayer->position.y = 105;
-			
+
 			App->rightgermanyplayer->position.x = 240;
 			App->rightgermanyplayer->position.y = 105;
 
@@ -388,65 +377,74 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->ui->leftScore += 500;
 			App->ui->counterLeftScore += 5;
+			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredright5pts = App->particles->AddParticle(App->particles->goalscoredright5pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
 
-			App->rightgermanyplayer->hasDisk == true;
-			App->RightJapanesePlayer->hasDisk == true;
 
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
+
+			//sfx
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 			App->audio->PlayFx(referee5ptsSFX);
 
+			//reset players positions when scoring
 			position.x = initialXPos;
 			position.y = initialYPos;
 			App->RightJapanesePlayer->position.x = 240;
 			App->RightJapanesePlayer->position.y = 105;
-			
+
 			App->rightgermanyplayer->position.x = 240;
 			App->rightgermanyplayer->position.y = 105;
 
 			App->righenglishplayer->position.x = 240;
 			App->righenglishplayer->position.y = 105;
 		}
-
-		
 	}
 	else if (godMode == true) {
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
 			c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_5P_GOAL)
 		{
 			App->ui->leftScore += 0;
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
 
 			App->audio->PlayFx(goalSFX);
 			App->audio->PlayFx(crowdGoalSFX);
 		}
 	}
 
+
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
-		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = 3.5f;
-		App->particles->diskL.position.x += App->particles->diskL.speed.x;
-		App->particles->diskL.position.y += App->particles->diskL.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
+
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
+
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
 	{
-		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = -3.5f;
-		App->particles->diskL.position.x += App->particles->diskL.speed.x;
-		App->particles->diskL.position.y += App->particles->diskL.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
+
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
+
 		App->audio->PlayFx(diskCollisionSFX);
 	}
-	
+
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
+		Particle* caughtstraightL = App->particles->AddParticle(App->particles->caughtleftsidenormal, position.x + 20, position.y - 20, Collider::Type::NONE);
 		hasDisk = true;
 	}
+
+	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
+	{
+		App->particles->diskL.HasDiskL == true;
+	}
+
 }
 
 void LeftGermanPlayer::Movement() {
