@@ -54,3 +54,7 @@ Loose: - F4
 ## Trailer
 
 [![Watch the video](https://img.youtube.com/vi/eSWkbkaI2jA/default.jpg)](https://youtu.be/eSWkbkaI2jA)
+
+## Lastest release
+
+Click [here](https://github.com/Historn/Project-1/releases) to download our lastest game release.
