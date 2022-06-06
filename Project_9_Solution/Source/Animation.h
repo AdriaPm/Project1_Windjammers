@@ -30,6 +30,12 @@ public:
 	{
 		currentFrame = 0;
 	}
+	
+	void ResetLoopCount()
+	{
+		loopCount = 0;
+	}
+
 
 	bool HasFinished()
 	{

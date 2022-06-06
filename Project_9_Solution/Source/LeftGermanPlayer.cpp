@@ -669,7 +669,6 @@ void LeftGermanPlayer::Movement() {
 
 		//Normal Throw Animation
 	}
-
 	else if (hasDisk == true) {
 
 		if (currentAnimation != &HoldingAnim) {

@@ -655,7 +655,7 @@ void Left_Japanese_Player::Movement()
 				hasDisk = false;
 				discTime = 0;
 				App->audio->PlayFx(discThrowSFX);
-			}
+		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{

@@ -35,6 +35,7 @@ public:
 
 	// A set of rectangle sprites
 	Animation anim;
+	Animation animParabolic;
 
 	// Defines wether the particle is alive or not
 	// Particles will be set to not alive until "spawnTime" is reached
