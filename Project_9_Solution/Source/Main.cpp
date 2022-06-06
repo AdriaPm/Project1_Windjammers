@@ -101,12 +101,6 @@ int main(int argc, char* argv[])
 		
 		frameEnd = SDL_GetTicks() - frameStart;
 
-		int avgFPS = 1000 / frameEnd;  //calculating FPS HERE
-
-		char s[128];
-		sprintf_s(s, "FPS: %d", avgFPS);
-		SDL_SetWindowTitle(App->window->window, s);
-
 	}
 
 	LOG("\nBye :)\n");
