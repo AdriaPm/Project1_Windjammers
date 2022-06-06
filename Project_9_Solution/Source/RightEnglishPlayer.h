@@ -117,7 +117,7 @@ public:
 	int timevic;
 	int timedef;
 
-	int slidetickinit;
+	//int slidetickinit;
 	int throwtickinit;
 	bool throwingdisk;
 

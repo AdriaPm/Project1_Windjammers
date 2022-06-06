@@ -771,7 +771,7 @@ void LeftEnglishPlayer::Movement()
 		//	}
 		//	App->audio->PlayFx(slidingSFX);
 		//}
-	}
+
 
 
 	else if (hasDisk == true)
@@ -887,7 +887,7 @@ void LeftEnglishPlayer::Movement()
 		&& hasDisk == false
 		&& isCelebrating == false
 		&& isDefeated == false
-		&& inslide == false)
+		&& inslide == false) {
 		currentAnimation = &idleAnim;
-
+	}
 }
