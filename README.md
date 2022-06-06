@@ -51,4 +51,4 @@ Loose: - F4
 
 ## Trailer
 
-[![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)]([https://youtu.be/nTQUwghvy5Q](https://youtu.be/eSWkbkaI2jA))
+[![Watch the video](https://img.youtube.com/vi/eSWkbkaI2jA/default.jpg)](https://youtu.be/eSWkbkaI2jA)
