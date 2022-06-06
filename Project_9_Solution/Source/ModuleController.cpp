@@ -56,6 +56,10 @@ Update_Status ModuleController::PreUpdate()
 					//controller_player1_RightShoulder_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
 					controller_player1_Start_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_START);
 					controller_player1_B_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_B); ;
+					controller_player1_UPArrow_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_DPAD_UP);
+					controller_player1_DOWNArrow_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+					controller_player1_LEFTArrow_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+					controller_player1_RIGHTArrow_pressed = SDL_GameControllerGetButton(Controller_player1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 
 					Controller_player1_Connected = true;
 				}
@@ -88,6 +92,11 @@ Update_Status ModuleController::PreUpdate()
 					/*	controller_player2_RightShoulder_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);*/
 					controller_player2_Start_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_START);
 					controller_player2_B_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_B);
+					controller_player2_UPArrow_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_DPAD_UP);
+					controller_player2_DOWNArrow_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+					controller_player2_LEFTArrow_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+					controller_player2_RIGHTArrow_pressed = SDL_GameControllerGetButton(Controller_player2, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+
 					Controller_player2_Connected = true;
 					break;
 				}
@@ -131,24 +140,59 @@ Update_Status ModuleController::PreUpdate()
 		App->input->keys[SDL_SCANCODE_SPACE] = Key_State::KEY_REPEAT;
 	}
 
-	if (controller_player1_Start_pressed == true && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
-	{
-		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_DOWN;
-	}
-	else if (controller_player1_Start_pressed == true)
-	{
-		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_REPEAT;
-	}
-
-	if (controller_player1_B_pressed == true && App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_IDLE)
+	if (controller_player1_Start_pressed == true && App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_IDLE)
 	{
 		App->input->keys[SDL_SCANCODE_ESCAPE] = Key_State::KEY_DOWN;
 	}
-	else if (controller_player1_B_pressed == true)
+	else if (controller_player1_Start_pressed == true)
 	{
 		App->input->keys[SDL_SCANCODE_ESCAPE] = Key_State::KEY_REPEAT;
 	}
 
+	if (controller_player1_B_pressed == true && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player1_B_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player1_UPArrow_pressed == true && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_W] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player1_UPArrow_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_W] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player1_DOWNArrow_pressed == true && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_S] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player1_DOWNArrow_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_S] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player1_LEFTArrow_pressed == true && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_A] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player1_LEFTArrow_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_A] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player1_RIGHTArrow_pressed == true && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_D] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player1_RIGHTArrow_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_D] = Key_State::KEY_REPEAT;
+	}
 
 	//Check player 2 axes
 	if (Controller_player2_LAxisX > DEATHZONE)
@@ -170,31 +214,67 @@ Update_Status ModuleController::PreUpdate()
 	}
 
 	//Check controller player 2 buttons
-	if (controller_player2_A_pressed == true && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE)
+	if (controller_player2_A_pressed == true && App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_SPACE] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player2_A_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_SPACE] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player2_Start_pressed == true && App->input->keys[SDL_SCANCODE_ESCAPE] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_ESCAPE] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player2_Start_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_ESCAPE] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player2_B_pressed == true && App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_N] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player2_B_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_N] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player2_UPArrow_pressed == true && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE)
 	{
 		App->input->keys[SDL_SCANCODE_UP] = Key_State::KEY_DOWN;
 	}
-	else if (controller_player2_A_pressed == true)
+	else if (controller_player2_UPArrow_pressed == true)
 	{
 		App->input->keys[SDL_SCANCODE_UP] = Key_State::KEY_REPEAT;
 	}
 
-	if (controller_player2_Start_pressed == true && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE)
+	if (controller_player2_DOWNArrow_pressed == true && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE)
 	{
-		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_DOWN;
+		App->input->keys[SDL_SCANCODE_DOWN] = Key_State::KEY_DOWN;
 	}
-	else if (controller_player2_Start_pressed == true)
+	else if (controller_player2_DOWNArrow_pressed == true)
 	{
-		App->input->keys[SDL_SCANCODE_C] = Key_State::KEY_REPEAT;
+		App->input->keys[SDL_SCANCODE_DOWN] = Key_State::KEY_REPEAT;
 	}
 
-	if (controller_player2_B_pressed == true && App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_IDLE)
+	if (controller_player2_LEFTArrow_pressed == true && App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE)
 	{
-		App->input->keys[SDL_SCANCODE_J] = Key_State::KEY_DOWN;
+		App->input->keys[SDL_SCANCODE_LEFT] = Key_State::KEY_DOWN;
 	}
-	else if (controller_player2_B_pressed == true)
+	else if (controller_player2_LEFTArrow_pressed == true)
 	{
-		App->input->keys[SDL_SCANCODE_J] = Key_State::KEY_REPEAT;
+		App->input->keys[SDL_SCANCODE_LEFT] = Key_State::KEY_REPEAT;
+	}
+
+	if (controller_player2_RIGHTArrow_pressed == true && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE)
+	{
+		App->input->keys[SDL_SCANCODE_RIGHT] = Key_State::KEY_DOWN;
+	}
+	else if (controller_player2_RIGHTArrow_pressed == true)
+	{
+		App->input->keys[SDL_SCANCODE_RIGHT] = Key_State::KEY_REPEAT;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

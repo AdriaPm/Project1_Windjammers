@@ -34,7 +34,10 @@ public:
     bool controller_player1_RightShoulder_pressed = false;    //button RightShoulder pressed?
     bool controller_player1_Start_pressed = false;            //button Start pressed?
     bool controller_player1_B_pressed = false;                //button B pressed?
-
+    bool controller_player1_UPArrow_pressed = false;          //button UP Arrow pressed?
+    bool controller_player1_DOWNArrow_pressed = false;        //button DOWN Arrow pressed?
+    bool controller_player1_LEFTArrow_pressed = false;        //button LEFT Arrow pressed?
+    bool controller_player1_RIGHTArrow_pressed = false;       //button RIGHT Arrow pressed?
 
     //values for the Joysticks Axes
     int Controller_player1_LAxisX = 0;
@@ -51,7 +54,10 @@ public:
     bool controller_player2_RightShoulder_pressed = false;    //button RightShoulder pressed?
     bool controller_player2_Start_pressed = false;            //button Start pressed?
     bool controller_player2_B_pressed = false;                //button B pressed?
-
+    bool controller_player2_UPArrow_pressed = false;          //button UP Arrow pressed?
+    bool controller_player2_DOWNArrow_pressed = false;        //button DOWN Arrow pressed?
+    bool controller_player2_LEFTArrow_pressed = false;        //button LEFT Arrow pressed?
+    bool controller_player2_RIGHTArrow_pressed = false;       //button RIGHT Arrow pressed?
 
     //values for the Joysticks Axes
     int Controller_player2_LAxisX = 0;
