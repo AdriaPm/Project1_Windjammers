@@ -77,11 +77,8 @@ public:
 	Particle caughtrightsidedown;
 	Particle goalscoredright5pts;
 	Particle goalscoredleft5pts;
-<<<<<<< HEAD
-=======
 
 	Animation* discCurrAnim = nullptr;
->>>>>>> 7ba0fc1b42705935b69e06bc4965b8ad88a565ab
 
 	Particle leftJapanese;
 	Particle leftGerman;
