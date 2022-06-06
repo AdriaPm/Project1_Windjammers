@@ -19,6 +19,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::UPPER_WALL][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::UPPER_WALL][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::UPPER_WALL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::UPPER_WALL][Collider::Type::PARABOLIC_DISK] = true;
 
 	matrix[Collider::Type::LOWER_WALL][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::LOWER_WALL][Collider::Type::LOWER_WALL] = false;
@@ -27,6 +28,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LOWER_WALL][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::LOWER_WALL][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::LOWER_WALL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::LOWER_WALL][Collider::Type::PARABOLIC_DISK] = true;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LOWER_WALL] = true;
@@ -37,6 +39,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::DISK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::PARABOLIC_DISK] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::UPPER_WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::LOWER_WALL] = true;
@@ -69,6 +72,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::PARABOLIC_DISK] = true;
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::LOWER_WALL] = false;
 	matrix[Collider::Type::LEFT_3P_GOAL][Collider::Type::NET] = false;
@@ -78,6 +82,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::PARABOLIC_DISK] = true;
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::LOWER_WALL] = false;
 	matrix[Collider::Type::LEFT_5P_GOAL][Collider::Type::NET] = false;
@@ -87,6 +92,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::PARABOLIC_DISK] = true;
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::LOWER_WALL] = false;
 	matrix[Collider::Type::RIGHT_3P_GOAL][Collider::Type::NET] = false;
@@ -96,6 +102,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::DISK] = true;
+	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::PARABOLIC_DISK] = true;
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::LOWER_WALL] = false;
 	matrix[Collider::Type::RIGHT_5P_GOAL][Collider::Type::NET] = false;
@@ -104,11 +111,13 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::NET][Collider::Type::NET] = false;
 	matrix[Collider::Type::NET][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::NET][Collider::Type::DISK] = false;
+	matrix[Collider::Type::NET][Collider::Type::PARABOLIC_DISK] = false;
 	matrix[Collider::Type::NET][Collider::Type::UPPER_WALL] = false;
 	matrix[Collider::Type::NET][Collider::Type::LOWER_WALL] = false;
 	matrix[Collider::Type::NET][Collider::Type::ENEMY] = true;
 
 	matrix[Collider::Type::DISK][Collider::Type::DISK] = false;
+	matrix[Collider::Type::DISK][Collider::Type::PARABOLIC_DISK] = false;
 	matrix[Collider::Type::DISK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::DISK][Collider::Type::NET] = false;
 	matrix[Collider::Type::DISK][Collider::Type::ENEMY] = true;
@@ -128,6 +137,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::RIGHT_3P_GOAL] = true;
 	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::LEFT_5P_GOAL] = true;
 	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::RIGHT_5P_GOAL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::DISK] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::PARABOLIC_DISK] = true;
 	
 }
 

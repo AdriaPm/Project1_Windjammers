@@ -297,6 +297,15 @@ void Right_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LOWER_WALL) {
 		position.y = 199 - 40;
 	}
+	
+	if (c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::UPPER_WALL) {
+		position.y = 40;
+	}
+
+	//Collider player-lower wall
+	if (c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::LOWER_WALL) {
+		position.y = 199 - 40;
+	}
 
 	//Collider player-left goal
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LEFT_3P_GOAL) {
@@ -807,7 +816,7 @@ void Right_Japanese_Player::Movement()
 				currentAnimation = &throwTURF;
 			}
 
-			App->particles->diskRParabolic.speed.x = -5.0f;
+			App->particles->diskRParabolic.speed.x = -2.0f;
 			App->particles->diskRParabolic.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskRParabolic, position.x - 20, position.y, Collider::Type::PARABOLIC_DISK);
 			newParticle->collider->AddListener(this);

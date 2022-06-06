@@ -25,6 +25,7 @@ struct Collider
 		NET,
 		DISK,
 		PARABOLIC_DISK,
+		FLOOR,
 		
 
 		MAX
