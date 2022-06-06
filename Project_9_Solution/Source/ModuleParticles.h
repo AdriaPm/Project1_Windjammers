@@ -80,19 +80,11 @@ public:
 
 	Animation* discCurrAnim = nullptr;
 
-	Particle leftJapanese;
-	Particle leftGerman;
-	Particle leftEnglish;
-	Particle rightJapanese;
-	Particle rightGerman;
-	Particle rightEnglish;
-
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture_particles = nullptr;
 	SDL_Texture* texture_disk = nullptr;
 	SDL_Texture* textureFX = nullptr;
-	SDL_Texture* textureVS = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };

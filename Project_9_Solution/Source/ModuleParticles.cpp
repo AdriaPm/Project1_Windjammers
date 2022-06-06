@@ -26,7 +26,6 @@ bool ModuleParticles::Start()
 	texture_particles = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
 	//texture = App->textures->Load("Assets/Sprites/particles.png");
 	textureFX = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
-	textureVS = App->textures->Load(" ");
 
 	//// Explosion particle
 	//explosion.anim.PushBack({274, 296, 33, 30});
@@ -250,44 +249,7 @@ bool ModuleParticles::Start()
 	goalscoredleft5pts.lifetime = 200;
 	goalscoredleft5pts.speed.x = 0;
 	goalscoredleft5pts.anim.speed = 0.1f;
-
-	// VS players
-	leftJapanese.anim.PushBack({ , , , });
-	leftJapanese.anim.loop = true;
-	leftJapanese.lifetime = 400;
-	leftJapanese.speed.x = 0;
-	leftJapanese.anim.speed = 0.1f;
-
-	leftGerman.anim.PushBack({ , , , });
-	leftGerman.anim.loop = true;
-	leftGerman.lifetime = 400;
-	leftGerman.speed.x = 0;
-	leftGerman.anim.speed = 0.1f;
-
-	leftEnglish.anim.PushBack({ , , , });
-	leftEnglish.anim.loop = true;
-	leftEnglish.lifetime = 400;
-	leftEnglish.speed.x = 0;
-	leftEnglish.anim.speed = 0.1f;
-
-	rightJapanese.anim.PushBack({ , , , });
-	rightJapanese.anim.loop = true;
-	rightJapanese.lifetime = 400;
-	rightJapanese.speed.x = 0;
-	rightJapanese.anim.speed = 0.1f;
-
-	rightGerman.anim.PushBack({ , , , });
-	rightGerman.anim.loop = true;
-	rightGerman.lifetime = 400;
-	rightGerman.speed.x = 0;
-	rightGerman.anim.speed = 0.1f;
-
-	rightEnglish.anim.PushBack({ , , , });
-	rightEnglish.anim.loop = true;
-	rightEnglish.lifetime = 400;
-	rightEnglish.speed.x = 0;
-	rightEnglish.anim.speed = 0.1f;
-
+	
 	return true;
 }
 
@@ -379,7 +341,6 @@ Update_Status ModuleParticles::PostUpdate()
 		{
 			App->render->Blit(texture_particles, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 			App->render->Blit(texture_disk, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			App->render->Blit(textureVS, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

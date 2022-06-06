@@ -44,6 +44,32 @@ TurfLevel::TurfLevel(bool startEnabled) : Module(startEnabled)
 	midRef.speed = 0.1f;
 	midRef.loop = true;
 
+	// VS players
+	leftJapanese.PushBack({ 366, 113, 120, 54 });
+	leftJapanese.loop = true;
+	leftJapanese.speed = 0.1f;
+
+	leftGerman.PushBack({ 205, 117, 123, 54 });
+	leftGerman.loop = true;
+	leftGerman.speed = 0.1f;
+
+	leftEnglish.PushBack({ 57, 119, 124, 55 });
+	leftEnglish.loop = true;
+	leftEnglish.speed = 0.1f;
+
+	rightJapanese.PushBack({ 366, 50, 122, 53 });
+	rightJapanese.loop = true;
+	rightJapanese.speed = 0.1f;
+
+	rightGerman.PushBack({ 208, 49, 124, 55 });
+	rightGerman.loop = true;
+	rightGerman.speed = 0.1f;
+
+	rightEnglish.PushBack({ 56, 46, 126, 56 });
+	rightEnglish.loop = true;
+	rightEnglish.speed = 0.1f;
+
+
 	winR = {224, 86, 100, 32};
 	winL = {324, 86, 112, 32};
 	loseR = {393, 27, 99, 27};
@@ -67,6 +93,7 @@ bool TurfLevel::Start()
 	uiSprites = App->textures->Load("Assets/Spriteswind/Sprites/UI/UISpriteSheetFinal.png");
 
 	refTexture= App->textures->Load("Assets/Spriteswind/Sprites/TURF_SPRITES/TurfMap_spritesheet.png");
+	textureVS = App->textures->Load("Assets/Spriteswind/Sprites/UI/Character_versus_screen.png");
 
 	currentRefAnim = &midRef;
 
@@ -110,7 +137,6 @@ bool TurfLevel::Start()
 		break;
 	}
 
-
 	switch (App->choice2)
 	{
 	case Player_Chosen_Right::German:
@@ -126,7 +152,7 @@ bool TurfLevel::Start()
 
 	App->enemies->Enable();
 	App->ui->Enable();
-
+	
 	//case Player_Chosen_Right::Spanish:
 	//	/*	App->leftgermanyplayer->Enable();*/
 	//	break;
@@ -183,6 +209,13 @@ Update_Status TurfLevel::Update()
 		}
 	}
 
+	leftJapanese.Update();
+	leftGerman.Update();
+	leftEnglish.Update();
+	rightJapanese.Update();
+	rightGerman.Update();
+	rightEnglish.Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -197,14 +230,34 @@ Update_Status TurfLevel::PostUpdate()
 	SDL_Rect rect = currentRefAnim->GetCurrentFrame();
 	App->render->Blit(refTexture, 0, 0, &rect);
 
-	if (App->LeftJapanesePlayer->IsEnabled())
-		Particle* leftJapanese = App->particles->AddParticle(App->particles->leftJapanese, 150 , 150, Collider::Type::NONE);
-	else if(App->leftgermanyplayer->IsEnabled())
-		Particle* left
-	
+	/*
+	if (App->LeftJapanesePlayer->IsEnabled()) {
+		SDL_Rect leftJapaneseRect = leftEnglish.GetCurrentFrame();
+		App->render->Blit(textureVS, 30, 75, &leftJapaneseRect);
+	}
+	else if (App->leftgermanyplayer->IsEnabled()) {
+		SDL_Rect leftGermanRect = leftGerman.GetCurrentFrame();
+		App->render->Blit(textureVS, 30, 75, &leftGermanRect);
+	}
+	else if (App->leftenglishplayer->IsEnabled()) {
+		SDL_Rect leftEnglishRect = leftEnglish.GetCurrentFrame();
+		App->render->Blit(textureVS, 30, 75, &leftEnglishRect);
+	}
 
-	
-	
+	if (App->RightJapanesePlayer->IsEnabled()) {
+		SDL_Rect rightJapaneseRect = rightEnglish.GetCurrentFrame();
+		App->render->Blit(textureVS, 150, 75, &rightJapaneseRect);
+	}
+	else if (App->rightgermanyplayer->IsEnabled()) {
+		SDL_Rect rightGermanRect = rightGerman.GetCurrentFrame();
+		App->render->Blit(textureVS, 150, 75, &rightGermanRect);
+	}
+	else if (App->righenglishplayer->IsEnabled()) {
+		SDL_Rect rightEnglishRect = rightEnglish.GetCurrentFrame();
+		App->render->Blit(textureVS, 150, 75, &rightEnglishRect);
+	}
+	*/
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 

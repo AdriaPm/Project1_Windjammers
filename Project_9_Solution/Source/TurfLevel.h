@@ -37,7 +37,8 @@ public:
 	SDL_Texture* uiSprites = nullptr;
 	
 	SDL_Texture* refTexture = nullptr;
-	
+	SDL_Texture* textureVS = nullptr;
+
 
 	SDL_Rect winL;
 	SDL_Rect winR;
@@ -51,6 +52,13 @@ public:
 	Animation leftRef;
 	Animation rightRef;
 	Animation midRef;
+
+	Animation leftJapanese;
+	Animation leftGerman;
+	Animation leftEnglish;
+	Animation rightJapanese;
+	Animation rightGerman;
+	Animation rightEnglish;
 
 	uint counter = 000;
 	int counterFont = -1;
