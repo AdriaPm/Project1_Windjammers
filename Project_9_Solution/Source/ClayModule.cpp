@@ -1,4 +1,5 @@
 #include "ClayModule.h"
+#include <SDL/include/SDL.h>
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -29,6 +30,31 @@ ClayModule::ClayModule(bool startEnabled) : Module(startEnabled)
 	background.speed = 0.05f;
 	background.loop = true;
 
+	// VS players
+	leftJapanese.PushBack({ 366, 113, 120, 54 });
+	leftJapanese.loop = true;
+	leftJapanese.speed = 0.1f;
+
+	leftGerman.PushBack({ 205, 117, 123, 54 });
+	leftGerman.loop = true;
+	leftGerman.speed = 0.1f;
+
+	leftEnglish.PushBack({ 57, 119, 124, 55 });
+	leftEnglish.loop = true;
+	leftEnglish.speed = 0.1f;
+
+	rightJapanese.PushBack({ 366, 50, 122, 53 });
+	rightJapanese.loop = true;
+	rightJapanese.speed = 0.1f;
+
+	rightGerman.PushBack({ 208, 49, 124, 55 });
+	rightGerman.loop = true;
+	rightGerman.speed = 0.1f;
+
+	rightEnglish.PushBack({ 56, 46, 126, 56 });
+	rightEnglish.loop = true;
+	rightEnglish.speed = 0.1f;
+
 }
 
 ClayModule::~ClayModule()
@@ -44,6 +70,8 @@ bool ClayModule::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Spriteswind/Sprites/CLAY_SPRITES/ClayMap_spritesheet.png");
+
+	textureVS = App->textures->Load("Assets/Spriteswind/Sprites/UI/Character_versus_screen.png");
 
 	App->audio->PlayMusic("Assets/Music/clay.ogg", 1.0f);
 
@@ -143,6 +171,13 @@ Update_Status ClayModule::Update()
 		App->ui->rightScore = 0;
 	}
 
+	leftJapanese.Update();
+	leftGerman.Update();
+	leftEnglish.Update();
+	rightJapanese.Update();
+	rightGerman.Update();
+	rightEnglish.Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -153,6 +188,35 @@ Update_Status ClayModule::PostUpdate()
 	// Animation of the public
 	App->render->Blit(bgTexture, 0, 0, &(background.GetCurrentFrame()), 0.5f);
 
+	//VS players
+	if (counter < 150) {
+		if (App->LeftJapanesePlayer->IsEnabled()) {
+			SDL_Rect leftJapaneseRect = leftJapanese.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftJapaneseRect);
+		}
+		else if (App->leftgermanyplayer->IsEnabled()) {
+			SDL_Rect leftGermanRect = leftGerman.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftGermanRect);
+		}
+		else if (App->leftenglishplayer->IsEnabled()) {
+			SDL_Rect leftEnglishRect = leftEnglish.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftEnglishRect);
+		}
+
+		if (App->RightJapanesePlayer->IsEnabled()) {
+			SDL_Rect rightJapaneseRect = rightJapanese.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightJapaneseRect);
+		}
+		else if (App->rightgermanyplayer->IsEnabled()) {
+			SDL_Rect rightGermanRect = rightGerman.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightGermanRect);
+		}
+		else if (App->righenglishplayer->IsEnabled()) {
+			SDL_Rect rightEnglishRect = rightEnglish.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightEnglishRect);
+		}
+	}
+	counter++;
 
 	return Update_Status::UPDATE_CONTINUE;
 }

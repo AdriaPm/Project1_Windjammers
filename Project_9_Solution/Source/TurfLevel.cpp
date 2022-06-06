@@ -215,7 +215,7 @@ Update_Status TurfLevel::Update()
 	rightJapanese.Update();
 	rightGerman.Update();
 	rightEnglish.Update();
-
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -230,33 +230,35 @@ Update_Status TurfLevel::PostUpdate()
 	SDL_Rect rect = currentRefAnim->GetCurrentFrame();
 	App->render->Blit(refTexture, 0, 0, &rect);
 
-	/*
-	if (App->LeftJapanesePlayer->IsEnabled()) {
-		SDL_Rect leftJapaneseRect = leftEnglish.GetCurrentFrame();
-		App->render->Blit(textureVS, 30, 75, &leftJapaneseRect);
-	}
-	else if (App->leftgermanyplayer->IsEnabled()) {
-		SDL_Rect leftGermanRect = leftGerman.GetCurrentFrame();
-		App->render->Blit(textureVS, 30, 75, &leftGermanRect);
-	}
-	else if (App->leftenglishplayer->IsEnabled()) {
-		SDL_Rect leftEnglishRect = leftEnglish.GetCurrentFrame();
-		App->render->Blit(textureVS, 30, 75, &leftEnglishRect);
-	}
+	//VS players
+	if (counter < 150) {
+		if (App->LeftJapanesePlayer->IsEnabled()) {
+			SDL_Rect leftJapaneseRect = leftJapanese.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftJapaneseRect);
+		}
+		else if (App->leftgermanyplayer->IsEnabled()) {
+			SDL_Rect leftGermanRect = leftGerman.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftGermanRect);
+		}
+		else if (App->leftenglishplayer->IsEnabled()) {
+			SDL_Rect leftEnglishRect = leftEnglish.GetCurrentFrame();
+			App->render->Blit(textureVS, 30, 40, &leftEnglishRect);
+		}
 
-	if (App->RightJapanesePlayer->IsEnabled()) {
-		SDL_Rect rightJapaneseRect = rightEnglish.GetCurrentFrame();
-		App->render->Blit(textureVS, 150, 75, &rightJapaneseRect);
+		if (App->RightJapanesePlayer->IsEnabled()) {
+			SDL_Rect rightJapaneseRect = rightJapanese.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightJapaneseRect);
+		}
+		else if (App->rightgermanyplayer->IsEnabled()) {
+			SDL_Rect rightGermanRect = rightGerman.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightGermanRect);
+		}
+		else if (App->righenglishplayer->IsEnabled()) {
+			SDL_Rect rightEnglishRect = rightEnglish.GetCurrentFrame();
+			App->render->Blit(textureVS, 150, 40, &rightEnglishRect);
+		}
 	}
-	else if (App->rightgermanyplayer->IsEnabled()) {
-		SDL_Rect rightGermanRect = rightGerman.GetCurrentFrame();
-		App->render->Blit(textureVS, 150, 75, &rightGermanRect);
-	}
-	else if (App->righenglishplayer->IsEnabled()) {
-		SDL_Rect rightEnglishRect = rightEnglish.GetCurrentFrame();
-		App->render->Blit(textureVS, 150, 75, &rightEnglishRect);
-	}
-	*/
+	counter++;
 
 	return Update_Status::UPDATE_CONTINUE;
 }
