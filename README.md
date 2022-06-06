@@ -9,7 +9,7 @@ score points, unique characters and special courts.
 
 ## GitHub link
 
-https://github.com/Historn/Project-1.git
+(https://github.com/Historn/Project-1.git)
 
 ## Members of I WAS HIDING STUDIOS;
 
@@ -23,26 +23,26 @@ https://github.com/Historn/Project-1.git
 
 Even though each group member had a role, we all participated in the process of coding the game and its different stages. By doing this, we all work in different stages of the game and the work is not only easire but faster dividing the coding tasks between all of us.
 
-## Usage
+## Usage KEYBOARD / GAMEPAD
 
 Player 1:
- Move/Select: - W: Up
-	        - S: Down
-	        - A: Left
-	        - D: Right
-Confirm/Shots: - C: Confirm Selection, Normal Shot
-	         - V: Parabolic Shot
+ Move/Select:   - W / LeftAxis: Up
+	        - S / LeftAxis: Down
+	        - A / LeftAxis: Left
+	        - D / LeftAxis: Right
+ Confirm/Shots: - C / B button: Confirm Selection, Normal Shot
+	        - V / X button: Parabolic Shot
 
-Dash: - C (Hold) + Directional Input (WASD)(UP,DOWN,LEFT,RIGHT): Dashing/Diving 
+Dash: - C / B button (Hold) + Directional Input (WASD) / (LextAxis) (UP,DOWN,LEFT,RIGHT) : Dashing/Diving 
 	
 
 Player 2:
- Move/Select: - Up Arrow: Up
-	        - Down Arrow: Down
-	        - Left Arrow: Left
-	        - Right Arrow: Right
-Confirm/Shots: - N: Confirm Selection, Normal Shot
-	         - M: Parabolic Shot 
+ Move/Select:   - Up Arrow / LeftAxis: Up
+	        - Down Arrow / LeftAxis: Down
+	        - Left Arrow / LeftAxis: Left
+	        - Right Arrow / LeftAxis: Right
+ Confirm/Shots: - N / B button: Confirm Selection, Normal Shot
+	        - M / X button: Parabolic Shot 
 
 God Mode: - F1
 Debug Collisions: - F2
