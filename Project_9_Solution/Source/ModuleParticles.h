@@ -63,6 +63,8 @@ public:
 
 	Particle diskL;
 	Particle diskR;
+	Particle diskLParabolic;
+	Particle diskRParabolic;
 	Particle disk;
 	Particle caught;
 	Particle goalscoredleft;
@@ -75,7 +77,8 @@ public:
 	Particle caughtrightsidedown;
 	Particle goalscoredright5pts;
 	Particle goalscoredleft5pts;
-	
+
+	Animation* discCurrAnim = nullptr;
 
 
 private:

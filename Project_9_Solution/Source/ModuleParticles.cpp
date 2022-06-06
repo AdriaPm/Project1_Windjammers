@@ -51,19 +51,20 @@ bool ModuleParticles::Start()
 	diskL.speed.x = 5;
 	diskL.anim.speed = 0.2f;
 	
-	diskL.animParabolic.PushBack({ 35, 8, 18, 30});
-	diskL.animParabolic.PushBack({ 53, 7, 26, 32});
-	diskL.animParabolic.PushBack({ 79, 6, 37, 35});
-	diskL.animParabolic.PushBack({ 116, 5, 29, 37});
-	diskL.animParabolic.PushBack({ 145, 4, 22, 39});
-	diskL.animParabolic.PushBack({ 167, 2, 3, 40});
-	diskL.animParabolic.PushBack({ 171, 2, 24, 42});
-	diskL.animParabolic.PushBack({ 195, 2, 34, 43});
-	diskL.animParabolic.PushBack({ 229, 0, 44, 45});
-	diskL.animParabolic.pingpong = true;
+	diskLParabolic.anim.PushBack({ 35, 8, 18, 30});	//Franja Negra
+	diskLParabolic.anim.PushBack({ 53, 7, 26, 32});	//Franja Negra
+	diskLParabolic.anim.PushBack({ 79, 6, 37, 35});
+	diskLParabolic.anim.PushBack({ 116, 5, 29, 37});
+	diskLParabolic.anim.PushBack({ 145, 4, 22, 39});
+	diskLParabolic.anim.PushBack({ 167, 2, 3, 40});
+	diskLParabolic.anim.PushBack({ 171, 2, 24, 42});
+	diskLParabolic.anim.PushBack({ 195, 2, 34, 43});
+	diskLParabolic.anim.PushBack({ 229, 0, 44, 45});
+	diskLParabolic.anim.pingpong = true;
+	diskLParabolic.anim.loop = false;
 	diskL.lifetime = 1000;
 	diskL.speed.x = 5;
-	diskL.animParabolic.speed = 0.2f;
+	diskLParabolic.anim.speed = 0.3f;
 
 	diskR.anim.PushBack({ 117, 48, 17, 17 });
 	diskR.anim.PushBack({ 149, 48, 17, 17 });
@@ -73,19 +74,20 @@ bool ModuleParticles::Start()
 	diskR.speed.x = -5;
 	diskR.anim.speed = 0.2f;
 	
-	diskR.animParabolic.PushBack({ 35, 8, 18, 30 });
-	diskR.animParabolic.PushBack({ 53, 7, 26, 32 });
-	diskR.animParabolic.PushBack({ 79, 6, 37, 35 });
-	diskR.animParabolic.PushBack({ 116, 5, 29, 37 });
-	diskR.animParabolic.PushBack({ 145, 4, 22, 39 });
-	diskR.animParabolic.PushBack({ 167, 2, 3, 40 });
-	diskR.animParabolic.PushBack({ 171, 2, 24, 42 });
-	diskR.animParabolic.PushBack({ 195, 2, 34, 43 });
-	diskR.animParabolic.PushBack({ 229, 0, 44, 45 });
-	diskR.animParabolic.pingpong = true;
+	diskRParabolic.anim.PushBack({ 35, 8, 18, 30 });
+	diskRParabolic.anim.PushBack({ 53, 7, 26, 32 });
+	diskRParabolic.anim.PushBack({ 79, 6, 37, 35 });
+	diskRParabolic.anim.PushBack({ 116, 5, 29, 37 });
+	diskRParabolic.anim.PushBack({ 145, 4, 22, 39 });
+	diskRParabolic.anim.PushBack({ 167, 2, 3, 40 });
+	diskRParabolic.anim.PushBack({ 171, 2, 24, 42 });
+	diskRParabolic.anim.PushBack({ 195, 2, 34, 43 });
+	diskRParabolic.anim.PushBack({ 229, 0, 44, 45 });
+	diskRParabolic.anim.pingpong = true;
+	diskRParabolic.anim.loop = false;
 	diskR.lifetime = 1000;
 	diskR.speed.x = -5;
-	diskR.animParabolic.speed = 0.2f;
+	diskRParabolic.anim.speed = 0.2f;
 
 	wallCollision.anim.PushBack({ 232, 142, 58, 51});
 	wallCollision.anim.speed = 0.1f;
