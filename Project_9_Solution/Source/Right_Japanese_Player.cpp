@@ -1,3 +1,5 @@
+#include <SDL/include/SDL.h>
+
 #include "Right_Japanese_Player.h"
 #include "Left_Japanese_Player.h"
 #include "LeftGermanPlayer.h"
@@ -630,6 +632,9 @@ void Right_Japanese_Player::Movement()
 	}
 	else if (hasDisk == true)
 	{
+		int discTime = SDL_GetTicks();
+		LOG("%d", discTime);
+
 		//Holding disk animation
 		if (currentAnimation != &diskHoldTURF) {
 			diskHoldTURF.Reset();
@@ -649,56 +654,22 @@ void Right_Japanese_Player::Movement()
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
+			discTime = 0;
 			App->audio->PlayFx(discThrowSFX);
 		}
 
-		//if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-		//{
-		//	//Throwing animation
-		//	if (currentAnimation != &throwTURF) {
-		//		throwTURF.Reset();
-		//		currentAnimation = &throwTURF;
-		//	}
-
-		//	App->particles->diskR.speed.x = -1.0f;
-		//	App->particles->diskR.speed.y = -3.5f;
-		//	App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		//	App->particles->diskR.position.y += App->particles->diskR.speed.y;
-		//	Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
-		//	newParticle->collider->AddListener(this);
-		//	hasDisk = false;
-		//	App->audio->PlayFx(discThrowSFX);
-		//}
-
-		//if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		//{
-		//	//Throwing animation
-		//	if (currentAnimation != &throwTURF) {
-		//		throwTURF.Reset();
-		//		currentAnimation = &throwTURF;
-		//	}
-
-		//	App->particles->diskR.speed.x = -1.0f;
-		//	App->particles->diskR.speed.y = 3.5f;
-		//	App->particles->diskR.position.x += App->particles->diskR.speed.x;
-		//	App->particles->diskR.position.y += App->particles->diskR.speed.y;
-		//	Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
-		//	newParticle->collider->AddListener(this);
-		//	hasDisk = false;
-		//	App->audio->PlayFx(discThrowSFX);
-		//}
-
 		if (App->input->keys[SDL_SCANCODE_N] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
 		{
-			//NOT WORKIN
+			LOG("TIRO")
 			//Throwing animation
 			if (currentAnimation != &throwTURF) {
 				throwTURF.Reset();
 				currentAnimation = &throwTURF;
 			}
 
+
 			App->particles->diskR.speed.x = -1.0f;
-			App->particles->diskR.speed.y = 3.5f;
+			App->particles->diskR.speed.y = -3.5f;
 			App->particles->diskR.position.x += App->particles->diskR.speed.x;
 			App->particles->diskR.position.y += App->particles->diskR.speed.y;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskR, position.x - 20, position.y, Collider::Type::DISK);
@@ -714,6 +685,7 @@ void Right_Japanese_Player::Movement()
 				throwTURF.Reset();
 				currentAnimation = &throwTURF;
 			}
+
 
 			App->particles->diskR.speed.x = -2.0f;
 			App->particles->diskR.speed.y = -3.5f;
@@ -750,6 +722,7 @@ void Right_Japanese_Player::Movement()
 				throwTURF.Reset();
 				currentAnimation = &throwTURF;
 			}
+
 
 			App->particles->diskR.speed.x = -2.0f;
 			App->particles->diskR.speed.y = 3.5f;
