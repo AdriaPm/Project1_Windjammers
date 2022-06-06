@@ -26,6 +26,7 @@ bool ModuleParticles::Start()
 	texture_particles = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
 	//texture = App->textures->Load("Assets/Sprites/particles.png");
 	textureFX = App->textures->Load("Assets/Spriteswind/Particles/particlesAndEffects.png");
+	textureVS = App->textures->Load(" ");
 
 	//// Explosion particle
 	//explosion.anim.PushBack({274, 296, 33, 30});
@@ -51,19 +52,20 @@ bool ModuleParticles::Start()
 	diskL.speed.x = 5;
 	diskL.anim.speed = 0.2f;
 	
-	diskL.animParabolic.PushBack({ 35, 8, 18, 30});
-	diskL.animParabolic.PushBack({ 53, 7, 26, 32});
-	diskL.animParabolic.PushBack({ 79, 6, 37, 35});
-	diskL.animParabolic.PushBack({ 116, 5, 29, 37});
-	diskL.animParabolic.PushBack({ 145, 4, 22, 39});
-	diskL.animParabolic.PushBack({ 167, 2, 3, 40});
-	diskL.animParabolic.PushBack({ 171, 2, 24, 42});
-	diskL.animParabolic.PushBack({ 195, 2, 34, 43});
-	diskL.animParabolic.PushBack({ 229, 0, 44, 45});
-	diskL.animParabolic.pingpong = true;
+	diskLParabolic.anim.PushBack({ 35, 8, 18, 30});	//Franja Negra
+	diskLParabolic.anim.PushBack({ 53, 7, 26, 32});	//Franja Negra
+	diskLParabolic.anim.PushBack({ 79, 6, 37, 35});
+	diskLParabolic.anim.PushBack({ 116, 5, 29, 37});
+	diskLParabolic.anim.PushBack({ 145, 4, 22, 39});
+	diskLParabolic.anim.PushBack({ 167, 2, 3, 40});
+	diskLParabolic.anim.PushBack({ 171, 2, 24, 42});
+	diskLParabolic.anim.PushBack({ 195, 2, 34, 43});
+	diskLParabolic.anim.PushBack({ 229, 0, 44, 45});
+	diskLParabolic.anim.pingpong = true;
+	diskLParabolic.anim.loop = false;
 	diskL.lifetime = 1000;
 	diskL.speed.x = 5;
-	diskL.animParabolic.speed = 0.2f;
+	diskLParabolic.anim.speed = 0.3f;
 
 	diskR.anim.PushBack({ 117, 48, 17, 17 });
 	diskR.anim.PushBack({ 149, 48, 17, 17 });
@@ -73,19 +75,20 @@ bool ModuleParticles::Start()
 	diskR.speed.x = -5;
 	diskR.anim.speed = 0.2f;
 	
-	diskR.animParabolic.PushBack({ 35, 8, 18, 30 });
-	diskR.animParabolic.PushBack({ 53, 7, 26, 32 });
-	diskR.animParabolic.PushBack({ 79, 6, 37, 35 });
-	diskR.animParabolic.PushBack({ 116, 5, 29, 37 });
-	diskR.animParabolic.PushBack({ 145, 4, 22, 39 });
-	diskR.animParabolic.PushBack({ 167, 2, 3, 40 });
-	diskR.animParabolic.PushBack({ 171, 2, 24, 42 });
-	diskR.animParabolic.PushBack({ 195, 2, 34, 43 });
-	diskR.animParabolic.PushBack({ 229, 0, 44, 45 });
-	diskR.animParabolic.pingpong = true;
+	diskRParabolic.anim.PushBack({ 35, 8, 18, 30 });
+	diskRParabolic.anim.PushBack({ 53, 7, 26, 32 });
+	diskRParabolic.anim.PushBack({ 79, 6, 37, 35 });
+	diskRParabolic.anim.PushBack({ 116, 5, 29, 37 });
+	diskRParabolic.anim.PushBack({ 145, 4, 22, 39 });
+	diskRParabolic.anim.PushBack({ 167, 2, 3, 40 });
+	diskRParabolic.anim.PushBack({ 171, 2, 24, 42 });
+	diskRParabolic.anim.PushBack({ 195, 2, 34, 43 });
+	diskRParabolic.anim.PushBack({ 229, 0, 44, 45 });
+	diskRParabolic.anim.pingpong = true;
+	diskRParabolic.anim.loop = false;
 	diskR.lifetime = 1000;
 	diskR.speed.x = -5;
-	diskR.animParabolic.speed = 0.2f;
+	diskRParabolic.anim.speed = 0.2f;
 
 	wallCollision.anim.PushBack({ 232, 142, 58, 51});
 	wallCollision.anim.speed = 0.1f;
@@ -248,6 +251,42 @@ bool ModuleParticles::Start()
 	goalscoredleft5pts.speed.x = 0;
 	goalscoredleft5pts.anim.speed = 0.1f;
 
+	// VS players
+	leftJapanese.anim.PushBack({ , , , });
+	leftJapanese.anim.loop = true;
+	leftJapanese.lifetime = 400;
+	leftJapanese.speed.x = 0;
+	leftJapanese.anim.speed = 0.1f;
+
+	leftGerman.anim.PushBack({ , , , });
+	leftGerman.anim.loop = true;
+	leftGerman.lifetime = 400;
+	leftGerman.speed.x = 0;
+	leftGerman.anim.speed = 0.1f;
+
+	leftEnglish.anim.PushBack({ , , , });
+	leftEnglish.anim.loop = true;
+	leftEnglish.lifetime = 400;
+	leftEnglish.speed.x = 0;
+	leftEnglish.anim.speed = 0.1f;
+
+	rightJapanese.anim.PushBack({ , , , });
+	rightJapanese.anim.loop = true;
+	rightJapanese.lifetime = 400;
+	rightJapanese.speed.x = 0;
+	rightJapanese.anim.speed = 0.1f;
+
+	rightGerman.anim.PushBack({ , , , });
+	rightGerman.anim.loop = true;
+	rightGerman.lifetime = 400;
+	rightGerman.speed.x = 0;
+	rightGerman.anim.speed = 0.1f;
+
+	rightEnglish.anim.PushBack({ , , , });
+	rightEnglish.anim.loop = true;
+	rightEnglish.lifetime = 400;
+	rightEnglish.speed.x = 0;
+	rightEnglish.anim.speed = 0.1f;
 
 	return true;
 }
@@ -340,6 +379,7 @@ Update_Status ModuleParticles::PostUpdate()
 		{
 			App->render->Blit(texture_particles, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 			App->render->Blit(texture_disk, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(textureVS, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

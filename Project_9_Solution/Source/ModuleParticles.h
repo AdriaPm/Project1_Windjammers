@@ -63,6 +63,8 @@ public:
 
 	Particle diskL;
 	Particle diskR;
+	Particle diskLParabolic;
+	Particle diskRParabolic;
 	Particle disk;
 	Particle caught;
 	Particle goalscoredleft;
@@ -75,15 +77,25 @@ public:
 	Particle caughtrightsidedown;
 	Particle goalscoredright5pts;
 	Particle goalscoredleft5pts;
-	
+<<<<<<< HEAD
+=======
 
+	Animation* discCurrAnim = nullptr;
+>>>>>>> 7ba0fc1b42705935b69e06bc4965b8ad88a565ab
+
+	Particle leftJapanese;
+	Particle leftGerman;
+	Particle leftEnglish;
+	Particle rightJapanese;
+	Particle rightGerman;
+	Particle rightEnglish;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture_particles = nullptr;
 	SDL_Texture* texture_disk = nullptr;
 	SDL_Texture* textureFX = nullptr;
-
+	SDL_Texture* textureVS = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };

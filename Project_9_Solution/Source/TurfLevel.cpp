@@ -1,4 +1,5 @@
 #include "TurfLevel.h"
+#include <SDL/include/SDL.h>
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -196,8 +197,11 @@ Update_Status TurfLevel::PostUpdate()
 	SDL_Rect rect = currentRefAnim->GetCurrentFrame();
 	App->render->Blit(refTexture, 0, 0, &rect);
 
-
-
+	if (App->LeftJapanesePlayer->IsEnabled())
+		Particle* leftJapanese = App->particles->AddParticle(App->particles->leftJapanese, 150 , 150, Collider::Type::NONE);
+	else if(App->leftgermanyplayer->IsEnabled())
+		Particle* left
+	
 
 	
 	

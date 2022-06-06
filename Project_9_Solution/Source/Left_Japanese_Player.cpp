@@ -656,6 +656,7 @@ void Left_Japanese_Player::Movement()
 				discTime = 0;
 				App->audio->PlayFx(discThrowSFX);
 		}
+		
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
@@ -729,6 +730,24 @@ void Left_Japanese_Player::Movement()
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+
+		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
+		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
+			App->particles->diskLParabolic.speed.x = 2.0f;
+			App->particles->diskLParabolic.speed.y = 0.0f;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskLParabolic, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			discTime = 0;
 			App->audio->PlayFx(discThrowSFX);
 		}
 	}
