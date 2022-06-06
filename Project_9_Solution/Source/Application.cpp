@@ -31,6 +31,7 @@
 #include "ChooseMap.h"
 #include "ChooseCharacter.h"
 #include "UI.h"
+#include "ModuleController.h"
 
 Application::Application()
 {
@@ -43,30 +44,30 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 	
-
-	modules[4] = Upc = new UPC(true);
-	modules[5] = sceneIntro = new SceneIntro(false);
-	modules[6] = dataEast = new DataEast(false);
-	modules[7] = mainScreen = new MainScreen(false);
-	modules[8] = tutorialScene = new TutorialScene(false);
-	modules[9] = chooseCharacter = new ChooseCharacter(false);
-	modules[10] = chooseMap = new ChooseMap(false);
-	modules[11] = turflevel = new TurfLevel(false);		//Gameplay scene starts disabled
-	modules[12] = beachlevel = new BeachLevel(false);
-	modules[13] = clay = new ClayModule(false);
-	modules[14] = LeftJapanesePlayer = new Left_Japanese_Player(false);	//Player starts disabled
-	modules[15] = leftgermanyplayer = new LeftGermanPlayer(false);
-	modules[16] = rightgermanyplayer = new RightGermanPlayer(false);
-	modules[17] = RightJapanesePlayer = new Right_Japanese_Player(false);
-	modules[18] = leftenglishplayer = new LeftEnglishPlayer(false);
-	modules[19] = righenglishplayer = new RightEnglishPlayer(false);
-	modules[20] =	particles =		new ModuleParticles(true);
-	modules[21] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-	modules[22] =	collisions =	new ModuleCollisions(true);
-	modules[23] =	fade =			new ModuleFadeToBlack(true);
-	modules[24] =	fonts =			new ModuleFonts(true);
-	modules[25] =	ui	 =			new UI(false);
-	modules[26] =	render =		new ModuleRender(true);
+	modules[4] = controller = new ModuleController(true);
+	modules[5] = Upc = new UPC(true);
+	modules[6] = sceneIntro = new SceneIntro(false);
+	modules[7] = dataEast = new DataEast(false);
+	modules[8] = mainScreen = new MainScreen(false);
+	modules[9] = tutorialScene = new TutorialScene(false);
+	modules[10] = chooseCharacter = new ChooseCharacter(false);
+	modules[11] = chooseMap = new ChooseMap(false);
+	modules[12] = turflevel = new TurfLevel(false);		//Gameplay scene starts disabled
+	modules[13] = beachlevel = new BeachLevel(false);
+	modules[14] = clay = new ClayModule(false);
+	modules[15] = LeftJapanesePlayer = new Left_Japanese_Player(false);	//Player starts disabled
+	modules[16] = leftgermanyplayer = new LeftGermanPlayer(false);
+	modules[17] = rightgermanyplayer = new RightGermanPlayer(false);
+	modules[18] = RightJapanesePlayer = new Right_Japanese_Player(false);
+	modules[19] = leftenglishplayer = new LeftEnglishPlayer(false);
+	modules[20] = righenglishplayer = new RightEnglishPlayer(false);
+	modules[21] =	particles =		new ModuleParticles(true);
+	modules[22] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[23] =	collisions =	new ModuleCollisions(true);
+	modules[24] =	fade =			new ModuleFadeToBlack(true);
+	modules[25] =	fonts =			new ModuleFonts(true);
+	modules[26] =	ui	 =			new UI(false);
+	modules[27] =	render =		new ModuleRender(true);
 	
 	
 }
