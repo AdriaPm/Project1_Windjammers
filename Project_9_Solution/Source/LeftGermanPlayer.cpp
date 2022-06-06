@@ -679,9 +679,9 @@ void LeftGermanPlayer::Movement() {
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
-		/*	int tickamount = SDL_GetTicks();
-			int tickfinal = tickamount + 10;*/
-			/*inAnim = true;*/
+			int tickamount = SDL_GetTicks();
+			int tickfinal = tickamount + 10;
+			inAnim = true;
 			if (currentAnimation != &Throw) {
 				Throw.Reset();
 				currentAnimation = &Throw;
@@ -694,10 +694,10 @@ void LeftGermanPlayer::Movement() {
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 
-			/*if (currentAnimation->HasFinished() == true)
+			if (currentAnimation->HasFinished() == true) {
 				inAnim = false;
-			}*/
-			
+			}
+
 		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -769,19 +769,21 @@ void LeftGermanPlayer::Movement() {
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
-	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& hasDisk == false
-		&& inAnim == false
-		/*&& inslide != true
-		&& scored3 != true*/) {
-		currentAnimation = &idleAnim;
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
+			&& hasDisk == false
+			&& inAnim == false
+			/*&& inslide != true
+			&& scored3 != true*/) {
+			currentAnimation = &idleAnim;
+		}
+
 	}
 }
 		
