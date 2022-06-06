@@ -334,6 +334,7 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL)
 		{
+			
 			App->ui->leftScore += 300;
 			App->ui->counterLeftScore += 3;
 			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
@@ -389,6 +390,34 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 			App->righenglishplayer->position.x = 240;
 			App->righenglishplayer->position.y = 105;
 		}
+		else if(App->particles->diskLParabolic.anim.GetPingPongCount() >= 1 && c2->type != Collider::Type::PLAYER)
+		{
+			App->ui->leftScore += 200;
+			App->ui->counterLeftScore += 2;
+			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
+			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
+
+			App->rightgermanyplayer->hasDisk = true;
+			App->RightJapanesePlayer->hasDisk = true;
+			App->righenglishplayer->hasDisk = true;
+
+			//sfx
+			App->audio->PlayFx(goalSFX);
+			App->audio->PlayFx(crowdGoalSFX);
+			App->audio->PlayFx(referee3ptsSFX);
+
+			//reset players positions when scoring
+			position.x = initialXPos;
+			position.y = initialYPos;
+			App->RightJapanesePlayer->position.x = 240;
+			App->RightJapanesePlayer->position.y = 105;
+
+			App->rightgermanyplayer->position.x = 240;
+			App->rightgermanyplayer->position.y = 105;
+
+			App->righenglishplayer->position.x = 240;
+			App->righenglishplayer->position.y = 105;
+		}
 	}
 	else if (godMode == true) {
 		if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::RIGHT_3P_GOAL ||
@@ -420,14 +449,41 @@ void Left_Japanese_Player::OnCollision(Collider* c1, Collider* c2)
 
 		App->audio->PlayFx(diskCollisionSFX);
 	}
+
+	if (c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::UPPER_WALL)
+	{
+
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
+
+		App->audio->PlayFx(diskCollisionSFX);
+	}
+	
+	if (c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::LOWER_WALL)
+	{
+
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
+
+		App->audio->PlayFx(diskCollisionSFX);
+	}
 	
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
 		Particle* caughtstraightL = App->particles->AddParticle(App->particles->caughtleftsidenormal, position.x + 20, position.y - 20, Collider::Type::NONE);
 		hasDisk = true;
 	}
+	
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PARABOLIC_DISK)
+	{
+		Particle* caughtstraightL = App->particles->AddParticle(App->particles->caughtleftsidenormal, position.x + 20, position.y - 20, Collider::Type::NONE);
+		hasDisk = true;
+	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::PLAYER)
+	{
+		App->particles->diskL.HasDiskL == true;
+	}
+	
+	if (c1->type == Collider::Type::PARABOLIC_DISK && c2->type == Collider::Type::PLAYER)
 	{
 		App->particles->diskL.HasDiskL == true;
 	}
@@ -640,6 +696,10 @@ void Left_Japanese_Player::Movement()
 			currentAnimation = &diskHoldTURF;
 		}
 
+
+		//
+		//	NORMAL SHOT
+		//
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
 			//Throwing animation
@@ -733,7 +793,9 @@ void Left_Japanese_Player::Movement()
 			App->audio->PlayFx(discThrowSFX);
 		}
 
-
+		//
+		//	PARABOLIC SHOT
+		//
 		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
 			//Throwing animation
@@ -744,12 +806,51 @@ void Left_Japanese_Player::Movement()
 
 			App->particles->diskLParabolic.speed.x = 2.0f;
 			App->particles->diskLParabolic.speed.y = 0.0f;
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskLParabolic, position.x + 20, position.y, Collider::Type::DISK);
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskLParabolic, position.x + 20, position.y, Collider::Type::PARABOLIC_DISK);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
 			discTime = 0;
 			App->audio->PlayFx(discThrowSFX);
 		}
+
+		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
+
+			App->particles->diskLParabolic.speed.x = 2.0f;
+			App->particles->diskLParabolic.speed.y = -1.5f;
+			App->particles->diskLParabolic.position.x += App->particles->diskLParabolic.speed.x;
+			App->particles->diskLParabolic.position.y += App->particles->diskLParabolic.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskLParabolic, position.x + 20, position.y, Collider::Type::PARABOLIC_DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
+			App->particles->diskLParabolic.speed.x = 2.0f;
+			App->particles->diskLParabolic.speed.y = 1.5f;
+			App->particles->diskLParabolic.position.x += App->particles->diskLParabolic.speed.x;
+			App->particles->diskLParabolic.position.y += App->particles->diskLParabolic.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskLParabolic, position.x + 20, position.y, Collider::Type::PARABOLIC_DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
 	}
 
 	// If no up/down left/right movement detected, set the current animation back to idle

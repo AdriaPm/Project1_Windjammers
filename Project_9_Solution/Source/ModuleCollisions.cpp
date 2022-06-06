@@ -119,6 +119,16 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::DISK][Collider::Type::LEFT_5P_GOAL] = true;
 	matrix[Collider::Type::DISK][Collider::Type::RIGHT_5P_GOAL] = true;
 	
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::NET] = false;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::UPPER_WALL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::LOWER_WALL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::LEFT_3P_GOAL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::RIGHT_3P_GOAL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::LEFT_5P_GOAL] = true;
+	matrix[Collider::Type::PARABOLIC_DISK][Collider::Type::RIGHT_5P_GOAL] = true;
+	
 }
 
 // Destructor
@@ -236,6 +246,8 @@ void ModuleCollisions::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 100, 255, 255, alpha);
 			break;
 			case Collider::Type::DISK: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			case Collider::Type::PARABOLIC_DISK: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		}

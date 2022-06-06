@@ -17,6 +17,7 @@ private:
 	float currentFrame = 0.0f;
 	int totalFrames = 0;
 	int loopCount = 0;
+	int pingpongCount = 0;
 	int pingpongDirection = 1;
 
 public:
@@ -49,15 +50,26 @@ public:
 		{
 			currentFrame = (loop || pingpong) ? 0.0f : totalFrames - 1;
 			++loopCount;
+			
 
-			if (pingpong)
+			if (pingpong) {
 				pingpongDirection = -pingpongDirection;
+				if (currentFrame == 0) {
+					++pingpongCount;
+				}
+			}
+				
 		}
 	}
 
 	int GetLoopCount() const 
 	{
 		return loopCount;
+	}
+	
+	int GetPingPongCount() const 
+	{
+		return pingpongCount;
 	}
 	
 	float GetCurrentFrameCount() const

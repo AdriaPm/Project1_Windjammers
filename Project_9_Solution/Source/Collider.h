@@ -24,6 +24,7 @@ struct Collider
 		RIGHT_5P_GOAL,
 		NET,
 		DISK,
+		PARABOLIC_DISK,
 		
 
 		MAX

@@ -48,11 +48,7 @@
     <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
     <LinkIncremental>true</LinkIncremental>
-<<<<<<< Updated upstream
     <OutDir>$(SolutionDir)/$(SolutionName)/Game</OutDir>
-=======
-    <OutDir>$(ProjectDir)</OutDir>
->>>>>>> Stashed changes
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

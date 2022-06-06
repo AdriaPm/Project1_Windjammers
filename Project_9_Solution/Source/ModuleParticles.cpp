@@ -62,9 +62,9 @@ bool ModuleParticles::Start()
 	diskLParabolic.anim.PushBack({ 229, 0, 44, 45});
 	diskLParabolic.anim.pingpong = true;
 	diskLParabolic.anim.loop = false;
-	diskL.lifetime = 1000;
-	diskL.speed.x = 5;
-	diskLParabolic.anim.speed = 0.3f;
+	diskLParabolic.lifetime = 500;
+	diskLParabolic.speed.x = 5;
+	diskLParabolic.anim.speed = 0.4f;
 
 	diskR.anim.PushBack({ 117, 48, 17, 17 });
 	diskR.anim.PushBack({ 149, 48, 17, 17 });
@@ -85,9 +85,9 @@ bool ModuleParticles::Start()
 	diskRParabolic.anim.PushBack({ 229, 0, 44, 45 });
 	diskRParabolic.anim.pingpong = true;
 	diskRParabolic.anim.loop = false;
-	diskR.lifetime = 1000;
-	diskR.speed.x = -5;
-	diskRParabolic.anim.speed = 0.2f;
+	diskRParabolic.lifetime = 500;
+	diskRParabolic.speed.x = -5;
+	diskRParabolic.anim.speed = 0.4f;
 
 	wallCollision.anim.PushBack({ 232, 142, 58, 51});
 	wallCollision.anim.speed = 0.1f;
