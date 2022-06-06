@@ -449,13 +449,13 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 void LeftGermanPlayer::Movement() {
 	if (hasDisk == false) {
-		
+
 		/*
 		if (shadowAnimation != &ShadowAnim)
 		{
 			leftAnim.Reset();
 			shadowAnimation = &ShadowAnim;
-		} 
+		}
 		*/
 
 		//Left Anim
@@ -560,24 +560,130 @@ void LeftGermanPlayer::Movement() {
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT){
+		//Left Slide
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.x -= speedslide;
+			if (currentAnimation != &SlideLAnim)
+			{
+				SlideLAnim.Reset();
+				currentAnimation = &SlideLAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Right Slide
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.x += speedslide;
+			if (currentAnimation != &SlideRAnim)
+			{
+				SlideRAnim.Reset();
+				currentAnimation = &SlideRAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			if (currentAnimation != &SlideDAnim)
+			{
+				SlideDAnim.Reset();
+				currentAnimation = &SlideDAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			if (currentAnimation != &SlideUAnim)
+			{
+				SlideUAnim.Reset();
+				currentAnimation = &SlideUAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Left Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			position.x -= speedslide;
+			if (currentAnimation != &SlideUpLeftAnim)
+			{
+				SlideUpLeftAnim.Reset();
+				currentAnimation = &SlideUpLeftAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Up Right Slide
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y -= speedslide;
+			position.x += speedslide;
+			if (currentAnimation != &SlideUpRightAnim)
+			{
+				SlideUpRightAnim.Reset();
+				currentAnimation = &SlideUpRightAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Left Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			position.x -= speedslide;
+			if (currentAnimation != &SlideDownLeftAnim)
+			{
+				SlideDownLeftAnim.Reset();
+				currentAnimation = &SlideDownLeftAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		//Down Right Slide
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		{
+			position.y += speedslide;
+			position.x += speedslide;
+			if (currentAnimation != &SlideDownRightAnim)
+			{
+				SlideDownRightAnim.Reset();
+				currentAnimation = &SlideDownRightAnim;
+			}
+			App->audio->PlayFx(slidingSFX);
+		}
+
+		/*if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT){
 			inslide = true;
 		}
 		else {
 			inslide = false;
-		}
+		}*/
 
 		//Normal Throw Animation
 	}
 
 	else if (hasDisk == true) {
-		
-		currentAnimation = &HoldingAnim;
+
+		if (currentAnimation != &HoldingAnim) {
+			HoldingAnim.Reset();
+			currentAnimation = &HoldingAnim;
+		}
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
-			currentAnimation = &Throw;
-			
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
+
 			App->particles->diskL.speed.x = 5.0f;
 			App->particles->diskL.speed.y = 0.0f;
 			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
@@ -586,9 +692,13 @@ void LeftGermanPlayer::Movement() {
 			App->audio->PlayFx(discThrowSFX);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
-			currentAnimation = &Throw;
+			//Throwing animation
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
 
 			App->particles->diskL.speed.x = 1.0f;
 			App->particles->diskL.speed.y = -3.5f;
@@ -600,11 +710,49 @@ void LeftGermanPlayer::Movement() {
 			App->audio->PlayFx(discThrowSFX);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			currentAnimation = &Throw;
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
+
+			App->particles->diskL.speed.x = 2.0f;
+			App->particles->diskL.speed.y = -3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+		{
+			//Throwing animation
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
 
 			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = 3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+			if (currentAnimation != &Throw) {
+				Throw.Reset();
+				currentAnimation = &Throw;
+			}
+
+			App->particles->diskL.speed.x = 2.0f;
 			App->particles->diskL.speed.y = 3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
@@ -621,118 +769,119 @@ void LeftGermanPlayer::Movement() {
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
-		&& hasDisk != true
-		&& inslide != true
-		&& scored3 != true){
+		&& hasDisk == false
+		/*&& inslide != true
+		&& scored3 != true*/) {
 		currentAnimation = &idleAnim;
-		}
+	}
+}
 		
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
-	if (inslide == true) {
+	//if (inslide == true) {
 
-		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
-		{
-			position.x += speedslide;
-			currentAnimation = &SlideRAnim;
-			/*inslide = false;*/
-		}
+	//	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.x += speedslide;
+	//		currentAnimation = &SlideRAnim;
+	//		/*inslide = false;*/
+	//	}
 
-		//Up Slide Anim
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) {
-			position.y -= speedslide;
+	//	//Up Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) {
+	//		position.y -= speedslide;
 
-			if (currentAnimation != &SlideUAnim)
-			{
-				SlideUAnim.Reset();
-				currentAnimation = &SlideUAnim;
-			}
-			inslide = false;
-		}
+	//		if (currentAnimation != &SlideUAnim)
+	//		{
+	//			SlideUAnim.Reset();
+	//			currentAnimation = &SlideUAnim;
+	//		}
+	//		inslide = false;
+	//	}
 
-		//Left Slide Anim
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
-		{
-			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
-			position.x -= speedslide;
+	//	//Left Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	//	{
+	//		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
+	//		position.x -= speedslide;
 
-			if (currentAnimation != &SlideLAnim)
-			{
-				SlideLAnim.Reset();
-				currentAnimation = &SlideLAnim;
-			}
-			inslide = false;
-		}
+	//		if (currentAnimation != &SlideLAnim)
+	//		{
+	//			SlideLAnim.Reset();
+	//			currentAnimation = &SlideLAnim;
+	//		}
+	//		inslide = false;
+	//	}
 
-		//Down Slide Anim
-		if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		{
-			position.y += speedslide;
+	//	//Down Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.y += speedslide;
 
-			if (currentAnimation != &SlideDAnim)
-			{
-				SlideDAnim.Reset();
-				currentAnimation = &SlideDAnim;
-			}
-			inslide = false;
-			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
-		}
+	//		if (currentAnimation != &SlideDAnim)
+	//		{
+	//			SlideDAnim.Reset();
+	//			currentAnimation = &SlideDAnim;
+	//		}
+	//		inslide = false;
+	//		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
+	//	}
 
-		//Up Left Slide Anim
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-		{
-			position.x -= speedcross;
-			position.y -= speedcross;
+	//	//Up Left Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.x -= speedcross;
+	//		position.y -= speedcross;
 
-			if (currentAnimation != &SlideUpLeftAnim)
-			{
-				SlideUpLeftAnim.Reset();
-				currentAnimation = &SlideUpLeftAnim;
-			}
-			inslide = false;
-		}
+	//		if (currentAnimation != &SlideUpLeftAnim)
+	//		{
+	//			SlideUpLeftAnim.Reset();
+	//			currentAnimation = &SlideUpLeftAnim;
+	//		}
+	//		inslide = false;
+	//	}
 
-		//Up Right Slide Anim
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
-		{
-			position.x += speedcross;
-			position.y -= speedcross;
+	//	//Up Right Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.x += speedcross;
+	//		position.y -= speedcross;
 
-			if (currentAnimation != &SlideUpRightAnim)
-			{
-				SlideUpRightAnim.Reset();
-				currentAnimation = &SlideUpRightAnim;
-			}
-			inslide = false;
-			/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
-		}
+	//		if (currentAnimation != &SlideUpRightAnim)
+	//		{
+	//			SlideUpRightAnim.Reset();
+	//			currentAnimation = &SlideUpRightAnim;
+	//		}
+	//		inslide = false;
+	//		/*App->P2Status = Player_State_Right::PLAYER_DIVE;*/
+	//	}
 
-		// Down Left Slide Anim
-		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		{
-			position.x -= speedcross;
-			position.y += speedcross;
+	//	// Down Left Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.x -= speedcross;
+	//		position.y += speedcross;
 
-			if (currentAnimation != &SlideDownLeftAnim)
-			{
-				SlideDownLeftAnim.Reset();
-				currentAnimation = &SlideDownLeftAnim;
-			}
-			inslide = false;
-		}
+	//		if (currentAnimation != &SlideDownLeftAnim)
+	//		{
+	//			SlideDownLeftAnim.Reset();
+	//			currentAnimation = &SlideDownLeftAnim;
+	//		}
+	//		inslide = false;
+	//	}
 
-		// Down Right Slide Anim
-		if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
-		{
-			position.x += speedcross;
-			position.y += speedcross;
+	//	// Down Right Slide Anim
+	//	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	//	{
+	//		position.x += speedcross;
+	//		position.y += speedcross;
 
-			if (currentAnimation != &SlideDownRightAnim)
-			{
-				SlideDownRightAnim.Reset();
-				currentAnimation = &SlideDownRightAnim;
-			}
-			inslide = false;
-		}
+	//		if (currentAnimation != &SlideDownRightAnim)
+	//		{
+	//			SlideDownRightAnim.Reset();
+	//			currentAnimation = &SlideDownRightAnim;
+	//		}
+	//		inslide = false;
+		/*}*/
 
 		/*	if (App->input->keys[SDL_SCANCODE_RIGHT] != Key_State::KEY_REPEAT &&
 				App->input->keys[SDL_SCANCODE_LEFT] != Key_State::KEY_REPEAT &&
@@ -742,7 +891,7 @@ void LeftGermanPlayer::Movement() {
 
 
 			}*/
-	}
+	/*}*/
 
 	//if (scored3 == true) {
 
@@ -756,5 +905,5 @@ void LeftGermanPlayer::Movement() {
 
 	//	scored3 = false;
 	//}
-}
+//}
 
