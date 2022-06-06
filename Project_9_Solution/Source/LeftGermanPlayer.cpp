@@ -191,7 +191,7 @@ LeftGermanPlayer::LeftGermanPlayer(bool startEnabled) : Module(startEnabled)
 	Throw.PushBack({ 174, 288, 30, 35 });
 	Throw.PushBack({ 230, 288, 22, 35 });
 	Throw.loop = false;
-	Throw.speed = 0.2f;
+	Throw.speed = 0.3f;
 
 	/*
 	ShadowAnim.PushBack({36, 530, 33, 33});
@@ -561,7 +561,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Left Slide
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.x -= speedslide;
 			if (currentAnimation != &SlideLAnim)
@@ -573,7 +573,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Right Slide
-		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.x += speedslide;
 			if (currentAnimation != &SlideRAnim)
@@ -585,7 +585,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Down Slide
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y += speedslide;
 			if (currentAnimation != &SlideDAnim)
@@ -597,7 +597,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Up Slide
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y -= speedslide;
 			if (currentAnimation != &SlideUAnim)
@@ -609,7 +609,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Up Left Slide
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y -= speedslide;
 			position.x -= speedslide;
@@ -622,7 +622,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Up Right Slide
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y -= speedslide;
 			position.x += speedslide;
@@ -635,7 +635,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Down Left Slide
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y += speedslide;
 			position.x -= speedslide;
@@ -648,7 +648,7 @@ void LeftGermanPlayer::Movement() {
 		}
 
 		//Down Right Slide
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_REPEAT)
 		{
 			position.y += speedslide;
 			position.x += speedslide;
@@ -686,7 +686,7 @@ void LeftGermanPlayer::Movement() {
 
 			App->particles->diskL.speed.x = 5.0f;
 			App->particles->diskL.speed.y = 0.0f;
-			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK, 30);
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
