@@ -289,7 +289,7 @@ Update_Status RightGermanPlayer::Update()
 			currentAnimation = &victAnim;
 		}
 		
-		if (time >= 5000) {
+		if (time >= 2000) {
 			isCelebrating = false;
 			
 		}
@@ -302,7 +302,7 @@ Update_Status RightGermanPlayer::Update()
 			currentAnimation = &ScoredOn;
 		}
 	
-		if (time >= 5000) {
+		if (time >= 2000) {
 			currentAnimation = &HoldingAnim;
 			isDefeated = false;
 			hasDisk = true;
@@ -387,6 +387,13 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			Particle* goalscoredleft = App->particles->AddParticle(App->particles->goalscoredleft, c1->rect.x, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredright3pts = App->particles->AddParticle(App->particles->goalscoredright3pts, c1->rect.x + 10, c1->rect.y - 10, Collider::Type::NONE);
 
+			timedef = SDL_GetTicks();
+
+			this->isCelebrating = true;
+			App->leftgermanyplayer->isDefeated = true;
+			App->LeftJapanesePlayer->isDefeated = true;
+			App->leftenglishplayer->isDefeated = true;
+
 			App->leftgermanyplayer->hasDisk = true;
 			App->LeftJapanesePlayer->hasDisk = true;
 			App->leftenglishplayer->hasDisk = true;
@@ -419,6 +426,13 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 
 			this->isCelebrating = true;
 			App->leftgermanyplayer->isDefeated = true;
+			App->LeftJapanesePlayer->isDefeated = true;
+			App->leftenglishplayer->isDefeated = true;
+
+
+			App->LeftJapanesePlayer->hasDisk = true;
+			App->leftenglishplayer->hasDisk = true;
+
 
 			/*if (currentAnimation != &victAnim) {
 				victAnim.Reset();
@@ -430,6 +444,7 @@ void RightGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			}*/
 
 			App->LeftJapanesePlayer->hasDisk = true;
+			App->leftgermanyplayer->hasDisk = true;
 			App->leftenglishplayer->hasDisk = true;
 
 			//sfx

@@ -89,6 +89,14 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
+	int timevic;
+	int timedef;
+
+	int slidetickinit;
+	int throwtickinit;
+	bool throwingdisk = false;
+	bool inslide = false;
+
 	// Sound effects indices
 	uint slidingSFX = 0;
 	uint discThrowSFX = 0;
@@ -105,6 +113,10 @@ public:
 
 	//disc bool
 	bool hasDisk = false;
+
+	bool isCelebrating = false; 
+
+	bool isDefeated = false; 
 
 	// Font score index
 	uint scoreJapRight = 000;
