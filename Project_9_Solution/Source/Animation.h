@@ -55,7 +55,7 @@ public:
 			if (pingpong) {
 				pingpongDirection = -pingpongDirection;
 				if (currentFrame == 0) {
-					++pingpongCount;
+					pingpong = false;
 				}
 			}
 				

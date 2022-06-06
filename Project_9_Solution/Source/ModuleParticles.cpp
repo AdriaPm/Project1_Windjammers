@@ -290,7 +290,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1 && !particles[i]->collider->DISK) //&& !particles[i]->collider->DISK
+		if (particles[i] != nullptr && particles[i]->collider == c1 && !particles[i]->collider->DISK || !particles[i]->collider->PARABOLIC_DISK) //&& !particles[i]->collider->DISK
 		{
 			particles[i]->pendingToDelete = true;
 			particles[i]->collider->pendingToDelete = true;
@@ -309,6 +309,28 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			particles[i]->collider->pendingToDelete = true;
 			break;
 		}
+		
+		if (particles[i]->collider->PARABOLIC_DISK && c2->type == Collider::Type::UPPER_WALL || c2->type == Collider::Type::LOWER_WALL)
+		{
+			particles[i]->speed.y = 0;
+			particles[i]->speed.x = 0;
+			break;
+		}
+		else if(particles[i]->collider->PARABOLIC_DISK && c2->type == Collider::Type::PLAYER)
+		{
+			particles[i]->pendingToDelete = true;
+			particles[i]->collider->pendingToDelete = true;
+			break;
+		}
+		/*else if(particles[i]->collider->PARABOLIC_DISK && particles[i]->anim.pingpong == false)
+		{
+			particles[i]->speed.x = 0;
+			particles[i]->speed.y = 0;
+			SDL_Delay(50);
+			particles[i]->pendingToDelete = true;
+			particles[i]->collider->pendingToDelete = true;
+			break;
+		}*/
 	}
 }
 
