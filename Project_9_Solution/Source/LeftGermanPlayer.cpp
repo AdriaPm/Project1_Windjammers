@@ -277,7 +277,16 @@ Update_Status LeftGermanPlayer::Update()
 
 	collider->SetPos(position.x, position.y);
 
-	
+	if (isCelebrating == true) {
+		
+		int time = SDL_GetTicks() - time1;
+		if (time >= 20000) {
+			isCelebrating = false;
+			time = 0;
+		}
+		
+	}
+
 	currentAnimation->Update();
 	shadowAnim.Update();
 
@@ -380,7 +389,13 @@ void LeftGermanPlayer::OnCollision(Collider* c1, Collider* c2)
 			Particle* goalscoredright = App->particles->AddParticle(App->particles->goalscoredright, c1->rect.x - 24, c1->rect.y - 25, Collider::Type::NONE);
 			Particle* goalscoredright5pts = App->particles->AddParticle(App->particles->goalscoredright5pts, c1->rect.x - 40, c1->rect.y - 25, Collider::Type::NONE);
 
-
+			isCelebrating = true;
+			if (currentAnimation != &victAnim) {
+				victAnim.Reset();
+				currentAnimation = &victAnim;
+			}
+			LOG("Start Animation")
+		
 			App->rightgermanyplayer->hasDisk = true;
 			App->RightJapanesePlayer->hasDisk = true;
 			App->righenglishplayer->hasDisk = true;
@@ -678,9 +693,9 @@ void LeftGermanPlayer::Movement() {
 
 		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE)
 		{
-			int tickamount = SDL_GetTicks();
+			/*int tickamount = SDL_GetTicks();
 			int tickfinal = tickamount + 10;
-			inAnim = true;
+			inAnim = true;*/
 			if (currentAnimation != &Throw) {
 				Throw.Reset();
 				currentAnimation = &Throw;
@@ -692,10 +707,6 @@ void LeftGermanPlayer::Movement() {
 			newParticle->collider->AddListener(this);
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
-
-			if (currentAnimation->HasFinished() == true) {
-				inAnim = false;
-			}
 
 		}
 
@@ -768,7 +779,7 @@ void LeftGermanPlayer::Movement() {
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
-
+	}
 
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
@@ -777,14 +788,17 @@ void LeftGermanPlayer::Movement() {
 			&& App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_IDLE
 			&& hasDisk == false
-			&& inAnim == false
+			&& isCelebrating == false
+			/*&& inAnim == false*/
 			/*&& inslide != true
 			&& scored3 != true*/) {
 			currentAnimation = &idleAnim;
 		}
 
-	}
+
 }
+
+
 		
 		/*App->P1Status = Player_State_Left::PLAYER_IDLE;*/
 	//if (inslide == true) {

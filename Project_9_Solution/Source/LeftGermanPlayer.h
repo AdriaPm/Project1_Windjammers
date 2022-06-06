@@ -98,6 +98,8 @@ public:
 	//God Mode
 	bool godMode = false;
 
+	int time1 = 0;
+
 	bool isDefeated = false;
 	bool isCelebrating = false;
 
