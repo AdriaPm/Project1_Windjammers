@@ -9,7 +9,7 @@ score points, unique characters and special courts.
 
 ## GitHub link
 
-(https://github.com/Historn/Project-1.git)
+Click [here](https://github.com/Historn/Project-1.git) to go to our Github.
 
 ## Members of I WAS HIDING STUDIOS;
 
