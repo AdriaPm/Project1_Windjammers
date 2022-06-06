@@ -384,28 +384,19 @@ void LeftEnglishPlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::UPPER_WALL)
 	{
-		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = 3.5f;
-		App->particles->diskL.position.x += App->particles->diskL.speed.x;
-		App->particles->diskL.position.y += App->particles->diskL.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 
 	if (c1->type == Collider::Type::DISK && c2->type == Collider::Type::LOWER_WALL)
 	{
-		App->particles->diskL.speed.x = 1.0f;
-		App->particles->diskL.speed.y = -3.5f;
-		App->particles->diskL.position.x += App->particles->diskL.speed.x;
-		App->particles->diskL.position.y += App->particles->diskL.speed.y;
-		Particle* newParticle = App->particles->AddParticle(App->particles->diskL, c1->rect.x, c1->rect.y, Collider::Type::DISK);
-		newParticle->collider->AddListener(this);
+		Particle* newParticleBounceTop = App->particles->AddParticle(App->particles->caught, c1->rect.x, c1->rect.y, Collider::Type::NONE);
 		App->audio->PlayFx(diskCollisionSFX);
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DISK)
 	{
+		Particle* caughtstraightL = App->particles->AddParticle(App->particles->caughtleftsidenormal, position.x + 20, position.y - 20, Collider::Type::NONE);
 		hasDisk = true;
 	}
 
@@ -639,7 +630,7 @@ void LeftEnglishPlayer::Movement()
 			App->audio->PlayFx(discThrowSFX);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
 			//Throwing animation
 			if (currentAnimation != &throwTURF) {
@@ -657,8 +648,27 @@ void LeftEnglishPlayer::Movement()
 			hasDisk = false;
 			App->audio->PlayFx(discThrowSFX);
 		}
+		else if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
 
-		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
+
+			App->particles->diskL.speed.x = 2.0f;
+			App->particles->diskL.speed.y = -3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 		{
 			//Throwing animation
 			if (currentAnimation != &throwTURF) {
@@ -667,6 +677,25 @@ void LeftEnglishPlayer::Movement()
 			}
 
 			App->particles->diskL.speed.x = 1.0f;
+			App->particles->diskL.speed.y = 3.5f;
+			App->particles->diskL.position.x += App->particles->diskL.speed.x;
+			App->particles->diskL.position.y += App->particles->diskL.speed.y;
+			Particle* newParticle = App->particles->AddParticle(App->particles->diskL, position.x + 20, position.y, Collider::Type::DISK);
+			newParticle->collider->AddListener(this);
+			hasDisk = false;
+			App->audio->PlayFx(discThrowSFX);
+		}
+		else if (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+
+			//Throwing animation
+			if (currentAnimation != &throwTURF) {
+				throwTURF.Reset();
+				currentAnimation = &throwTURF;
+			}
+
+
+			App->particles->diskL.speed.x = 2.0f;
 			App->particles->diskL.speed.y = 3.5f;
 			App->particles->diskL.position.x += App->particles->diskL.speed.x;
 			App->particles->diskL.position.y += App->particles->diskL.speed.y;
