@@ -19,6 +19,8 @@ Click [here](https://github.com/Historn/Project-1/wiki) to go to our Github web.
 4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
 5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
 
+![](https://github.com/Historn/Project-1/blob/master/Images/0_Home/TeamPhotoIWHS.png)
+
 ## Contributions
 
 Even though each group member had a role, we all participated in the process of coding the game and its different stages. By doing this, we all work in different stages of the game and the work is not only easire but faster dividing the coding tasks between all of us.
