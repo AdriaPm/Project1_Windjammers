@@ -77,6 +77,10 @@ public:
 	Particle caughtrightsidedown;
 	Particle goalscoredright5pts;
 	Particle goalscoredleft5pts;
+	Particle DashSmokeL;
+	Particle DashSmokeR;
+	Particle DashSmokeU;
+	Particle DashSmokeD;
 
 	Animation* discCurrAnim = nullptr;
 

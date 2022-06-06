@@ -125,6 +125,59 @@ bool ModuleParticles::Start()
 	caughtrightsideup.speed.x = 0;
 	caughtrightsideup.anim.speed = 0.2f;
 
+	DashSmokeL.anim.PushBack({ 8, 171, 20, 20 });
+	DashSmokeL.anim.PushBack({ 28, 171, 20, 20 });
+	DashSmokeL.anim.PushBack({ 48, 171, 20, 20 });
+	DashSmokeL.anim.PushBack({ 71, 171, 22, 20 });
+	DashSmokeL.anim.PushBack({ 96, 171, 22, 20 });
+	DashSmokeL.anim.PushBack({ 116, 171, 22, 20 });
+	DashSmokeL.anim.PushBack({ 133, 171, 22, 20 });
+	DashSmokeL.anim.PushBack({ 149, 171, 22, 20 });
+	DashSmokeL.lifetime = 30;
+	DashSmokeL.anim.loop = false;
+	DashSmokeL.anim.speed = 0.4f;
+	DashSmokeL.speed.x = -1;
+
+	DashSmokeR.anim.PushBack({ 8, 171, 20, 20 });
+	DashSmokeR.anim.PushBack({ 28, 171, 20, 20 });
+	DashSmokeR.anim.PushBack({ 48, 171, 20, 20 });
+	DashSmokeR.anim.PushBack({ 71, 171, 22, 20 });
+	DashSmokeR.anim.PushBack({ 96, 171, 22, 20 });
+	DashSmokeR.anim.PushBack({ 116, 171, 22, 20 });
+	DashSmokeR.anim.PushBack({ 133, 171, 22, 20 });
+	DashSmokeR.anim.PushBack({ 149, 171, 22, 20 });
+	DashSmokeR.lifetime = 30;
+	DashSmokeR.anim.loop = false;
+	DashSmokeR.anim.speed = 0.4f;
+	DashSmokeR.speed.x = 1;
+
+	DashSmokeU.anim.PushBack({ 8, 171, 20, 20 });
+	DashSmokeU.anim.PushBack({ 28, 171, 20, 20 });
+	DashSmokeU.anim.PushBack({ 48, 171, 20, 20 });
+	DashSmokeU.anim.PushBack({ 71, 171, 22, 20 });
+	DashSmokeU.anim.PushBack({ 96, 171, 22, 20 });
+	DashSmokeU.anim.PushBack({ 116, 171, 22, 20 });
+	DashSmokeU.anim.PushBack({ 133, 171, 22, 20 });
+	DashSmokeU.anim.PushBack({ 149, 171, 22, 20 });
+	DashSmokeU.lifetime = 30;
+	DashSmokeU.anim.loop = false;
+	DashSmokeU.anim.speed = 0.4f;
+	DashSmokeU.speed.y = -1;
+
+	DashSmokeD.anim.PushBack({ 8, 171, 20, 20 });
+	DashSmokeD.anim.PushBack({ 28, 171, 20, 20 });
+	DashSmokeD.anim.PushBack({ 48, 171, 20, 20 });
+	DashSmokeD.anim.PushBack({ 71, 171, 22, 20 });
+	DashSmokeD.anim.PushBack({ 96, 171, 22, 20 });
+	DashSmokeD.anim.PushBack({ 116, 171, 22, 20 });
+	DashSmokeD.anim.PushBack({ 133, 171, 22, 20 });
+	DashSmokeD.anim.PushBack({ 149, 171, 22, 20 });
+	DashSmokeD.lifetime = 30;
+	DashSmokeD.anim.loop = false;
+	DashSmokeD.anim.speed = 0.4f;
+	DashSmokeD.speed.y = 1;
+
+
 
 
 	goalscoredleft.anim.PushBack({ 4, 192, 41, 77 });
