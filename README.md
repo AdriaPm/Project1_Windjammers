@@ -57,8 +57,6 @@ Loose: - F4
 " target="_blank"><img src="http://img.youtube.com/vi/eSWkbkaI2jA/0.jpg" 
 alt="Windjammers Trailer" width="1280" height="720" border="10" /></a>
 
-[![Watch the video](https://img.youtube.com/vi/eSWkbkaI2jA/default.jpg)](https://youtu.be/eSWkbkaI2jA)
-
 ## Lastest release
 
 Click [here](https://github.com/Historn/Project-1/releases) to download our lastest game release.
