@@ -19,7 +19,7 @@ Click [here](https://github.com/Historn/Project-1/wiki) to go to our Github web.
 4. Joel Chaves Moreno - Q&A --> [JoeyCM](https://github.com/JoeyCM)
 5. Rylan Graham - ART/DESIGN --> 	[RylanJGraham](https://github.com/RylanJGraham)
 
-![](https://github.com/Historn/Project-1/blob/master/Images/0_Home/TeamPhotoIWHS.png)
+![Group](https://github.com/Historn/Project-1/blob/master/Images/0_Home/TeamPhotoIWHS.png)
 
 ## Contributions
 
