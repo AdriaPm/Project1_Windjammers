@@ -53,9 +53,7 @@ Loose: - F4
 
 ## Trailer
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=eSWkbkaI2jA
-" target="_blank"><img src="http://img.youtube.com/vi/eSWkbkaI2jA/0.jpg" 
-alt="Windjammers Trailer" width="1280" height="720" border="10" /></a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vhN-gXtc3UE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Lastest release
 
