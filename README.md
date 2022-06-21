@@ -57,4 +57,4 @@ Loose: - F4
 
 ## Lastest release
 
-Click [here](https://github.com/Historn/Project-1/releases) to download our lastest game release.
+Click [here](https://github.com/AdriaPm/Project1_Windjammers/releases/download/FinalGame/IWasHidingStudio_Windjammers_v1.0.zip) to download our lastest game release.
